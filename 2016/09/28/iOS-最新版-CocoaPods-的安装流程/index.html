@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>荞一夏的小窝</title>
+  <title>iOS 最新版 CocoaPods 的安装流程 | 荞一夏的小窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="You gotta live what&apos;s in you！不畏艰辛，不忘初衷！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="荞一夏的小窝">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="CocoaPods 的安装流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 最新版 CocoaPods 的安装流程">
+<meta property="og:url" content="http://yoursite.com/2016/09/28/iOS-最新版-CocoaPods-的安装流程/index.html">
 <meta property="og:site_name" content="荞一夏的小窝">
-<meta property="og:description" content="You gotta live what&apos;s in you！不畏艰辛，不忘初衷！">
+<meta property="og:description" content="CocoaPods 的安装流程">
+<meta property="og:updated_time" content="2016-09-28T12:54:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="荞一夏的小窝">
-<meta name="twitter:description" content="You gotta live what&apos;s in you！不畏艰辛，不忘初衷！">
+<meta name="twitter:title" content="iOS 最新版 CocoaPods 的安装流程">
+<meta name="twitter:description" content="CocoaPods 的安装流程">
   
     <link rel="alternative" href="/atom.xml" title="荞一夏的小窝" type="application/atom+xml">
   
@@ -27,9 +28,6 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
-    
-    
-  
   
       <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   
@@ -40,8 +38,8 @@
       var yiliaConfig = {
           fancybox: true,
           animate: true,
-          isHome: true,
-          isPost: false,
+          isHome: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -187,9 +185,7 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-iOS-最新版-CocoaPods-的安装流程" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-iOS-最新版-CocoaPods-的安装流程" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/09/28/iOS-最新版-CocoaPods-的安装流程/" class="article-date">
@@ -205,309 +201,202 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/28/iOS-最新版-CocoaPods-的安装流程/">iOS 最新版 CocoaPods 的安装流程</a>
+    <h1 class="article-title" itemprop="name">
+      iOS 最新版 CocoaPods 的安装流程
     </h1>
   
 
       </header>
       
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              CocoaPods 的安装流程
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+      <div class="article-info article-info-post">
+        
 
-      
+        
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/09/28/iOS-最新版-CocoaPods-的安装流程/#more">More >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Awesome-iOS" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/28/Awesome-iOS/" class="article-date">
-      <time datetime="2016-09-28T11:06:36.000Z" itemprop="datePublished">2016-09-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/28/Awesome-iOS/">Awesome-iOS</a>
-    </h1>
-  
-
-      </header>
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
       
           
-              收录iOS优秀工具、框架、开源APP、技术博客！
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+         <a id="more"></a>
+<p>1.移除现有Ruby默认源</p>
+<p><code>$gem sources --remove https://rubygems.org/</code></p>
+<p>2.使用新的源<br><code>$gem sources -a https://ruby.taobao.org/</code></p>
+<p>3.验证新源是否替换成功</p>
+<p><code>$gem sources -l</code></p>
+<p>4.安装CocoaPods</p>
+<p>(1)  <code>$sudo gem install cocoapods</code> 备注：苹果系统升级 OS X EL Capitan 后改为 $sudo gem install -n /usr/local/bin cocoapods</p>
+<p>(2)  <code>$pod setup</code></p>
+<p>5.更新gem</p>
+<p><code>$sudo gem update --system</code></p>
+<ol>
+<li>新建工程，并在终端用cd指令到文件夹内</li>
+</ol>
+<p><code>$pod search 第三方</code></p>
+<p>7.新建文件 <code>vim “Podfile”，</code></p>
+<p><code>$vim Podfile</code></p>
+<p>写入以下内容并保存 小提示：（终端vim文件 按 i 可编辑 ，esc 退出编辑，：wq  可保存退出）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">platform:ios, &apos;6.0&apos;   </div><div class="line"></div><div class="line">pod &apos;AFNetworking&apos;, &apos;~&gt; 2.3.1&apos;     &lt;-------第三方</div></pre></td></tr></table></figure></p>
+<p>8.导入第三方库</p>
+<p><code>$pod install</code></p>
+<p>9.退出终端</p>
+<p>以下是安装流程安装可能出现的一些错误</p>
+<p>终端  cocoapods 下载bug调试：</p>
+<p>错误1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Error fetching http://ruby.taobao.org/:</div><div class="line"></div><div class="line">bad response Not Found 404 (http://ruby.taobao.org/specs.4.8.gz)</div></pre></td></tr></table></figure></p>
+<p>解决方案：把安装流程中 <code>$gem sources -a http://ruby.taobao.org/</code>  改为 <code>$gem sources -a https://ruby.taobao.org/</code></p>
+<p>错误2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ERROR:  While executing gem ... (Errno::EPERM)</div><div class="line"></div><div class="line">Operation not permitted - /usr/bin/pod</div></pre></td></tr></table></figure></p>
+<p>解决方案：苹果系统升级OS X EL Capitan后会出现的插件错误，将安装流程 4.安装CocoaPods 的 (1)<code>sudo gem install cocoapods</code> 改为<code>sudo gem install -n /usr/local/bin cocoapods</code></p>
+<p>错误3：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[!] Unable to satisfy the following requirements:  - `AVOSCloud (~&gt; 3.1.6.3)` required by `Podfile` </div><div class="line"></div><div class="line">Specs satisfying the `AVOSCloud (~&gt; 3.1.6.3)` dependency were found, but they required a higher minimum deployment target.</div></pre></td></tr></table></figure></p>
+<p>解决方案：安装流程：Podfile文件 中   <code>platform:ios, ‘6.0’</code>  后边的 6.0 是平台版本号 ，一定要加上</p>
 
       
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/09/28/Awesome-iOS/#more">More >></a>
-        </p>
-      
-      <div class="clearfix"></div>
     </div>
     
   </div>
   
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/09/28/iOS-最新版-CocoaPods-的安装流程/">iOS 最新版 CocoaPods 的安装流程</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 荞一夏 的个人博客">荞一夏</a></p>
+        <p><span>发布时间:</span>2016年09月28日 - 20时47分</p>
+        <p><span>最后更新:</span>2016年09月28日 - 20时54分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/09/28/iOS-最新版-CocoaPods-的安装流程/" title="iOS 最新版 CocoaPods 的安装流程">http://yoursite.com/2016/09/28/iOS-最新版-CocoaPods-的安装流程/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/28/iOS-最新版-CocoaPods-的安装流程/　　作者: 荞一夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2016/09/28/Awesome-iOS/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Awesome-iOS</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-
-
-
-
-
-
-
-
-  
-    <article id="post-Awesome-设计" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/28/Awesome-设计/" class="article-date">
-      <time datetime="2016-09-28T11:02:49.000Z" itemprop="datePublished">2016-09-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
-      <input type="hidden" class="isFancy" />
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
     
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/09/28/iOS-最新版-CocoaPods-的安装流程/" data-title="iOS 最新版 CocoaPods 的安装流程" data-url="http://yoursite.com/2016/09/28/iOS-最新版-CocoaPods-的安装流程/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
     
-      <header class="article-header">
+
+
+
+    <div class="scroll" id="post-nav-button">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/28/Awesome-设计/">Awesome-设计</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              收录优秀工具、框架、开源APP、技术博客！
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计/">设计</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/09/28/Awesome-设计/#more">More >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Awesome-前端" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/28/Awesome-前端/" class="article-date">
-      <time datetime="2016-09-28T11:02:36.000Z" itemprop="datePublished">2016-09-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/28/Awesome-前端/">Awesome-前端</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              收录前段优秀工具、框架、开源APP、技术博客！
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/09/28/Awesome-前端/#more">More >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Markdown语法指南" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/28/Markdown语法指南/" class="article-date">
-      <time datetime="2016-09-28T05:57:18.000Z" itemprop="datePublished">2016-09-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/28/Markdown语法指南/">Markdown语法指南</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              Markdown使用语法指南
-          
-      
+            <a href="/2016/09/28/Awesome-iOS/" title="下一篇: Awesome-iOS">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Markdown/">Markdown</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/09/28/Markdown语法指南/#more">More >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/iOS-最新版-CocoaPods-的安装流程/">iOS 最新版 CocoaPods 的安装流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Awesome-iOS/">Awesome-iOS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Awesome-设计/">Awesome-设计</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Awesome-前端/">Awesome-前端</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Markdown语法指南/">Markdown语法指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/14/Hexo-使用/">Hexo 使用</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
