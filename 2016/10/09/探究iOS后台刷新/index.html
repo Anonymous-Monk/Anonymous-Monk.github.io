@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Awesome-前端 | 荞一夏的小窝</title>
+  <title>探究iOS后台刷新 | 荞一夏的小窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="收录前段优秀工具、框架、开源APP、技术博客！">
+  <meta name="description" content="关于电量和应用权限的讨论中经常会提到「后台刷新」，iOS、watchOS 中的设置中也有单独的一栏「后台刷新」列出需要该权限的应用。但是什么是后台刷新，哪些应用才「真」的需要这个权限呢？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Awesome-前端">
-<meta property="og:url" content="http://yoursite.com/2016/09/28/Awesome-前端/index.html">
+<meta property="og:title" content="探究iOS后台刷新">
+<meta property="og:url" content="http://yoursite.com/2016/10/09/探究iOS后台刷新/index.html">
 <meta property="og:site_name" content="荞一夏的小窝">
-<meta property="og:description" content="收录前段优秀工具、框架、开源APP、技术博客！">
-<meta property="og:updated_time" content="2016-09-28T12:14:00.000Z">
+<meta property="og:description" content="关于电量和应用权限的讨论中经常会提到「后台刷新」，iOS、watchOS 中的设置中也有单独的一栏「后台刷新」列出需要该权限的应用。但是什么是后台刷新，哪些应用才「真」的需要这个权限呢？">
+<meta property="og:updated_time" content="2016-10-09T13:20:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Awesome-前端">
-<meta name="twitter:description" content="收录前段优秀工具、框架、开源APP、技术博客！">
+<meta name="twitter:title" content="探究iOS后台刷新">
+<meta name="twitter:description" content="关于电量和应用权限的讨论中经常会提到「后台刷新」，iOS、watchOS 中的设置中也有单独的一栏「后台刷新」列出需要该权限的应用。但是什么是后台刷新，哪些应用才「真」的需要这个权限呢？">
   
     <link rel="alternative" href="/atom.xml" title="荞一夏的小窝" type="application/atom+xml">
   
@@ -185,11 +185,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Awesome-前端" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-探究iOS后台刷新" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/09/28/Awesome-前端/" class="article-date">
-      <time datetime="2016-09-28T11:02:36.000Z" itemprop="datePublished">2016-09-28</time>
+      <a href="/2016/10/09/探究iOS后台刷新/" class="article-date">
+      <time datetime="2016-10-09T13:12:55.000Z" itemprop="datePublished">2016-10-09</time>
 </a>
     </div>
   
@@ -202,7 +202,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Awesome-前端
+      探究iOS后台刷新
     </h1>
   
 
@@ -210,10 +210,14 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -223,8 +227,15 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-         <a id="more"></a>
-<p>正文</p>
+        <a id="more"></a>
+<h2 id="什么是后台刷新"><a href="#什么是后台刷新" class="headerlink" title="什么是后台刷新"></a>什么是后台刷新</h2><p>iOS 的运行逻辑中，当我们从一个应用切换至其他应用后，某些应用会继续在后台（Background）运行一小段时间（不会超过 10 分钟），然后暂停。处于暂停状态的应用不会使用状态或占用系统资源，通过「后台应用刷新」超出后台运行时限的应用可继续在后台保持活跃，用以检查是否有更新和新内容。<br>获得「后台刷新」允许的应用也不是一直能在后台运行，iOS 把需要在后台运行的应用分成了几类：① 音频的播放、录音、AirPlay 及画中画视频播放，② 地理定位更新，③ VOIP 网络电话，④ 报刊杂志类应用的内容下载，⑤ 蓝牙设备连接，⑥ 定时数据更新，⑦ 通过静默推送更新内容 ⑧ Wi-Fi 环境下的后台下载或者上传。即便是这几类的应用，在后台刷新时也有很多限制，通常是由时钟频率或者静默推送触发运行一小段时间（30 秒）然后等待下一次的激活。</p>
+<h2 id="「后台应用刷新」的目的"><a href="#「后台应用刷新」的目的" class="headerlink" title="「后台应用刷新」的目的"></a>「后台应用刷新」的目的</h2><p>由上面的后台应用分类里不难看出，后台刷新很多时候是为了保证应用状态的持续性和数据更新，当然过程不会像看上去那么简单，iOS 会在系统层面根据后台应用分类、网络环境（WiFi、蜂窝数据网络）、文件大小、用户习惯（用户使用手机和打开某个应用的频率）等条件进行调度和管理，主动权由 iOS 掌控，每个后台刷新应用获得的后台运行时间也有限，所以很多应用的实际做法是综合利用「转入后台」和「在后台刷新」这两个时间周期，并通过通知来引导用户主动打开应用。</p>
+<p>播客、新闻类、杂志类应用开启「后台刷新」是为了在后台下载订阅的最新内容。<br>微信、Telegram 这类 IM 应用的后台刷新也差不多，定期刷新消息，以保证用户打开应用时是最新的消息列表。<br>地图、打车软件主要是因为地理围栏信息，当被切换到后台时需要保持连接并获取定位信息，例如，Google 在导航过程中如果打开其他应用会缩小成顶部的状态栏信息条，持续的在后台运行。但是就定位而言，可以只在程序运行期间获取定位信息，不需要一直运行。<br>音频播放类应用的更好理解，可以在播放歌曲时切换到其他程序，边听歌边看书或者扫扫购物网站什么的，视频播放和 AirPlay 工作方式和音乐相近，都有需要在切换到其他应用时保持持续的后台运行。国内的某些软件曾经就利用过这个后台运行的特性，用播放空白音频的方式赖在后台，不过这种小手段很容易在「正牌」音频播放软件打开后打断。<br>空气质量、天气、股票这些应用需要定期刷新数据，为了保证获取数据的持续性，也会利用到后台刷新机制。<br>需要在后台同步和下载的应用，例如：邮件、OmniFocus、Due、Day One、Dropbox、Ulysses 等，当我们将它们切换到后台时，下载和同步任务可能还没有完成，需要利用后台刷新机制继续完成下载同步任务。</p>
+<h2 id="关闭后台刷新有什么影响"><a href="#关闭后台刷新有什么影响" class="headerlink" title="关闭后台刷新有什么影响"></a>关闭后台刷新有什么影响</h2><p>当我们在「设置-电池」中启用「低电量模式」时，后台刷新会被整个关闭从而节省电量。你会发现好像影响并不大，经常打开的那些应用也并没有因为刷新新内容让你等待。这是因为经常打开的应用所需要刷新和下载的数据很小，即便是打开应用的时候再获取新数据也感觉不到差异。<br>另一方面，因为 iOS 后台刷新机制的诸多限制以及开发者的技术实现手段等因素，很多应用的后台刷新并没有达到很好的效果，是否打开后台刷新好像并没有差别。每次打开微信时，顶栏还是会出现「收取中…」、「连接中…」；OmniFocus 演进了很多版本后，即便开启后台刷新依旧没有完全解决同步的问题。<br> 对于应用程序而言，最有效的更新和同步方式，还是要在前台打开它。<br>关闭后台刷新并不会影响通知的接收，最简单的例子就是没有开启 VPN，但是能正常的收到 Twitter 的通知，这是因为通知都是经由 Apple 服务器来中转的，所以即便你没有开 VPN，没有打开应用、也没有开启它的后台刷新都能正常的收到通知。当我们点开通知才会调用应用本身。<br>也因为通知的独特性，很多应用另辟蹊径的方式是主动给用户发通知来让你打开它，从而能在获得更多的前台和转入后台运行时间。我们打开一次应用即便马上切换桌面，应用可能也争取到了 10 分钟（最大值）的运行时长。</p>
+<h2 id="选择性的开启「后台刷新」"><a href="#选择性的开启「后台刷新」" class="headerlink" title="选择性的开启「后台刷新」"></a>选择性的开启「后台刷新」</h2><p>虽然每个人的应用环境不同，不过在判断原则上还是可以相互借鉴的，对系统内置的应用条件可以宽松一些，对第三方应用严格一些。<br>播客，为了即时收听最新一期的播客内容，可以选择开启它的后台刷新，同时需要注意的是最好同时打开「仅 Wi-Fi 下载」「限制单集-最新 2 集」，避免产生不必要的蜂窝移动数据流量。<br>1Password，开启，后台同步密码和登录数据的量很小，而且从安全备份的原则来说，即时同步很有必要。<br>Google Maps，地图类应用因为它本身的运行特点需要后台刷新，这样查看地图时接听电话或者切换到其他应用能保证其持续的运行，不过相匹配的位置就不一定需要「始终」了，Google Maps 我选择的是「使用应用期间」，对于那些没有此选项的地图应用就需要斟酌一下了，因为除了后台刷新定位是很费电的。<br>滴滴出行、淘宝、京东、腾讯手机管家这些应用都没有太大的必要开启后台刷新，这些服务性质的应用，使用场景都是应用在前台的时候，打开应用再获取新的数据并不影响使用体验。腾讯手机管家这种看似需要定期更新号码包数据的应用也是如此，隔几天打开应用更新数据包就可以（腾讯默认也是 36–72 小时更新一次）。<br>天气、备忘录，开启，后台即时刷新数据和完成备忘录的同步，系统内置应用在利用自身的特性上做的还是很好的。<br>Overcast，关闭，因为它和播客在功能上是重叠的，所以遇到功能重复的应用时，后台刷新开启就看你的使用主力是哪一个。同样的还有 Twitter、Tweetbot，开一个主力应用的后台刷新就可以。<br>Evernote、Day One、Ulysses、Dropbox，关闭，这些需要同步内容的应用我的选择是都关闭的，遇到需要同步大量的内容时打开应用稍微等待一会就可以，另外还与使用频率有关，在定位上这些应用主要还是以查看和应急为主，主要使用场景还是在 Mac 端，所以开启后台刷新保持实时同步的必要性不大。<br>Due、OmniFocus，开启，时间管理类的应用同步和通知的即时性很重要，所以有必要保持后台刷新的开启。<br>微信、Telegram，开启，虽然关闭了后台刷新也不影响消息的通知，不过还是选择开了后台刷新，因为使用的频率本来就很高，每次打开能看关闭通知的 N 条群消息，作为早间阅读和御览有点作用。<br>Inbox，开启，邮件主力是 Inbox 和系统自带的 Mail，开启后台刷新能在打开应用后查看到完整的邮件，减少等待刷新和下载的时间。</p>
+<blockquote>
+<p>Apple Watch 的后台刷新有个特别的地方，当你使用含有功能项的表盘时，即便你在后台刷新设置中关闭了该应用，该应用将继续刷新。<br>简单归纳一下上述应用的后台刷新「原则」，首先同类应用开启作为主力的一个应用、其次，IM 通讯类、邮件、GTD 这些需要即时性的应用都是开启的，功能性的应用里地图、天气是有必要开启的，而播客、阅读类和下载同步类可以根据自己的使用场景选择开启。最后对于国产应用，要求不妨更高一些，因为不严谨的代码质量的后果是：开启后台刷新不仅更费电，而且没有什么实际作用。</p>
+</blockquote>
 
       
     </div>
@@ -233,13 +244,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/09/28/Awesome-前端/">Awesome-前端</a></p>
+        <p><span>本文标题:</span><a href="/2016/10/09/探究iOS后台刷新/">探究iOS后台刷新</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 荞一夏 的个人博客">荞一夏</a></p>
-        <p><span>发布时间:</span>2016年09月28日 - 19时02分</p>
-        <p><span>最后更新:</span>2016年09月28日 - 20时14分</p>
+        <p><span>发布时间:</span>2016年10月09日 - 21时12分</p>
+        <p><span>最后更新:</span>2016年10月09日 - 21时20分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/09/28/Awesome-前端/" title="Awesome-前端">http://yoursite.com/2016/09/28/Awesome-前端/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/28/Awesome-前端/　　作者: 荞一夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/09/探究iOS后台刷新/" title="探究iOS后台刷新">http://yoursite.com/2016/10/09/探究iOS后台刷新/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/10/09/探究iOS后台刷新/　　作者: 荞一夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -252,18 +263,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/09/28/Awesome-设计/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Awesome-设计
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/09/28/Markdown语法指南/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Markdown语法指南</div>
+    <a href="/2016/09/29/文件管理-沙盒路径、NSFileManager/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">文件管理-沙盒路径、NSFileManager</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -274,7 +276,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是后台刷新"><span class="toc-number">1.</span> <span class="toc-text">什么是后台刷新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#「后台应用刷新」的目的"><span class="toc-number">2.</span> <span class="toc-text">「后台应用刷新」的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关闭后台刷新有什么影响"><span class="toc-number">3.</span> <span class="toc-text">关闭后台刷新有什么影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择性的开启「后台刷新」"><span class="toc-number">4.</span> <span class="toc-text">选择性的开启「后台刷新」</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -322,7 +324,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/09/28/Awesome-前端/" data-title="Awesome-前端" data-url="http://yoursite.com/2016/09/28/Awesome-前端/"></div>
+    <div class="ds-thread" data-thread-key="2016/10/09/探究iOS后台刷新/" data-title="探究iOS后台刷新" data-url="http://yoursite.com/2016/10/09/探究iOS后台刷新/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -345,13 +347,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/09/28/Awesome-设计/" title="上一篇: Awesome-设计">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/09/28/Markdown语法指南/" title="下一篇: Markdown语法指南">
+            <a href="/2016/09/29/文件管理-沙盒路径、NSFileManager/" title="下一篇: 文件管理-沙盒路径、NSFileManager">
                 <i class="fa fa-angle-right"></i>
             </a>
         
