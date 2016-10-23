@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS基础面试 | 荞一夏的小窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="iOS面试题基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS基础面试">
+<meta property="og:url" content="http://yoursite.com/2016/10/23/iOS基础面试/index.html">
+<meta property="og:site_name" content="荞一夏的小窝">
+<meta property="og:description" content="iOS面试题基础">
+<meta property="og:updated_time" content="2016-10-23T12:15:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS基础面试">
+<meta name="twitter:description" content="iOS面试题基础">
+  
+    <link rel="alternative" href="/atom.xml" title="荞一夏的小窝" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/bloghead.JPG" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">荞一夏</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">You gotta live what&#39;s in you！不忘初衷！</p>
+        
+        
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home/">首页</a></li>
+                        
+                            <li><a href="/tags/iOS">iOS</a></li>
+                        
+                            <li><a href="/tags/前端">前端</a></li>
+                        
+                            <li><a href="/tags/设计">设计</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/Anonymous-Monk" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/u/3613440433" title="weibo">weibo</a>
+                            
+                                <a class="fl facebook" target="_blank" href="#" title="facebook">facebook</a>
+                            
+                                <a class="fl segmentfault" target="_blank" href="#" title="segmentfault">segmentfault</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://MOxFIVE.github.io/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.vsay.cn/">DoubleV</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ccwebsite.com/">兮兮</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.dandyweng.com/">翁天信</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.plqblog.com/views/index.php">潘利强</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hankin.cn/">hankin</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.waydrow.com/">waydrow</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">荞一夏</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/bloghead.JPG" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">荞一夏</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">You gotta live what&#39;s in you！不忘初衷！</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home/">首页</a></li>
+                
+                    <li><a href="/tags/iOS">iOS</a></li>
+                
+                    <li><a href="/tags/前端">前端</a></li>
+                
+                    <li><a href="/tags/设计">设计</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/Anonymous-Monk" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/u/3613440433" title="weibo">weibo</a>
+                    
+                        <a class="facebook" target="_blank" href="#" title="facebook">facebook</a>
+                    
+                        <a class="segmentfault" target="_blank" href="#" title="segmentfault">segmentfault</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-iOS基础面试" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/23/iOS基础面试/" class="article-date">
+      <time datetime="2016-10-23T12:07:44.000Z" itemprop="datePublished">2016-10-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS基础面试
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Markdown/">Markdown</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<p>1.#import 跟#include、@class有什么区别？＃import&lt;&gt; 跟 #import””又什么区别？ </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#import 和#include都是在当前文件引入某个文件的内容，#import能防止同一个文件被引用多次</div><div class="line">@class 仅仅声明一个类名，并不包含类的完整声明，@class还能解决循环包换的问题</div><div class="line">#import &lt;&gt; 用来包含系统自带的文件，#import “”用来包含自定义的文件</div></pre></td></tr></table></figure>
+<p>2.属性readwrite，readonly，assign，retain，copy，nonatomic 各是什么作用，在那种情况下用？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">1.readwrite：同时生成get方法和set方法的声明和实现  </div><div class="line">2.readonly：只生成get方法的声明和实现</div><div class="line">3.assign：set方法的实现是直接赋值，用于基本数据类型</div><div class="line">4.retain:set方法的实现是release旧值，retain新值，用于OC对象类型</div><div class="line">5.copy：set方法的实现是release旧值，copy新值，用于NSString、block等类型</div><div class="line">6.nonatomic：非原子性，set方法的实现不加锁（比atomic性能高）</div></pre></td></tr></table></figure>
+<p>3.写一个setter方法用于完成@property （nonatomic,retain）NSString <em>name,写一个setter方法用于完成@property（nonatomic，copy）NSString </em>name.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, retain) NSString *name;</div><div class="line">- (void)setName:(NSString *)name</div><div class="line">&#123;</div><div class="line">if (_name != name) &#123;</div><div class="line">[_name release];</div><div class="line">_name = [name retain];</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@property(nonatomic, copy) NSString *name;</div><div class="line">- (void)setName:(NSString *)name</div><div class="line">&#123;</div><div class="line">if (_name != name) &#123;</div><div class="line">[_name release];</div><div class="line">_name = [name copy];</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>4.对于语句NSString *obj = [[NSData alloc] init]; ，编译时和运行时obj分别是什么类型？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">此题主要考察对运行时机制的理解，编译时是NSString类型 ，运行时是NSData类型.</div><div class="line">NSString *obj 对obj的类型没有任何的作用，只是告诉编辑器你要把obj当作NSString来使用，编辑器会给obj对象智能提醒和检测NSString的api，帮助你编写代码和语法检查，仅此而已。</div></pre></td></tr></table></figure>
+<p>5.常见的object-c的数据类型有那些， 和C的基本数据类型有什么区别？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.常用OC类型：NSString、NSArray、NSDictionary、NSData、NSNumber等</div><div class="line">2.OC对象需要手动管理内存，C的基本数据类型不需要管理内存</div></pre></td></tr></table></figure>
+<p>6.id 声明的变量有什么特性？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">id声明的变量能指向任何OC对象。</div><div class="line">参照第4题，id声明的变量，相当于告诉编辑器，</div><div class="line">此变量的类型暂无具体类型，就是id类型，具体什么类型运行时来决定。</div></pre></td></tr></table></figure>
+<p>7.Objective-C如何对内存管理的,说说你的看法和解决方法?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">内存管理机制是每个iOS开发者需要了解的。</div><div class="line">1.每个对象都有一个引用计数器，每个新对象的计数器是1，当对象的计数器减为0时，就会被销毁</div><div class="line">2.通过retain可以让对象的计数器+1、release可以让对象的计数器-1</div><div class="line">3.还可以通过autorelease pool管理内存</div><div class="line">4.如果用ARC，编译器会自动生成管理内存的代码</div></pre></td></tr></table></figure>
+<p>8.深拷贝和浅拷贝的区别？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">深拷贝：拷贝内容，产生新的对象。</div><div class="line">浅拷贝：拷贝指针，不会产生新的对象</div></pre></td></tr></table></figure>
+<p>9.使用分类有什么优点？分类和继承的区别？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">分类可以在不修改原来类模型的基础上拓充方法</div><div class="line">分类只能扩充方法、不能扩充成员变量；继承可以扩充方法和成员变量</div><div class="line">继承会产生新的类</div></pre></td></tr></table></figure>
+<p>10.分类和扩展的区别？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">分类是有名称的，类扩展没有名称</div><div class="line">分类只能扩充方法、不能扩充成员变量；类扩展可以扩充方法和成员变量</div><div class="line">类扩展一般就写在.m文件中，用来扩充私有的方法和成员变量（属性）</div></pre></td></tr></table></figure>
+<p>11.KVC和KVO是什么？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">KVC是键值编码，可以通过一个字符串的key（属性名）修改对象的属性值</div><div class="line">KVO是键值监听，可以监听一个对象属性值的改变</div></pre></td></tr></table></figure>
+<p>12.代理的目的是什么？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">两个对象之间传递数据和消息</div><div class="line">解耦，拆分业务逻辑</div></pre></td></tr></table></figure>
+<p>13.在Objective C中什么是mutable和immutable类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mutable是可变类型，比如NSMutableArray，可以动态往里面添加元素</div><div class="line">immutable是不可变类型，比如NSArray，固定的存储空间，不能添加元素</div></pre></td></tr></table></figure>
+<p>14.什么是单例？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">单例：保证程序运行过程中，永远只有一个对象实例</div><div class="line">目的是：全局共享一份资源、节省不必要的内存开销</div><div class="line">常见单例：UIApplication、NSUserDefaults、NSNotificationCenter、NSFileManager、NSBundle等</div></pre></td></tr></table></figure>
+<p>15.什么时候使用NSMutableArray,什么时候使用NSArray？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">当数组元素需要动态地添加或者删除时，用NSMutableArray</div><div class="line">当数组元素固定不变时，用NSArray</div></pre></td></tr></table></figure>
+<p>16.什么情况下对象引用计数器会增加？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">当做retain或者copy操作的时候，都有可能增加计数器</div></pre></td></tr></table></figure>
+<p>17.在Objective C中关键字atomic有什么作用？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">atomic是原子性</div><div class="line">atomic会对set方法的实现进行加锁</div></pre></td></tr></table></figure>
+<p>18.Objective C有私有方法和私有变量吗？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Objective C中没有private，public类似的关键字来控制类的权限，写在.h文件中，就是公共方法</div><div class="line">在.m文件中声明和实现的方法，对编辑器来说就是私有的</div></pre></td></tr></table></figure>
+<p>19.堆和栈的区别？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">堆空间的内存是动态分配的，一般存放对象，并且需要手动释放内存</div><div class="line">栈空间的内存由系统自动分配，一般存放局部变量等，不需要手动管理内存</div></pre></td></tr></table></figure>
+<p>20.@property中有哪些属性关键字？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1.readwrite（默认）：同时生成get方法和set方法的声明和实现  </div><div class="line">2.readonly：只生成get方法的声明和实现</div><div class="line">3.assign（默认）：set方法的实现是直接赋值，用于基本数据类型</div><div class="line">4.retain:set方法的实现是release旧值，retain新值，用于OC对象类型</div><div class="line">5.copy：set方法的实现是release旧值，copy新值，用于NSString、block等类型</div><div class="line">6.nonatomic：非原子性，set方法的实现不加锁（比atomic性能高）</div><div class="line">7.atomic（默认）：原子性，会在set方法加上读写锁</div><div class="line">8.weak：弱指针类型，一般用于UI控件、id类型</div><div class="line">9、strong (就是retain)：强指针类型   一般用于OC对象类型，除 (UI控件、代理类型、字符串对象)</div></pre></td></tr></table></figure>
+<p>21.OC有多继承吗？没有的话用什么代替？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">OC是单继承，没有多继承，有时可以使用分类和协议来代替多继承。</div></pre></td></tr></table></figure>
+<p>22.关键字const什么含义？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">const int a;</div><div class="line">int const a;</div><div class="line">const int *a;</div><div class="line">int const *a;</div><div class="line">int * const a;</div><div class="line">int const * const a;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1&gt; 前两个的作用是一样：a 是一个不可修改的常整型数，只读</div><div class="line">2&gt; 第三、四个意味着 a 是一个指向常整型数的指针(整型数是不可修改的，但指针可以)</div><div class="line">3&gt; 第五个的意思：a 是一个指向整型数的常指针(指针指向的整型数是可以修改的，但指针是不可修改的)</div><div class="line">4&gt; 最后一个意味着：a 是一个指向常整型数的常指针(指针指向的整型数是不可修改的，同时指针也是不可修改的)</div></pre></td></tr></table></figure>
+<p>23.static的作用？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.static修饰的函数是一个内部函数，只能在本文件中调用，其他文件不能调用</div><div class="line">2. static修饰的全局变量是一个内部变量，只能在本文件中使用，其他文件不能使用</div><div class="line">3. static修饰的局部变量只会初始化一次，并且在程序退出时才会回收内存</div></pre></td></tr></table></figure>
+<p>24.自动释放池常见面试代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">for (int i = 0; i &lt; 10; ++i)</div><div class="line">&#123;   </div><div class="line">NSString *str = @&quot;Hello World&quot;;   </div><div class="line">str = [str stringByAppendingFormat:@&quot; - %d&quot;, i];   </div><div class="line">str = [str uppercaseString];    NSLog(@&quot;%@&quot;, str);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>问：以上代码存在什么样的问题？如果循环的次数非常大时，应该如何修改？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">解决办法1：如果i比较大，可以用@autoreleasepool &#123;&#125;解决，放在for循环外，循环结束后，销毁创建的对象，解决占据栈区内存的问题</div><div class="line"></div><div class="line">解决方法2：如果i玩命大，一次循环都会造成自动释放池被填满，自动释放池放在for循环内，每次循环都将上一次创建的对象release</div></pre></td></tr></table></figure>
+<p>25.@private、@protected、@public、@package类型的成员变量的作用域？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- @private：只能在当前类的对象方法中访问；</div><div class="line">- @protected：可以在当前类以及子类的实现中直接访问，默认类型；</div><div class="line">- @public：任何地方都可以直接访问对象的成员变量；</div><div class="line">- @package：同一个“体系内”（框架）可以访问；</div></pre></td></tr></table></figure>
+<p>26.这个写法会出什么问题:<code>@property (copy) NSMutableArray *array;</code>?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@property 的setter方法设置成copy以后，array这个指针指向的是一个不可变数组，</div><div class="line">那么当使用点语法为给array赋值时，就会发生“unrecognized selector sent to instance”错误，程序就会崩溃。</div></pre></td></tr></table></figure>
+<p>27.调用对象的release 方法会销毁对象吗？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">不会，调用对象的release 方法只是将对象的引用计数器-1，当对象的引用计数器为0的时候会调用了对象的dealloc 方法才能进行释放对象的内存。</div></pre></td></tr></table></figure>
+<p>28.什么情况使用 weak 关键字，相比 assign 有什么不同？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">1&gt;.什么情况使用weak关键字?</div><div class="line">- 在 ARC 中,在有可能出现循环引用的时候,往往要通过让其中一端使用 weak 来解决,比如: delegate 代理属性</div><div class="line">- 自身已经对它进行一次强引用,没有必要再强引用一次,此时也会使用 weak,自定义 IBOutlet 控件属性一般也使用 weak；当然，也可以使用strong。</div><div class="line">2&gt;.weak与assign的不同?</div><div class="line">- weak 此特质表明该属性定义了一种“非拥有关系” (nonowning relationship)。为这种属性设置新值时，设置方法既不保留新值，也不释放旧值。此特质同assign类似， 然而在属性所指的对象遭到摧毁时，属性值也会清空(nil out)。 而 assign 的“设置方法”只会执行针对“纯量类型” (scalar type，例如 CGFloat 或 NSlnteger 等)的简单赋值操作。</div><div class="line">- assigin 可以用非 OC 对象,而 weak 必须用于 OC 对象</div></pre></td></tr></table></figure>
+<p>29.XIB与Storyboards的优缺点?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- XIB：在编译前就提供了可视化界面，可以直接拖控件，也可以直接给控件添加约束，更直观一些，而且类文件中就少了创建控件的代码，确实简化不少，通常每个XIB对应一个类。</div><div class="line"></div><div class="line">- Storyboard：在编译前提供了可视化界面，可拖控件，可加约束，在开发时比较直观，而且一个storyboard可以有很多的界面，每个界面对应一个类文件，通过storybard，可以直观地看出整个App的结构。</div><div class="line"></div><div class="line">- XIB：需求变动时，需要修改XIB很大，有时候甚至需要重新添加约束，导致开发周期变长。XIB载入相比纯代码自然要慢一些。对于比较复杂逻辑控制不同状态下显示不同内容时，使用XIB是比较困难的。当多人团队或者多团队开发时，如果XIB文件被发动，极易导致冲突，而且解决冲突相对要困难很多。</div><div class="line"></div><div class="line">- Storyboard：需求变动时，需要修改storyboard上对应的界面的约束，与XIB一样可能要重新添加约束，或者添加约束会造成大量的冲突，尤其是多团队开发。对于复杂逻辑控制不同显示内容时，比较困难。当多人团队或者多团队开发时，大家会同时修改一个storyboard，导致大量冲突，解决起来相当困难。</div></pre></td></tr></table></figure>
+<p>30.@synthesize和@dynamic分别有什么作用？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- @property有两个对应的词，一个是 @synthesize，一个是 @dynamic。如果 @synthesize和 @dynamic都没写，那么默认的就是@syntheszie var = _var;</div><div class="line">- @synthesize 的语义是如果你没有手动实现 setter 方法和 getter 方法，那么编译器会自动为你加上这两个方法。</div><div class="line">- @dynamic 告诉编译器：属性的 setter 与 getter 方法由用户自己实现，不自动生成。（当然对于 readonly 的属性只需提供 getter 即可）。假如一个属性被声明为 @dynamic var，然后你没有提供 @setter方法和 @getter 方法，编译的时候没问题，但是当程序运行到 instance.var = someVar，由于缺 setter 方法会导致程序崩溃；或者当运行到 someVar = var 时，由于缺 getter 方法同样会导致崩溃。编译时没问题，运行时才执行相应的方法，这就是所谓的动态绑定。</div></pre></td></tr></table></figure>
+<p>31.objc中的类方法和实例方法有什么本质区别和联系？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">类方法:</div><div class="line">- 类方法是属于类对象的</div><div class="line">- 类方法只能通过类对象调用</div><div class="line">- 类方法中的self是类对象</div><div class="line">- 类方法可以调用其他的类方法</div><div class="line">- 类方法中不能访问成员变量</div><div class="line">- 类方法中不能直接调用对象方法</div><div class="line"></div><div class="line">实例方法：</div><div class="line"></div><div class="line">- 实例方法是属于实例对象的</div><div class="line">- 实例方法只能通过实例对象调用</div><div class="line">- 实例方法中的self是实例对象</div><div class="line">- 实例方法中可以访问成员变量</div><div class="line">- 实例方法中直接调用实例方法</div><div class="line">- 实例方法中也可以调用类方法(通过类名)</div></pre></td></tr></table></figure>
+<p>32.Objective-C 中是否支持垃圾回收机制？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- OC是支持垃圾回收机制的(Garbage collection简称GC),但是apple的移动终端中,是不支持GC的,Mac桌面系统开发中是支持的.</div><div class="line"></div><div class="line">- 移动终端开发是支持ARC（Automatic Reference Counting的简称）,ARC是在IOS5之后推出的新技术,它与GC的机制是不同的。我们在编写代码时, 不需要向对象发送release或者autorelease方法,也不可以调用delloc方法,编译器会在合适的位置自动给用户生成release消息(autorelease),ARC 的特点是自动引用技术简化了内存管理的难度.</div></pre></td></tr></table></figure>
+<p>33.在 Objective-C 中如何实现 KVO?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- 注册观察者(注意：观察者和被观察者不会被保留也不会被释放)</div><div class="line">- (void)addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(void *)context;</div><div class="line"></div><div class="line">- 接收变更通知</div><div class="line">- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;</div><div class="line"></div><div class="line">- 移除对象的观察者身份</div><div class="line">- (void)removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath;</div><div class="line"></div><div class="line">- KVO中谁要监听谁注册，然后对响应进行处理，使得观察者与被观察者完全解耦。KVO只检测类中的属性，并且属性名都是通过NSString来查找，编译器不会检错和补全，全部取决于自己。</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/10/23/iOS基础面试/">iOS基础面试</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 荞一夏 的个人博客">荞一夏</a></p>
+        <p><span>发布时间:</span>2016年10月23日 - 20时07分</p>
+        <p><span>最后更新:</span>2016年10月23日 - 20时15分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/23/iOS基础面试/" title="iOS基础面试">http://yoursite.com/2016/10/23/iOS基础面试/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/10/23/iOS基础面试/　　作者: 荞一夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/10/23/iOS进阶面试/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          iOS进阶面试
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/10/Objective-C编码规范：26个方面解决iOS开发问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Objective-C编码规范：26个方面解决iOS开发问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/10/23/iOS基础面试/" data-title="iOS基础面试" data-url="http://yoursite.com/2016/10/23/iOS基础面试/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/10/23/iOS进阶面试/" title="上一篇: iOS进阶面试">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/10/10/Objective-C编码规范：26个方面解决iOS开发问题/" title="下一篇: Objective-C编码规范：26个方面解决iOS开发问题">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/iOS进阶面试/">iOS进阶面试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/iOS基础面试/">iOS基础面试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Objective-C编码规范：26个方面解决iOS开发问题/">Objective-C编码规范：26个方面解决iOS开发问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/09/探究iOS后台刷新/">探究iOS后台刷新</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/29/文件管理-沙盒路径、NSFileManager/">文件管理-沙盒路径、NSFileManager</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/iOS-最新版-CocoaPods-的安装流程/">iOS 最新版 CocoaPods 的安装流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Awesome-iOS/">Awesome-iOS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Awesome-设计/">Awesome-设计</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Awesome-前端/">Awesome-前端</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Markdown语法指南/">Markdown语法指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/14/Hexo-使用/">Hexo 使用</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 荞一夏
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

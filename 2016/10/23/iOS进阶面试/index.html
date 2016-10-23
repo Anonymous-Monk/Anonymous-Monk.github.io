@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS进阶面试 | 荞一夏的小窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="iOS面试题进阶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS进阶面试">
+<meta property="og:url" content="http://yoursite.com/2016/10/23/iOS进阶面试/index.html">
+<meta property="og:site_name" content="荞一夏的小窝">
+<meta property="og:description" content="iOS面试题进阶">
+<meta property="og:updated_time" content="2016-10-23T12:15:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS进阶面试">
+<meta name="twitter:description" content="iOS面试题进阶">
+  
+    <link rel="alternative" href="/atom.xml" title="荞一夏的小窝" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/bloghead.JPG" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">荞一夏</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">You gotta live what&#39;s in you！不忘初衷！</p>
+        
+        
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home/">首页</a></li>
+                        
+                            <li><a href="/tags/iOS">iOS</a></li>
+                        
+                            <li><a href="/tags/前端">前端</a></li>
+                        
+                            <li><a href="/tags/设计">设计</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/Anonymous-Monk" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/u/3613440433" title="weibo">weibo</a>
+                            
+                                <a class="fl facebook" target="_blank" href="#" title="facebook">facebook</a>
+                            
+                                <a class="fl segmentfault" target="_blank" href="#" title="segmentfault">segmentfault</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://MOxFIVE.github.io/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.vsay.cn/">DoubleV</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ccwebsite.com/">兮兮</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.dandyweng.com/">翁天信</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.plqblog.com/views/index.php">潘利强</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hankin.cn/">hankin</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.waydrow.com/">waydrow</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">荞一夏</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/bloghead.JPG" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">荞一夏</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">You gotta live what&#39;s in you！不忘初衷！</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home/">首页</a></li>
+                
+                    <li><a href="/tags/iOS">iOS</a></li>
+                
+                    <li><a href="/tags/前端">前端</a></li>
+                
+                    <li><a href="/tags/设计">设计</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/Anonymous-Monk" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/u/3613440433" title="weibo">weibo</a>
+                    
+                        <a class="facebook" target="_blank" href="#" title="facebook">facebook</a>
+                    
+                        <a class="segmentfault" target="_blank" href="#" title="segmentfault">segmentfault</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-iOS进阶面试" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/23/iOS进阶面试/" class="article-date">
+      <time datetime="2016-10-23T12:08:03.000Z" itemprop="datePublished">2016-10-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS进阶面试
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Markdown/">Markdown</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<p>1、KVC的底层实现？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">当一个对象调用setValue方法时，方法内部会做以下操作：</div><div class="line">①检查是否存在相应key的set方法，如果存在，就调用set方法</div><div class="line">②如果set方法不存在，就会查找与key相同名称并且带下划线的成员属性，如果有，则直接给成员属性赋值</div><div class="line">③如果没有找到_key,就会查找相同名称的属性key，如果有就直接赋值</div><div class="line">④如果还没找到，则调用valueForUndefinedKey:和setValue:forUndefinedKey:方法。</div><div class="line">这些方法的默认实现都是抛出异常，我们可以根据需要重写它们。</div></pre></td></tr></table></figure>
+<p>2、<strong>block和</strong>weak修饰符的区别？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.__block不管是ARC还是MRC模式下都可以使用，可以修饰对象，还可以修饰基本数据类型。</div><div class="line">2.__weak只能在ARC模式下使用，也只能修饰对象（NSString），不能修饰基本数据类型（int）。</div><div class="line">3.__block对象可以在block中被重新赋值，__weak不可以。</div></pre></td></tr></table></figure>
+<p>3、block和代理的区别，哪个更好？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">代理回调更面向过程，block更面向结果。</div><div class="line">如果需要在执行的不同步骤时被通知，你就要使用代理。</div><div class="line">如果只需要请求的消息或者失败的详情，应该使用block。</div><div class="line">block更适合与状态无关的操作，比如被告知某些结果，block之间是不会相互影响的。</div><div class="line">但是代理更像一个生产流水线，每个回调方法是生产线上的一个处理步骤，一个回调的变动可能会引起另一个回调的变动。</div><div class="line">要是一个对象有超过一个的不同事件，应该使用代理。</div><div class="line">一个对象只有一个代理，要是某个对象是个单例对象，就不能使用代理。</div><div class="line">要是一个对象调用方法需要返回一些额外的信息，就可能需要使用代理。</div></pre></td></tr></table></figure>
+<p>4、Object C中创建线程的方法是什么?如果在主线程中执行代码，方法是什么?如果想延时执行代码、方法又是什么?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">线程创建有三种方法：使用NSThread创建、使用GCD的dispatch、使用子类化的NSOperation,然后将其加入NSOperationQueue;</div><div class="line"></div><div class="line">NSThread创建线程的三种方法：</div><div class="line">NSThread *thread = [[NSThread alloc]initWithTarget:self selector:@selector(run:) object:@&quot;nil&quot;];</div><div class="line">[NSThread detachNewThreadSelector:@selector(run:) toTarget:self withObject:@&quot;我是分离出来的子线程&quot;];</div><div class="line">[self performSelectorInBackground:@selector(run:) withObject:@&quot;我是后台线程&quot;];</div><div class="line"></div><div class="line">在主线程执行代码，就调用performSelectorOnMainThread方法。</div><div class="line"></div><div class="line">如果想延时执行代码可以调用performSelector:onThread:withObject:waitUntilDone:方法；</div><div class="line"></div><div class="line">GCD：</div><div class="line">利用异步函数dispatch_async()创建子线程。</div><div class="line"></div><div class="line">在主线程执行代码，dispatch_async(dispatch_get_main_queue(), ^&#123;&#125;);</div><div class="line"></div><div class="line">延迟执行代码（延迟·可以控制代码在哪个线程执行）：</div><div class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;&#125;);</div><div class="line"></div><div class="line">NSOperationQueue：</div><div class="line">使用NSOperation的子类封装操作，再将操作添加到NSOperationQueue创建的队列中，实现多线程。</div><div class="line">在主线程执行代码，只要将封装代码的NSOperation对象添加到主队列就可以了。</div></pre></td></tr></table></figure>
+<p>5、控制器view的生命周期？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">控制器view是懒加载，用到的时候才加载。</div><div class="line">生命周期方法调用顺序：</div><div class="line">loadView--&gt;viewDidLoad--&gt;viewWillAppear</div><div class="line">--&gt;viewDidAppear--&gt;viewWillDisappear--&gt;viewDidDisappear</div><div class="line">--&gt;didReceiveMemoryWarning(收到内存警告)</div><div class="line">--&gt;viewWillUnload--&gt;viewDidUnload</div></pre></td></tr></table></figure>
+<p>6、控制器View的加载过程？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">当程序访问了控制器的View属性时会先判断控制器的View是否存在，如果存在就直接返回已经存在的View；</div><div class="line">如果不存在，就会先调用loadView这个方法；如果控制器的loadView方法实现了，就会按照loadView方法加载自定义的View；</div><div class="line">如果控制器的loadView方法没有实现就会判断storyboard是否存在；</div><div class="line">如果storyboard存在就会按照storyboard加载控制器的View；如果storyboard不存在，就会创建一个空视图返回。</div></pre></td></tr></table></figure>
+<p>7、iOS开发中数据存储的方法？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">常见存储方法有三种：plist存储、偏好设置(NSUserDefaults)和归档。</div><div class="line">属性列表（plist)存储：</div><div class="line">适用对象：只有带有writeToFil方法的对象才能用这种方法，比如NSString、、NSArray、NSDictionary、NSSet、NSNumber、NSData等，不能存储自定义的对象</div><div class="line">存储方法：</div><div class="line">调用对象的writeToFile...方法就可以写入文件</div><div class="line">读取方法：</div><div class="line">调用对象的...WithContentsOfFile方法就可以从文件中读取对象内容</div><div class="line"></div><div class="line">偏好设置(NSUserDefaults):</div><div class="line">适用对象：使用NSUserDefaults，存储用户关于应用的偏好设置，本质上仍然是plist存储，不能存储自定义的OC对象</div><div class="line">存储方法：</div><div class="line">利用NSUserDefaults的setObject等方法进行存储</div><div class="line">读取方法：</div><div class="line">利用NSUserDefaults的objectForKey等方法进行读取</div><div class="line"></div><div class="line">归档(NSKeyedArchiver):</div><div class="line">适用对象：可以存储自定义的对象，只有遵守了NSCoding协议的对象才可以</div><div class="line">存储方法（归档）：</div><div class="line">调用NSKeyedArchiver的archiverRootObject: toFile: 方法存储对象，archiverRootObject执行这个方法时，底层就会调用要存的对象的encodeWithCoder方法，</div><div class="line">调用encodeWithCoder目的就是想询问下要存对象的哪些属性</div><div class="line">读取方法（解档）：</div><div class="line">调用NSKeyedArchiver的unarchiverObjectWithFile:方法，执行enachiverObjectWithFile:方法时就会调用initWithCoder：方法，</div><div class="line">调用initWithCoder：方法目的就是询问下要读的对象有那些属性要读，怎么读。</div><div class="line">注意：</div><div class="line">当有继承关系时，必须调用父类的归档解档方法，当有组合包含关系时，也必须实现所包含对象类的归档解档方法。</div></pre></td></tr></table></figure>
+<p>8、为什么很多内置类如UITableViewController的delegate属性都是weak而不是strong？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">会引起循环引用的问题。</div><div class="line">UITableViewController内部有一个强指针tableView属性，</div><div class="line">tableView指针指向一个UITableView，UITableView内部有一个强指针subviews属性，</div><div class="line">指向一个装着UITableView全部的子控件的强指针数组，数组中又有强指针指向UITableView中存在的子控件。</div><div class="line">tableView内部有一个指针delegate，tableView的delegate就是控制器本身，二者相互引用，</div><div class="line">如果delegate属性是strong就会引起循环应用，造成内存泄露，因此必须有一个对象是弱指针，所以delegate是weak。</div></pre></td></tr></table></figure>
+<p>9、UI控件为什么不用strong用weak？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">控制器有个强指针View属性，View属性指向内存中的一个UIView，UIView内部有一个强指针subviews属性，</div><div class="line">指向一个装着UIView全部的子控件的强指针数组，数组中又有强指针指向UIView中存在的子控件。</div><div class="line">所以，只要控制器在，View就在，View中的子控件就在，所以，ui控件没必要用强指针，用weak就可以。</div></pre></td></tr></table></figure>
+<p>10、block使用时的注意点？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Block可以使用在定义之前声明的局部变量。</div><div class="line">int i = 10;</div><div class="line">void(^myBlock)() = ^&#123;</div><div class="line">NSLog(@&quot;%d&quot;, i);</div><div class="line">&#125;;</div><div class="line">i = 100;</div><div class="line">myBlock();</div><div class="line">注意：</div><div class="line">在定义Block时，会在Block中建立当前局部变量内容的副本(拷贝)。</div><div class="line">后续再对该变量的数值进行修改，不会影响Block中的数值。</div><div class="line">以上代码输出结果为10。</div><div class="line">如果需要在block中保持局部变量的数值变化，需要使用__block关键字。使用__block关键字后，同样可以在Block中修改该变量的数值。</div><div class="line">将第一行代码改为： __block int i = 10;后，输出结果就变成了100；</div><div class="line">另外：block代码块中不能直接用点语法调用self的方法，会造成循环引用，要用中括号调用。</div></pre></td></tr></table></figure>
+<p>11、如何对UITableView进行优化？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">UITableViewCell的重用原理：</div><div class="line">当滚动列表时，部分UITableViewCell会移出窗口，UITableView会将窗口外的UITableViewCell放入一个对象池中，等待重用。</div><div class="line">当UITableView要求dataSource返回UITableViewCell时，dataSource会先查看这个对象池，如果池中有未使用的UITableViewCell，</div><div class="line">dataSource会用新的数据配置这个UITableViewCell，然后返回给UITableView，重新显示到窗口中，从而避免创建新对象。</div><div class="line"></div><div class="line">还有一个非常重要的问题：有时候需要自定义UITableViewCell（用一个子类继承UITableViewCell），</div><div class="line">而且每一行用的不一定是同一种UITableViewCell（如短信聊天布局），所以一个UITableView可能拥有不同类型的UITableViewCell，</div><div class="line">对象池中也会有很多不同类型的UITableViewCell，时可能会得到错误类型的UITableViewCell那么UITableView在重用UITableViewCell。</div><div class="line">解决方案：UITableViewCell有个NSString *reuseIdentifier属性，可以在初始化UITableViewCell的时候传入一个特定的字符串标识来设置reuseIdentifier（一般用UITableViewCell的类名）。</div><div class="line">当UITableView要求dataSource返回UITableViewCell时，</div><div class="line">先通过一个字符串标识到对象池中查找对应类型的UITableViewCell对象，</div><div class="line">如果有，就重用，如果没有，就传入这个字符串标识来初始化一个UITableViewCell对象。</div></pre></td></tr></table></figure>
+<p>12、UIView动画与核心动画的区别？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">UIView动画与核心动画的区别：</div><div class="line">1、核心动画只作用在CALayer上面，UIView是没有办法使用核心动画的</div><div class="line">2、核心动画看到的都是假象，并没有修改UIView的真实位置</div><div class="line"></div><div class="line">什么时候使用UIView动画？</div><div class="line">需要与用户进行交互的时候使用UIView动画，如果不需要与用户进行交互，两者都可以使用。</div><div class="line"></div><div class="line">什么时候使用核心动画？</div><div class="line">1、根据路径做动画，要使用核心动画（帧动画）</div><div class="line">2、做转场动画时，也要使用核心动画</div></pre></td></tr></table></figure>
+<p>13、自定义视图中重写layoutsubView需要调用父类的layoutsubView吗，为什么？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果重写的控件是UIView不调用父类的layoutsubView也没关系，里面没有任何子控件，所以不会做什么事情。一般系统自带视图中有子控件的都会重写layoutSubviews方法，因此我们自定义系统自带控件并且重写layoutSubviews必须调用[super layoutSubviews],先布局系统自带子控件的位置和尺寸，才设置我们自己的控件位置和尺寸。否则会发现想用系统自带视图的子控件的时候，会出现意想不到的效果。</div></pre></td></tr></table></figure>
+<p>14、应用程序的启动流程？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1.执行Main</div><div class="line">2.执行UIApplicationMain函数.</div><div class="line">3.创建UIApplication对象,并设置UIApplicationMain对象的代理.</div><div class="line">UIApplication的第三个参数就是UIApplication的名称,如果指定为nil,它会默认为UIApplication.</div><div class="line">UIApplication的第四个参数为UIApplication的代理.</div><div class="line">4.开启一个主运行循环.保证应用程序不退出.</div><div class="line">5.加载info.plist.加载配置文件.判断一下info.plist文件当中有没有Main storyboard file base name里面有没有指定storyboard文件,如果有就去加载info.plist文件,如果没有,那么应用程序加载完毕.</div></pre></td></tr></table></figure>
+<p>15、NSString 的时候用copy和strong的区别？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">OC中NSString为不可变字符串的时候，用copy和strong都是只分配一次内存，但是如果用copy的时候，需要先判断字符串是否是不可变字符串，如果是不可变字符串，就不再分配空间，如果是可变字符串才分配空间。如果程序中用到NSString的地方特别多，每一次都要先进行判断就会耗费性能，影响用户体验，用strong就不会再进行判断，所以，不可变字符串可以直接用strong。</div></pre></td></tr></table></figure>
+<p>16、事件传递与响应的完整过程?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">在产生一个事件时,系统会将该事件加入到一个由UIApplication管理的事件队列中,</div><div class="line">UIApplication会从事件队列中取出最前面的事件,将它传递给先发送事件给应用程序的主窗口.</div><div class="line">主窗口会调用hitTest方法寻找最适合的视图控件,找到后就会调用视图控件的touches方法来做具体的事情.</div><div class="line">当调用touches方法,它的默认做法, 就会将事件顺着响应者链条往上传递，</div><div class="line">传递给上一个响应者,接着就会调用上一个响应者的touches方法</div></pre></td></tr></table></figure>
+<p>17.ASIHttpRequest、AFNetWorking之间的区别?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- ASIHttpRequest功能强大，主要是在MRC下实现的，是对系统CFNetwork API进行了封装，支持HTTP协议的CFHTTP，配置比较复杂，并且ASIHttpRequest框架默认不会帮你监听网络改变，如果需要让ASIHttpRequest帮你监听网络状态改变，并且手动开始这个功能。</div><div class="line"></div><div class="line">- AFNetWorking构建于NSURLConnection、NSOperation以及其他熟悉的Foundation技术之上。拥有良好的架构，丰富的API及模块构建方式，使用起来非常轻松。它基于NSOperation封装的，AFURLConnectionOperation子类。</div><div class="line"></div><div class="line">- ASIHttpRequest是直接操作对象ASIHttpRequest是一个实现了NSCoding协议的NSOperation子类；AFNetWorking直接操作对象的AFHttpClient，是一个实现NSCoding和NSCopying协议的NSObject子类。</div><div class="line"></div><div class="line">- 同步请求：ASIHttpRequest直接通过调用一个startSynchronous方法；AFNetWorking默认没有封装同步请求，如果开发者需要使用同步请求，则需要重写getPath:paraments:success:failures方法，对于AFHttpRequestOperation进行同步处理。</div><div class="line"></div><div class="line">- 性能对比：AFNetworking请求优于ASIHttpRequest；</div></pre></td></tr></table></figure>
+<p>18.如何进行真机调试？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1.首先需要用钥匙串创建一个钥匙（key）；</div><div class="line">2.将钥匙串上传到官网，获取iOS Development证书；</div><div class="line">3.创建App ID即我们应用程序中的Boundle ID；</div><div class="line">4.添加Device ID即UDID；</div><div class="line">5.通过勾选前面所创建的证书：App ID、Device ID；</div><div class="line">6.生成mobileprovision文件；</div><div class="line">7.先决条件：申请开发者账号 99美刀</div></pre></td></tr></table></figure>
+<p>19.APP发布的上架流程?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1.登录应用发布网站添加应用信息；</div><div class="line">2.下载安装发布证书；</div><div class="line">3.选择发布证书，使用Archive编译发布包，用Xcode将代码（发布包）上传到服务器；</div><div class="line">4.等待审核通过;</div><div class="line">5.生成IPA：菜单栏-&gt;Product-&gt;Archive.</div></pre></td></tr></table></figure>
+<p>20.能否向编译后得到的类中增加实例变量？能否向运行时创建的类中添加实例变量？为什么？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- 不能向编译后得到的类中增加实例变量；</div><div class="line">- 能向运行时创建的类中添加实例变量；</div><div class="line"></div><div class="line">解释如下：</div><div class="line">因为编译后的类已经注册在 runtime 中，类结构体中的 objc_ivar_list 实例变量的链表 和 instance_size 实例变量的内存大小已经确定，同时runtime 会调用 class_setIvarLayout 或 class_setWeakIvarLayout 来处理 strong weak 引用。所以不能向存在的类中添加实例变量；</div><div class="line">运行时创建的类是可以添加实例变量，调用 class_addIvar 函数。但是得在调用 objc_allocateClassPair 之后，objc_registerClassPair 之前，原因同上。</div></pre></td></tr></table></figure>
+<p>21.以+ scheduledTimerWithTimeInterval…的方式触发的timer，在滑动页面上的列表时，timer会暂定回调，为什么？如何解决？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">RunLoop只能运行在一种mode下，如果要换mode，当前的loop也需要停下重启成新的。利用这个机制，ScrollView滚动过程中NSDefaultRunLoopMode（kCFRunLoopDefaultMode）的mode会切换到UITrackingRunLoopMode来保证ScrollView的流畅滑动：只能在NSDefaultRunLoopMode模式下处理的事件会影响ScrollView的滑动。</div><div class="line"></div><div class="line">如果我们把一个NSTimer对象以NSDefaultRunLoopMode（kCFRunLoopDefaultMode）添加到主运行循环中的时候, ScrollView滚动过程中会因为mode的切换，而导致NSTimer将不再被调度。</div><div class="line"></div><div class="line">同时因为mode还是可定制的，所以：</div><div class="line"></div><div class="line">Timer计时会被scrollView的滑动影响的问题可以通过将timer添加到NSRunLoopCommonModes（kCFRunLoopCommonModes）来解决。代码如下：</div><div class="line">//将timer添加到NSDefaultRunLoopMode中</div><div class="line">[NSTimer scheduledTimerWithTimeInterval: target: selector:@selector(timerTick:) userInfo: repeats:];</div><div class="line">//然后再添加到NSRunLoopCommonModes里</div><div class="line">NSTimer *timer = [NSTimer timerWithTimeInterval: target: selector:@selector(timerTick:) userInfo: repeats:];</div><div class="line">[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];</div></pre></td></tr></table></figure>
+<p>22.runloop和线程有什么关系？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">总的说来，Run loop，正如其名，loop表示某种循环，和run放在一起就表示一直在运行着的循环。实际上，run loop和线程是紧密相连的，可以这样说run loop是为了线程而生，没有线程，它就没有存在的必要。Run loops是线程的基础架构部分， Cocoa 和 CoreFundation 都提供了 run loop 对象方便配置和管理线程的 run loop （以下都以 Cocoa 为例）。每个线程，包括程序的主线程（ main thread ）都有与之相应的 run loop 对象。</div><div class="line"></div><div class="line">runloop 和线程的关系：</div><div class="line">- 主线程的run loop默认是启动的。</div><div class="line">iOS的应用程序里面，程序启动后会有一个如下的main()函数</div><div class="line">( argc,  * argv[]) &#123;</div><div class="line">@autoreleasepool &#123;</div><div class="line">return UIApplicationMain(argc, argv, , NSStringFromClass([AppDelegate class]));</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">重点是UIApplicationMain()函数，这个方法会为main thread设置一个NSRunLoop对象，这就解释了：为什么我们的应用可以在无人操作的时候休息，需要让它干活的时候又能立马响应。</div><div class="line"></div><div class="line">- 对其它线程来说，run loop默认是没有启动的，如果你需要更多的线程交互则可以手动配置和启动，如果线程只是去执行一个长时间的已确定的任务则不需要。</div><div class="line"></div><div class="line">- 在任何一个 Cocoa 程序的线程中，都可以通过以下代码来获取到当前线程的 run loop 。</div><div class="line">NSRunLoop *runloop = [NSRunLoop currentRunLoop];</div></pre></td></tr></table></figure>
+<p>23.如何用GCD同步若干个异步调用？（如根据若干个url异步加载多张图片，然后在都下载完成后合成一张整图）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">使用Dispatch Group追加block到Global Group Queue,这些block如果全部执行完毕，就会执行Main Dispatch Queue中的结束处理的block。</div><div class="line"></div><div class="line">dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, );</div><div class="line">dispatch_group_t group = dispatch_group_create();</div><div class="line">dispatch_group_async(group, queue, ^&#123; /*加载图片1 */ &#125;);</div><div class="line">dispatch_group_async(group, queue, ^&#123; /*加载图片2 */ &#125;);</div><div class="line">dispatch_group_async(group, queue, ^&#123; /*加载图片3 */ &#125;);</div><div class="line">dispatch_group_notify(group, dispatch_get_main_queue(), ^&#123;</div><div class="line">// 合并图片</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>24.HTTP协议的特点，关于HTTP请求GET和POST的区别?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">HTTP协议的特点:</div><div class="line">- HTTP超文本传输协议，是短连接，是客户端主动发送请求，服务器做出响应，服务器响应之后，链接断开。HTTP是一个属于应用层面向对象的协议，HTTP有两类报文：请求报文和响应报文。</div><div class="line">- HTTP请求报文：一个HTTP请求报文由请求行、请求头部、空行和请求数据4部分组成。</div><div class="line">- HTTP响应报文：由三部分组成：状态行、消息报头、响应正文。</div><div class="line">GET和POST的区别:</div><div class="line">- GET请求：参数在地址后拼接，没有请求数据，不安全（因为所有参数都拼接在地址后面），不适合传输大量数据（长度有限制，为1024个字节）。</div><div class="line">GET提交、请求的数据会附在URL之后，即把数据放置在HTTP协议头中。以？分割URL和传输数据，多个参数用&amp;连接。如果数据是英文字母或数字，原样发送，如果是空格，转换为+，如果是中文/其他字符，则直接把字符串用BASE64加密。</div><div class="line">- POST请求：参数在请求数据区放着，相对GET请求更安全，并且数据大小没有限制。把提交的数据放置在HTTP包的包体中.</div><div class="line">- GET提交的数据会在地址栏显示出来，而POST提交，地址栏不会改变。</div><div class="line"></div><div class="line">传输数据的大小：</div><div class="line">- GET提交时，传输数据就会受到URL长度限制，POST由于不是通过URL传值，理论上书不受限。</div><div class="line">- POST的安全性要比GET的安全性高；</div><div class="line">- 通过GET提交数据，用户名和密码将明文出现在URL上，比如登陆界面有可能被浏览器缓存。</div></pre></td></tr></table></figure>
+<p>25.如何理解MVC设计模式?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MVC是一种架构模式，M表示MOdel，V表示视图View，C表示控制器Controller：</div><div class="line">- Model负责存储、定义、操作数据；</div><div class="line">- View用来展示书给用户，和用户进行操作交互；</div><div class="line">- Controller是Model和View的协调者，Controller把Model中的数据拿过来给View用。Controller可以直接与Model和View进行通信，而View不能和Controller直接通信。View与Controller通信需要利用代理协议的方式，当有数据更新时，Model也要与Controller进行通信，这个时候就要用Notification和KVO，这个方式就像一个广播一样，MOdel发信号，Controller设置监听接受信号，当有数据更新时就发信号给Controller，Model和View不能直接进行通信，这样会违背MVC设计模式。</div></pre></td></tr></table></figure>
+<p>26.线程与进程的区别和联系?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- 一个程序至少要有进城,一个进程至少要有一个线程。</div><div class="line">- 进程:资源分配的最小独立单元,进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动,进程是系统进行资源分配和调度的一个独立单位。</div><div class="line">- 线程:进程下的一个分支,是进程的实体,是CPU调度和分派的基本单元,它是比进程更小的能独立运行的基本单位,线程自己基本不拥有系统资源,只拥有一点在运行中必不可少的资源(程序计数器、一组寄存器、栈)，但是它可与同属一个进程的其他线程共享进程所拥有的全部资源。</div><div class="line">- 进程和线程都是由操作系统所体会的程序运行的基本单元，系统利用该基本单元实现系统对应用的并发性。</div><div class="line">- 进程和线程的主要差别在于它们是不同的操作系统资源管理方式。进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响，而线程只是一个进程中的不同执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序健壮，但在进程切换时，耗费资源较大，效率要差一些。</div><div class="line">- 但对于一些要求同时进行并且又要共享某些变量的并发操作，只能用线程，不能用进程。</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/10/23/iOS进阶面试/">iOS进阶面试</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 荞一夏 的个人博客">荞一夏</a></p>
+        <p><span>发布时间:</span>2016年10月23日 - 20时08分</p>
+        <p><span>最后更新:</span>2016年10月23日 - 20时15分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/23/iOS进阶面试/" title="iOS进阶面试">http://yoursite.com/2016/10/23/iOS进阶面试/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/10/23/iOS进阶面试/　　作者: 荞一夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/23/iOS基础面试/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS基础面试</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/10/23/iOS进阶面试/" data-title="iOS进阶面试" data-url="http://yoursite.com/2016/10/23/iOS进阶面试/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/10/23/iOS基础面试/" title="下一篇: iOS基础面试">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/iOS进阶面试/">iOS进阶面试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/iOS基础面试/">iOS基础面试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Objective-C编码规范：26个方面解决iOS开发问题/">Objective-C编码规范：26个方面解决iOS开发问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/09/探究iOS后台刷新/">探究iOS后台刷新</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/29/文件管理-沙盒路径、NSFileManager/">文件管理-沙盒路径、NSFileManager</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/iOS-最新版-CocoaPods-的安装流程/">iOS 最新版 CocoaPods 的安装流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Awesome-iOS/">Awesome-iOS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Awesome-设计/">Awesome-设计</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Awesome-前端/">Awesome-前端</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Markdown语法指南/">Markdown语法指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/14/Hexo-使用/">Hexo 使用</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 荞一夏
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
