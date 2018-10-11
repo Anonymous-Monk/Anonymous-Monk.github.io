@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,
+        div,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        form,
+        fieldset,
+        input,
+        textarea,
+        p,
+        blockquote,
+        th,
+        td {
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        fieldset,
+        img {
+            border: 0
+        }
+
+        address,
+        caption,
+        cite,
+        code,
+        dfn,
+        em,
+        strong,
+        th,
+        var {
+            font-style: normal;
+            font-weight: normal
+        }
+
+        ol,
+        ul,
+        li {
+            list-style: none
+        }
+
+        caption,
+        th {
+            text-align: left
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: 100%;
+            font-weight: normal
+        }
+
+        q:before,
+        q:after {
+            content: ''
+        }
+
+        abbr,
+        acronym {
+            border: 0
+        }
+
+        a {
+            color: #000;
+            text-decoration: none
+        }
+
+        a:active {
+            color: #000
+        }
+
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        html {
+            -webkit-text-size-adjust: none;
+            font-size: 20px;
+            -webkit-text-size-adjust: 100%;
+            height: 100%;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            outline: none;
+            text-align: justify;
+            font-family: "PingFang", "Droid";
+            color: #333;
+            line-height: 1.7;
+        }
+
+        body {
+            background-color: #fff;
+        }
+
+        h1 {
+            font-size: .77rem;
+
+            /* font-size: .8rem; */
+            /* text-align: center; */
+            margin-bottom: .5rem;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            line-height: 2.154;
+            /* text-align:center; */
+        }
+
+        .content-box {
+            /* margin-top:1rem; */
+        }
+
+        h2 {
+            font-size: .7rem;
+            /* text-align: center; */
+            margin-top: 1rem;
+            margin-bottom: .5rem;
+            font-weight: bold;
+        }
+
+        .container {
+            font-size: .55rem;
+            color: #000;
+            /* padding: .6rem .5rem; */
+            padding: 1.28rem;
+            padding-bottom: 4.2rem;
+            line-height: .85rem;
+        }
+
+        .container ul {
+            margin-top: .5rem;
+        }
+
+        .container ul li {
+            margin-bottom: .5rem;
+        }
+
+        .leading-tit {
+            height: 1.17rem;
+            line-height: 1rem;
+            font-size: .495rem;
+            white-space: nowrap;
+            overflow: visible;
+            text-align: justify;
+            /* font-weight: lighter; */
+            padding: .3rem 0 .17rem 0;
+            border-bottom: 1px dotted#a6a6a6;
+        }
+
+        a.url {
+            text-decoration: underline;
+            color: #3385ff;
+        }
+
+        a {
+            color: #3385ff;
+            text-decoration: underline;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        .nounderline {
+            text-decoration: none !important;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .nobold {
+            font-weight: normal !important;
+        }
+
+        .level-one-title,
+        .level-two-title {
+            font-weight: bold;
+        }
+
+        .level-one-title {
+            background-color: #eaf1fb;
+            color: #167ac8;
+            box-sizing: border-box;
+            border-left: 2px solid #167ac8;
+            padding-left: 15px;
+            height: 32px;
+            line-height: 32px;
+            margin-bottom: .5rem;
+        }
+
+        .level-one-title-2 {
+            background-color: #eaf1fb;
+            color: #167ac8;
+            box-sizing: border-box;
+            border-left: 2px solid #167ac8;
+            padding-left: 15px;
+            height: 32px;
+            line-height: 32px;
+            margin: .5rem 0;
+            font-weight: bold;
+        }
+
+        .ti2 {
+            font-size: .555rem;
+            letter-spacing: 0.05rem;
+            text-indent: 2em;
+        }
+
+        .tar {
+            text-align: right;
+        }
+
+        .pl1 {
+            padding-left: 1em;
+        }
+
+        table th,
+        table td {
+            width: 20%;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            padding: 0 5px;
+        }
+
+        table th {
+            text-align: center;
+        }
+
+        table td:first-child,
+        table td:last-child {
+            text-align: center
+        }
+    </style>
+    <style type="text/css">
+        .simpread-theme-root {
+            font-size: 62.5% !important
+        }
+
+        sr-rd-content,
+        sr-rd-desc,
+        sr-rd-title {
+            width: 100%
+        }
+
+        sr-rd-title {
+            text-rendering: optimizelegibility;
+            margin: 1em 0 .5em
+        }
+
+        sr-rd-content {
+            text-align: left;
+            word-break: break-word
+        }
+
+        sr-rd-desc {
+            text-align: left;
+            line-height: 2.4;
+            margin: 0 0 1.2em
+        }
+
+        sr-rd-content,
+        sr-rd-content div,
+        sr-rd-content p {
+            font-size: 25.6px;
+            font-size: 1.6rem;
+            line-height: 1.6
+        }
+
+        sr-rd-content div,
+        sr-rd-content p {
+            display: block;
+            float: inherit
+        }
+
+        sr-rd-content div,
+        sr-rd-content p,
+        sr-rd-content pre,
+        sr-rd-content sr-blockquote {
+            margin: 0 0 1.2em;
+            word-break: break-word
+        }
+
+        sr-rd-content a {
+            padding: 0 5px;
+            vertical-align: baseline;
+            vertical-align: initial
+        }
+
+        sr-rd-content a,
+        sr-rd-content a:link {
+            color: inherit;
+            font-size: medium;
+            font-weight: inherit;
+            border: none
+        }
+
+        sr-rd-content a:hover {
+            background: transparent
+        }
+
+        sr-rd-content img {
+            margin: 10px;
+            padding: 5px;
+            background: #fff;
+            border: 1px solid #bbb;
+            box-shadow: 1px 1px 3px #d4d4d4
+        }
+
+        sr-rd-content sr-blockquote {
+            display: block;
+            position: relative;
+            padding: 15px 25px;
+            text-align: left;
+            line-height: inherit
+        }
+
+        sr-rd-content sr-blockquote:before {
+            position: absolute
+        }
+
+        sr-rd-content sr-blockquote * {
+            margin: 0;
+            font-size: inherit
+        }
+
+        sr-rd-content table {
+            width: 100%;
+            margin: 0 0 1.2em;
+            word-break: keep-all;
+            word-break: normal;
+            overflow: auto;
+            border: none
+        }
+
+        sr-rd-content table td,
+        sr-rd-content table th {
+            border: none
+        }
+
+        sr-rd-content ol,
+        sr-rd-content ul {
+            margin: 0;
+            padding: 0
+        }
+
+        sr-rd-content ul {
+            margin: 0 0 1.2em;
+            margin-left: 1.3em;
+            padding: 0;
+            list-style: disc
+        }
+
+        sr-rd-content ol {
+            list-style: decimal;
+            margin-left: 1.3em
+        }
+
+        sr-rd-content ol li,
+        sr-rd-content ul li {
+            font-size: inherit;
+            list-style: disc;
+            margin: 0 0 1.2em
+        }
+
+        sr-rd-content ol li *,
+        sr-rd-content ul li * {
+            margin: 0;
+            text-align: left;
+            text-align: initial
+        }
+
+        sr-rd-content li ol,
+        sr-rd-content li ul {
+            margin-bottom: .8em;
+            margin-left: 2em
+        }
+
+        sr-rd-content li ul {
+            list-style: circle
+        }
+
+        sr-rd-content pre {
+            font-family: Consolas, Monaco, Andale Mono, Source Code Pro, Liberation Mono, Courier, monospace;
+            display: block;
+            padding: 15px;
+            line-height: 1.5;
+            word-break: break-all;
+            word-wrap: break-word;
+            white-space: pre;
+            overflow: auto
+        }
+
+        sr-rd-content pre,
+        sr-rd-content pre *,
+        sr-rd-content pre div {
+            font-size: 17.6px;
+            font-size: 1.1rem
+        }
+
+        sr-rd-content li pre code,
+        sr-rd-content p pre code,
+        sr-rd-content pre {
+            background-color: transparent;
+            border: none
+        }
+
+        sr-rd-content pre code {
+            margin: 0;
+            padding: 0
+        }
+
+        sr-rd-content pre code,
+        sr-rd-content pre code * {
+            font-size: 17.6px;
+            font-size: 1.1rem
+        }
+
+        sr-rd-content li code,
+        sr-rd-content p code {
+            margin: 0 4px;
+            padding: 2px 4px;
+            font-size: 17.6px;
+            font-size: 1.1rem
+        }
+
+        .sr-rd-content-img {
+            width: 90%;
+            height: auto
+        }
+
+        .sr-rd-content-img-load {
+            width: 48px;
+            height: 48px;
+            margin: 0;
+            padding: 0;
+            border-style: none;
+            border-width: 0;
+            background-repeat: no-repeat;
+            background-image: url(data:image/gif;base64,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)
+        }
+
+        .sr-rd-content-center {
+            text-align: center;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            -webkit-box-pack: center;
+            -webkit-box-orient: vertical
+        }
+
+        .sr-rd-content-nobeautify {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-shadow: 0 0 0
+        }
+
+        sr-rd-mult {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            margin: 0 0 16px;
+            padding: 16px 0 24px;
+            width: 100%;
+            min-width: 840.72px;
+            background-color: #fafafa;
+            border-radius: 2px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, .16)
+        }
+
+        sr-rd-mult:hover {
+            -webkit-transition: all .45s 0ms;
+            transition: all .45s 0ms;
+            box-shadow: 1px 1px 8px rgba(0, 0, 0, .16)
+        }
+
+        sr-rd-mult sr-rd-mult-content {
+            padding: 0 16px;
+            overflow: auto
+        }
+
+        sr-rd-mult sr-rd-mult-avatar,
+        sr-rd-mult sr-rd-mult-content {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column
+        }
+
+        sr-rd-mult sr-rd-mult-avatar {
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center
+        }
+
+        sr-rd-mult sr-rd-mult-avatar span {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            max-width: 75px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: left;
+            font-size: 16px;
+            font-size: 1rem
+        }
+
+        sr-rd-mult sr-rd-mult-avatar img {
+            margin-bottom: 0;
+            max-width: 50px;
+            max-height: 50px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%
+        }
+
+        sr-rd-mult sr-rd-mult-avatar .sr-rd-content-center {
+            margin: 0
+        }
+
+        sr-page {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            width: 100%
+        }
+    </style>
+    <style type="text/css">sr-rd-theme-github{display:none}sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{position:relative;margin-top:1em;margin-bottom:1pc;font-weight:700;line-height:1.4;text-align:left;color:#363636}sr-rd-content h1{padding-bottom:.3em;font-size:57.6px;font-size:3.6rem;line-height:1.2}sr-rd-content h2{padding-bottom:.3em;font-size:44.8px;font-size:2.8rem;line-height:1.225}sr-rd-content h3{font-size:38.4px;font-size:2.4rem;line-height:1.43}sr-rd-content h4{font-size:32px;font-size:2rem}sr-rd-content h5,sr-rd-content h6{font-size:25.6px;font-size:1.6rem}sr-rd-content h6{color:#777}sr-rd-content ol,sr-rd-content ul{list-style-type:disc;padding:0;padding-left:2em}sr-rd-content ol ol,sr-rd-content ul ol{list-style-type:lower-roman}sr-rd-content ol ol ol,sr-rd-content ol ul ol,sr-rd-content ul ol ol,sr-rd-content ul ul ol{list-style-type:lower-alpha}sr-rd-content table{width:100%;overflow:auto;word-break:normal;word-break:keep-all}sr-rd-content table th{font-weight:700}sr-rd-content table td,sr-rd-content table th{padding:6px 13px;border:1px solid #ddd}sr-rd-content table tr{background-color:#fff;border-top:1px solid #ccc}sr-rd-content table tr:nth-child(2n){background-color:#f8f8f8}sr-rd-content sr-blockquote{border-left:4px solid #ddd}.simpread-theme-root{background-color:#fff;color:#333}sr-rd-title{font-family:PT Sans,SF UI Display,\.PingFang SC,PingFang SC,Neue Haas Grotesk Text Pro,Arial Nova,Segoe UI,Microsoft YaHei,Microsoft JhengHei,Helvetica Neue,Source Han Sans SC,Noto Sans CJK SC,Source Han Sans CN,Noto Sans SC,Source Han Sans TC,Noto Sans CJK TC,Hiragino Sans GB,sans-serif;font-size:54.4px;font-size:3.4rem;font-weight:700;line-height:1.3}sr-rd-desc{position:relative;margin:0;margin-bottom:30px;padding:25px;padding-left:56px;font-size:28.8px;font-size:1.8rem;color:#777;background-color:rgba(0,0,0,.05)}sr-rd-desc:before{content:"\201C";position:absolute;top:-9px;left:16px;font-size:80px;font-family:Arial;color:rgba(0,0,0,.15)}sr-rd-content,sr-rd-content *,sr-rd-content div,sr-rd-content p{color:#363636;font-weight:400;line-height:1.8}sr-rd-content a,sr-rd-content a:link{color:#4183c4;text-decoration:none}sr-rd-content a:active,sr-rd-content a:focus,sr-rd-content a:hover{color:#4183c4;text-decoration:underline}sr-rd-content pre{background-color:#f7f7f7;border-radius:3px}sr-rd-content li code,sr-rd-content p code{background-color:rgba(0,0,0,.04);border-radius:3px}</style>
+    <style type="text/css">sr-rd-theme-gothic{display:none}sr-rd-content h1{line-height:64px;line-height:4rem;margin:64px 0 28px;margin:4rem 0 1.75rem;padding:20px 30px}sr-rd-content h1,sr-rd-content h2{font-weight:400;text-align:center;text-transform:uppercase}sr-rd-content h2{line-height:48px;line-height:3rem;margin:48px 0 31px;margin:3rem 0 1.9375rem;padding:0 30px}sr-rd-content h3,sr-rd-content h4,sr-rd-content h5{font-weight:400}sr-rd-content h6{font-weight:700}sr-rd-content h1{font-size:57.6px;font-size:3.6rem}sr-rd-content h2{font-size:51.2px;font-size:3.2rem}sr-rd-content h3{font-size:40px;font-size:2.5rem}sr-rd-content h4{font-size:35.2px;font-size:2.2rem}sr-rd-content h5{font-size:30.4px;font-size:1.9rem}sr-rd-content h6{font-size:27.2px;font-size:1.7rem}sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{margin-top:1.2em;margin-bottom:.6em;color:#111}sr-rd-content ol,sr-rd-content ul{list-style-type:disc;margin-left:3em}sr-rd-content ol ol,sr-rd-content ul ol{list-style-type:lower-roman}sr-rd-content ol ol ol,sr-rd-content ol ul ol,sr-rd-content ul ol ol,sr-rd-content ul ul ol{list-style-type:lower-alpha}sr-rd-content table{margin-bottom:20px}sr-rd-content table td,sr-rd-content table th{padding:8px;line-height:20px;line-height:1.25rem;vertical-align:top;border-top:1px solid #ddd}sr-rd-content table th{font-weight:700}sr-rd-content table thead th{vertical-align:bottom}sr-rd-content table caption+thead tr:first-child td,sr-rd-content table caption+thead tr:first-child th,sr-rd-content table colgroup+thead tr:first-child td,sr-rd-content table colgroup+thead tr:first-child th,sr-rd-content table thead:first-child tr:first-child td,sr-rd-content table thead:first-child tr:first-child th{border-top:0}sr-rd-content table tbody+tbody{border-top:2px solid #ddd}sr-rd-content sr-blockquote{margin:0 0 17.777px;margin:0 0 1.11111rem;padding:8px 17.777px 0 16.888px;padding:.5rem 1.11111rem 0 1.05556rem;border-left:1px solid gray}sr-rd-content sr-blockquote,sr-rd-content sr-blockquote p{line-height:2;color:#6f6f6f}.simpread-theme-root{background:#fcfcfc;color:#333}sr-rd-title{font-weight:400;line-height:64px;line-height:4rem;text-align:center;text-transform:uppercase;color:#111;font-size:51.2px;font-size:3.2rem}sr-rd-desc{margin:0 0 17.777px;margin:0 0 1.11111rem;padding:8px 17.777px 0 16.888px;padding:.5rem 1.11111rem 0 1.05556rem;font-size:32px;font-size:2rem;line-height:2;color:#6f6f6f;border-left:1px solid gray}sr-rd-content{font-weight:400;color:#333}sr-rd-content *,sr-rd-content div,sr-rd-content p{color:#333}sr-rd-content a,sr-rd-content a:link{color:#900;text-decoration:none}sr-rd-content a:active,sr-rd-content a:focus,sr-rd-content a:hover{color:#900;text-decoration:underline}sr-rd-content li code,sr-rd-content p code,sr-rd-content pre{background-color:transparent;border:1px solid #ccc}sr-rd-mult{background-color:#f2f2f2}</style>
+    <style type="text/css">sr-rd-theme-engwrite{display:none}sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{margin:20px 0 10px;padding:0;font-weight:500;-webkit-font-smoothing:antialiased}sr-rd-content h1{font-weight:300;text-align:center;font-size:44.8px;font-size:2.8rem;color:#933d3f}sr-rd-content h2{font-size:38.4px;font-size:2.4rem;border-bottom:1px solid #ccc;color:#000}sr-rd-content h3{font-size:28.8px;font-size:1.8rem}sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{font-size:25.6px;font-size:1.6rem}sr-rd-content h6{color:#777}sr-rd-content ol,sr-rd-content ul{padding-left:30px}sr-rd-content ol li>:first-child,sr-rd-content ol li ol:first-of-type,sr-rd-content ol li ul:first-of-type,sr-rd-content ul li>:first-child,sr-rd-content ul li ol:first-of-type,sr-rd-content ul li ul:first-of-type{margin-top:0}sr-rd-content ol ol,sr-rd-content ol ul,sr-rd-content ul ol,sr-rd-content ul ul{margin-bottom:0}sr-rd-content table th{font-weight:700}sr-rd-content table td,sr-rd-content table th{border:1px solid #ccc;padding:6px 13px}sr-rd-content table tr{border-top:1px solid #ccc;background-color:#fff}sr-rd-content table tr:nth-child(2n){background-color:#f8f8f8}sr-rd-content sr-blockquote{text-align:left;border-top:1px dotted #cdc7bc;border-bottom:1px dotted #cdc7bc;background-color:#f8edda;color:#777}sr-blockquote>:first-child{margin-top:0}sr-blockquote>:last-child{margin-bottom:0}.simpread-theme-root{background-color:#fcf5ed;color:#333}sr-rd-title{font-weight:300;text-align:center;font-size:44.8px;font-size:2.8rem;color:#933d3f}sr-rd-desc{padding:10px;background-color:#f8edda;color:#777;font-size:32px;font-size:2rem;text-align:center;border-top:1px dotted #cdc7bc;border-bottom:1px dotted #cdc7bc}sr-rd-content{padding:20px 0;margin:0 auto}sr-rd-content,sr-rd-content *,sr-rd-content div,sr-rd-content p{color:#333;line-height:1.8}sr-rd-content a,sr-rd-content a:link{color:#ae3737;text-decoration:none}sr-rd-content a:active,sr-rd-content a:focus,sr-rd-content a:hover{text-decoration:underline}sr-rd-content pre{background-color:transparent;border:1px solid #ccc;border-radius:3px}sr-rd-content li code,sr-rd-content p code{border:1px solid #eaeaea;background-color:#f4ece3;border-radius:3px}sr-rd-mult{background-color:#f8edda}</style>
+    <style type="text/css">sr-rd-theme-newsprint{display:none}sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{font-weight:700}sr-rd-content h1{font-size:48px;font-size:3rem;line-height:1.6em;margin-top:2em}sr-rd-content h2,sr-rd-content h3{font-size:32px;font-size:2rem;line-height:1.15;margin-top:2.285714em;margin-bottom:1.15em}sr-rd-content h3{font-weight:400}sr-rd-content h4{font-size:28.8px;font-size:1.8rem;margin-top:2.67em}sr-rd-content h5,sr-rd-content h6{font-size:25.6px;font-size:1.6rem}sr-rd-content h1{border-bottom:1px solid;margin-bottom:1.875em;padding-bottom:.8125em}sr-rd-content ol,sr-rd-content ul{margin:0 0 1.5em 1.5em}sr-rd-content ol li{list-style-type:decimal;list-style-position:outside}sr-rd-content ul li{list-style-type:disc;list-style-position:outside}sr-rd-content table{width:100%;margin-bottom:1.5em;font-size:25.6px;font-size:1.6rem}sr-rd-content thead th,tfoot th{padding:.25em .25em .25em .4em;text-transform:uppercase}sr-rd-content th{text-align:left}sr-rd-content td{vertical-align:top;padding:.25em .25em .25em .4em}sr-rd-content thead{background-color:#dadada}sr-rd-content tr:nth-child(2n){background:#e8e7e7}sr-rd-content sr-blockquote{padding:10px 15px;border-left-style:solid;border-left-width:10px;border-color:#d6dbdf;background:none repeat scroll 0 0 rgba(102,128,153,.05);text-align:left}sr-rd-content sr-blockquote:before{content:""}.simpread-theme-root{background-color:#f3f2ee;color:#2c3e50}sr-rd-title{font-family:PingFang SC,Hiragino Sans GB,Microsoft Yahei,WenQuanYi Micro Hei,sans-serif;line-height:1.5;font-weight:500;font-size:48px;font-size:3rem;color:#07b;border-bottom:1px solid;margin-bottom:1.875em;padding-bottom:.8125em}sr-rd-desc{color:rgba(102,128,153,.6);background-color:rgba(102,128,153,.075);border-radius:4px;margin-bottom:1em;padding:15px;font-size:32px;font-size:2rem;line-height:1.5;text-align:center}sr-rd-content,sr-rd-content *,sr-rd-content div,sr-rd-content p{line-height:1.8;color:#2c3e50}sr-rd-content a,sr-rd-content a:link{color:#08c;text-decoration:none}sr-rd-content a:active,sr-rd-content a:focus,sr-rd-content a:hover{color:#5ba4e5}sr-rd-content li code,sr-rd-content p code,sr-rd-content pre{background-color:#dadada}sr-rd-mult{background-color:rgba(102,128,153,.075)}</style>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>掌上足球体育平台隐私政策</h1>
+        </div>
+        <!--<p>2017年9月21日发布</p>-->
+        <!--<p>2017年9月21日生效</p>-->
+        <div class="content-box">
+            <p class="ti2"><b>欢迎您使用掌上足球体育平台APP！我们非常重视您的隐私保护和个人信息保护。本隐私政策适用于掌上足球体育平台APP。</b></p>
+            <p class="ti2">此隐私权政策旨在帮助您了解掌上足球体育平台APP会收集哪些数据、为什么收集这些数据，会利用这些数据做些什么及如何保护这些数据。请您务必认真阅读本隐私政策，在确认充分了解并同意后使用掌上足球体育平台APP。如果您或您的监护人不同意本隐私政策的任何内容，您应该立即停止使用。</p>
+            <p>请注意：您可以在个人中心中的隐私设置（地图首页点击头像-设置--隐私设置）或产品功能中找到一些控制项，通过这些控制项，您可以对自己的信息进行动态管理。</p>
+            <p class="ti2">本隐私政策将帮助您了解以下内容：</p>
+            <p class="ti2">1、我们是否收集信息，以及我们对这些信息的使用方式</p>
+            <p class="ti2">2、我们是否保存及保护您的个人信息</p>
+            <p class="ti2">3、您的权利</p>
+            <p class="ti2">4、我们如何处理未成年人的个人信息</p>
+            <p class="ti2">5、您的个人信息如何进行跨境转移</p>
+            <p class="ti2">6、本政策如何更新</p>
+            <p class="ti2">7、如何联系我们</p>
+            <p class="ti2">我们深知个人信息对您的重要性，也深知为您的信息提供有效保护是我们业务健康可持续发展的基石。感谢您对掌上足球体育平台的使用和信任！我们致力于维持您对我们的信任，恪守以下原则，保护您的个人信息：权责一致原则、目的明确原则、选择同意原则、最少够用原则、确保安全原则、主体参与原则、公开透明原则等。</p>
+            <p>我们郑重承诺，<b>我们将按业界成熟的安全标准，采取相应的安全保护措施来保护您的个人信息。</b></p>
+            <ul class="level-one">
+                <li>
+                    <div class="level-one-title" id="c1">一、我们是否收集信息，以及我们对这些信息的使用方式</div>
+                    <p>个人信息是指以电子或者其他方式记录的能够单独或者与其他信息结合识别特定自然人身份或者反映特定自然人活动情况的各种信息。</p>
+                    <p>在你使用掌上足球体育平台APP过程中，为了向您提供更好、更个性化的产品和服务，当您使用以下服务、功能或设置时，我们会以下列方式收集和使用您的个人信息：</p>
+                    <ul>
+                        <li>
+                            <div class="level-two-title">1.您直接提供和我们自动采集的个人信息</div>
+                            <ul>
+                                <li>
+                                    <p><b>注册信息。</b>您使用掌上足球体育平台服务，可以登录经注册的百度通用帐号。当注册账号时，您需向我们提供以下信息：帐号名称、头像，并创建密码。</p>
+                                </li>
+                                <li>
+                                    <p><b>日志信息。</b>当您使用掌上足球体育平台的搜索服务时，我们的服务器会自动记录您的日志信息，例如您输入的搜索关键词信息（包括您通过智能语音功能输入的语音信息）和点击的链接，您发布的报错信息、反馈和评论信息，您上传的图片信息、您的IP
+                                        地址、浏览器的类型和使用的语言、硬件设备信息、操作系统的版本、网络运营商的信息、您访问服务的日期、时间、时长等。为了给您带来更便捷的搜索服务并不断完善掌上足球体育平台产品及服务，我们可能会使用浏览器网络存储等机制（包括HTML5）和应用数据缓存，收集您设备上的信息并进行本地存储。</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="level-two-title">2.我们间接收集的您的信息</div>
+                            <ul>
+                                <li>
+                                    <p>(1)<b>您订购第三方产品或服务的信息。</b>掌上足球体育平台接入了丰富的第三方服务（团购服务、外卖预定服务、酒旅预定服务、出行用车服务、共享单车服务、票务服务、加油预定服务等）。您可以通过发现周边等功能便捷地查询、发现、订购上述服务。<b>当您利用掌上足球体育平台订购上述服务时，可能需要提交您的个人信息。您授权我们将提供该功能所必要的信息提供给为您提供服务的第三方（您的身份信息和位置信息），并授权我们间接向第三方获取必要的相关信息（您的订单信息）。</b></p>
+                                    <ul>
+                                        <li>
+                                            <p class="pl1">a)<b>如您使用掌上足球体育平台出租车/快车/专车/接送机/租车/拼车/共享单车服务时，我们会收集您或者服务使用人的身份信息和位置信息，</b>您授权我们将该信息提供给为您提供服务的第三方，以便第三方获知您的请求，为您提供相关车辆服务，并授权我们间接向第三方获取您的订单信息（包括但不限于您选择的车辆、行程信息、手机号码、交易状态及信息、IP地址、设备信息），以方便您在掌上足球体育平台查询您的订单；</p>
+                                        </li>
+                                        <li>
+                                            <p class="pl1">b)如您使用掌上足球体育平台团购、酒旅、票务服务时，我们会收集您的身份信息和位置信息，您授权我们将该信息提供给为您提供服务的第三方，并授权我们间接向第三方获取相关订单信息（包括但不限于您选定的酒店、住宿时间、选定的商家和影院、您的联系方式、交易状态、会员信息、优惠券信息），以方便您在掌上足球体育平台查询您的订单。</p>
+                                        </li>
+                                        <li>
+                                            <p>若您拒绝我们收集上述信息，请不要使用相应的掌上足球体育平台的相关附加功能和服务，<b>您不提供相关信息不会影响您对掌上足球体育平台核心业务功能的使用。</b></p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>(2)当您使用掌上足球体育平台行程助手服务时，基于您对第三方移动智能设备的授权，掌上足球体育平台可能通过您的设备系统读取您短信中的行程信息并自动填写到您掌上足球体育平台行程助手的相关模块，以节省您的时间并避免您人工读取时填写错误。<b>如您拒绝此类信息收集及使用，您可以直接在设备系统中进行设置，关闭此功能。</b></p>
+                                </li>
+                                <li>
+                                    <p>(3)为共同向您提供产品/服务或改进产品服务的质量和个性化程度或出于对产品和服务安全性的考量等合理需要，我们将按照法律法规的规定或基于您的授权从关联公司、合作伙伴及其他受信任的第三方供应商处接收您的个人信息及其他信息，并依照您与第三方的约定或本隐私政策使用您的个人信息，两者出现冲突以本隐私政策为准。</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="level-two-title">3.事先征得授权同意的例外</div>
+                            <ul>
+                                <li>
+                                    <p>(1)请注意：在以下情形中，收集、使用个人信息无需事先征得您的授权同意：</p>
+                                    <p class="pl1">a)与国家安全、国防安全直接相关的；</p>
+                                    <p class="pl1">b)与公共安全、公共卫生、重大公共利益直接相关的；</p>
+                                    <p class="pl1">c)与犯罪侦查、起诉、审判和判决执行等直接有关的；</p>
+                                    <p class="pl1">d)出于维护您或其他个人的生命、财产等重大合法权益但又很难得到本人同意的；</p>
+                                    <p class="pl1">e)所收集的个人信息是您自行向社会公众公开的；</p>
+                                    <p class="pl1">f)从合法公开披露的信息中收集个人信息的，如合法的新闻报道、政府信息公开等渠道；</p>
+                                    <p class="pl1">g)根据您的要求向您提供产品或服务所必需的；</p>
+                                    <p class="pl1">h)用于维护所提供的产品或服务的安全稳定运行所必需的，例如发现、处置产品或服务的故障；</p>
+                                    <p class="pl1">i)法律法规规定的其他情形。</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="level-two-title">4.个人信息的匿名化处理</div>
+                            <ul>
+                                <li>
+                                    <p>在收集到您的个人信息后，我们将通过技术手段及时对数据进行匿名化处理。在不泄露您个人信息的前提下，百度有权对匿名化处理后的用户数据库进行挖掘、分析和利用（包括商业性使用）。</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="level-two-title">5.您授权我们在您使用掌上足球体育平台产品及服务的期间使用您的个人信息，若您注销帐号，我们将停止使用并删除您的个人信息。</div>
+                        </li>
+                        <li>
+                            <div class="level-two-title">6.设备权限调用</div>
+                            <ul>
+                                <li>
+                                    <p><b>掌上足球体育平台在提供服务过程中，会调用您的一些设备权限。以下是掌上足球体育平台调用权限对应的业务功能、调用权限的目的以及调用权限前向您询问的情况。</b></p>
+                                </li>
+                                <li>
+                                    <p><b>您可以在设备的设置功能中选择关闭部分或全部权限，从而拒绝掌上足球体育平台收集相应的个人信息。在不同设备中，权限显示方式及关闭方式可能有所不同，具体请参考设备及系统开发方说明或指引。</b></p>
+                                </li>
+                                <li>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="level-two-title">7.我们可能使用您的信息用于安全防范和诈骗监测等，以预防、发现、调查欺诈、危害安全、非法或违反与我们的协议、政策或规则的行为，以保护您、我们或我们的关联公司、合作伙伴及社会公众的合法权益。</div>
+                        </li>
+                        <li>
+                            <div class="level-two-title">8.<b>当我们要将信息用于本隐私政策未载明的其它用途时，会事先征求您的同意。当我们要将基于特定目的收集而来的信息用于其他目的时，会事先征求您的同意。</b></div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="level-one-title" id="c4">二、我们是否保存及保护您的个人信息</div>
+                    <p>现阶段我们并不会收集您在使用掌上足球体育平台APP中任何信息，所以现在并不存在保存个人信息的问题；若以后需要您的个人信息，我们将严格保护您的个人信息。</p>
+                    <p><strong>规约如下：</strong></p>
+                    <ul class="level-two">
+                        <li>
+                            <p>1.<b>保存期限。</b>您在使用掌上足球体育平台产品及服务期间，我们将持续为您保存您的个人信息。如果您注销帐户或主动删除上述信息，掌上足球体育平台将依据网络安全法等法律法规规定在您删除后6个月内继续保存您的信息。在此期间我们不会再对您的个人信息进行商业化使用。</p>
+                        </li>
+                        <li>
+                            <p>2.<b>保存地域。您的个人信息均储存于中华人民共和国境内，如需跨境传输，我们将会单独征得您的授权同意。</b></p>
+                        </li>
+                        <li>
+                            <p>3.<b>安全措施。</b></p>
+                            <ul>
+                                <li>
+                                    <p>(1)我们会以“最小化”原则收集、使用、存储和传输用户信息，并通过用户协议和隐私政策告知您相关信息的使用目的和范围。</p>
+                                    <p>(2)我们非常重视信息安全。我们成立了专责团队负责研发和应用多种安全技术和程序等，我们会对安全管理负责人和关键安全岗位的人员进行安全背景审查，我们建立了完善的信息安全管理制度和内部安全事件处置机制等。我们会采取适当的符合业界标准的安全措施和技术手段存储和保护您的个人信息，以防止您的信息丢失、遭到被未经授权的访问、公开披露、使用、毁损、丢失或泄漏。我们会采取一切合理可行的措施，保护您的个人信息。我们会使用加密技术确保数据的保密性；我们会使用受信赖的保护机制防止数据遭到恶意攻击。</p>
+                                    <p>(3)我们会对员工进行数据安全的意识培养和安全能力的培训和考核，加强员工对于保护个人信息重要性的认识。我们会对处理个人信息的员工进行身份认证及权限控制，并会与接触您个人信息的员工、合作伙伴签署保密协议，明确岗位职责及行为准则，确保只有授权人员才可访问个人信息。<b>若有违反保密协议的行为，会被立即终止与百度的合作关系，</b>并会被追究相关法律责任，对接触个人信息人员在离岗时也提出了保密要求。</p>
+                                    <p>(4)我们提醒您注意，互联网并非绝对安全的环境，<b>当您通过掌上足球体育平台中嵌入的第三方社交软件、电子邮件、短信等与其他用户交互您的地理位置或行踪轨迹信息时，不确定第三方软件对信息的传递是否完全加密，注意确保您个人信息的安全。</b></p>
+                                    <p>(5)我们也请您理解，在互联网行业由于技术的限制和飞速发展以及可能存在的各种恶意攻击手段，即便我们竭尽所能加强安全措施，也不可能始终保证信息的百分之百安全。<b>请您了解，您使用我们的产品和/或服务时所用的系统和通讯网络，有可能在我们控制之外的其他环节而出现安全问题。</b></p>
+                                    <p><b>根据我们的安全管理制度，个人信息泄露、毁损或丢失事件被列为最特大安全事件，一经发生将启动公司最高级别的紧急预案，</b>由安全部、政府关系部、法务部等多个部门组成联合应急响应小组处理。</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p><b>4.安全事件通知</b></p>
+                            <ul>
+                                <li>
+                                    <p>(1)我们会制定网络安全事件应急预案，及时处置系统漏洞、计算机病毒、网络攻击、网络侵入等安全风险，在发生危害网络安全的事件时，我们会立即启动应急预案，采取相应的补救措施，并按照规定向有关主管部门报告。</p>
+                                    <p>(2)个人信息泄露、毁损、丢失属于公司级特大安全事件，我们会负责定期组织工作组成员进行安全预案演练，防止此类安全事件发生。若一旦不幸发生，我们将按照最高优先级启动应急预案，组成紧急应急小组，在最短时间内追溯原因并减少损失。</p>
+                                    <p>(3)在不幸发生个人信息安全事件后，我们将按照法律法规的要求，及时向您告知安全事件的基本情况和可能的影响、我们已采取或将要采取的处理措施、您可自主防范和降低的风险的建议、对您的补救措施等。我们将及时将事件相关情况以站内通知、短信通知、电话、邮件等您预留的联系方式告知您，难以逐一告知时我们会采取合理、有效的方式发布公告。同时，我们还将按照监管部门要求，主动上报个人信息安全事件的处置情况。</p>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="level-one-title" id="c5">五、您的权利</div>
+                    <p>按照中国相关的法律、法规、标准，以及其他国家、地区的通行做法，我们保障您对自己的个人信息行使以下权利：</p>
+                    <ul class="level-two">
+                        <li>
+                            <p>1、<b>访问权。</b>原则上您可以通过如下方式访问您的个人信息：帐户信息：在掌上足球体育平台APP中访问或编辑您的帐户中的个人资料信息、更改您的密码、添加安全信息、进行账户关联或身份认证等。</p>
+                            <p>如果您无法通过上述链接访问这些个人信息，您可以随时给我们发送邮件。我们将在30天内回复您的访问请求。对于您在使用我们的产品或服务过程中产生的其他个人信息，只要我们不需要过多投入，我们会向您提供。</p>
+                        </li>
+                        <li>
+                            <p>2、<b>更正权。</b>当您发现我们处理的关于您的个人信息有错误时，经对您的身份进行验证，且更正不影响信息的客观性和准确性的情况下，您有权对错误或不完整的信息作出更正或更新，您可以自行在掌上足球体育平台内进行更正，或通过反馈与报错等将您的更正申请提交给我们。</p>
+                        </li>
+                        <li>
+                            <p>3、<b>删除权。在以下情形中，您可以向我们提出删除个人信息的请求：</b></p>
+                            <p>(1)如果我们终止掌上足球体育平台APP的产品运营及服务；</p>
+                            <p>(2)如果您注销了帐号，我们会删除您的个人信息或做匿名化处理；</p>
+                            <p>(3)涉及商业秘密的。</p>
+                            <p>如果我们违法法律法规或与您的约定收集、使用、与他人共享或转让您的个人信息，您有权要求我们及第三方删除。</p>
+                            <p>如果我们违反法律法规规定或与您的约定，公开披露您的个人信息，您有权要求我们立即停止公开披露的行为，并发布通知要求相关接收方删除相应的信息。</p>
+                            <p>如果我们决定响应您的删除请求，我们还将同时通知从我们获得您的个人信息的实体，要求其及时删除，除非法律法规另有规定，或这些实体获得您的独立授权。</p>
+                            <p>当您从我们的服务中删除信息后，我们可能不会立即备份系统中删除相应的信息，但会在备份更新时删除这些信息。</p>
+                        </li>
+                        <li>
+                            <p>4、<b>撤销权。</b>每个业务功能需要一些基本的个人信息才能得以完成。对于额外收集的个人信息的收集和使用，您可以随时给予或收回您的授权同意。</p>
+                        </li>
+                        <li>
+                            <p>5、<b>注销权。</b>您随时可注销此前注册的账户。</p>
+                        </li>
+                        <li>
+                            <p>6、<b>提前获知产品和服务停止运营权。</b><b>为保障安全，您可能需要提供书面请求，或以其他方式证明您的身份。</b>我们可能会先要求您验证自己的身份，然后再处理您的请求。我们将在三十天内做出答复。</p>
+                        </li>
+                        <li>
+                            <p>7、在以下情形中，按照法律法规要求，我们将无法响应您的<b>更正、删除、注销信息的</b>请求：</p>
+                            <p>(1)与国家安全、国防安全直接相关的；</p>
+                            <p>(2)与公共安全、公共卫生、重大公共利益直接相关的；</p>
+                            <p>(3)与犯罪侦查、起诉、审判和执行判决等直接相关的；</p>
+                            <p>(4)我们有充分证据表明您存在主观恶意或滥用权利的（如您的请求将危害公共安全和其他人合法权益，或您的请求超出了一般技术手段和商业成本可覆盖的范围）；</p>
+                            <p>(5)响应个人信息主体的请求将导致您或其他个人、组织的合法权益受到严重损害的；</p>
+                            <p>(6)涉及商业秘密的。</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="level-one-title" id="c6">六、我们如何处理儿童的个人信息</div>
+                    <p>我们非常重视对未成年人信息的保护。</p>
+                    <p>我们的产品、网站和服务主要面向成人。如果没有父母或监护人的同意，儿童不得创建自己的用户账户。对于经父母同意而收集儿童个人信息的情况，我们只会在受到法律允许、父母或监护人明确同意或者保护儿童所必要的情况下使用或公开披露此信息。</p>
+                    <p>尽管当地法律和习俗对儿童的定义不同，但我们将不满 14 周岁的任何人均视为儿童。如果我们发现自己在未事先获得可证实的父母同意的情况下收集了儿童的个人信息，则会设法尽快删除相关数据。</p>
+                    <p>若您是14周岁以下的未成年人，建议您请您的监护人仔细阅读本隐私政策，<b>并在征得您的监护人同意的前提下使用我们的产品和/或服务或向我们提供信息。</b></p>
+                </li>
+                <li>
+                    <div class="level-one-title" id="c7">七、您的个人信息如何在全球范围转移</div>
+                    <p>原则上，我们在中华人民共和国境内收集和产生的个人信息，将存储在中华人民共和国境内。</p>
+                    <p>由于我们通过遍布全球的资源和服务器提供产品或服务，这意味着，在获得您的授权同意后，您的个人信息可能会被转移到您使用产品或服务所在国家/地区的境外管辖区，或者受到来自这些管辖区的访问。</p>
+                    <p>此类管辖区可能设有不同的数据保护法，甚至未设立相关法律。在此类情况下，我们会确保您的个人信息得到在中华人民共和国境内足够同等的保护。例如，我们会请求您对跨境转移个人信息的同意，或者在跨境数据转移之前实施数据去标识化等安全举措。</p>
+                </li>
+                <li>
+                    <div class="level-one-title" id="c8">八、隐私政策的修订</div>
+                    <p>我们的隐私政策可能变更。</p>
+                    <p>未经您明确同意，我们不会削减您按照本隐私政策所应享有的权利。我们会在本页面上发布对本隐私政策所做的任何变更。</p>
+                    <p>对于重大变更，<b>我们会在产品或服务的主要曝光页面或站内信或向您发送电子邮件或其他合适的能触达您的方式通知您。</b>若您不同意该等变更可以停止使用掌上足球体育平台APP，若您继续使用我们的产品和/或服务，即表示您同意受修订后的本隐私政策的约束。</p>
+                    <p>本政策所指的重大变更包括但不限于：</p>
+                    <p>1、我们的服务模式发生重大变化。如处理个人信息的目的、处理的个人信息类型、个人信息的使用方式等；</p>
+                    <p>2、我们在所有权结构、组织架构等方面发生重大变化。如业务调整、破产并购等引起的所有者变更等；</p>
+                    <p>3、个人信息共享、转让或公开披露的主要对象发生变化；</p>
+                    <p>4、您参与个人信息处理方面的权利及其行使方式发生重大变化；</p>
+                    <p>5、我们负责处理个人信息安全的责任部门、联络方式及投诉渠道发生变化时；</p>
+                    <p>6、个人信息安全影响评估报告表明存在高风险时。</p>
+                    <p>我们还会将本政策的旧版本存档，供您查阅。</p>
+                </li>
+                <li>
+                    <div class="level-one-title" id="c9">九、投诉处理</div>
+                    <ul class="level-two">
+                        <li>
+                            <p>1、您对掌上足球体育平台APP及本隐私政策有任何意见或建议可随时联系我们。</p>
+                        </li>
+                        <li>
+                            <p>2、关于本用户服务条款的问题，您可以通过如下联络方式同我们联系：</p>
+                            <p>中国上海市浦东新区博兴路195号168室</p>
+                            <p>上海财达科教服务有限公司 法务部</p>
+                            <p>邮政编码：2000000</p>
+                            <p>为保障我们高效处理您的问题并及时向您反馈，需要您提交身份证明、有效联系方式和书面请求及相关证据，我们会在验证您的身份处理您的请求。</p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div>
+                <p><b>附：名词解释</b></p>
+                <ul>
+                    <li>
+                        <p><b>个人信息</b>是指以电子或者其他方式记录的能够单独或者与其他信息结合识别特定自然人身份或者反映特定自然人活动情况的各种信息。个人信息包括姓名、出生日期、身份证件号码、个人生物识别信息、住址、通信通讯联系方式、通信记录和内容、账号密码、财产信息、征信信息、行踪轨迹、住宿信息、健康生理信息、交易信息等。</p>
+                    </li>
+                    <li>
+                        <p><b>个人敏感信息</b>是指一旦泄露、非法提供或滥用可能危害人身和财产安全，极易导致个人名誉、身心健康受到损害或歧视性待遇等的个人信息。个人敏感信息包括身份证件号码、个人生物识别信息、银行账号、通信记录和内容、财产信息、征信信息、行踪轨迹、住宿信息、健康生理信息、交易信息、14岁以下（含）儿童的个人信息等。</p>
+                    </li>
+                </ul>
+            </div>
+            <footer>
+                <!-- https://anonymous-monk.github.io/policy.html -->
+                <p><b>再次感谢您对掌上足球体育平台APP的信任和使用！</b></p>
+                <p class="tar">上海财达科教服务有限公司</p>
+                <p class="tar">2018年10月15日生效</p>
+            </footer>
+        </div>
+
+    </div>
+</body>
+
+</html>
