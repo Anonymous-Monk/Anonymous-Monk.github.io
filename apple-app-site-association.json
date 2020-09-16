@@ -1,0 +1,20 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "GY39WSZFF2.com.apple.wwdc",
+                "paths": [
+                    "/wwdc/news/",
+                    "/videos/wwdc/2015/*"
+                ]
+            },
+            {
+                "appID": "com.hmjy41319.hmjy",
+                "paths": [
+                    "*"
+                ]
+            }
+        ]
+    }
+}
