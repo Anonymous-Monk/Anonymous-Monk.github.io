@@ -341,7 +341,7 @@ a {
     display: block;
   }
   #container .article-header {
-    padding: 5px 20px;
+    padding: 22px 20px 0;
   }
   #container .article-header h1 {
     margin-bottom: 0;
@@ -351,65 +351,71 @@ a {
   }
   #container .article-info-index.article-info {
     padding-top: 10px;
-    margin: 0 20px;
+    margin: 16px 20px 0;
   }
   #container .article-info-post.article-info {
-    margin: 0 20px;
+    margin: 0 20px 20px;
     padding-top: 10px;
     border: none;
   }
   #container .article-more-link {
-    margin-top: 20px;
+    margin-top: 12px;
     float: left;
   }
   #container #viewer-box .viewer-box-l {
     font-size: 14px;
   }
   #container .article {
-    margin: 10px;
-    font-size: 14px;
+    margin: 14px;
+    font-size: 16px;
   }
   #container .article .article-entry {
-    padding: 0 20px 0 20px;
+    padding: 8px 20px 20px;
+    font-size: 16px;
+    line-height: 1.75;
   }
   #container .article .article-title {
-    font-size: 18px;
-    padding-right: 96px;
+    font-size: 20px;
+    padding-right: 0;
     display: block;
-    margin: 0;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    margin: 0 0 8px;
+    line-height: 1.4;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
   }
   #container .article .article-meta {
     width: auto;
-    height: 30px;
-    margin-top: -8px;
-    padding-right: 10px;
-    position: ralative;
+    height: auto;
+    margin: 0;
+    padding: 14px 20px 0;
+    position: relative;
+    right: auto;
+    top: auto;
+    text-align: left;
   }
   #container .article .article-meta .article-date {
     font-size: 12px;
     border-radius: 0;
-    color: #666;
+    color: #7a8290;
     background: none;
     height: auto;
     padding: 0;
     margin: 0;
-    width: 100%;
+    width: auto;
     text-align: left;
-    margin-left: 10px;
+    margin-left: 0;
   }
   #container .article .article-meta .article-date time {
     width: auto;
-    float: right;
-    margin-right: 10px;
+    float: none;
+    margin-right: 0;
   }
   #container .article .article-meta .article-tag-list {
-    margin-top: 7px;
-    position: absolute;
-    right: 10px;
-    top: 0;
+    margin-top: 8px;
+    position: relative;
+    right: auto;
+    top: auto;
   }
   #container .article .article-meta .article-tag-list:before {
     float: left;
@@ -424,9 +430,9 @@ a {
   }
   #container .article .article-meta .article-category {
     margin-top: 7px;
-    position: absolute;
-    right: 10px;
-    top: -30px;
+    position: relative;
+    right: auto;
+    top: auto;
   }
   #container .article .article-meta .article-category:before {
     float: left;
@@ -4786,7 +4792,7 @@ html {
   opacity: 1;
 }
 
-/* ---------- 移动端断点对齐（800px）与触摸优化 ---------- */
+/* ---------- 移动端增强（800px）触摸优化 ---------- */
 @media (max-width: 800px) {
   /* 触摸友好：按钮/链接最小 44px 触摸目标 */
   #container .article .article-more-link a {
@@ -4806,30 +4812,6 @@ html {
     width: auto;
     padding: 12px 16px;
   }
-  /* 移动端字号与间距 */
-  #container .article .article-entry {
-    font-size: 16px;
-    line-height: 1.75;
-    padding: 8px 20px 20px;
-  }
-  #container .article .article-title {
-    font-size: 22px;
-  }
-  #container .article .article-header {
-    padding: 22px 20px 0;
-  }
-  #container .article .article-info-index {
-    margin: 16px 20px 0;
-  }
-  /* 移动端 meta 改为相对定位，显示在标题上方 */
-  #container .article .article-meta {
-    position: relative;
-    right: auto;
-    top: auto;
-    text-align: left;
-    padding: 12px 20px 0;
-    margin-bottom: 0;
-  }
   #container .archives .archive-article-title {
     font-size: 16px;
   }
@@ -4843,12 +4825,8 @@ html {
     margin-bottom: 12px;
   }
   #container .archives-wrap {
-    margin: 0 16px;
-    padding: 24px 0 20px;
-  }
-  /* 防止水平溢出 */
-  #container .article {
-    margin: 16px;
+    margin: 0 14px;
+    padding: 20px 0 16px;
   }
   #container .bdsharebuttonbox {
     width: 100% !important;
@@ -4872,24 +4850,24 @@ html {
 
 /* ---------- 超小屏优化（≤480px） ---------- */
 @media (max-width: 480px) {
+  #container .article {
+    margin: 10px;
+  }
   #container .article .article-title {
-    font-size: 20px;
+    font-size: 18px;
   }
   #container .article .article-entry {
     font-size: 15px;
     padding: 8px 16px 16px;
   }
-  #container .article {
-    margin: 12px;
-  }
   #container .article .article-header {
-    padding: 20px 16px 0;
+    padding: 18px 16px 0;
   }
-  #container .article .article-info-index {
-    margin: 14px 16px 0;
+  #container .article .article-info-index.article-info {
+    margin: 12px 16px 0;
   }
   #container .article .article-meta {
-    padding: 10px 16px 0;
+    padding: 12px 16px 0;
   }
   #page-nav .page-number,
   #page-nav .extend {

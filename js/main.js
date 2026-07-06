@@ -77,13 +77,16 @@ require([], function (){
     //是否开启动画
     if(yiliaConfig.animate === true){
 
-        require(['/js/jquery.lazyload.js'], function(){
-            //avatar
-            $(".js-avatar").attr("src", $(".js-avatar").attr("lazy-src"));
-            $(".js-avatar")[0].onload = function(){
-                $(".js-avatar").addClass("show");
-            }
-        });
+        //avatar - 直接处理，不依赖 lazyload 模块加载
+        var avatars = document.querySelectorAll(".js-avatar");
+        for (var i = 0; i < avatars.length; i++) {
+            (function(avatar) {
+                avatar.onload = function(){
+                    avatar.classList.add("show");
+                };
+                avatar.src = avatar.getAttribute("lazy-src");
+            })(avatars[i]);
+        }
 
       if(yiliaConfig.isHome === true) {
         // 滚动条监听使用scrollreveal.js
