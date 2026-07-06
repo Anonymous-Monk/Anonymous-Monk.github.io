@@ -137,11 +137,13 @@ body,
   height: 100%;
 }
 body {
-  font-family: "微软雅黑", 'Microsoft JhengHei', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", "微软雅黑", sans-serif;
   font-size: 16px;
-  background: #3f3f3f;
-  color: #999;
+  background: #1a1d24;
+  color: #c8cdd3;
   -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 ::selection {
   color: #fff;
@@ -264,10 +266,13 @@ a {
 #container .left-col .overlay {
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.75);
+  background: linear-gradient(180deg,
+              rgba(20, 23, 30, 0.92) 0%,
+              rgba(15, 17, 23, 0.88) 100%);
   position: absolute;
-  opacity: 0.7;
+  opacity: 1;
   z-index: -1;
+  backdrop-filter: blur(2px);
 }
 #container .left-col .intrude-less {
   width: 98%;
@@ -570,7 +575,7 @@ a {
     opacity: 0.6;
   }
   #container .hide-labels:hover {
-    color: none;
+    color: inherit;
     opacity: 1;
   }
   #container #post-nav-button {
@@ -2196,7 +2201,7 @@ a {
 }
 #header .switch-part2 {
   left: 100%;
-  overlay-x: hidden;
+  overflow-x: hidden;
   overflow-y: auto;
   max-height: 200px;
 }
@@ -2299,7 +2304,7 @@ a {
   color: #808080;
 }
 .post-list li a:hover {
-color
+  color: #88acdb;
   text-decoration: none;
 }
 .post-list li:hover a {
@@ -2366,7 +2371,7 @@ color
   position: relative;
   margin: 0 30px;
   padding-right: 60px;
-  border-bottom: 2px solid #2f2f2f;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 .archives-wrap:first-child {
   margin-top: 30px;
@@ -2382,9 +2387,10 @@ color
   font-size: 1.8em;
 }
 .archives-wrap .archive-year-wrap a {
-  color: #999;
-  font-weight: bold;
+  color: #5db4e8;
+  font-weight: 300;
   padding-left: 48px;
+  letter-spacing: 0.02em;
 }
 .archives {
   position: relative;
@@ -2394,9 +2400,8 @@ color
 }
 .archives .archive-article {
   margin-left: 200px;
-  padding: 20px 0;
-  border-bottom: 1px solid #2f2f2f;
-  border-top: 1px solid #2f2f2f;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   position: relative;
 }
 .archives .archive-article:first-child {
@@ -2407,7 +2412,7 @@ color
 }
 .archives .archive-article-title {
   font-size: 16px;
-  color: #999;
+  color: #d4d7dc;
   -webkit-transition: color 0.3s;
   -moz-transition: color 0.3s;
   -ms-transition: color 0.3s;
@@ -2567,13 +2572,14 @@ color
   color: #c8c8c8;
 }
 .article-title {
-  color: #999;
+  color: #e8eaed;
   margin-left: 0px;
-  font-weight: initial;
-  line-height: 35px;
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 16px;
+  text-align: left;
+  font-size: 24px;
+  letter-spacing: -0.01em;
   -webkit-transition: color 0.3s;
   -moz-transition: color 0.3s;
   -o-transition: color 0.3s;
@@ -2590,33 +2596,46 @@ color
 }
 .article-inner {
   position: relative;
-  border: 1px solid #2f2f2f;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-radius: 6px;
-  -webkit-box-shadow: 4px 4px 18px rgba(0,0,0,0.46);
-  box-shadow: 4px 4px 18px rgba(0,0,0,0.46);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 24px;
+  padding: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+              0 8px 24px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 0.4s;
+}
+.article:hover .article-inner {
+  transform: translateY(-3px);
+  border-color: rgba(93, 180, 232, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
+              0 16px 40px rgba(0, 0, 0, 0.28),
+              0 0 0 1px rgba(93, 180, 232, 0.1);
 }
 .article-header {
-  border-left: rgba(63,63,63,0) 5px solid;
-  padding: 15px 0px 15px 25px;
+  border-left: none;
+  padding: 28px 160px 0 32px;
 }
 .article-info.info-on-right {
   margin: 10px 0 0 0;
   float: right;
 }
 .article-info-index.article-info {
-  margin: 30px 30px 0 30px;
+  margin: 20px 32px 0 32px;
+  padding-bottom: 8px;
 }
 .article-info-post.article-info {
   padding: 0;
   border: none;
-  margin: -30px 0 20px 30px;
+  margin: 0 32px 20px 32px;
 }
 .article-entry {
-  line-height: 1.8em;
-  padding-right: 30px;
-  padding-left: 30px;
+  line-height: 1.75;
+  padding: 8px 32px 24px 32px;
+  color: #c8cdd3;
 }
 .article-entry p {
   margin-top: 10px;
@@ -2719,26 +2738,26 @@ color
   background: none;
 }
 .article-meta {
-  width: 150px;
+  width: auto;
   text-align: right;
   position: absolute;
-  right: 0;
-  top: 23px;
-  text-align: center;
-  z-index: 1;
+  right: 32px;
+  top: 28px;
+  z-index: 2;
 }
 .article-meta time {
-  color: #aaa;
+  color: #7a8290;
+  font-size: 13px;
 }
 .article-meta time:before {
-  color: #999;
+  color: #5db4e8;
   content: "\f073";
-  font: 17px FontAwesome;
-  margin-right: 10px;
+  font: 14px FontAwesome;
+  margin-right: 8px;
 }
 .article-more-link {
-  margin-top: 5px;
-  text-align: right;
+  margin-top: 8px;
+  text-align: left;
 }
 .article-more-link a {
   background: #258fb8;
@@ -3062,7 +3081,7 @@ color
   position: relative;
   margin: 0 30px;
   padding-right: 60px;
-  border-bottom: 2px solid #2f2f2f;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 .archives-wrap:first-child {
   margin-top: 30px;
@@ -3078,9 +3097,10 @@ color
   font-size: 1.8em;
 }
 .archives-wrap .archive-year-wrap a {
-  color: #999;
-  font-weight: bold;
+  color: #5db4e8;
+  font-weight: 300;
   padding-left: 48px;
+  letter-spacing: 0.02em;
 }
 .archives {
   position: relative;
@@ -3090,9 +3110,8 @@ color
 }
 .archives .archive-article {
   margin-left: 200px;
-  padding: 20px 0;
-  border-bottom: 1px solid #2f2f2f;
-  border-top: 1px solid #2f2f2f;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   position: relative;
 }
 .archives .archive-article:first-child {
@@ -3103,7 +3122,7 @@ color
 }
 .archives .archive-article-title {
   font-size: 16px;
-  color: #999;
+  color: #d4d7dc;
   -webkit-transition: color 0.3s;
   -moz-transition: color 0.3s;
   -ms-transition: color 0.3s;
@@ -3404,7 +3423,7 @@ color
 }
 .article-entry .highlight figcaption {
   font-size: 0.85em;
-  color: highlight-comment;
+  color: #93a1a1;
   line-height: 1em;
   margin-bottom: 1em;
 }
@@ -4467,3 +4486,438 @@ pre .link_url {
   -ms-transition-delay: 0.15s;
   transition-delay: 0.15s;
 }
+
+/* ============================================
+   现代化补丁 v2.0
+   深度视觉重构：精致深色 + 现代排版
+   ============================================ */
+
+/* ---------- 代码字体 ---------- */
+#container .article .article-entry pre,
+#container .article .article-entry code,
+#container .article .article-entry .highlight {
+  font-family: "SF Mono", "JetBrains Mono", Menlo, Monaco,
+               "Courier New", monospace;
+}
+
+/* ---------- 文字对比度 ---------- */
+#container .article .article-entry p { color: #c8cdd3; }
+#container .header-author a { color: #e8eaed; }
+#container .header-subtitle { color: #a8b0bc; }
+
+/* ---------- 链接现代化 ---------- */
+#container .article .article-entry a {
+  color: #5db4e8;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, color 0.3s;
+}
+#container .article .article-entry a:hover {
+  color: #88d4ff;
+  border-bottom-color: #88d4ff;
+}
+
+/* ---------- 阅读更多按钮 ---------- */
+#container .article .article-more-link a {
+  background: transparent;
+  border: 1px solid rgba(93, 180, 232, 0.4);
+  color: #5db4e8;
+  border-radius: 4px;
+  padding: 8px 20px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  display: inline-block;
+}
+#container .article .article-more-link a:hover {
+  background: rgba(93, 180, 232, 0.15);
+  border-color: #5db4e8;
+  color: #88d4ff;
+  transform: translateY(-1px);
+}
+
+/* ---------- 标签云现代化 ---------- */
+#container .tagcloud a,
+#container .article-tag-list .article-tag-list-link {
+  font-size: 12px !important;
+  padding: 4px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #a8b0bc !important;
+  transition: all 0.3s;
+  display: inline-block;
+  margin: 3px;
+}
+#container .tagcloud a:hover,
+#container .article-tag-list .article-tag-list-link:hover {
+  background: rgba(93, 180, 232, 0.12);
+  border-color: rgba(93, 180, 232, 0.35);
+  color: #88d4ff !important;
+  transform: translateY(-1px);
+}
+
+/* ---------- 分页现代化 ---------- */
+#page-nav {
+  text-align: center;
+  margin: 48px 30px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+#page-nav .page-number,
+#page-nav .extend {
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #a8b0bc;
+  display: inline-block;
+  margin: 0 3px;
+  transition: all 0.3s;
+  font-size: 13px;
+}
+#page-nav .page-number:hover,
+#page-nav .extend:hover {
+  background: rgba(93, 180, 232, 0.12);
+  border-color: rgba(93, 180, 232, 0.35);
+  color: #88d4ff;
+  transform: translateY(-2px);
+}
+#page-nav .current {
+  background: #4094c7;
+  border-color: #4094c7;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* ---------- 归档页增强 ---------- */
+#container .archives .archive-article {
+  border-left: 2px solid transparent;
+  padding-left: 18px;
+  transition: border-color 0.3s, padding-left 0.3s;
+}
+#container .archives .archive-article:hover {
+  border-left-color: #4094c7;
+  padding-left: 22px;
+}
+#container .archives .archive-article-date {
+  color: #7a8290;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 13px;
+}
+#container .archives .archive-article-title:hover {
+  color: #ffffff;
+}
+
+/* ---------- 代码块现代化 ---------- */
+#container .article .article-entry pre {
+  border-radius: 8px;
+  background: #161821 !important;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 16px 20px;
+}
+#container .article .article-entry .highlight {
+  background: #161821 !important;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #e8eaed;
+}
+#container .article .article-entry code {
+  background: rgba(93, 180, 232, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.88em;
+  color: #88d4ff;
+}
+#container .article .article-entry pre code {
+  background: transparent;
+  padding: 0;
+  color: #e8eaed;
+}
+
+/* ---------- 引用块现代化 ---------- */
+#container .article .article-entry blockquote {
+  background: rgba(93, 180, 232, 0.04);
+  border-left: 3px solid #4094c7;
+  border-radius: 0 6px 6px 0;
+  padding: 14px 22px;
+  margin: 1.5em 0;
+  color: #a8b0bc;
+  font-style: italic;
+}
+
+/* ---------- 表格现代化 ---------- */
+#container .article .article-entry table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+#container .article .article-entry th {
+  background: rgba(93, 180, 232, 0.08);
+  color: #e8eaed;
+  font-weight: 600;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: left;
+}
+#container .article .article-entry td {
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: #c8cdd3;
+}
+#container .article .article-entry tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* ---------- 文章导航按钮现代化 ---------- */
+#article-nav .article-nav-link-wrap {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s;
+}
+#article-nav .article-nav-link-wrap:hover {
+  border-color: rgba(93, 180, 232, 0.25);
+  background: rgba(93, 180, 232, 0.04);
+  transform: translateY(-2px);
+}
+
+/* ---------- 滚动条现代化 ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #14161c;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 5px;
+  border: 2px solid #14161c;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(93, 180, 232, 0.35);
+}
+::selection {
+  background: rgba(93, 180, 232, 0.3);
+  color: #fff;
+}
+
+/* ---------- 平滑滚动 ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------- 左栏头像与名称现代化 ---------- */
+#header .profilepic img {
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.4s, border-color 0.4s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+#header .profilepic:hover img {
+  transform: scale(1.05);
+  border-color: rgba(93, 180, 232, 0.4);
+}
+#header .header-author {
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+#header .header-author a {
+  transition: color 0.3s;
+}
+#header .header-subtitle {
+  font-size: 13px;
+  letter-spacing: 0.03em;
+}
+#header .header-menu li a {
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  transition: color 0.3s, padding-left 0.3s, background 0.3s;
+  border-radius: 4px;
+}
+#header .header-menu li a:hover {
+  color: #88d4ff;
+  padding-left: 8px;
+  background: rgba(93, 180, 232, 0.06);
+}
+
+/* ---------- 社交图标现代化 ---------- */
+#header .header-nav .social a {
+  opacity: 0.65;
+  transition: opacity 0.3s, transform 0.3s;
+}
+#header .header-nav .social a:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+
+/* ---------- Footer 现代化 ---------- */
+#footer {
+  color: #7a8290;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 32px 30px;
+  background: rgba(0, 0, 0, 0.2);
+}
+#footer a {
+  color: #5db4e8;
+  transition: color 0.3s;
+}
+#footer a:hover { color: #88d4ff; }
+
+/* ---------- 文章 meta 现代化 ---------- */
+#container .article .article-meta .article-date {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+#container .article .article-meta .article-date:hover {
+  opacity: 1;
+}
+
+/* ---------- 移动端断点对齐（800px）与触摸优化 ---------- */
+@media (max-width: 800px) {
+  /* 触摸友好：按钮/链接最小 44px 触摸目标 */
+  #container .article .article-more-link a {
+    min-height: 44px;
+    line-height: 44px;
+    padding: 0 24px;
+    display: inline-block;
+  }
+  #page-nav .page-number,
+  #page-nav .extend {
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+  }
+  #header .header-menu li a {
+    min-width: auto;
+    width: auto;
+    padding: 12px 16px;
+  }
+  /* 移动端字号与间距 */
+  #container .article .article-entry {
+    font-size: 16px;
+    line-height: 1.75;
+    padding: 8px 20px 20px;
+  }
+  #container .article .article-title {
+    font-size: 22px;
+  }
+  #container .article .article-header {
+    padding: 22px 20px 0;
+  }
+  #container .article .article-info-index {
+    margin: 16px 20px 0;
+  }
+  /* 移动端 meta 改为相对定位，显示在标题上方 */
+  #container .article .article-meta {
+    position: relative;
+    right: auto;
+    top: auto;
+    text-align: left;
+    padding: 12px 20px 0;
+    margin-bottom: 0;
+  }
+  #container .archives .archive-article-title {
+    font-size: 16px;
+  }
+  #container .archives .archive-article {
+    margin-left: 0;
+    padding: 14px 0;
+  }
+  #container .archive-year-wrap {
+    position: relative;
+    width: auto;
+    margin-bottom: 12px;
+  }
+  #container .archives-wrap {
+    margin: 0 16px;
+    padding: 24px 0 20px;
+  }
+  /* 防止水平溢出 */
+  #container .article {
+    margin: 16px;
+  }
+  #container .bdsharebuttonbox {
+    width: 100% !important;
+  }
+  #container .bdshare-button-style2-24 {
+    width: 100% !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  /* 移动端代码块 */
+  #container .article .article-entry pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-size: 13px;
+    padding: 12px;
+    margin: 1em 0;
+  }
+}
+
+/* ---------- 超小屏优化（≤480px） ---------- */
+@media (max-width: 480px) {
+  #container .article .article-title {
+    font-size: 20px;
+  }
+  #container .article .article-entry {
+    font-size: 15px;
+    padding: 8px 16px 16px;
+  }
+  #container .article {
+    margin: 12px;
+  }
+  #container .article .article-header {
+    padding: 20px 16px 0;
+  }
+  #container .article .article-info-index {
+    margin: 14px 16px 0;
+  }
+  #container .article .article-meta {
+    padding: 10px 16px 0;
+  }
+  #page-nav .page-number,
+  #page-nav .extend {
+    margin: 0 2px;
+  }
+}
+
+/* ---------- 中等屏优化（801px–1040px） ---------- */
+@media (min-width: 801px) and (max-width: 1040px) {
+  #container .article .article-meta {
+    width: 120px;
+  }
+}
+
+/* ---------- 焦点可见性（可访问性） ---------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #5db4e8;
+  outline-offset: 2px;
+}
+
+/* ---------- 文章进入动画 ---------- */
+#container .article.show {
+  animation: articleIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes articleIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+

@@ -1,3 +1,8 @@
+// 桥接：让 RequireJS 识别已通过 <script> 标签加载的全局 jQuery
+if (typeof window.jQuery !== 'undefined' && typeof define === 'function' && define.amd) {
+  define('jquery', [], function () { return window.jQuery; });
+}
+
 require([], function (){
 
     var isMobileInit = false;
@@ -40,14 +45,14 @@ require([], function (){
             return;
         }
         var w = $(window).width();
-        if(w >= 700){
+        if(w >= 800){
             loadPC();
         }else{
             loadMobile();
         }
     });
 
-    if(browser.versions.mobile === true || $(window).width() < 700){
+    if(browser.versions.mobile === true || $(window).width() < 800){
         loadMobile();
     }else{
         loadPC();
