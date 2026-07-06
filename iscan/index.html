@@ -1,93 +1,1610 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html lang="zh-CN">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>暗格</title>
-    <meta name="description" content="">
+    <title>扫描通 — 智能手机扫描仪</title>
+    <meta name="description" content="扫描通 · 集文件扫描、OCR文字识别、翻译、电子签名、报价单生成于一体的智能手机扫描仪。智能边界识别，生成高清扫描件。">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="暗格">
-    <meta property="og:description" content="暗格">
+    <meta property="og:title" content="扫描通 — 智能手机扫描仪">
+    <meta property="og:description" content="OCR文字识别 & 全能手机扫描仪">
     <meta property="og:image" content="img/logo.png">
-    <link rel = "icon" type = "image/png" href = "img/logo.png">
-    <link rel = "apple-touch-icon" type = "image/png" href = "img/logo.png"/>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" type="image/png" href="img/logo.png">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/gijgo.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="css/slicknav.css">
-    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           扫描通 · Precision Design System
+           编辑级专业扫描仪美学：cream + ink + cyan
+           ============================================ */
+        :root {
+            --bg-paper: #f4f1ea;
+            --bg-cream: #ece8df;
+            --bg-white: #ffffff;
+            --bg-ink: #0a1428;
+            --bg-ink-deep: #050d1c;
+            --line: rgba(10, 20, 40, 0.12);
+            --line-strong: rgba(10, 20, 40, 0.32);
+            --line-cyan: rgba(0, 200, 255, 0.4);
+            --ink: #0a1428;
+            --ink-soft: #2a3548;
+            --ink-muted: #6b7280;
+            --ink-dim: #9ca3af;
+            --cyan: #00d4ff;
+            --cyan-deep: #0099cc;
+            --cyan-bright: #5ce5ff;
+            --amber: #d97706;
+            --serif: 'Fraunces', 'Times New Roman', serif;
+            --sans: 'DM Sans', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg-paper);
+            color: var(--ink);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        /* 纸张纹理 */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: multiply;
+        }
+
+        ::selection { background: var(--cyan); color: var(--bg-ink-deep); }
+
+        /* ============================================
+           导航
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 22px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            background: rgba(244, 241, 234, 0.75);
+            border-bottom: 1px solid var(--line);
+            transition: padding 0.4s ease, background 0.4s;
+        }
+        .nav.scrolled {
+            padding: 14px 48px;
+            background: rgba(244, 241, 234, 0.92);
+        }
+
+        .nav__brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+        .nav__logo {
+            width: 36px; height: 36px;
+            border: 1.5px solid var(--ink);
+            display: grid;
+            place-items: center;
+            position: relative;
+            background: var(--bg-white);
+        }
+        .nav__logo::before {
+            content: '';
+            position: absolute;
+            width: 16px; height: 16px;
+            border: 1.5px solid var(--ink);
+            border-radius: 50%;
+            border-top-color: var(--cyan-deep);
+            border-right-color: var(--cyan-deep);
+            transform: rotate(-45deg);
+        }
+        .nav__name {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+        .nav__name em {
+            font-style: italic;
+            color: var(--cyan-deep);
+        }
+
+        .nav__links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+        .nav__links a {
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav__links a:hover { color: var(--cyan-deep); }
+        .nav__links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 0;
+            width: 0; height: 2px;
+            background: var(--cyan-deep);
+            transition: width 0.3s;
+        }
+        .nav__links a:hover::after { width: 100%; }
+
+        .nav__cta {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--bg-paper);
+            background: var(--ink);
+            padding: 12px 22px;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav__cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+            transition: left 0.6s;
+        }
+        .nav__cta:hover::before { left: 100%; }
+        .nav__cta:hover { background: var(--cyan-deep); }
+
+        /* ============================================
+           Hero
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 140px 48px 80px;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse 80% 60% at 80% 30%, rgba(0, 212, 255, 0.08), transparent 60%),
+                radial-gradient(ellipse 60% 50% at 10% 80%, rgba(217, 119, 6, 0.06), transparent 60%),
+                var(--bg-paper);
+        }
+
+        /* 装饰文档线 */
+        .hero__lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(180deg, transparent, transparent 39px, var(--line) 39px, var(--line) 40px);
+            opacity: 0.6;
+            mask-image: linear-gradient(180deg, transparent, black 20%, black 80%, transparent);
+            -webkit-mask-image: linear-gradient(180deg, transparent, black 20%, black 80%, transparent);
+        }
+
+        /* 扫描光带 */
+        .hero__scanline {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent,
+                var(--cyan) 20%,
+                var(--cyan-bright) 50%,
+                var(--cyan) 80%,
+                transparent);
+            box-shadow: 0 0 20px var(--cyan), 0 0 40px rgba(0, 212, 255, 0.5);
+            animation: scanY 6s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .hero__inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero__meta {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 32px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            color: var(--cyan-deep);
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.2s forwards;
+        }
+        .hero__meta-dot {
+            width: 8px; height: 8px;
+            background: var(--cyan-deep);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--cyan);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .hero__meta-line {
+            flex: 1;
+            max-width: 60px;
+            height: 1px;
+            background: var(--cyan-deep);
+        }
+
+        .hero__title {
+            font-family: var(--serif);
+            font-size: clamp(56px, 8vw, 124px);
+            font-weight: 300;
+            line-height: 0.98;
+            letter-spacing: -0.03em;
+            margin-bottom: 28px;
+            color: var(--ink);
+        }
+        .hero__title em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--cyan-deep);
+        }
+        .hero__title-strike {
+            position: relative;
+            display: inline-block;
+        }
+        .hero__title-strike::after {
+            content: '';
+            position: absolute;
+            bottom: 8%;
+            left: -4%;
+            width: 108%;
+            height: 14%;
+            background: var(--cyan);
+            opacity: 0.25;
+            z-index: -1;
+            transform: skewX(-8deg);
+        }
+
+        .hero__sub {
+            font-size: 19px;
+            line-height: 1.7;
+            color: var(--ink-soft);
+            max-width: 520px;
+            margin-bottom: 40px;
+            font-weight: 400;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.9s forwards;
+        }
+        .hero__sub strong {
+            color: var(--ink);
+            font-weight: 600;
+            background: linear-gradient(180deg, transparent 60%, rgba(0, 212, 255, 0.25) 60%);
+        }
+
+        .hero__actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            opacity: 0;
+            animation: fadeUp 0.8s 1.1s forwards;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 32px;
+            font-family: var(--mono);
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn--solid {
+            background: var(--ink);
+            color: var(--bg-paper);
+            border: 1.5px solid var(--ink);
+        }
+        .btn--solid:hover {
+            background: var(--cyan-deep);
+            border-color: var(--cyan-deep);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 153, 204, 0.3);
+        }
+        .btn--ghost {
+            color: var(--ink);
+            border: 1.5px solid var(--ink);
+            background: transparent;
+        }
+        .btn--ghost:hover {
+            background: var(--ink);
+            color: var(--bg-paper);
+        }
+
+        /* Hero stats */
+        .hero__stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 56px;
+            padding-top: 32px;
+            border-top: 1px solid var(--line);
+            opacity: 0;
+            animation: fadeUp 0.8s 1.3s forwards;
+        }
+        .hero__stat-num {
+            font-family: var(--serif);
+            font-size: 36px;
+            font-weight: 400;
+            color: var(--ink);
+            line-height: 1;
+        }
+        .hero__stat-num em {
+            font-style: italic;
+            color: var(--cyan-deep);
+        }
+        .hero__stat-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--ink-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        /* Hero phone */
+        .hero__phone {
+            position: relative;
+            display: grid;
+            place-items: center;
+            opacity: 0;
+            animation: fadeIn 1.2s 0.6s forwards;
+        }
+        .hero__phone-frame {
+            position: relative;
+            max-width: 360px;
+            width: 100%;
+        }
+        .hero__phone-frame img {
+            width: 100%;
+            display: block;
+            filter: drop-shadow(0 40px 80px rgba(10, 20, 40, 0.25));
+        }
+
+        /* 扫描框装饰 */
+        .hero__scan-frame {
+            position: absolute;
+            inset: -8%;
+            pointer-events: none;
+        }
+        .hero__scan-corner {
+            position: absolute;
+            width: 32px; height: 32px;
+            border: 2px solid var(--cyan-deep);
+        }
+        .hero__scan-corner--tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+        .hero__scan-corner--tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+        .hero__scan-corner--bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+        .hero__scan-corner--br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+        /* 浮动标签 */
+        .hero__tag {
+            position: absolute;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: var(--bg-white);
+            border: 1px solid var(--line-strong);
+            padding: 8px 14px;
+            color: var(--ink);
+            box-shadow: 0 8px 20px rgba(10, 20, 40, 0.08);
+            white-space: nowrap;
+        }
+        .hero__tag::before {
+            content: '';
+            position: absolute;
+            width: 6px; height: 6px;
+            background: var(--cyan-deep);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .hero__tag--1 {
+            top: 12%; left: -8%;
+            padding-left: 22px;
+            animation: float 4s ease-in-out infinite;
+        }
+        .hero__tag--1::before { left: 10px; }
+        .hero__tag--2 {
+            bottom: 18%; right: -10%;
+            padding-left: 22px;
+            animation: float 4s ease-in-out infinite 1.5s;
+        }
+        .hero__tag--2::before { left: 10px; background: var(--amber); }
+
+        /* 角标 */
+        .hero__corner {
+            position: absolute;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: var(--ink-dim);
+            text-transform: uppercase;
+        }
+        .hero__corner--tl { top: 120px; left: 48px; }
+        .hero__corner--br { bottom: 40px; right: 48px; }
+        .hero__corner span { color: var(--cyan-deep); font-weight: 500; }
+
+        /* ============================================
+           通用 section
+           ============================================ */
+        section { position: relative; }
+
+        .section {
+            padding: 140px 48px;
+            position: relative;
+        }
+        .section__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section__label {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.25em;
+            color: var(--cyan-deep);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            padding: 6px 14px;
+            border: 1px solid var(--line-cyan);
+            background: rgba(0, 212, 255, 0.04);
+        }
+        .section__label::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: var(--cyan-deep);
+            border-radius: 50%;
+        }
+
+        .section__title {
+            font-family: var(--serif);
+            font-size: clamp(40px, 5vw, 72px);
+            font-weight: 300;
+            line-height: 1.05;
+            letter-spacing: -0.025em;
+            margin-bottom: 24px;
+            color: var(--ink);
+        }
+        .section__title em {
+            font-style: italic;
+            color: var(--cyan-deep);
+        }
+        .section__lead {
+            font-size: 18px;
+            color: var(--ink-soft);
+            max-width: 620px;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           能力矩阵
+           ============================================ */
+        .capabilities {
+            background: var(--bg-paper);
+            border-top: 1px solid var(--line);
+        }
+
+        .capabilities__head {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: end;
+            margin-bottom: 80px;
+        }
+
+        .capabilities__grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0;
+            border: 1px solid var(--line);
+            background: var(--bg-white);
+        }
+
+        .cap {
+            padding: 40px 28px;
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            cursor: default;
+            overflow: hidden;
+        }
+        .cap:nth-child(6n) { border-right: none; }
+        .cap:nth-last-child(-n+6) { border-bottom: none; }
+        .cap:hover {
+            background: var(--ink);
+            color: var(--bg-paper);
+        }
+        .cap:hover .cap__num,
+        .cap:hover .cap__title { color: var(--cyan-bright); }
+        .cap:hover .cap__desc { color: rgba(244, 241, 234, 0.7); }
+        .cap:hover .cap__icon { color: var(--cyan); }
+        .cap:hover .cap__icon svg { stroke: var(--cyan); }
+
+        .cap__num {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--ink-dim);
+            letter-spacing: 0.2em;
+            margin-bottom: 20px;
+            transition: color 0.4s;
+        }
+        .cap__icon {
+            width: 40px; height: 40px;
+            margin-bottom: 24px;
+            color: var(--ink);
+            transition: color 0.4s;
+        }
+        .cap__icon svg {
+            width: 100%; height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+            transition: stroke 0.4s;
+        }
+        .cap__title {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: var(--ink);
+            transition: color 0.4s;
+            line-height: 1.2;
+        }
+        .cap__desc {
+            font-size: 13px;
+            color: var(--ink-muted);
+            line-height: 1.55;
+            font-weight: 400;
+            transition: color 0.4s;
+        }
+
+        /* ============================================
+           扫描演示区
+           ============================================ */
+        .demo {
+            background: var(--bg-ink);
+            color: var(--bg-paper);
+            position: relative;
+            overflow: hidden;
+        }
+        .demo::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 30% 50%, rgba(0, 212, 255, 0.15), transparent 60%),
+                radial-gradient(ellipse 40% 40% at 80% 30%, rgba(217, 119, 6, 0.08), transparent 60%);
+            pointer-events: none;
+        }
+
+        /* 文档网格背景 */
+        .demo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse at center, black, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 70%);
+            pointer-events: none;
+        }
+
+        .demo__inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .demo__label {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.25em;
+            color: var(--cyan);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            padding: 6px 14px;
+            border: 1px solid var(--line-cyan);
+            background: rgba(0, 212, 255, 0.06);
+        }
+        .demo__label::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: var(--cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--cyan);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .demo__title {
+            font-family: var(--serif);
+            font-size: clamp(40px, 5vw, 72px);
+            font-weight: 300;
+            line-height: 1.05;
+            letter-spacing: -0.025em;
+            margin-bottom: 24px;
+            color: var(--bg-paper);
+        }
+        .demo__title em {
+            font-style: italic;
+            color: var(--cyan-bright);
+        }
+        .demo__lead {
+            font-size: 17px;
+            color: rgba(244, 241, 234, 0.7);
+            max-width: 520px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .demo__steps {
+            list-style: none;
+            counter-reset: step;
+        }
+        .demo__steps li {
+            counter-increment: step;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .demo__steps li:last-child { border-bottom: none; }
+        .demo__steps li::before {
+            content: counter(step, decimal-leading-zero);
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--cyan);
+            letter-spacing: 0.15em;
+            min-width: 32px;
+            padding-top: 4px;
+            font-weight: 500;
+        }
+        .demo__steps strong {
+            display: block;
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--bg-paper);
+            margin-bottom: 4px;
+        }
+        .demo__steps span {
+            color: rgba(244, 241, 234, 0.6);
+            font-size: 14px;
+        }
+
+        /* 扫描演示视觉 */
+        .demo__visual {
+            position: relative;
+            display: grid;
+            place-items: center;
+            padding: 40px;
+        }
+        .demo__doc {
+            position: relative;
+            max-width: 100%;
+            background: var(--bg-white);
+            padding: 32px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4),
+                        0 0 0 1px rgba(0, 212, 255, 0.2),
+                        0 0 60px rgba(0, 212, 255, 0.15);
+            transform: rotate(-2deg);
+            transition: transform 0.6s;
+        }
+        .demo__doc:hover { transform: rotate(0deg) scale(1.02); }
+        .demo__doc img {
+            width: 100%;
+            display: block;
+        }
+        /* 扫描线 */
+        .demo__scanline {
+            position: absolute;
+            left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                transparent,
+                var(--cyan) 20%,
+                var(--cyan-bright) 50%,
+                var(--cyan) 80%,
+                transparent);
+            box-shadow: 0 0 20px var(--cyan), 0 0 40px var(--cyan);
+            top: 0;
+            animation: scanDoc 3s ease-in-out infinite;
+            z-index: 5;
+        }
+        /* 文档角标 */
+        .demo__doc-corner {
+            position: absolute;
+            width: 24px; height: 24px;
+            border: 2px solid var(--cyan);
+        }
+        .demo__doc-corner--tl { top: -6px; left: -6px; border-right: none; border-bottom: none; }
+        .demo__doc-corner--tr { top: -6px; right: -6px; border-left: none; border-bottom: none; }
+        .demo__doc-corner--bl { bottom: -6px; left: -6px; border-right: none; border-top: none; }
+        .demo__doc-corner--br { bottom: -6px; right: -6px; border-left: none; border-top: none; }
+
+        /* 识别文字浮层 */
+        .demo__ocr {
+            position: absolute;
+            top: 20px; right: -40px;
+            background: var(--bg-ink-deep);
+            border: 1px solid var(--cyan);
+            padding: 16px 20px;
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--cyan-bright);
+            line-height: 1.6;
+            max-width: 200px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            animation: float 4s ease-in-out infinite;
+        }
+        .demo__ocr::before {
+            content: 'OCR';
+            display: block;
+            font-size: 9px;
+            letter-spacing: 0.3em;
+            color: var(--cyan);
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+        }
+        .demo__ocr-line {
+            display: block;
+            opacity: 0;
+            animation: typeIn 0.3s forwards;
+        }
+        .demo__ocr-line:nth-child(2) { animation-delay: 0.5s; }
+        .demo__ocr-line:nth-child(3) { animation-delay: 0.8s; }
+        .demo__ocr-line:nth-child(4) { animation-delay: 1.1s; }
+
+        /* ============================================
+           特性详解
+           ============================================ */
+        .features {
+            background: var(--bg-cream);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+            padding: 100px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .feature-row:last-child { border-bottom: none; }
+        .feature-row--reverse .feature-row__content { order: 2; }
+        .feature-row--reverse .feature-row__visual { order: 1; }
+
+        .feature-row__num {
+            font-family: var(--serif);
+            font-size: 14px;
+            font-style: italic;
+            color: var(--cyan-deep);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+        .feature-row__title {
+            font-family: var(--serif);
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: var(--ink);
+        }
+        .feature-row__title em {
+            font-style: italic;
+            color: var(--cyan-deep);
+        }
+        .feature-row__desc {
+            font-size: 16px;
+            color: var(--ink-soft);
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+        .feature-row__list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .feature-row__list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--ink-soft);
+        }
+        .feature-row__list li::before {
+            content: '';
+            width: 18px; height: 18px;
+            border: 1.5px solid var(--cyan-deep);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .feature-row__list li::after {
+            content: '';
+            position: absolute;
+            left: 5px; top: 2px;
+            width: 5px; height: 9px;
+            border: solid var(--cyan-deep);
+            border-width: 0 1.5px 1.5px 0;
+            transform: rotate(45deg);
+        }
+
+        .feature-row__visual {
+            position: relative;
+            aspect-ratio: 4/3;
+            background: var(--bg-white);
+            border: 1px solid var(--line);
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(10, 20, 40, 0.08);
+        }
+        .feature-row__visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.06), transparent 70%);
+        }
+        .feature-row__visual img {
+            max-width: 70%;
+            max-height: 70%;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 视觉装饰元素 */
+        .feature-row__deco {
+            position: absolute;
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--ink-dim);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .feature-row__deco--tl { top: 16px; left: 16px; }
+        .feature-row__deco--br { bottom: 16px; right: 16px; }
+        .feature-row__deco span { color: var(--cyan-deep); }
+
+        /* ============================================
+           数据展示
+           ============================================ */
+        .metrics {
+            background: var(--bg-paper);
+            padding: 100px 48px;
+            border-bottom: 1px solid var(--line);
+        }
+        .metrics__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--line);
+        }
+        .metric {
+            padding: 48px 32px;
+            border-right: 1px solid var(--line);
+            background: var(--bg-white);
+            text-align: left;
+            position: relative;
+        }
+        .metric:last-child { border-right: none; }
+        .metric__num {
+            font-family: var(--serif);
+            font-size: 56px;
+            font-weight: 300;
+            line-height: 1;
+            color: var(--ink);
+            margin-bottom: 12px;
+            letter-spacing: -0.03em;
+        }
+        .metric__num em {
+            font-style: italic;
+            color: var(--cyan-deep);
+        }
+        .metric__num sup {
+            font-size: 24px;
+            color: var(--cyan-deep);
+            font-style: italic;
+            vertical-align: super;
+        }
+        .metric__label {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            color: var(--ink-muted);
+            text-transform: uppercase;
+        }
+
+        /* ============================================
+           CTA
+           ============================================ */
+        .cta {
+            background: var(--bg-ink);
+            color: var(--bg-paper);
+            padding: 160px 48px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent,
+                var(--cyan) 20%,
+                var(--cyan-bright) 50%,
+                var(--cyan) 80%,
+                transparent);
+            box-shadow: 0 0 20px var(--cyan);
+        }
+        .cta__glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 900px; height: 500px;
+            background: radial-gradient(ellipse, rgba(0, 212, 255, 0.18), transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+        }
+        .cta__inner { position: relative; z-index: 2; }
+        .cta__title {
+            font-family: var(--serif);
+            font-size: clamp(48px, 6vw, 88px);
+            font-weight: 300;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+        .cta__title em {
+            font-style: italic;
+            color: var(--cyan-bright);
+        }
+        .cta__sub {
+            font-size: 17px;
+            color: rgba(244, 241, 234, 0.7);
+            max-width: 540px;
+            margin: 0 auto 48px;
+        }
+        .cta__actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .cta .btn--solid {
+            background: var(--cyan);
+            color: var(--bg-ink-deep);
+            border-color: var(--cyan);
+        }
+        .cta .btn--solid:hover {
+            background: var(--cyan-bright);
+            border-color: var(--cyan-bright);
+        }
+        .cta .btn--ghost {
+            color: var(--bg-paper);
+            border-color: rgba(244, 241, 234, 0.4);
+        }
+        .cta .btn--ghost:hover {
+            background: var(--bg-paper);
+            color: var(--ink);
+            border-color: var(--bg-paper);
+        }
+
+        /* ============================================
+           Footer
+           ============================================ */
+        .footer {
+            background: var(--bg-ink-deep);
+            color: var(--bg-paper);
+            padding: 48px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .footer__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .footer__brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .footer__logo {
+            width: 36px; height: 36px;
+            border: 1.5px solid var(--bg-paper);
+            display: grid;
+            place-items: center;
+            position: relative;
+        }
+        .footer__logo::before {
+            content: '';
+            position: absolute;
+            width: 16px; height: 16px;
+            border: 1.5px solid var(--bg-paper);
+            border-radius: 50%;
+            border-top-color: var(--cyan);
+            border-right-color: var(--cyan);
+            transform: rotate(-45deg);
+        }
+        .footer__name {
+            font-family: var(--serif);
+            font-size: 20px;
+            color: var(--bg-paper);
+        }
+        .footer__name em {
+            font-style: italic;
+            color: var(--cyan);
+        }
+        .footer__copy {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: rgba(244, 241, 234, 0.5);
+            letter-spacing: 0.15em;
+        }
+        .footer__links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .footer__links a {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: rgba(244, 241, 234, 0.7);
+            text-decoration: none;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .footer__links a:hover { color: var(--cyan); }
+
+        /* 客服浮窗 */
+        .support {
+            position: fixed;
+            bottom: 32px; right: 32px;
+            z-index: 90;
+            width: 56px; height: 56px;
+            border: 1.5px solid var(--ink);
+            background: var(--bg-white);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            transition: all 0.4s;
+            box-shadow: 0 8px 20px rgba(10, 20, 40, 0.1);
+        }
+        .support:hover {
+            background: var(--ink);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(10, 20, 40, 0.25);
+        }
+        .support svg {
+            width: 22px; height: 22px;
+            stroke: var(--ink);
+            fill: none;
+            stroke-width: 1.5;
+            transition: stroke 0.3s;
+        }
+        .support:hover svg { stroke: var(--cyan); }
+        .support::after {
+            content: 'CONTACT';
+            position: absolute;
+            right: 70px;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: var(--ink);
+            background: var(--bg-white);
+            padding: 8px 14px;
+            border: 1px solid var(--line-strong);
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .support:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ============================================
+           动画
+           ============================================ */
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.6; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes scanY {
+            0%, 100% { top: 10%; opacity: 0.4; }
+            50% { top: 90%; opacity: 1; }
+        }
+        @keyframes scanDoc {
+            0%, 100% { top: 0%; }
+            50% { top: 100%; }
+        }
+        @keyframes typeIn {
+            to { opacity: 1; }
+        }
+
+        /* 滚动揭示 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+                        transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal[data-delay="1"] { transition-delay: 0.1s; }
+        .reveal[data-delay="2"] { transition-delay: 0.2s; }
+        .reveal[data-delay="3"] { transition-delay: 0.3s; }
+        .reveal[data-delay="4"] { transition-delay: 0.4s; }
+        .reveal[data-delay="5"] { transition-delay: 0.5s; }
+
+        /* ============================================
+           响应式
+           ============================================ */
+        @media (max-width: 1024px) {
+            .nav { padding: 18px 24px; }
+            .nav.scrolled { padding: 12px 24px; }
+            .nav__links { display: none; }
+            .hero { padding: 120px 24px 80px; }
+            .hero__inner { grid-template-columns: 1fr; gap: 60px; }
+            .hero__phone { order: -1; }
+            .hero__corner { display: none; }
+            .hero__stats { gap: 32px; flex-wrap: wrap; }
+            .section { padding: 100px 24px; }
+            .capabilities__head { grid-template-columns: 1fr; gap: 40px; }
+            .capabilities__grid { grid-template-columns: repeat(2, 1fr); }
+            .cap:nth-child(6n) { border-right: 1px solid var(--line); }
+            .cap:nth-child(2n) { border-right: none; }
+            .cap:nth-last-child(-n+6) { border-bottom: 1px solid var(--line); }
+            .cap:nth-last-child(-n+2) { border-bottom: none; }
+            .demo__inner { grid-template-columns: 1fr; gap: 60px; }
+            .demo__ocr { right: 0; }
+            .feature-row { grid-template-columns: 1fr; gap: 40px; padding: 60px 0; }
+            .feature-row--reverse .feature-row__content { order: 1; }
+            .feature-row--reverse .feature-row__visual { order: 2; }
+            .metrics__inner { grid-template-columns: repeat(2, 1fr); }
+            .metric { border-bottom: 1px solid var(--line); }
+            .metric:nth-child(2n) { border-right: none; }
+            .metric:nth-last-child(-n+2) { border-bottom: none; }
+            .cta { padding: 100px 24px 60px; }
+            .footer { padding: 32px 24px; }
+            .footer__inner { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 600px) {
+            .nav__cta { display: none; }
+            .capabilities__grid { grid-template-columns: 1fr; }
+            .cap { border-right: none !important; }
+            .cap:last-child { border-bottom: none; }
+            .metrics__inner { grid-template-columns: 1fr; }
+            .metric { border-right: none; border-bottom: 1px solid var(--line); }
+            .metric:last-child { border-bottom: none; }
+            .hero__actions, .cta__actions { flex-direction: column; align-items: stretch; }
+            .btn { justify-content: center; }
+            .hero__tag { display: none; }
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="slider_area">
-        <div class="single_slider  d-flex align-items-center slider_bg_1">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-5 col-md-4">
-                        <div class="phone_thumb wow fadeInDown" data-wow-duration="1.1s" data-wow-delay=".2s">
-                            <img src="img/ilstrator/phone.png" alt="">
-                        </div>
-                    </div>
+    <!-- 导航 -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav__brand">
+            <div class="nav__logo"></div>
+            <div class="nav__name">扫描<em>通</em></div>
+        </a>
+        <ul class="nav__links">
+            <li><a href="#capabilities">能力</a></li>
+            <li><a href="#demo">扫描</a></li>
+            <li><a href="#features">特性</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+        <a href="#contact" class="nav__cta">立即下载</a>
+    </nav>
 
-                    <div class="col-xl-7 col-md-8">
-                        <div class="slider_text ">
-                            <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s" >扫描通 <br>
-                                智能手机扫描仪</h3>
-                            <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">OCR文字识别&全能手机扫描仪</p>
-                        </div>
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero__lines"></div>
+        <div class="hero__scanline"></div>
+
+        <div class="hero__corner hero__corner--tl">N° <span>002</span> / SMART SCANNER</div>
+        <div class="hero__corner hero__corner--br">iOS · <span>OCR</span> · WIFI</div>
+
+        <div class="hero__inner">
+            <div class="hero__content">
+                <div class="hero__meta">
+                    <span class="hero__meta-dot"></span>
+                    <span>智能手机扫描仪</span>
+                    <span class="hero__meta-line"></span>
+                </div>
+                <h1 class="hero__title">
+                    让纸张<br><span class="hero__title-strike">变成</span> <em>文字</em>
+                </h1>
+                <p class="hero__sub">
+                    <strong>OCR 文字识别</strong>与<strong>全能手机扫描仪</strong>。集文件扫描、图片转文字、文字翻译、电子签名、生成报价单于一体——一部手机，就是一台专业扫描工作站。
+                </p>
+                <div class="hero__actions">
+                    <a href="#demo" class="btn btn--solid">查看演示 →</a>
+                    <a href="#capabilities" class="btn btn--ghost">能力矩阵</a>
+                </div>
+
+                <div class="hero__stats">
+                    <div>
+                        <div class="hero__stat-num"><em>6</em>合1</div>
+                        <div class="hero__stat-label">全能工具</div>
                     </div>
-                    
+                    <div>
+                        <div class="hero__stat-num"><em>99</em>%</div>
+                        <div class="hero__stat-label">OCR 识别率</div>
+                    </div>
+                    <div>
+                        <div class="hero__stat-num"><em>0</em>云</div>
+                        <div class="hero__stat-label">本地传输</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero__phone">
+                <div class="hero__scan-frame">
+                    <div class="hero__scan-corner hero__scan-corner--tl"></div>
+                    <div class="hero__scan-corner hero__scan-corner--tr"></div>
+                    <div class="hero__scan-corner hero__scan-corner--bl"></div>
+                    <div class="hero__scan-corner hero__scan-corner--br"></div>
+                </div>
+                <div class="hero__phone-frame">
+                    <img src="img/ilstrator/phone.png" alt="扫描通 App">
+                </div>
+                <div class="hero__tag hero__tag--1">智能边界识别</div>
+                <div class="hero__tag hero__tag--2">高清扫描件</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 能力矩阵 -->
+    <section class="section capabilities" id="capabilities">
+        <div class="section__inner">
+            <div class="capabilities__head">
+                <div class="reveal">
+                    <div class="section__label">能 · 力 · 矩 · 阵</div>
+                    <h2 class="section__title">一台手机，<br><em>六种能力</em></h2>
+                </div>
+                <p class="section__lead reveal" data-delay="1">
+                    扫描通将文件扫描、图片转文字、文字提取、文字翻译、电子签名、生成报价单集于一身。每一个功能都为专业场景打磨，让智能手机真正成为你的随身扫描工作站。
+                </p>
+            </div>
+
+            <div class="capabilities__grid reveal" data-delay="1">
+                <div class="cap">
+                    <div class="cap__num">01</div>
+                    <div class="cap__icon">
+                        <svg viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="22" rx="1"/><path d="M12 16 h16 M12 20 h16 M12 24 h10"/><circle cx="30" cy="26" r="3"/></svg>
+                    </div>
+                    <h3 class="cap__title">文件扫描</h3>
+                    <p class="cap__desc">智能边界识别，自动校正透视，生成高清扫描件。</p>
+                </div>
+                <div class="cap">
+                    <div class="cap__num">02</div>
+                    <div class="cap__icon">
+                        <svg viewBox="0 0 40 40"><path d="M8 30 L20 8 L32 30 Z"/><path d="M14 24 L26 24"/><circle cx="20" cy="20" r="2" fill="currentColor"/></svg>
+                    </div>
+                    <h3 class="cap__title">图片转文字</h3>
+                    <p class="cap__desc">OCR 高精度识别，支持中英文等多语种文字提取。</p>
+                </div>
+                <div class="cap">
+                    <div class="cap__num">03</div>
+                    <div class="cap__icon">
+                        <svg viewBox="0 0 40 40"><path d="M20 6 L24 14 L32 14 L26 20 L28 28 L20 24 L12 28 L14 20 L8 14 L16 14 Z"/></svg>
+                    </div>
+                    <h3 class="cap__title">文字提取</h3>
+                    <p class="cap__desc">从图片中精准提取文字，可编辑、可复制、可导出。</p>
+                </div>
+                <div class="cap">
+                    <div class="cap__num">04</div>
+                    <div class="cap__icon">
+                        <svg viewBox="0 0 40 40"><path d="M6 12 L18 12 M22 12 L34 12 M18 8 L18 16"/><path d="M34 28 L22 28 M18 28 L6 28 M22 24 L22 32"/><path d="M14 20 L26 20" stroke-dasharray="2 2"/></svg>
+                    </div>
+                    <h3 class="cap__title">文字翻译</h3>
+                    <p class="cap__desc">多语种互译，扫描即译，跨语言信息一手掌握。</p>
+                </div>
+                <div class="cap">
+                    <div class="cap__num">05</div>
+                    <div class="cap__icon">
+                        <svg viewBox="0 0 40 40"><path d="M8 28 L8 14 L32 14 L32 28 Z"/><path d="M8 28 L20 20 L32 28"/><path d="M24 22 L28 18" stroke-dasharray="2 2"/></svg>
+                    </div>
+                    <h3 class="cap__title">电子签名</h3>
+                    <p class="cap__desc">手写签名直接叠加至文档，协议签署便捷合规。</p>
+                </div>
+                <div class="cap">
+                    <div class="cap__num">06</div>
+                    <div class="cap__icon">
+                        <svg viewBox="0 0 40 40"><rect x="8" y="8" width="24" height="24" rx="1"/><path d="M14 16 L26 16 M14 20 L26 20 M14 24 L22 24"/><circle cx="28" cy="28" r="3"/></svg>
+                    </div>
+                    <h3 class="cap__title">生成报价单</h3>
+                    <p class="cap__desc">一键生成专业报价单，商务场景得心应手。</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="features_area ">
-        <div class="container">
-            <div class="features_main_wrap">
-                    <div class="row  align-items-center">
-                            <div class="col-xl-4 col-lg-4 col-md-4">
-                                <div class="features_info2">
-                                    <h3>证件数字化！</h3>
-                                    <p>扫描通是一款集文件扫描、图片转文字、文字提取、文字翻译、电子签名、生成报价单为一体的智能手机扫描仪。智能边界识别，生成高清扫描件，还能将扫描件进行编辑、文字提取，以及转成文件发送。集成的WIFI传输功能让你更方便的传输隐私数据。
-                                     </p>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 offset-xl-2 offset-lg-2 offset-md-1 col-md-6">
-                                <div class="about_draw wow fadeInUp" data-wow-duration=".7s" data-wow-delay=".5s">
-                                    <img src="img/ilstrator_img/wifi_transfer.png" alt="">
-                                </div>
-                            </div>
-                    </div>
+    <!-- 扫描演示 -->
+    <section class="section demo" id="demo">
+        <div class="demo__inner">
+            <div class="demo__content reveal">
+                <div class="demo__label">实 · 时 · 扫 · 描</div>
+                <h2 class="demo__title">证件<br><em>数字化</em></h2>
+                <p class="demo__lead">
+                    智能边界识别，自动校正透视与光照，生成堪比专业扫描仪的高清扫描件。还能将扫描件进行编辑、文字提取，以及转成文件发送。
+                </p>
+
+                <ul class="demo__steps">
+                    <li>
+                        <div>
+                            <strong>智能边界识别</strong>
+                            <span>AI 自动检测文档边缘，无需手动对齐。</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>高清扫描件生成</strong>
+                            <span>透视校正、增强锐化，输出专业级 PDF。</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>OCR 文字提取</strong>
+                            <span>扫描件一键转可编辑文字，识别率高达 99%。</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>多端互传发送</strong>
+                            <span>WiFi 直连电脑，或转文件分享至任意应用。</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="demo__visual reveal" data-delay="1">
+                <div class="demo__doc">
+                    <div class="demo__scanline"></div>
+                    <div class="demo__doc-corner demo__doc-corner--tl"></div>
+                    <div class="demo__doc-corner demo__doc-corner--tr"></div>
+                    <div class="demo__doc-corner demo__doc-corner--bl"></div>
+                    <div class="demo__doc-corner demo__doc-corner--br"></div>
+                    <img src="img/ilstrator_img/wifi_transfer.png" alt="扫描件演示">
+                </div>
+                <div class="demo__ocr">
+                    <span class="demo__ocr-line">▸ 文档已识别</span>
+                    <span class="demo__ocr-line">▸ 提取文字 1,284 字</span>
+                    <span class="demo__ocr-line">▸ 准确率 99.2%</span>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div style="position: fixed;bottom: 32px;right: 32px;width: 32px;height: 32px;">
-        <a href="mailto:zerozhou10086@gmail.com">
-            <img style="width: 100%; height: 100%;" src="./img/联系客服.png">
-        </a>
-    </div>
+    <!-- 特性详解 -->
+    <section class="section features" id="features">
+        <div class="section__inner">
 
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/wow.min.js"></script>
+            <div class="feature-row">
+                <div class="feature-row__content reveal">
+                    <div class="feature-row__num">— 01 / 03</div>
+                    <h3 class="feature-row__title">智能识别，<br><em>毫秒级响应</em></h3>
+                    <p class="feature-row__desc">
+                        基于设备端 AI 模型，文档边界识别、文字提取、语言翻译全部在本地完成。无需联网，无需上传，识别速度与隐私安全兼得。
+                    </p>
+                    <ul class="feature-row__list">
+                        <li>设备端 AI，离线可用</li>
+                        <li>中英日韩多语种识别</li>
+                        <li>表格、票据、证件全场景</li>
+                    </ul>
+                </div>
+                <div class="feature-row__visual reveal" data-delay="1">
+                    <div class="feature-row__deco feature-row__deco--tl">AI · <span>ON DEVICE</span></div>
+                    <div class="feature-row__deco feature-row__deco--br"><span>99.2%</span> · ACC</div>
+                    <img src="img/ilstrator/phone.png" alt="智能识别">
+                </div>
+            </div>
 
-    <script src="js/main.js"></script>
+            <div class="feature-row feature-row--reverse">
+                <div class="feature-row__content reveal">
+                    <div class="feature-row__num">— 02 / 03</div>
+                    <h3 class="feature-row__title">WiFi 互传，<br><em>隐私不出网</em></h3>
+                    <p class="feature-row__desc">
+                        集成 WiFi 传输功能，手机与电脑在同一局域网下点对点直连。文件不经过任何云端服务器，传输更快、更安全，更适合隐私敏感场景。
+                    </p>
+                    <ul class="feature-row__list">
+                        <li>零云端中转，全程本地</li>
+                        <li>大文件秒级送达</li>
+                        <li>双向自由传输</li>
+                    </ul>
+                </div>
+                <div class="feature-row__visual reveal" data-delay="1">
+                    <div class="feature-row__deco feature-row__deco--tl">WIFI · <span>P2P</span></div>
+                    <div class="feature-row__deco feature-row__deco--br"><span>0</span> · CLOUD</div>
+                    <img src="img/ilstrator_img/wifi_transfer.png" alt="WiFi 互传">
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-row__content reveal">
+                    <div class="feature-row__num">— 03 / 03</div>
+                    <h3 class="feature-row__title">编辑签名，<br><em>一站完成</em></h3>
+                    <p class="feature-row__desc">
+                        扫描之后直接编辑：批注、标注、电子签名、生成报价单。从纸质到数字、从草稿到交付，全部在一个应用内闭环完成。
+                    </p>
+                    <ul class="feature-row__list">
+                        <li>手写电子签名叠加</li>
+                        <li>一键生成专业报价单</li>
+                        <li>多格式导出与分享</li>
+                    </ul>
+                </div>
+                <div class="feature-row__visual reveal" data-delay="1">
+                    <div class="feature-row__deco feature-row__deco--tl">EDIT · <span>SIGN</span></div>
+                    <div class="feature-row__deco feature-row__deco--br"><span>PDF</span> · EXPORT</div>
+                    <img src="img/ilstrator/phone.png" alt="编辑签名">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 数据展示 -->
+    <section class="metrics">
+        <div class="metrics__inner">
+            <div class="metric reveal">
+                <div class="metric__num"><em>6</em><sup>合1</sup></div>
+                <div class="metric__label">全能工具集成</div>
+            </div>
+            <div class="metric reveal" data-delay="1">
+                <div class="metric__num"><em>99</em>%</div>
+                <div class="metric__label">OCR 识别准确率</div>
+            </div>
+            <div class="metric reveal" data-delay="2">
+                <div class="metric__num"><em>0</em>云</div>
+                <div class="metric__label">WiFi 本地互传</div>
+            </div>
+            <div class="metric reveal" data-delay="3">
+                <div class="metric__num"><em>∞</em></div>
+                <div class="metric__label">扫描次数无限制</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contact">
+        <div class="cta__glow"></div>
+        <div class="cta__inner">
+            <h2 class="cta__title reveal">把世界，<br><em>扫描成你想要的样子</em></h2>
+            <p class="cta__sub reveal" data-delay="1">在 App Store 搜索「扫描通」，开启你的智能扫描工作站。</p>
+            <div class="cta__actions reveal" data-delay="2">
+                <a href="mailto:zerozhou10086@gmail.com" class="btn btn--solid">获取扫描通 →</a>
+                <a href="mailto:zerozhou10086@gmail.com" class="btn btn--ghost">联系开发者</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <div class="footer__logo"></div>
+                <div class="footer__name">扫描<em>通</em></div>
+            </div>
+            <div class="footer__links">
+                <li><a href="#capabilities">能力</a></li>
+                <li><a href="#demo">扫描</a></li>
+                <li><a href="#features">特性</a></li>
+                <li><a href="mailto:zerozhou10086@gmail.com">联系</a></li>
+            </div>
+            <div class="footer__copy">© 2024 SCANLINK · ALL RIGHTS RESERVED</div>
+        </div>
+    </footer>
+
+    <!-- 客服浮窗 -->
+    <a href="mailto:zerozhou10086@gmail.com" class="support" aria-label="联系客服">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5 a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8 v.5z"/></svg>
+    </a>
+
+    <script>
+        // 导航滚动效果
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // 滚动揭示动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
 </body>
 
 </html>
