@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>公立医院纪检监察实务、行风整治与医德医风建设专题培训班</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page1 { background: linear-gradient(160deg, #0a1628 0%, #1a3a5c 50%, #2c5364 100%); color: #fff; }
+  .page2 { background: linear-gradient(160deg, #0f172a 0%, #1e293b 50%, #334155 100%); color: #fff; }
+  .page3 { background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #fff; }
+  .page4 { background: linear-gradient(160deg, #0f0c29 0%, #302b63 50%, #24243e 100%); color: #fff; }
+  .page5 { background: linear-gradient(160deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%); color: #fff; }
+  .page6 { background: linear-gradient(160deg, #0a1628 0%, #1a3a5c 50%, #2c5364 100%); color: #fff; }
+
+  .seal {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 72px;
+    height: 72px;
+    border: 3px solid rgba(255,215,0,0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: rgba(255,215,0,0.8);
+    transform: rotate(-15deg);
+    line-height: 1.3;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    background: rgba(255,215,0,0.05);
+  }
+
+  .badge {
+    background: linear-gradient(135deg, rgba(255,215,0,0.25), rgba(255,170,0,0.15));
+    border: 1px solid rgba(255,215,0,0.5);
+    border-radius: 24px;
+    padding: 7px 20px;
+    font-size: 13px;
+    margin-bottom: 18px;
+    backdrop-filter: blur(10px);
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #ffd700;
+  }
+  .main-title {
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1.35;
+    margin-bottom: 14px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #ffd700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .sub-title {
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+  .highlight-box {
+    background: rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin: 7px 0;
+    width: 100%;
+    max-width: 370px;
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s;
+  }
+  .highlight-box:active { transform: scale(0.98); }
+  .highlight-box h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: #ffd700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .highlight-box p, .highlight-box li {
+    font-size: 12px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    text-align: left;
+  }
+  .highlight-box ul {
+    padding-left: 16px;
+    margin: 0;
+  }
+  .highlight-box li {
+    margin-bottom: 4px;
+  }
+  .info-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .info-icon {
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(255,170,0,0.2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border: 1px solid rgba(255,215,0,0.4);
+  }
+  .price-tag {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24, #f39c12);
+    background-size: 200% 200%;
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin: 12px 0;
+    font-size: 22px;
+    font-weight: 800;
+    box-shadow: 0 8px 30px rgba(238,90,36,0.5);
+    animation: gradientShift 3s ease infinite;
+  }
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .price-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    margin-top: 8px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .contact-box {
+    background: rgba(255,255,255,0.1);
+    border-radius: 18px;
+    padding: 22px 20px;
+    margin-top: 16px;
+    width: 100%;
+    max-width: 370px;
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+  }
+  .contact-box h3 {
+    color: #ffd700;
+    margin-bottom: 14px;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .contact-item {
+    font-size: 14px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    line-height: 1.6;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #ffd700, #ffaa00, #ff8c00);
+    background-size: 200% 200%;
+    color: #1a1a2e;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 32px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(255,215,0,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    animation: gradientShift 2s ease infinite;
+  }
+  .btn-primary:active { transform: scale(0.96); box-shadow: 0 3px 15px rgba(255,215,0,0.4); }
+  .dot-nav {
+    position: fixed;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+  }
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .dot.active {
+    background: #ffd700;
+    transform: scale(1.4);
+    box-shadow: 0 0 10px rgba(255,215,0,0.6);
+  }
+  .scroll-container {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  .scroll-container .page {
+    scroll-snap-align: start;
+  }
+  .deco-line {
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+    border-radius: 2px;
+    margin: 14px auto;
+  }
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+    margin: 18px 0px 12px 0px;
+  }
+  .tag {
+    background: rgba(255,215,0,0.12);
+    border: 1px solid rgba(255,215,0,0.4);
+    color: #ffd700;
+    border-radius: 20px;
+    padding: 5px 16px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .module-card {
+    background: rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 6px 0;
+    width: 100%;
+    max-width: 370px;
+    text-align: left;
+    border-left: 3px solid #ffd700;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-right: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+  }
+  .module-card h4 {
+    font-size: 14px;
+    color: #ffd700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .module-card p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .organizer {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .file-no {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 22px;
+    letter-spacing: 0.5px;
+  }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 370px;
+    margin: 10px 0;
+  }
+  .feature-item {
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 14px 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+  }
+  .feature-icon {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+  .feature-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+  }
+  .cert-box {
+    background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,170,0,0.05));
+    border: 1px solid rgba(255,215,0,0.3);
+    border-radius: 14px;
+    padding: 16px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 370px;
+    text-align: left;
+  }
+  .cert-box h4 {
+    color: #ffd700;
+    font-size: 15px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cert-box p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+  }
+  .notice-box {
+    background: rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 8px 0;
+    width: 100%;
+    max-width: 370px;
+    text-align: left;
+    border-left: 3px solid #4ade80;
+  }
+  .notice-box h5 {
+    color: #4ade80;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .notice-box p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+  }
+  .floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  .shape1 { width: 200px; height: 200px; background: #ffd700; top: -50px; left: -50px; }
+  .shape2 { width: 150px; height: 150px; background: #fff; bottom: 50px; right: -30px; }
+  .section-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-container" id="scrollContainer1">
+
+  <div class="page page1">
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+    <div class="seal">专题<br>培训班</div>
+    <!-- <div class="organizer">华卫国培（北京）医院管理发展中心</div>
+    <div class="file-no">华卫培字[2026] 第31号</div> -->
+    <div class="badge">📢 官方专题培训班</div>
+    <div class="main-title">公立医院纪检监察实务<br>行风整治与医德医风建设</div>
+    <div class="deco-line"></div>
+    <div class="sub-title">纪检监督 · 行风整治 · 医德建设<br>三位一体闭环管理教学</div>
+    <div class="tag-row">
+      <span class="tag">清廉医院</span>
+      <span class="tag">九项准则</span>
+      <span class="tag">廉政风险</span>
+      <span class="tag">行风督查</span>
+    </div>
+    <div class="info-row"><div class="info-icon">📅</div><span>2026年8月21日—24日</span></div>
+    <div class="info-row"><div class="info-icon">📍</div><span>湖南 · 长沙</span></div>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-text">政策解读<br>实操落地</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📚</div>
+        <div class="feature-text">案例教学<br>现场答疑</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🏆</div>
+        <div class="feature-text">结业证书<br>官方认证</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">👥</div>
+        <div class="feature-text">5人以上<br>免1人费用</div>
+      </div>
+    </div>
+    <a class="btn-primary" href="#page2">立即了解详情 ↓</a>
+  </div>
+
+  <div class="page page2">
+    <div class="section-label">BACKGROUND</div>
+    <div class="badge">政策背景</div>
+    <div class="main-title" style="font-size:24px">为什么要参加？</div>
+    <div class="deco-line"></div>
+    <div class="highlight-box">
+      <h3>📌 政策要求</h3>
+      <p>扎实推进清廉医院建设，落实医疗卫生行业群众身边腐败和作风问题专项整治工作要求，全面提升医院合规管理能力。</p>
+    </div>
+    <div class="highlight-box">
+      <h3>⚠️ 共性痛点</h3>
+      <ul>
+        <li>廉政风险管控薄弱，重点环节排查不到位</li>
+        <li>科室行风松散，自查督查机制不健全</li>
+        <li>医德考评落地难，长效管理机制缺失</li>
+        <li>线索处置不规范，巡查整改闭环难打通</li>
+      </ul>
+    </div>
+    <div class="highlight-box">
+      <h3>💡 培训价值</h3>
+      <p>以"纪检监督为抓手、行风整治为载体、医德医风为底线"一体化教学，打通监督、行风、医德管理闭环，全面提升合规管理能力。</p>
+    </div>
+  </div>
+
+  <div class="page page3">
+    <div class="section-label">OBJECTIVES</div>
+    <div class="badge">培训目标</div>
+    <div class="main-title" style="font-size:24px">四大核心目标</div>
+    <div class="deco-line"></div>
+    <div class="highlight-box">
+      <h3>🔍 纪检监督实操</h3>
+      <p>掌握公立医院纪检监察线索处置、日常监督、巡查整改全流程实操方法，打通监督管理闭环。</p>
+    </div>
+    <div class="highlight-box">
+      <h3>📋 行风专项整治</h3>
+      <p>吃透医疗卫生行业行风专项整治最新政策、督查标准、整改落地方法，建立科室行风自查体系。</p>
+    </div>
+    <div class="highlight-box">
+      <h3>⚖️ 九项准则落地</h3>
+      <p>规范《廉洁从业九项准则》落地执行，完善医德考评、奖惩、长效管理机制，考评结果硬挂钩。</p>
+    </div>
+    <div class="highlight-box">
+      <h3>🛡️ 高频风险防控</h3>
+      <p>针对药品耗材采购、诊疗收费、医患沟通、院科管理等高频作风问题建立专项防控方案。</p>
+    </div>
+  </div>
+
+  <div class="page page4">
+    <div class="section-label">CURRICULUM</div>
+    <div class="badge">培训内容</div>
+    <div class="main-title" style="font-size:22px">三大模块 系统赋能</div>
+    <div class="deco-line"></div>
+    <div class="module-card">
+      <h4>📖 纪检监察监督实务</h4>
+      <p>清廉医院政策解读 · 纪检干部履职规范 · 重点领域风险排查 · 线索处置全流程 · 巡查整改闭环管理</p>
+    </div>
+    <div class="module-card">
+      <h4>🏥 行业行风专项整治</h4>
+      <p>作风整治方案解读 · 医疗乱象治理 · 行风办标准化运营 · 投诉痛点整改 · 迎检筹备指引 · 分级处置机制</p>
+    </div>
+    <div class="module-card">
+      <h4>❤️ 医德医风长效建设</h4>
+      <p>九项准则逐条解读 · 医德档案标准化 · 警示教育案例 · 科室一岗双责 · 医患沟通流程 · 常态化教育体系</p>
+    </div>
+  </div>
+
+  <div class="page page5">
+    <div class="section-label">AUDIENCE</div>
+    <div class="badge">参训对象</div>
+    <div class="main-title" style="font-size:24px">谁应该参加？</div>
+    <div class="deco-line"></div>
+    <div class="highlight-box" style="text-align:left">
+      <ul>
+        <li>医院党委、纪委书记、纪检干事、党务、监察工作人员</li>
+        <li>院领导、职能科室负责人、临床科室主任、护士长</li>
+        <li>医务科、行风办、质控、采购、药剂、设备、财务、基建等高风险岗位人员</li>
+        <li>全体临床医护、医技、行政后勤从业人员</li>
+      </ul>
+    </div>
+    <div class="price-tag">
+      线下培训费 2680元/人
+      <div class="price-note">含专家、场地、咨询、会议餐费、资料费</div>
+      <div class="price-note">单位5人以上免1人会议费 | 食宿统一安排，费用自理</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:12px 16px;margin-top:10px;font-size:13px;color:rgba(255,255,255,0.8);max-width:360px;width:100%;">
+      💻 线上报名：6500元/单位（视频直播，不限人数，含电子版课件）
+    </div>
+    <!-- <div class="cert-box">
+      <h4>🎓 结业证书</h4>
+      <p>培训结束后，核发华卫国培（北京）医院管理发展中心具章的结业证书，可作为学习经历证明。</p>
+    </div> -->
+  </div>
+
+  <div class="page page6">
+    <div class="section-label">CONTACT US</div>
+    <div class="badge">立即报名</div>
+    <div class="main-title" style="font-size:26px">名额有限 先到先得</div>
+    <div class="deco-line"></div>
+    <div class="contact-box">
+      <h3>📞 报名联系人</h3>
+      <div class="contact-item">👤 季红：13287795849</div>
+      <div class="contact-item">💬 微信同号（请标注单位、职称、姓名）</div>
+      <div class="contact-item">📧 13287795849@163.com</div>
+    </div>
+    <div class="contact-box" style="margin-top:12px">
+      <h3>👤 项目负责人</h3>
+      <div class="contact-item">孙主任：18600290067（微信同号）</div>
+    </div>
+    <!-- <div class="notice-box">
+      <h5>📝 报名须知</h5>
+      <p>请将《报名回执表》发送至会务组并同步办理转账；会务组收到回执后，将寄发报到通知及会议日程安排。</p>
+    </div> -->
+    <!--
+    <div class="highlight-box" style="margin-top:12px">
+      <p style="text-align:center;font-size:13px">💳 收款账户信息</p>
+      <p style="text-align:center;font-size:12px;color:rgba(255,255,255,0.65);margin-top:8px;line-height:1.8">
+        账户名称：华卫医联（济南）医院管理咨询有限公司<br>
+        开户行：兴业银行股份有限公司济南分行<br>
+        账号：376010100101799885
+      </p>
+      <p style="text-align:center;font-size:11px;color:rgba(255,255,255,0.5);margin-top:8px">
+        可转账、刷卡（含公务卡）、微信、现金支付<br>
+        发票项目：培训费、会务费
+      </p>
+    </div>
+    -->
+    <a class="btn-primary" href="tel:13287795849">📞 立即电话报名</a>
+    <!-- <div style="margin-top:20px;font-size:12px;color:rgba(255,255,255,0.45)">
+      华卫国培（北京）医院管理发展中心 · 2026年7月
+    </div> -->
+  </div>
+
+</div>
+
+<div class="dot-nav" id="dotNav1">
+  <div class="dot active" onclick="scrollToPage(0)"></div>
+  <div class="dot" onclick="scrollToPage(1)"></div>
+  <div class="dot" onclick="scrollToPage(2)"></div>
+  <div class="dot" onclick="scrollToPage(3)"></div>
+  <div class="dot" onclick="scrollToPage(4)"></div>
+  <div class="dot" onclick="scrollToPage(5)"></div>
+</div>
+
+<script>
+  function scrollToPage(index) {
+    const container = document.getElementById('scrollContainer1');
+    container.scrollTo({ top: index * window.innerHeight, behavior: 'smooth' });
+    updateDots(index);
+  }
+  function updateDots(idx) {
+    document.querySelectorAll('#dotNav1 .dot').forEach((d, i) => {
+      d.classList.toggle('active', i === idx);
+    });
+  }
+  const container1 = document.getElementById('scrollContainer1');
+  let scrollTimer = null;
+  container1.addEventListener('scroll', () => {
+    if (scrollTimer) clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      const idx = Math.round(container1.scrollTop / window.innerHeight);
+      updateDots(idx);
+    }, 80);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const idx = Array.from(target.parentNode.children).indexOf(target);
+        scrollToPage(idx);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
