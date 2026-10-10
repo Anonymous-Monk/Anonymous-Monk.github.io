@@ -1,0 +1,1495 @@
+<!doctype html>
+<html lang="zh-CN" data-page-node-id="f95kD5V8xpqphAvbSmRbSI">
+
+<head data-page-node-id="GWEvT59KfwSxrBdYh973cA">
+    <meta charset="utf-8" data-page-node-id="yIvoxddAYsP8Dylqx2DaCA">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" data-page-node-id="KSmdcyWeh8zKSDrb3483Xt">
+    <title>今日事 ITD — 待办清单 · 日程提醒 · 时间管理</title>
+    <meta name="description" content="今日事 ITD · 勿将今事待明天。待办清单、重复任务、日历农历、习惯打卡、番茄专注、统计复盘，本地存储无需注册，做您贴身的时间管理大师。" data-page-node-id="c2aSen9W7JgL3PrKjpv50l">
+    <meta name="keywords" content="今日事,ITD,待办清单,日程提醒,时间管理,习惯打卡,番茄钟,重复任务,农历黄历,GTD" data-page-node-id="v2gQFoWJDIF0PF7TeV15cE">
+    <meta name="viewport" content="width=device-width, initial-scale=1" data-page-node-id="Gvh3q3pUAKpigXxoraSxx9">
+    <meta property="og:title" content="今日事 ITD — 待办清单 · 日程提醒 · 时间管理" data-page-node-id="PVCKxOU0MGMjANrqVElD4C">
+    <meta property="og:description" content="勿将今事待明天。本地存储、无需注册、完全免费的时间管理助手。" data-page-node-id="DNpvFVI4jIDMymHJQGwzPD">
+    <meta property="og:type" content="website" data-page-node-id="l3gBewgezxNaW8vBbnNFvC">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232B64F6'/%3E%3Cpath d='M18 33l10 10 20-22' stroke='white' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" data-page-node-id="G5L6FXiOw3tn470az9nzCT">
+    <link rel="apple-touch-icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232B64F6'/%3E%3Cpath d='M18 33l10 10 20-22' stroke='white' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" data-page-node-id="D4zVohIwehzVXWDZNSx9qC">
+
+    <style>
+        /* ============================================
+           今日事 ITD · Design System
+           纸感暖白 + 墨色 + 品牌蓝 #2B64F6
+           字体全部走系统栈，零外部请求
+           ============================================ */
+        :root {
+            --paper: #FBFAF7;
+            --paper-2: #F4F2EC;
+            --surface: #FFFFFF;
+            --ink: #17181C;
+            --ink-2: #4A4E58;
+            --ink-3: #8A8F9A;
+            --line: rgba(23, 24, 28, 0.10);
+            --line-2: rgba(23, 24, 28, 0.06);
+
+            --brand: #2B64F6;
+            --brand-deep: #1B47C4;
+            --brand-soft: rgba(43, 100, 246, 0.10);
+            --amber: #FFAF27;
+            --mint: #54CE9F;
+            --rose: #EB7F97;
+            --violet: #486EFD;
+
+            --serif: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+            --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+                "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+            --r-card: 14px;
+            --r-sheet: 18px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+            overflow-x: hidden;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 纸张细微纹理 */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+            opacity: 0.035;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        ::selection { background: var(--brand); color: #fff; }
+
+        /* ============================================
+           导航
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 20px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: saturate(160%) blur(18px);
+            -webkit-backdrop-filter: saturate(160%) blur(18px);
+            background: rgba(251, 250, 247, 0.72);
+            border-bottom: 1px solid transparent;
+            transition: padding .4s ease, border-color .4s ease, background .4s ease;
+        }
+        .nav.scrolled {
+            padding: 12px 48px;
+            border-bottom-color: var(--line);
+            background: rgba(251, 250, 247, 0.9);
+        }
+
+        .nav__brand { display: flex; align-items: center; gap: 12px; }
+        .nav__logo {
+            width: 34px; height: 34px;
+            border-radius: 10px;
+            background: var(--brand);
+            display: grid; place-items: center;
+            box-shadow: 0 6px 16px rgba(43, 100, 246, .28);
+        }
+        .nav__logo svg { width: 20px; height: 20px; }
+        .nav__name {
+            font-family: var(--serif);
+            font-size: 21px;
+            font-weight: 600;
+            letter-spacing: .08em;
+        }
+        .nav__name span { color: var(--brand); font-family: var(--mono); font-size: 14px; letter-spacing: .16em; margin-left: 6px; }
+
+        .nav__links { display: flex; gap: 34px; list-style: none; }
+        .nav__links a {
+            color: var(--ink-2);
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: .04em;
+            font-weight: 500;
+            transition: color .3s;
+            position: relative;
+        }
+        .nav__links a:hover { color: var(--brand); }
+        .nav__links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 0;
+            width: 0; height: 1.5px;
+            background: var(--brand);
+            transition: width .3s;
+        }
+        .nav__links a:hover::after { width: 100%; }
+
+        .nav__cta {
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            background: var(--brand);
+            padding: 10px 22px;
+            border-radius: 999px;
+            text-decoration: none;
+            letter-spacing: .04em;
+            box-shadow: 0 6px 18px rgba(43, 100, 246, .26);
+            transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, background .3s;
+        }
+        .nav__cta:hover {
+            background: var(--brand-deep);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(43, 100, 246, .34);
+        }
+
+        /* ============================================
+           Hero
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 128px 48px 88px;
+            overflow: hidden;
+        }
+        .hero__glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(110px);
+            pointer-events: none;
+        }
+        .hero__glow--1 {
+            top: 8%; left: -8%;
+            width: 560px; height: 560px;
+            background: radial-gradient(circle, rgba(43, 100, 246, .18), transparent 68%);
+        }
+        .hero__glow--2 {
+            bottom: 4%; right: -6%;
+            width: 480px; height: 480px;
+            background: radial-gradient(circle, rgba(255, 175, 39, .20), transparent 68%);
+        }
+        .hero__grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--line-2) 1px, transparent 1px),
+                linear-gradient(90deg, var(--line-2) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: radial-gradient(ellipse at 30% 40%, black 20%, transparent 72%);
+            -webkit-mask-image: radial-gradient(ellipse at 30% 40%, black 20%, transparent 72%);
+        }
+
+        .hero__inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1320px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 72px;
+            align-items: center;
+        }
+
+        .hero__meta {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 26px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: .18em;
+            color: var(--brand);
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeUp .8s .15s forwards;
+        }
+        .hero__meta-line {
+            width: 52px; height: 1px;
+            background: linear-gradient(90deg, var(--brand), transparent);
+        }
+
+        .hero__title {
+            font-family: var(--serif);
+            font-size: clamp(56px, 7.6vw, 108px);
+            font-weight: 600;
+            line-height: 1.02;
+            letter-spacing: -.01em;
+            margin-bottom: 8px;
+        }
+        .hero__title em {
+            font-style: normal;
+            color: var(--brand);
+            display: block;
+            font-family: var(--mono);
+            font-size: clamp(20px, 2.4vw, 32px);
+            letter-spacing: .3em;
+            font-weight: 500;
+            margin-top: 14px;
+        }
+
+        .hero__slogan {
+            font-family: var(--serif);
+            font-size: clamp(19px, 2.1vw, 26px);
+            color: var(--ink-2);
+            letter-spacing: .06em;
+            margin: 22px 0 18px;
+            padding-left: 16px;
+            border-left: 3px solid var(--amber);
+            opacity: 0;
+            animation: fadeUp .8s .5s forwards;
+        }
+
+        .hero__sub {
+            font-size: 17px;
+            line-height: 1.75;
+            color: var(--ink-2);
+            max-width: 500px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeUp .8s .7s forwards;
+        }
+        .hero__sub strong { color: var(--ink); font-weight: 600; }
+
+        .hero__actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp .8s .9s forwards;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 30px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-decoration: none;
+            border-radius: 999px;
+            border: 1px solid var(--brand);
+            color: var(--brand);
+            background: var(--brand-soft);
+            transition: all .35s cubic-bezier(.2,.8,.2,1);
+        }
+        .btn:hover { background: var(--brand); color: #fff; transform: translateY(-2px); box-shadow: 0 12px 26px rgba(43,100,246,.24); }
+        .btn--solid { background: var(--brand); color: #fff; box-shadow: 0 8px 22px rgba(43,100,246,.24); }
+        .btn--solid:hover { background: var(--brand-deep); box-shadow: 0 14px 30px rgba(43,100,246,.32); }
+        .btn--ghost { border-color: var(--line); color: var(--ink-2); background: transparent; }
+        .btn--ghost:hover { border-color: var(--ink); color: var(--ink); background: transparent; box-shadow: none; }
+
+        .hero__badges {
+            display: flex;
+            gap: 22px;
+            margin-top: 34px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: var(--ink-3);
+            opacity: 0;
+            animation: fadeUp .8s 1.05s forwards;
+        }
+        .hero__badges span { display: inline-flex; align-items: center; gap: 7px; }
+        .hero__badges i {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--mint);
+            display: inline-block;
+        }
+
+        /* ---------- 手机样机（纯 CSS 还原 App 界面） ---------- */
+        .phone {
+            position: relative;
+            width: 320px;
+            max-width: 100%;
+            aspect-ratio: 9 / 19;
+            border-radius: 46px;
+            padding: 11px;
+            background: linear-gradient(160deg, #3A3D46, #15161A 60%);
+            box-shadow:
+                0 42px 80px rgba(23, 24, 28, .26),
+                0 0 0 1px rgba(23, 24, 28, .10),
+                inset 0 0 0 1px rgba(255, 255, 255, .08);
+            opacity: 0;
+            animation: fadeIn 1.1s .55s forwards;
+        }
+        .phone__notch {
+            position: absolute;
+            top: 20px; left: 50%;
+            transform: translateX(-50%);
+            width: 104px; height: 24px;
+            background: #15161A;
+            border-radius: 14px;
+            z-index: 4;
+        }
+        .phone__screen {
+            height: 100%;
+            border-radius: 37px;
+            background: #fff;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            font-size: 12px;
+        }
+
+        .ui-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 18px 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--ink);
+            flex: none;
+        }
+        .ui-status .dots { display: flex; gap: 4px; align-items: center; }
+        .ui-status .dots i { width: 3px; height: 8px; background: var(--ink); border-radius: 1px; display: block; }
+        .ui-status .dots i:nth-child(1) { height: 4px; }
+        .ui-status .dots i:nth-child(2) { height: 6px; }
+        .ui-status .dots i:nth-child(3) { height: 8px; }
+        .ui-status .dots i:nth-child(4) { height: 10px; background: var(--ink-3); }
+
+        .ui-appbar {
+            padding: 6px 18px 12px;
+            flex: none;
+        }
+        .ui-appbar h4 {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: .02em;
+        }
+        .ui-appbar p { color: var(--ink-3); font-size: 11px; margin-top: 3px; letter-spacing: .02em; }
+
+        .ui-body { flex: 1; overflow: hidden; padding: 0 14px 10px; }
+
+        .ui-section {
+            display: flex; justify-content: space-between; align-items: baseline;
+            margin: 6px 4px 10px;
+            font-size: 11px; color: var(--ink-3); letter-spacing: .06em;
+        }
+        .ui-section b { color: var(--ink); font-size: 12px; font-weight: 600; }
+
+        .ui-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 11px 12px;
+            background: var(--paper);
+            border: 1px solid var(--line-2);
+            border-radius: var(--r-card);
+            margin-bottom: 9px;
+        }
+        .ui-check {
+            width: 17px; height: 17px; flex: none;
+            border-radius: 50%;
+            border: 1.6px solid var(--ink-3);
+            margin-top: 1px;
+        }
+        .ui-check.done {
+            background: var(--brand);
+            border-color: var(--brand);
+            position: relative;
+        }
+        .ui-check.done::after {
+            content: '';
+            position: absolute;
+            left: 4.4px; top: 2px;
+            width: 5px; height: 8px;
+            border: solid #fff; border-width: 0 1.8px 1.8px 0;
+            transform: rotate(42deg);
+        }
+        .ui-card-main { flex: 1; min-width: 0; }
+        .ui-card-title { font-size: 12.5px; font-weight: 500; line-height: 1.4; }
+        .ui-card.done .ui-card-title { color: var(--ink-3); text-decoration: line-through; }
+        .ui-card-meta { display: flex; align-items: center; gap: 8px; margin-top: 5px; font-size: 10px; color: var(--ink-3); }
+        .ui-chip {
+            padding: 1.5px 7px; border-radius: 5px;
+            background: var(--brand-soft); color: var(--brand);
+            font-family: var(--mono); font-size: 9.5px; letter-spacing: .04em;
+        }
+        .ui-chip.repeat { background: rgba(84, 206, 159, .14); color: #2E9E75; }
+        .ui-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; margin-top: 4px; }
+        .ui-dot.p3 { background: var(--rose); }
+        .ui-dot.p2 { background: var(--amber); }
+        .ui-dot.p1 { background: var(--violet); }
+
+        .ui-fab {
+            position: absolute;
+            right: 24px; bottom: 26px;
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: var(--brand);
+            color: #fff;
+            display: grid; place-items: center;
+            font-size: 24px; font-weight: 300;
+            box-shadow: 0 10px 24px rgba(43, 100, 246, .40);
+            z-index: 3;
+        }
+        .ui-tabbar {
+            flex: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 8px 20px;
+            border-top: 1px solid var(--line-2);
+            font-size: 9.5px;
+            color: var(--ink-3);
+        }
+        .ui-tabbar div { text-align: center; }
+        .ui-tabbar div.on { color: var(--brand); font-weight: 600; }
+        .ui-tabbar i {
+            display: block; width: 18px; height: 18px; margin: 0 auto 3px;
+            border: 1.4px solid currentColor; border-radius: 5px;
+        }
+        .ui-tabbar div.on i { background: var(--brand-soft); }
+
+        /* 日历界面 */
+        .ui-cal-head {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 2px 4px 12px;
+        }
+        .ui-cal-head b { font-family: var(--serif); font-size: 17px; }
+        .ui-cal-head span { font-size: 10px; color: var(--ink-3); font-family: var(--mono); }
+        .ui-week, .ui-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+        .ui-week span { text-align: center; font-size: 9.5px; color: var(--ink-3); padding-bottom: 6px; }
+        .ui-day {
+            aspect-ratio: 1 / 1.15;
+            border-radius: 9px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            font-size: 11px; color: var(--ink-2);
+            position: relative;
+        }
+        .ui-day small { font-size: 7.5px; color: var(--ink-3); line-height: 1; margin-top: 1px; }
+        .ui-day.sel { background: var(--brand); color: #fff; }
+        .ui-day.sel small { color: rgba(255,255,255,.85); }
+        .ui-day.out { color: #C9CCD4; }
+        .ui-day .mk {
+            position: absolute; bottom: 4px;
+            width: 4px; height: 4px; border-radius: 50%;
+            background: var(--amber);
+        }
+        .ui-day.sel .mk { background: #fff; }
+        .ui-cal-card {
+            margin-top: 12px;
+            padding: 10px 12px;
+            background: var(--brand-soft);
+            border-radius: var(--r-card);
+            display: flex; align-items: center; gap: 9px;
+        }
+        .ui-cal-card b { font-size: 11.5px; font-weight: 600; }
+
+        /* 统计界面 */
+        .ui-stat-hero {
+            margin: 4px 0 14px;
+            padding: 16px;
+            border-radius: var(--r-sheet);
+            background: linear-gradient(135deg, var(--brand), var(--violet));
+            color: #fff;
+            display: flex; align-items: baseline; gap: 8px;
+        }
+        .ui-stat-hero b { font-family: var(--mono); font-size: 34px; font-weight: 500; letter-spacing: -.02em; }
+        .ui-stat-hero span { font-size: 11px; opacity: .88; }
+        .ui-bars { display: flex; align-items: flex-end; gap: 7px; height: 92px; margin: 4px 2px 8px; }
+        .ui-bars div {
+            flex: 1;
+            background: var(--brand-soft);
+            border-radius: 5px 5px 0 0;
+            position: relative;
+        }
+        .ui-bars div.hi { background: var(--brand); }
+        .ui-bars em {
+            position: absolute; bottom: -17px; left: 0; right: 0;
+            text-align: center; font-style: normal;
+            font-size: 8.5px; color: var(--ink-3);
+        }
+        .ui-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 26px; }
+        .ui-tile {
+            padding: 10px 8px;
+            background: var(--paper);
+            border: 1px solid var(--line-2);
+            border-radius: var(--r-card);
+            text-align: center;
+        }
+        .ui-tile b { display: block; font-family: var(--mono); font-size: 16px; color: var(--brand); }
+        .ui-tile span { font-size: 9px; color: var(--ink-3); }
+
+        .hero__scroll {
+            position: absolute;
+            bottom: 34px; left: 50%;
+            transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
+            font-family: var(--mono);
+            font-size: 9.5px; letter-spacing: .28em;
+            color: var(--ink-3); text-transform: uppercase;
+        }
+        .hero__scroll-line {
+            width: 1px; height: 38px;
+            background: var(--line);
+            position: relative; overflow: hidden;
+        }
+        .hero__scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -38px; left: 0;
+            width: 100%; height: 38px;
+            background: var(--brand);
+            animation: scrollDown 2s ease-in-out infinite;
+        }
+
+        /* ============================================
+           通用 section
+           ============================================ */
+        .section { padding: 132px 48px; position: relative; }
+        .section--tint { background: var(--paper-2); }
+        .section__inner { max-width: 1320px; margin: 0 auto; }
+
+        .section__label {
+            display: flex; align-items: center; gap: 14px;
+            font-family: var(--mono);
+            font-size: 11px; letter-spacing: .22em;
+            color: var(--brand); text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .section__label::before {
+            content: '';
+            width: 34px; height: 1.5px;
+            background: var(--brand);
+        }
+        .section__title {
+            font-family: var(--serif);
+            font-size: clamp(34px, 4.4vw, 60px);
+            font-weight: 600;
+            line-height: 1.14;
+            letter-spacing: -.01em;
+            margin-bottom: 22px;
+        }
+        .section__title em { font-style: normal; color: var(--brand); }
+        .section__lead {
+            font-size: 17px;
+            color: var(--ink-2);
+            max-width: 560px;
+            line-height: 1.75;
+        }
+
+        /* ============================================
+           特性网格
+           ============================================ */
+        .features__head {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: end;
+            margin-bottom: 72px;
+        }
+        .features__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .feature {
+            background: var(--surface);
+            border: 1px solid var(--line-2);
+            border-radius: var(--r-sheet);
+            padding: 36px 30px 32px;
+            position: relative;
+            transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s, border-color .45s;
+        }
+        .feature:hover {
+            transform: translateY(-6px);
+            border-color: rgba(43, 100, 246, .28);
+            box-shadow: 0 24px 48px rgba(23, 24, 28, .09);
+        }
+        .feature__num {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            color: var(--brand);
+            letter-spacing: .18em;
+            margin-bottom: 24px;
+        }
+        .feature__icon {
+            width: 46px; height: 46px;
+            border-radius: 13px;
+            background: var(--brand-soft);
+            display: grid; place-items: center;
+            margin-bottom: 22px;
+        }
+        .feature__icon svg { width: 24px; height: 24px; stroke: var(--brand); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+        .feature__title {
+            font-family: var(--serif);
+            font-size: 23px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .feature__desc { color: var(--ink-2); font-size: 14.5px; line-height: 1.72; }
+
+        /* ============================================
+           展示区（左右分栏）
+           ============================================ */
+        .showcase__inner {
+            display: grid;
+            grid-template-columns: 1fr 1.05fr;
+            gap: 84px;
+            align-items: center;
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+        .showcase__visual {
+            position: relative;
+            display: grid; place-items: center;
+            padding: 20px;
+        }
+        .showcase__visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(43, 100, 246, .10), transparent 62%);
+        }
+        .showcase__phone { position: relative; z-index: 2; }
+        .showcase__phone .phone { opacity: 1; animation: none; }
+
+        .points { list-style: none; margin-top: 36px; }
+        .points li {
+            display: flex; align-items: flex-start; gap: 18px;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .points li:last-child { border-bottom: none; }
+        .points-num {
+            font-family: var(--mono);
+            font-size: 11px; color: var(--brand);
+            letter-spacing: .14em;
+            min-width: 30px; padding-top: 3px;
+        }
+        .points-text strong {
+            display: block;
+            font-size: 17px; font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .points-text span { color: var(--ink-2); font-size: 14px; }
+
+        /* 反向（图左文右） */
+        .showcase--flip .showcase__inner { grid-template-columns: 1.05fr 1fr; }
+        .showcase--flip .showcase__visual { order: -1; }
+
+        /* ============================================
+           数据归属四卡
+           ============================================ */
+        .trust__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            margin-top: 68px;
+        }
+        .trust__card {
+            border: 1px solid var(--line);
+            border-radius: var(--r-sheet);
+            padding: 34px 26px;
+            background: var(--surface);
+            transition: all .45s cubic-bezier(.2,.8,.2,1);
+        }
+        .trust__card:hover {
+            border-color: rgba(43, 100, 246, .30);
+            transform: translateY(-6px);
+            box-shadow: 0 22px 44px rgba(23, 24, 28, .08);
+        }
+        .trust__card-num {
+            font-family: var(--serif);
+            font-size: 40px;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--brand);
+            line-height: 1;
+            margin-bottom: 20px;
+            opacity: .55;
+        }
+        .trust__card-title { font-family: var(--serif); font-size: 21px; font-weight: 600; margin-bottom: 10px; }
+        .trust__card-desc { font-size: 14px; color: var(--ink-2); line-height: 1.68; }
+
+        /* ============================================
+           传统历法
+           ============================================ */
+        .lunar__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 52px;
+        }
+        .lunar__item {
+            padding: 26px 22px;
+            border: 1px solid var(--line);
+            border-radius: var(--r-card);
+            background: var(--surface);
+            text-align: center;
+            transition: border-color .4s, transform .4s;
+        }
+        .lunar__item:hover { border-color: var(--amber); transform: translateY(-4px); }
+        .lunar__item b { font-family: var(--serif); font-size: 19px; font-weight: 600; display: block; margin-bottom: 6px; }
+        .lunar__item span { font-size: 12.5px; color: var(--ink-3); }
+        .lunar__note {
+            margin-top: 34px;
+            padding: 18px 22px;
+            border-left: 3px solid var(--amber);
+            background: rgba(255, 175, 39, .08);
+            border-radius: 0 var(--r-card) var(--r-card) 0;
+            font-size: 14px;
+            color: var(--ink-2);
+            max-width: 780px;
+        }
+
+        /* ============================================
+           引文
+           ============================================ */
+        .quote {
+            padding: 148px 48px;
+            text-align: center;
+            background: var(--paper-2);
+            border-top: 1px solid var(--line-2);
+            border-bottom: 1px solid var(--line-2);
+            position: relative;
+        }
+        .quote__mark {
+            font-family: var(--serif);
+            font-size: 108px;
+            line-height: 1;
+            color: var(--brand);
+            opacity: .18;
+            margin-bottom: -34px;
+        }
+        .quote__text {
+            font-family: var(--serif);
+            font-size: clamp(26px, 3.4vw, 46px);
+            font-weight: 600;
+            line-height: 1.45;
+            max-width: 880px;
+            margin: 0 auto 32px;
+        }
+        .quote__text em { color: var(--brand); font-style: normal; }
+        .quote__author {
+            font-family: var(--mono);
+            font-size: 11.5px;
+            letter-spacing: .22em;
+            color: var(--ink-3);
+            text-transform: uppercase;
+        }
+
+        /* ============================================
+           CTA + Footer
+           ============================================ */
+        .cta {
+            padding: 132px 48px 88px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta__glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 760px; height: 380px;
+            background: radial-gradient(ellipse, rgba(43, 100, 246, .14), transparent 70%);
+            filter: blur(70px);
+            pointer-events: none;
+        }
+        .cta__inner { position: relative; z-index: 2; }
+        .cta__title {
+            font-family: var(--serif);
+            font-size: clamp(38px, 5.2vw, 74px);
+            font-weight: 600;
+            line-height: 1.14;
+            margin-bottom: 22px;
+        }
+        .cta__title em { font-style: normal; color: var(--brand); }
+        .cta__sub {
+            font-size: 16.5px;
+            color: var(--ink-2);
+            max-width: 520px;
+            margin: 0 auto 42px;
+        }
+
+        .footer {
+            border-top: 1px solid var(--line);
+            padding: 40px 48px;
+            background: var(--paper);
+        }
+        .footer__inner {
+            max-width: 1320px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer__brand { display: flex; align-items: center; gap: 12px; }
+        .footer__name { font-family: var(--serif); font-size: 19px; font-weight: 600; letter-spacing: .08em; }
+        .footer__name span { color: var(--brand); font-family: var(--mono); font-size: 13px; margin-left: 5px; }
+        .footer__links { display: flex; gap: 26px; list-style: none; flex-wrap: wrap; }
+        .footer__links a {
+            font-size: 13px;
+            color: var(--ink-2);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .footer__links a:hover { color: var(--brand); }
+        .footer__copy { font-size: 12px; color: var(--ink-3); line-height: 1.7; }
+
+        /* 悬浮客服 */
+        .support {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            z-index: 90;
+            width: 54px; height: 54px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            display: grid; place-items: center;
+            text-decoration: none;
+            box-shadow: 0 12px 30px rgba(23, 24, 28, .12);
+            transition: all .35s cubic-bezier(.2,.8,.2,1);
+        }
+        .support:hover {
+            background: var(--brand);
+            border-color: var(--brand);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 34px rgba(43, 100, 246, .30);
+        }
+        .support svg { width: 22px; height: 22px; stroke: var(--brand); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s; }
+        .support:hover svg { stroke: #fff; }
+        .support::after {
+            content: '联系我们';
+            position: absolute;
+            right: 68px;
+            font-size: 11.5px;
+            color: var(--brand);
+            background: var(--surface);
+            padding: 6px 12px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            opacity: 0;
+            transform: translateX(8px);
+            transition: all .3s;
+            white-space: nowrap;
+        }
+        .support:hover::after { opacity: 1; transform: translateX(0); }
+
+        /* ============================================
+           动画
+           ============================================ */
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes scrollDown { 0% { top: -38px; } 100% { top: 38px; } }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(34px);
+            transition: opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);
+        }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+        .reveal[data-delay="1"] { transition-delay: .09s; }
+        .reveal[data-delay="2"] { transition-delay: .18s; }
+        .reveal[data-delay="3"] { transition-delay: .27s; }
+        .reveal[data-delay="4"] { transition-delay: .36s; }
+        .reveal[data-delay="5"] { transition-delay: .45s; }
+        .reveal[data-delay="6"] { transition-delay: .54s; }
+
+        /* ============================================
+           响应式
+           ============================================ */
+        @media (max-width: 1100px) {
+            .nav { padding: 16px 24px; }
+            .nav.scrolled { padding: 10px 24px; }
+            .nav__links { display: none; }
+            .hero { padding: 112px 24px 72px; }
+            .hero__inner { grid-template-columns: 1fr; gap: 56px; }
+            .hero__scroll { display: none; }
+            .section { padding: 96px 24px; }
+            .features__head { grid-template-columns: 1fr; gap: 32px; }
+            .features__grid { grid-template-columns: repeat(2, 1fr); }
+            .showcase__inner, .showcase--flip .showcase__inner { grid-template-columns: 1fr; gap: 56px; }
+            .showcase--flip .showcase__visual { order: 0; }
+            .trust__grid { grid-template-columns: repeat(2, 1fr); }
+            .lunar__grid { grid-template-columns: repeat(2, 1fr); }
+            .quote { padding: 104px 24px; }
+            .cta { padding: 100px 24px 64px; }
+            .footer { padding: 32px 24px; }
+            .footer__inner { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 620px) {
+            .nav__cta { display: none; }
+            .features__grid { grid-template-columns: 1fr; }
+            .trust__grid, .lunar__grid { grid-template-columns: 1fr; }
+            .hero__actions { flex-direction: column; align-items: stretch; }
+            .btn { justify-content: center; }
+            .phone { width: 280px; }
+        }
+    </style>
+</head>
+
+<body data-page-node-id="Nq6CL0BRuqGXdKhKOl72sX">
+
+    <!-- 导航 -->
+    <nav class="nav" id="nav" data-page-node-id="bKMmVonXRNoi45RXIZVAtZ">
+        <div class="nav__brand" data-page-node-id="BKb9yWlil754dJt0iMFnFO">
+            <div class="nav__logo" data-page-node-id="kd8DAutPpHLHoJoPKgVbEK">
+                <svg viewBox="0 0 24 24" fill="none" data-page-node-id="bayPGwoFpcWElVbLEwlI8y">
+                    <path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="FlbO2Uz7t4Y1aTgNEbjI1d"/>
+                </svg>
+            </div>
+            <div class="nav__name" data-page-node-id="6jR5DrudL9itL1gAZDXNFn">今日事<span data-page-node-id="sehwLZWrT2oNY9VdlWErvY">ITD</span></div>
+        </div>
+        <ul class="nav__links" data-page-node-id="g1v1OciiYR5ImuNQ54tNf6">
+            <li data-page-node-id="Ye10pu4QcF5ZPttjlDXDFS"><a href="#features" data-page-node-id="PUQ4JOAkSPwJIIYDIJsmz4">功能</a></li>
+            <li data-page-node-id="QMMSli1HOhJvmlDk8gplyf"><a href="#calendar" data-page-node-id="fYw6K0q8ostGsjpZzc28tM">日历</a></li>
+            <li data-page-node-id="DsZPb9yJ6CTEt1WXidLklq"><a href="#stats" data-page-node-id="NMKtVPw4IOwMVBRW87opoZ">统计</a></li>
+            <li data-page-node-id="4zrJZ7EgyyWgsleYEsfJV1"><a href="#privacy" data-page-node-id="LUHjv1Cd6XVsjWdOxc0Fru">隐私</a></li>
+            <li data-page-node-id="WkWq3eaW8vAZJ8lS2DGqUF"><a href="iTDPolicy.html" data-page-node-id="CSeB98ZtrKGXwxgv9NZHkw">隐私政策</a></li>
+        </ul>
+        <a href="#download" class="nav__cta" data-page-node-id="T6gTtoXBaTllHCNGEzIrru">免费下载</a>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" data-page-node-id="Vzefc213x8l6azJGAjXeiD">
+        <div class="hero__grid" data-page-node-id="EYeL9mLnrqKnxo6FWAYxCI"></div>
+        <div class="hero__glow hero__glow--1" data-page-node-id="2QLcCQSX3Sjc9l25wsgPuY"></div>
+        <div class="hero__glow hero__glow--2" data-page-node-id="39utXJyefHAXLIN3wrOKyf"></div>
+
+        <div class="hero__inner" data-page-node-id="hz6d7judPn4l3dBD4eum98">
+            <div class="hero__content" data-page-node-id="wz8UV7n9TQZg334ARBUO6x">
+                <div class="hero__meta" data-page-node-id="oYRhlHyh9diCOMtHpRgi5H">
+                    <span class="hero__meta-line" data-page-node-id="I3nBOqtR5FKl3RoYEgRRAv"></span>
+                    <span data-page-node-id="UpsSjGv4gaFf1GZ1cYtF9V">个人时间管理助手</span>
+                </div>
+                <h1 class="hero__title" data-page-node-id="1ptkOdMvDFAjVpWwVG761G">今日事<em data-page-node-id="Eno0Nym2oGstjPpY5dZbqa">ITD</em></h1>
+                <p class="hero__slogan" data-page-node-id="cvRLfTah36pvy1VQfj4ctc">勿将今事待明天</p>
+                <p class="hero__sub" data-page-node-id="lDsWnh5yYwwTLdf01Ozn5F">
+                    一份不打扰你的待办清单。记下要做的事，定好提醒，剩下的交给
+                    <strong data-page-node-id="da9NTy6zmb6PJNqeyOBLuh">重复任务</strong>与<strong data-page-node-id="E1LlSp8muilsG13unjJb5c">日历视图</strong>——
+                    让它在该出现的时候，安静地出现在你面前。
+                </p>
+                <div class="hero__actions" data-page-node-id="Ecg2WUZSzb7GnHBcnaboXz">
+                    <a href="#download" class="btn btn--solid" data-page-node-id="i8y3CaOVUhF3gECnT6VbXw">免费下载 →</a>
+                    <a href="#features" class="btn" data-page-node-id="ILU7kUEMYmlDgZHim477yD">看看功能</a>
+                </div>
+                <div class="hero__badges" data-page-node-id="TweRjjZeP6dIAqHTgchGHB">
+                    <span data-page-node-id="hw5l6TF5UIDDnWTHKHEzNI"><i data-page-node-id="kZYSOx6q9g6gi2zlnq3PGS"></i>无需注册</span>
+                    <span data-page-node-id="wKv7049u8OTHke0AJDuGTu"><i data-page-node-id="evrBI8GH4xuz6lV9Iz1SbN"></i>本地存储</span>
+                    <span data-page-node-id="rQBSKIqEpREtvqyo6HczCn"><i data-page-node-id="k4nrwT0J2XhBV5tEJpCjlO"></i>完全免费 · 无内购</span>
+                </div>
+            </div>
+
+            <div class="hero__phone" data-page-node-id="7AVyUTMxuBUtFNBIGJ5aUE">
+                <div class="phone" data-page-node-id="7C1eGdHRqMe6boC2EXHTLR">
+                    <div class="phone__notch" data-page-node-id="pQKZYSHAWMCkFs0ouSux0h"></div>
+                    <div class="phone__screen" data-page-node-id="n1RWAhSMYJm0M9hZ14mMeO">
+                        <div class="ui-status" data-page-node-id="VSgFGw4tRm4FC5Td3gusI6">
+                            <span data-page-node-id="BJpHuQ5B5LWE3WfeISqvh0">9:41</span>
+                            <span class="dots" data-page-node-id="NJbYK3ib33vs4q5uZc5CJg"><i data-page-node-id="uEyhtHFMUp2f48Yjg6Um8z"></i><i data-page-node-id="d8pI4YjsZO0R2fCthM2pp4"></i><i data-page-node-id="oqL8spIiOI1AKgg4Rcb5b5"></i><i data-page-node-id="ueMHV1ryLamuYfcnvrLZZR"></i></span>
+                        </div>
+                        <div class="ui-appbar" data-page-node-id="2TZiy6mJXHtl7Qce6Sujxn">
+                            <h4 data-page-node-id="IJVacr8SMmqtpGf99DsDVT">今日事</h4>
+                            <p data-page-node-id="2lXSQ3NH8hf15ggaudvvJI">10月9日 星期五 · 农历八月十九</p>
+                        </div>
+                        <div class="ui-body" data-page-node-id="CG7vssAoE5IYQKdM0JyCZG">
+                            <div class="ui-section" data-page-node-id="ta7ER579TbnMpidDX1fFN1"><b data-page-node-id="5z8YPdX24Ts8xKrVBWK5Gh">今天</b><span data-page-node-id="l0JncDZPAQGGynIjlofttA">3 项待办</span></div>
+
+                            <div class="ui-card" data-page-node-id="lFKBVK4H4CUZWL5Jx24d1Y">
+                                <div class="ui-check" data-page-node-id="EyDwEMBZpQQcdWPRmdqORS"></div>
+                                <div class="ui-card-main" data-page-node-id="xzAZQXS7qHMFX07x5DBb7E">
+                                    <div class="ui-card-title" data-page-node-id="qSzX50Pf1xn8sobm0AEvbA">整理季度复盘材料</div>
+                                    <div class="ui-card-meta" data-page-node-id="rFUH2B7K5NJlARpNZjQ2gq">
+                                        <span class="ui-chip" data-page-node-id="KOsJZ8P1THulWH3xEgBe8W">09:30</span>
+                                        <span data-page-node-id="CgmKjAr3ZIotU3XwK743OY">工作箱</span>
+                                    </div>
+                                </div>
+                                <div class="ui-dot p3" data-page-node-id="7CEYdoEDnH6WOGWS2ajgP2"></div>
+                            </div>
+
+                            <div class="ui-card" data-page-node-id="m5nCPjwmfjjHDv1P4KIwGB">
+                                <div class="ui-check" data-page-node-id="cQUGV88jtJUPz2DWAF3jq5"></div>
+                                <div class="ui-card-main" data-page-node-id="yTPpDkJjayVJHIpxAsdJPG">
+                                    <div class="ui-card-title" data-page-node-id="hmJnsAdoYMsfs2s8BjzZN4">给绿萝浇水</div>
+                                    <div class="ui-card-meta" data-page-node-id="vQyps5vbxYjGV0lNni8Y6i">
+                                        <span class="ui-chip" data-page-node-id="y433Dw050u7FeUVTSCTDx1">20:00</span>
+                                        <span class="ui-chip repeat" data-page-node-id="66gsBIhJZGBC2SIly6Oa0n">每 3 天</span>
+                                    </div>
+                                </div>
+                                <div class="ui-dot p1" data-page-node-id="vJHz6G9VjiJxcjXm8q5N5a"></div>
+                            </div>
+
+                            <div class="ui-card done" data-page-node-id="Xk1Figo2exVDa7Jf0mKCs1">
+                                <div class="ui-check done" data-page-node-id="cUzV4zfo0h22bDpuknO150"></div>
+                                <div class="ui-card-main" data-page-node-id="AuTzmtMo71A7HjqTEMkmuZ">
+                                    <div class="ui-card-title" data-page-node-id="iqksUzGncYNrRuLPnl5XAy">晨间阅读 30 分钟</div>
+                                    <div class="ui-card-meta" data-page-node-id="utTbfWz4oyZyidzww5Err8">
+                                        <span class="ui-chip repeat" data-page-node-id="MdcbYtB9Ka5XvFVehbCsiH">每天</span>
+                                        <span data-page-node-id="lrRuKTb4cFZzWBeO0s2C5C">已完成</span>
+                                    </div>
+                                </div>
+                                <div class="ui-dot p2" data-page-node-id="CDR7C1ErdLQB9qYZG2T2ER"></div>
+                            </div>
+                        </div>
+                        <div class="ui-fab" data-page-node-id="20YIbMXFVpBRsdW3BHL5jR">+</div>
+                        <div class="ui-tabbar" data-page-node-id="R6xOx4wUDaDPdLeYOYeUoC">
+                            <div class="on" data-page-node-id="E7bHcl8Kc20oC6zfh31Zxs"><i data-page-node-id="FPJR4kzeDMUDwIZH9yhyxI"></i>首页</div>
+                            <div data-page-node-id="TiIMvEbOi7py92sFrONFve"><i data-page-node-id="MlWx2GHBZFjv3BAN9Fv2ch"></i>日程</div>
+                            <div data-page-node-id="an12Bzqr7pK1Wj5kIgj1T9"><i data-page-node-id="vaEhHcmBNB4JYrKKbSA3wM"></i>分类</div>
+                            <div data-page-node-id="c2YYEn4v2K1rburMwSL6oJ"><i data-page-node-id="25Vph6CtwNQYr7HoXEOTYM"></i>统计</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero__scroll" data-page-node-id="F0RtfS2bHf4dR30P539JRP">
+            <span data-page-node-id="pFgfe5svwm3D7Lz3opMIuG">Scroll</span>
+            <div class="hero__scroll-line" data-page-node-id="TyKQNuiibC0HbxHCjvU7qB"></div>
+        </div>
+    </header>
+
+    <!-- 功能 -->
+    <section class="section" id="features" data-page-node-id="Bd9Alyy0fABZQieYbnBYn1">
+        <div class="section__inner" data-page-node-id="9yLO7pH7N33PghPLcyQi6n">
+            <div class="features__head" data-page-node-id="19zAnSZFPdslUTOB5kuQRw">
+                <div class="reveal" data-page-node-id="ygAKXCju4kHrdqkNT6pEIj">
+                    <div class="section__label" data-page-node-id="XC6zZzCiwFZKoeDP6EkV29">核 · 心 · 功 · 能</div>
+                    <h2 class="section__title" data-page-node-id="fgsVYQ9xTWYmoBKCEMcGW4">把该做的事，<em data-page-node-id="YoPLJUBfq5ODn2JhbtXdVE">交回给它自己</em></h2>
+                </div>
+                <p class="section__lead reveal" data-delay="1" data-page-node-id="3yFH4b2BWDoa08zrD4T2oN">
+                    从一句话记下待办，到按日、周、月、年自动重复；从日历上的农历节气，到每周完成率曲线。
+                    今日事不追求功能堆砌，只把每天真正用得上的那几件事做到顺手。
+                </p>
+            </div>
+
+            <div class="features__grid" data-page-node-id="L922jHZv2WQ2OCrY7gskx1">
+                <div class="feature reveal" data-delay="1" data-page-node-id="QkEStFppFiikZTWYRBxb69">
+                    <div class="feature__num" data-page-node-id="PY628GgzrAhgZOmjQANAfc">01 / 06</div>
+                    <div class="feature__icon" data-page-node-id="42jlHeAJkGhDTpEfSi7pqw">
+                        <svg viewBox="0 0 24 24" data-page-node-id="O2vD0ZQ78X4frvbQsKqGlq"><path d="M4 6h16M4 12h10M4 18h7" data-page-node-id="AFFeG6Zh3kNhjDcNL85An4"/><circle cx="19" cy="18" r="3" data-page-node-id="8wu1qHevI8rb3KtpbndFcP"/></svg>
+                    </div>
+                    <h3 class="feature__title" data-page-node-id="UHEtI06ECBd3r0zFssU05B">极速记录</h3>
+                    <p class="feature__desc" data-page-node-id="HqtSjxSudQqPfrwzjaWvib">
+                        一句话创建任务，四级优先级用颜色区分轻重缓急。支持设置提醒时间、归入不同任务箱，
+                        想到就能立刻记下，不打断你手头的事。
+                    </p>
+                </div>
+
+                <div class="feature reveal" data-delay="2" data-page-node-id="EFuCiu3H8QQYunB7FdPj1o">
+                    <div class="feature__num" data-page-node-id="GvAAaIxZPxwP0MdykN2f1D">02 / 06</div>
+                    <div class="feature__icon" data-page-node-id="GtueRd9KY6ptUzNOrBzwTc">
+                        <svg viewBox="0 0 24 24" data-page-node-id="An0t9kEqJ1jfU8DtrkIEB9"><path d="M20 12a8 8 0 1 1-2.34-5.66" data-page-node-id="7V5itdcA4PrGq0JMxsmaCB"/><path d="M20 4v4h-4" data-page-node-id="ybc3ocCg3Ab92CjhPlDj53"/></svg>
+                    </div>
+                    <h3 class="feature__title" data-page-node-id="psUR5JBIiKnaNldUhY3Ahw">重复任务</h3>
+                    <p class="feature__desc" data-page-node-id="72ZE1ORClk0OtOJzSfJVsl">
+                        每天、每周、每月、每年——设一次，之后自动按期生成下一期。
+                        完成当前期才会推进系列，跳过或补做都不会打乱你的节奏。
+                    </p>
+                </div>
+
+                <div class="feature reveal" data-delay="3" data-page-node-id="yvDmEB6i0Wm7XkNBUyOdWz">
+                    <div class="feature__num" data-page-node-id="vjwyHESrOvbYCBqwe1mcdn">03 / 06</div>
+                    <div class="feature__icon" data-page-node-id="AeNn8t2n4dBaD10eLg3vye">
+                        <svg viewBox="0 0 24 24" data-page-node-id="kOzMuIlau6zBgMeQpnG4kf"><rect x="3" y="5" width="18" height="16" rx="2" data-page-node-id="4l7Fv1VpGcAtdxbS0t3ejC"/><path d="M3 10h18M8 3v4M16 3v4" data-page-node-id="uVFKWfeSoty0LDuD4YDCHw"/></svg>
+                    </div>
+                    <h3 class="feature__title" data-page-node-id="h9DA6sTFmRnYt91mINFFSW">日历视图</h3>
+                    <p class="feature__desc" data-page-node-id="0u002GLrucX63VoVqbHa9l">
+                        月历直观铺开整月安排，哪天有任务一眼看清。内置农历、节气与节假日信息，
+                        逢年过节不再错过该做的事。
+                    </p>
+                </div>
+
+                <div class="feature reveal" data-delay="4" data-page-node-id="THQJhHHoxfdZOy76FXfUIa">
+                    <div class="feature__num" data-page-node-id="lkGazQVFZiUCJoqI5nJSpf">04 / 06</div>
+                    <div class="feature__icon" data-page-node-id="f62zQ9jrzsfbAPgxToF50Z">
+                        <svg viewBox="0 0 24 24" data-page-node-id="XudDQddLLTz4qeRkVUDXSQ"><path d="M12 3v18" data-page-node-id="s3KYcxpcGLCR4WHRs83n88"/><path d="M5 8l7-5 7 5" data-page-node-id="KHITwxXgoLsgN6h1VWooC4"/><circle cx="12" cy="12" r="9" data-page-node-id="QN4iSCKnK8p4ubC8EaDvHS"/></svg>
+                    </div>
+                    <h3 class="feature__title" data-page-node-id="tfpyRl6nEQ4RctF9RygvKZ">习惯打卡</h3>
+                    <p class="feature__desc" data-page-node-id="3RFNBPM3DVPiG0XQVNdHay">
+                        为想坚持的事建一个习惯，每天点一下就算数。连续天数与完成记录自动累计，
+                        让"我在坚持"变成看得见的痕迹。
+                    </p>
+                </div>
+
+                <div class="feature reveal" data-delay="5" data-page-node-id="KXZcJFFvFB2I2c5a60132C">
+                    <div class="feature__num" data-page-node-id="O6tVYU0Jjauow9FL9vyiK5">05 / 06</div>
+                    <div class="feature__icon" data-page-node-id="ygaVKwHP2Sqt3GHaNs8tXX">
+                        <svg viewBox="0 0 24 24" data-page-node-id="YbIS4GFACus2QUZbIc05l3"><circle cx="12" cy="13" r="8" data-page-node-id="uwFEz4PJhBqRr8aMqYmzBL"/><path d="M12 9v4l3 2M9 2h6" data-page-node-id="CcCTvyA9d1dqB3HHAWSRsl"/></svg>
+                    </div>
+                    <h3 class="feature__title" data-page-node-id="DH1yScwTpGDDYtDEjGV0bE">番茄专注</h3>
+                    <p class="feature__desc" data-page-node-id="6vUP80sJABysW6fcm0mOFA">
+                        25 分钟专注计时，配合白噪音般的安静界面，帮你把注意力收回当下这一件事。
+                        专注记录会留存下来，成为复盘的依据。
+                    </p>
+                </div>
+
+                <div class="feature reveal" data-delay="6" data-page-node-id="bFlpiQrUKzwDN3Xk0hEFL3">
+                    <div class="feature__num" data-page-node-id="6CntquFvkFLjmHOqmMRq34">06 / 06</div>
+                    <div class="feature__icon" data-page-node-id="sLKUZyrZFHu5HQEnyo8hZC">
+                        <svg viewBox="0 0 24 24" data-page-node-id="ndvSH9eFjkEYodsP1HYOUk"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" data-page-node-id="Niuy6yP9JRmku6FYxpt7n7"/></svg>
+                    </div>
+                    <h3 class="feature__title" data-page-node-id="ADD9wDLO8scjyaE0FEXuma">统计复盘</h3>
+                    <p class="feature__desc" data-page-node-id="6C0uU8ATGADATSAm2EhhLq">
+                        完成率、每日趋势、任务分布自动生成图表。哪天效率最高、哪类事总被拖延，
+                        数据会诚实告诉你。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 日历 -->
+    <section class="section section--tint showcase" id="calendar" data-page-node-id="giKgnS68Kk5wb6dFQsUsiu">
+        <div class="showcase__inner" data-page-node-id="UTGxkGQppbhorG7l38Cg4J">
+            <div class="reveal" data-page-node-id="YcAAMaIDCNVAQLAbowGIZb">
+                <div class="section__label" data-page-node-id="2ueWuurNaeDrAe80JTyYkU">日 · 历 · 视 · 图</div>
+                <h2 class="section__title" data-page-node-id="YCtvVnO1e9HgXUmf26Mszr">整月安排，<br data-page-node-id="vY60MxY5v6M1nXsEzwjEEl"><em data-page-node-id="tOpEHDJjHBFrRXHsLJHj4z">一屏看完</em></h2>
+                <p class="section__lead" style="margin-bottom: 8px;" data-page-node-id="8XrhbjI0wEGPqXYVJDtDxa">
+                    任务不再是一条条堆在列表里。切到日历，它们会回到该在的那一天——
+                    连同农历日期与节气，一起摊开在你眼前。
+                </p>
+
+                <ul class="points" data-page-node-id="ZlCy0ld76Vj16A52G6or8N">
+                    <li data-page-node-id="1OIqKp28OQ1CD6kGFx10HO">
+                        <span class="points-num" data-page-node-id="25HGTZRQuEdnq412x1GNd8">01</span>
+                        <div class="points-text" data-page-node-id="VXFMUs0CXjXRw1qvXIBgG7">
+                            <strong data-page-node-id="WrGUrh9fGL18isB0iz1fAy">月历总览</strong>
+                            <span data-page-node-id="egWtRFlVAp3ISHDqdftWev">整月任务按日期归位，有安排的日子带标记，空白的日子也一目了然。</span>
+                        </div>
+                    </li>
+                    <li data-page-node-id="YqEZ33zK1UHPzwX4vyWlkF">
+                        <span class="points-num" data-page-node-id="O9sPnQRtwA84zbfVxenbkR">02</span>
+                        <div class="points-text" data-page-node-id="kYTevMUeGGdCuv0ZjXzUkc">
+                            <strong data-page-node-id="Azm5vYXBHEHyzM8QcbDFTM">农历与节气</strong>
+                            <span data-page-node-id="CwzYuY9Bh7jXGUyEs6jQZo">日期下标注农历与节气，传统节日、生辰忌日不再需要另外查。</span>
+                        </div>
+                    </li>
+                    <li data-page-node-id="LFDNEdGHn6PMxOka7FK2zm">
+                        <span class="points-num" data-page-node-id="bmr6cFNHUbVZLClHKoHmlB">03</span>
+                        <div class="points-text" data-page-node-id="RbdJqtcF8nfAoaHk5UxRy0">
+                            <strong data-page-node-id="eSYa3uLHSQ2oQPwzVXS0R3">节假日校正</strong>
+                            <span data-page-node-id="Cd8ffrRJTVoMJ5he9RFKpz">自动识别法定节假日与调休，重复任务在特殊日期的安排更贴近实际。</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="showcase__visual reveal" data-delay="1" data-page-node-id="u9asx2SYEZzgjt0MyJsioO">
+                <div class="showcase__phone" data-page-node-id="zNo7M0WWXkFv5sIyCYwhgl">
+                    <div class="phone" data-page-node-id="GB9tuBBRZbnvMtIzmDKaXS">
+                        <div class="phone__notch" data-page-node-id="5Hug7XQS5GrViK619jezdf"></div>
+                        <div class="phone__screen" data-page-node-id="Px5QbHVRp8YPEEX3BITUCr">
+                            <div class="ui-status" data-page-node-id="jJ1up8W0BCc3wmaNUKPTGE">
+                                <span data-page-node-id="HAm4u7d92qwBmLaKhpdzD6">9:41</span>
+                                <span class="dots" data-page-node-id="PGGAGDtFt9rr8BHZ7TpsBg"><i data-page-node-id="auKnoaEaLrEBqKtfZygZSV"></i><i data-page-node-id="IUlRbbvHDcoZX4uiYAgyJs"></i><i data-page-node-id="usAh0dziK2AWEFL64JcWNV"></i><i data-page-node-id="oL9N5ffVDURjUErP51M0i0"></i></span>
+                            </div>
+                            <div class="ui-appbar" data-page-node-id="AIMoBnB0QTA7BZSA15g5ff">
+                                <h4 data-page-node-id="x4FXcglWirCczFdLOn84rW">日程</h4>
+                                <p data-page-node-id="n3l4hN0zamVRBpyEsj6NX4">点击日期查看当天任务</p>
+                            </div>
+                            <div class="ui-body" data-page-node-id="SVWZ89y29qSqTd1vKoIHpL">
+                                <div class="ui-cal-head" data-page-node-id="SJNaa3Cgoo2s3t7VB3V0St">
+                                    <b data-page-node-id="K8siUgbI1Nquf5AawLLYVd">2026 年 10 月</b>
+                                    <span data-page-node-id="BA1cZlaFBHhFQy6uyXT7lk">今天</span>
+                                </div>
+                                <div class="ui-week" data-page-node-id="NL4My8JE6Li8FIGhcjTnGC">
+                                    <span data-page-node-id="Tq7Phcm79rG310Ul027hgG">一</span><span data-page-node-id="N9MMQIdvFBmpqGeEySjECr">二</span><span data-page-node-id="Sl9Gz9siMuOq2ynks2lvhS">三</span><span data-page-node-id="dRdDvuu5dLxVqxGMo7ShVd">四</span>
+                                    <span data-page-node-id="09Rqh5aCot6PAPr3vFezho">五</span><span data-page-node-id="9cA2PMBG9RwAeg5RGp21Ir">六</span><span data-page-node-id="eIERhFYwCp6Hb3T1MQ6zAc">日</span>
+                                </div>
+                                <div class="ui-days" data-page-node-id="8BaTQwsHx0CjBN9whO78OO">
+                                    <div class="ui-day out" data-page-node-id="MtbIZa6PJzTl8ru3dPRHa5"><span data-page-node-id="C90YGyWi8v9OFDj83KPNjW">28</span><small data-page-node-id="cDSeb2eyP8baMbRe3qZQSQ">十七</small></div>
+                                    <div class="ui-day out" data-page-node-id="1JW52MUGe4hWf38CBRbgJF"><span data-page-node-id="K4kfUPM7xWUUGHB4axWJOm">29</span><small data-page-node-id="FirUFRki2kJCQzWvR3WpZ2">十八</small></div>
+                                    <div class="ui-day out" data-page-node-id="fgpNNUCamw7SVbH4CzySHT"><span data-page-node-id="7J3rWoNggAMLbLfsBHrn9d">30</span><small data-page-node-id="2mE5h7e5AgSh7RhzJmtHj4">十九</small></div>
+                                    <div class="ui-day" data-page-node-id="x51fsdSKs8BM4Wwtoz3tAM"><span data-page-node-id="aEzFIuvNtW8BQEQuEpSYik">1</span><small data-page-node-id="S7eR3LNtO7q9GVC35bxVJT">二十</small><i class="mk" data-page-node-id="pH76Fy2mbA813QDvNKOl3w"></i></div>
+                                    <div class="ui-day" data-page-node-id="sm44GycQZJC7TUkoTI9FIR"><span data-page-node-id="0sCoYtmeXS3mWifIiyzH6e">2</span><small data-page-node-id="XuH3LxKtrEFgsTn5tszYyC">廿一</small></div>
+                                    <div class="ui-day" data-page-node-id="Du2CCwz4xTS6BL1nqXSB54"><span data-page-node-id="5EycVfox87JDFwg9m2okjd">3</span><small data-page-node-id="80uraRvn6qDXZHJBBDYtwU">廿二</small><i class="mk" data-page-node-id="AYSEpJ1HIiLdrEFeFIBTQd"></i></div>
+                                    <div class="ui-day" data-page-node-id="q0t08Qj3Sjrqfd6wZPt3xr"><span data-page-node-id="Z2dLmSWyLc5CIZsbt2Vegh">4</span><small data-page-node-id="BchbCpV9DQywcoA0sDMn2D">廿三</small></div>
+                                    <div class="ui-day" data-page-node-id="GqreNlyIhcJR5XnhzsaBI7"><span data-page-node-id="R2v3mOYuf1yKCwn8Iz6csf">5</span><small data-page-node-id="p3lzRhUndcSQBTPCOfNAMB">廿四</small><i class="mk" data-page-node-id="guDp4jQnIuAGRp8ntLPvKD"></i></div>
+                                    <div class="ui-day" data-page-node-id="kaXlLl2HrerS1bA4NTuJjO"><span data-page-node-id="wmNz6k3NDtQ4XmsS0NF7Zs">6</span><small data-page-node-id="ib8AGst1teBMA6JhjJtHkd">廿五</small></div>
+                                    <div class="ui-day" data-page-node-id="SoMfYqrjEi7VG4YYbumz5P"><span data-page-node-id="zI4mnB9k2ZughkNTLapCCg">7</span><small data-page-node-id="IjEEWGtjCvpodyr5kw5OWd">廿六</small></div>
+                                    <div class="ui-day sel" data-page-node-id="vJukt57TXBHUEu0RKeTGS1"><span data-page-node-id="oDCy6SgGvnbsHldg10b6Fx">8</span><small data-page-node-id="0VP7pKhD1GGahK3bFnjjuF">寒露</small><i class="mk" data-page-node-id="0So9UF5nFtCCW3WXarsvZR"></i></div>
+                                    <div class="ui-day" data-page-node-id="YVnndIJJzVzj4FFCghVV83"><span data-page-node-id="uURHVAoiR5pTOA4cCfgXaB">9</span><small data-page-node-id="FSXxyGDGNkuGCyddz5vMul">廿八</small><i class="mk" data-page-node-id="RKJ0e6OlPESXNp7N2TFgi3"></i></div>
+                                    <div class="ui-day" data-page-node-id="JCaAjdiXTiqhf7FdCZRWer"><span data-page-node-id="OpIYHJ6ZcG916TXr5j9dPI">10</span><small data-page-node-id="ggdMbC2YR1d0BUZJfXDdlG">廿九</small></div>
+                                    <div class="ui-day" data-page-node-id="RZ2i5tOslDoIOhqPRdoauA"><span data-page-node-id="om6RCBjbWDLIbCbHMh0YOR">11</span><small data-page-node-id="y7pnTUCtnZdBkmtraimENC">三十</small><i class="mk" data-page-node-id="AuSgU6FIBXoHVs3ghorquP"></i></div>
+                                    <div class="ui-day" data-page-node-id="EQHHV2uu4SKidJDGKZaWTc"><span data-page-node-id="bEMGw92K9wknmr48LbKyL1">12</span><small data-page-node-id="UcHvz9EKpk9Fg93HggwuFp">九月</small></div>
+                                    <div class="ui-day" data-page-node-id="wQFa9asvSPpZ4eX45UlKkD"><span data-page-node-id="xY6xD5jAv4qSj0qOv1tW80">13</span><small data-page-node-id="ORDo4oRzIDDw65e3Z6AYFs">初二</small><i class="mk" data-page-node-id="OrwZv8oR55SJq3Ar6sy2Ha"></i></div>
+                                    <div class="ui-day" data-page-node-id="0SmLsoLNmDOQ3PwWrsxydn"><span data-page-node-id="IfM7xLEsnnkIUaCXyS7F78">14</span><small data-page-node-id="M51pFfWgDPIkpylgtkxGPx">初三</small></div>
+                                    <div class="ui-day" data-page-node-id="fsFFky9W9ar3mlIfY98H8t"><span data-page-node-id="JJOYS5hOGC1eui3DEOdTL6">15</span><small data-page-node-id="EEACIDje6DhzcsP55rh1EJ">初四</small><i class="mk" data-page-node-id="0Ws9hO4jSbsjw7ibSSxbCE"></i></div>
+                                    <div class="ui-day" data-page-node-id="nzpfdtODW0uhfOYTtSKTxU"><span data-page-node-id="qsPhC4WEdMHoAMJXWP95qo">16</span><small data-page-node-id="xt5EnfSx4dZ4fFoESA7WcE">初五</small></div>
+                                    <div class="ui-day" data-page-node-id="R55akr0aAER5MowgS3jnjI"><span data-page-node-id="by2tzsFDrlBX6bdSk42Ghc">17</span><small data-page-node-id="pibdXQGGTl2OR3szmLzzFD">初六</small></div>
+                                    <div class="ui-day" data-page-node-id="KPDn0AVWYJptFV4HbPV0zd"><span data-page-node-id="hJCOByi6QetNZ9CUEPCG1y">18</span><small data-page-node-id="ysBk7QmETmucSCP58jBgjb">初七</small><i class="mk" data-page-node-id="Sq5cWPKFJBBzldoXs8CwNn"></i></div>
+                                </div>
+                                <div class="ui-cal-card" data-page-node-id="b0jGIbj4qQay6mx5ShUbOj">
+                                    <div class="ui-dot p3" data-page-node-id="0EEV0lQassoS7eYyJaIbp6"></div>
+                                    <div data-page-node-id="VqERKFcGdfEdxwSqVXEXra">
+                                        <b data-page-node-id="KjQ3XMNP1Jz6sqkPpmp7AD">10 月 8 日 · 3 项任务</b>
+                                        <div style="font-size:10px;color:var(--ink-3);margin-top:2px;" data-page-node-id="oc7BRU4TG3AkXtmVBLcjRt">农历八月十八 · 寒露</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-tabbar" data-page-node-id="Xw6gHduqnvethSXmkKjNrT">
+                                <div data-page-node-id="2aVIxfFpAoAVBbBURVaWzh"><i data-page-node-id="csuhYFGOUVF6ww0etYHhdd"></i>首页</div>
+                                <div class="on" data-page-node-id="gvVoljlVsurP0WKxWnimpB"><i data-page-node-id="gkfLzcIm8x1m1QQWq4Ai7B"></i>日程</div>
+                                <div data-page-node-id="SuuH6A40UDjelwzA3mJI8M"><i data-page-node-id="PGJJkuSd5IpEu6fWzZFgkT"></i>分类</div>
+                                <div data-page-node-id="6x5pLHYx1bigyNNvQrrKBs"><i data-page-node-id="NTAEBsaupM4Y1mqW6DNuiW"></i>统计</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 统计 -->
+    <section class="section showcase showcase--flip" id="stats" data-page-node-id="Fcb9D68rUMcHbwk4ZPzJsw">
+        <div class="showcase__inner" data-page-node-id="USMpfSwlI0ok22Fp2PT8JR">
+            <div class="reveal" data-page-node-id="rH4CpuUyvJZrcUXEJZ454s">
+                <div class="section__label" data-page-node-id="2HDd8L1cdrc23t32VVo6cP">统 · 计 · 复 · 盘</div>
+                <h2 class="section__title" data-page-node-id="zNSBJbaDp2UK5pwMc9yzxN">坚持这件事，<br data-page-node-id="UwMHeYWgUDzfzV3rnpncoT"><em data-page-node-id="gY9U9ZM7MWsEOS5Xd8oPvV">值得被看见</em></h2>
+                <p class="section__lead" style="margin-bottom: 8px;" data-page-node-id="ITtEov3pyypsrviWAzflnb">
+                    待办工具最容易让人放弃的地方，是"做了也没感觉"。
+                    今日事把每天的完成、专注与打卡都记下来，攒成一张属于你的趋势图。
+                </p>
+
+                <ul class="points" data-page-node-id="mrbU1By3kUscIQ4ElZD8vd">
+                    <li data-page-node-id="ggdKrDyptfNFq0FGb9xu6m">
+                        <span class="points-num" data-page-node-id="PogFufa6g65c6CnQIReFQl">01</span>
+                        <div class="points-text" data-page-node-id="aJhN9tsVlwjRga9HF4XAwX">
+                            <strong data-page-node-id="O6cr6XOS8KEHGRebdd6PjV">完成率曲线</strong>
+                            <span data-page-node-id="3Ze8gcyAnMRhlyEHxTeh45">按日、周、月查看完成率与任务量，找出你的高效时段。</span>
+                        </div>
+                    </li>
+                    <li data-page-node-id="81QDoJrQBpbzzJAZC2oNhp">
+                        <span class="points-num" data-page-node-id="GB19DWmkbISnWbEx5yTG3C">02</span>
+                        <div class="points-text" data-page-node-id="6TD0Oijmvifsprh2niyxCC">
+                            <strong data-page-node-id="HLCD5WmAjrrb5gk4SaO1tf">专注时长统计</strong>
+                            <span data-page-node-id="CauF6svYSb3S9A2hOzunU0">番茄钟的每一次专注都计数，累计时长随时可查。</span>
+                        </div>
+                    </li>
+                    <li data-page-node-id="40C5RJlI7oxxelHVWLyLst">
+                        <span class="points-num" data-page-node-id="RjWlK17ZCBDHMfnTHACaRa">03</span>
+                        <div class="points-text" data-page-node-id="J95i2HpiSEKR3I4YG3SGfo">
+                            <strong data-page-node-id="OcDRO8zTkyQA4wQI7NK2Kb">任务箱分布</strong>
+                            <span data-page-node-id="RyWRmCGGl0YBkQoCTmpaX7">工作、生活、学习各占多少精力，一图看清时间去向。</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="showcase__visual reveal" data-delay="1" data-page-node-id="DAPO5vAGGujCmCmN5Nzbij">
+                <div class="showcase__phone" data-page-node-id="3yMBmPZMbVsptfa2XlCEtl">
+                    <div class="phone" data-page-node-id="SQSjyIViOkIQfY50LCinrh">
+                        <div class="phone__notch" data-page-node-id="kjWlwPR2KPKjnJhE1DHDbR"></div>
+                        <div class="phone__screen" data-page-node-id="K2STOGJh3be573kV5s3TuB">
+                            <div class="ui-status" data-page-node-id="PYMlj52uRRWF8AtXDoQoPV">
+                                <span data-page-node-id="Ohfu8Oq2pRzkLZuljNYZLT">9:41</span>
+                                <span class="dots" data-page-node-id="bxgMXggZ5eQwbv5FJsyyA8"><i data-page-node-id="jgQzifDrDWWgLOoPleC7WR"></i><i data-page-node-id="be2TLs18BjgQlTawADxj7D"></i><i data-page-node-id="Ia5WL7huI0GrG0VR629FJa"></i><i data-page-node-id="64P6T8VFrCh1dTYpeFnZf6"></i></span>
+                            </div>
+                            <div class="ui-appbar" data-page-node-id="ptdUN4xEFndigGll3au9gr">
+                                <h4 data-page-node-id="CN0SPytcqGuICFlAgqZEfh">统计</h4>
+                                <p data-page-node-id="k0rFpOxka0lH1CYhOliZNq">本周概览</p>
+                            </div>
+                            <div class="ui-body" data-page-node-id="RcReNrBDIJKqMJhqt8Fnbb">
+                                <div class="ui-stat-hero" data-page-node-id="pw5PhYG9erLvHUMwOyMtJD">
+                                    <b data-page-node-id="m3V2RSO6esU0cPH4ZmErKG">86</b><span data-page-node-id="AiByju7jnb7x9eqjmYzpGa">% 本周完成率</span>
+                                </div>
+                                <div class="ui-section" data-page-node-id="Ja5txAGnXVOB9j7wUeFd8T"><b data-page-node-id="sRKhJefq2IZUShcoHRZamy">近 7 天完成量</b><span data-page-node-id="TIGu8SdvHH18aE3CvQDrow">共 24 项</span></div>
+                                <div class="ui-bars" data-page-node-id="PImzMAR1T9MRr97baAarE7">
+                                    <div style="height:44%" data-page-node-id="ppVz3PkW0cRJfYOfyHz2bs"><em data-page-node-id="TGkpOqXbF1JgIyhkCHQhI2">一</em></div>
+                                    <div style="height:62%" data-page-node-id="SbHciE2YKucDwbY719dO26"><em data-page-node-id="b94ChvcjWb7FINav0YjO42">二</em></div>
+                                    <div style="height:38%" data-page-node-id="Xq3kXc6s1r1YBsjjG0rMXt"><em data-page-node-id="yP4N2LwIBpqDqJ1iA0yk0G">三</em></div>
+                                    <div style="height:78%" data-page-node-id="3aSHhYtcnH7J8o7ejmEH40"><em data-page-node-id="qopaEh7YBEK0rZkvzoj3Tx">四</em></div>
+                                    <div class="hi" style="height:96%" data-page-node-id="dmlD38S7G7cD2qUJtFCUBu"><em data-page-node-id="l6z0xUByCDm7LWFj9w0u0m">五</em></div>
+                                    <div style="height:56%" data-page-node-id="IP00iMUGzrchLBDwzTIwJi"><em data-page-node-id="BpdJHyVjq5p69YRkigHKxt">六</em></div>
+                                    <div style="height:30%" data-page-node-id="BNxOfF5oLUvRDG3sclTDRc"><em data-page-node-id="h3INGD6PFSA4EloaLKQitL">日</em></div>
+                                </div>
+                                <div class="ui-tiles" data-page-node-id="sG6KoRQH0VjU1ivupjN3QF">
+                                    <div class="ui-tile" data-page-node-id="6CcKq3hE7v3n45DJCwm2ZV"><b data-page-node-id="fO6jxTKcJ9nXUMgjaTahNQ">24</b><span data-page-node-id="I8K6uiRFq0pLCOjEOMXEK8">已完成</span></div>
+                                    <div class="ui-tile" data-page-node-id="v8DhUNfxlimPLXlFLW4CVC"><b data-page-node-id="7dRvk96vugsqIBDxmHMsXx">4</b><span data-page-node-id="XWeGyagvZPOZEQ3G0lUgzW">连续天数</span></div>
+                                    <div class="ui-tile" data-page-node-id="eSzJ5XyPOf2F9D5mKuuB8j"><b data-page-node-id="JqCDDGt1TB8zQHjTVUwVLS">6.5h</b><span data-page-node-id="ujGBg2l3SuGMpOmb8n62cy">专注时长</span></div>
+                                </div>
+                            </div>
+                            <div class="ui-tabbar" data-page-node-id="Bf4ozSnYE5nVhCm6J0lZ2B">
+                                <div data-page-node-id="IecmV1QHddean2e478EDpH"><i data-page-node-id="GfkQNB5QDk3YgG0kDn0gO2"></i>首页</div>
+                                <div data-page-node-id="Zz9sClQZbUIDwPzggYUvxj"><i data-page-node-id="Y4qzZh98QlOfhCESMQjp3G"></i>日程</div>
+                                <div data-page-node-id="B2WA3EBSGRXQXiv5QMtJ6M"><i data-page-node-id="mkMDx1twWyuB4GmDRDdGKR"></i>分类</div>
+                                <div class="on" data-page-node-id="Z9uNcyvlFkDpmvBdfDVBkN"><i data-page-node-id="AcdHqqwLHk4TwxnCS8MdeS"></i>统计</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据归属 -->
+    <section class="section section--tint" id="privacy" data-page-node-id="DBIoJDYe27alRSTIMrebgy">
+        <div class="section__inner" data-page-node-id="ECdp1OWTytsAwyPFGhT3UH">
+            <div class="reveal" style="max-width: 720px;" data-page-node-id="QbeoQrsQlsgPFkOg7TzTSf">
+                <div class="section__label" data-page-node-id="j7W1OXEikTfj2hGAyuPwXi">你 · 的 · 数 · 据</div>
+                <h2 class="section__title" data-page-node-id="BStXQebWOlAlyTMAvGWyhV">记在你手机里，<br data-page-node-id="U7BBC8HPT329znIHe3ZzV9"><em data-page-node-id="pH5XtcP54xxxa5h5KmPMfh">就只属于你</em></h2>
+                <p class="section__lead" data-page-node-id="h1qquuqWoHlv19QT5yfEtr">
+                    今日事没有账号，没有云端同步，也没有会员。你的待办、习惯与专注记录，
+                    都写在设备的本地数据库里——卸载即删除，谁也拿不走。
+                </p>
+            </div>
+
+            <div class="trust__grid" data-page-node-id="YQeZqEsGpjZDv7haTqYBGI">
+                <div class="trust__card reveal" data-delay="1" data-page-node-id="3oqLNzLALdnq3XJrHBynD3">
+                    <div class="trust__card-num" data-page-node-id="CTCc1k5UXdTsk2cB5wqqlp">i.</div>
+                    <h3 class="trust__card-title" data-page-node-id="MxH1ADV69A2j3kHmWt0v7l">无需注册</h3>
+                    <p class="trust__card-desc" data-page-node-id="JnL8mvA6XVFFm9Bm9wc3b6">打开就能用。不收集姓名、手机号、通讯录、相册、定位等任何个人身份信息。</p>
+                </div>
+                <div class="trust__card reveal" data-delay="2" data-page-node-id="bgPb7oBz4JeA9oG5KOkn6X">
+                    <div class="trust__card-num" data-page-node-id="QeLNCgk6mHVj5HoXG0YPyp">ii.</div>
+                    <h3 class="trust__card-title" data-page-node-id="S8eNpOPMtl2HpaW0WgvGnH">本地存储</h3>
+                    <p class="trust__card-desc" data-page-node-id="QuFJpYMPvDSCTi4kCaCnJG">任务数据保存在应用沙盒内的本地数据库，不会上传服务器，卸载应用即随之清除。</p>
+                </div>
+                <div class="trust__card reveal" data-delay="3" data-page-node-id="AjXWyb7vtjVzEGT7hYFCW1">
+                    <div class="trust__card-num" data-page-node-id="CBmHym2GSdFhk7x535kRgh">iii.</div>
+                    <h3 class="trust__card-title" data-page-node-id="uh453fzcbSf0gRCwEU3TKk">离线可用</h3>
+                    <p class="trust__card-desc" data-page-node-id="9DAF56xj8c55pAGrnajcun">断网也能记录、提醒与查看统计。联网仅用于展示广告与匿名使用统计。</p>
+                </div>
+                <div class="trust__card reveal" data-delay="4" data-page-node-id="9XsqL7wjFe5zmu6k1HbEnY">
+                    <div class="trust__card-num" data-page-node-id="iELl3QsKG7wA1SvjXUjFeu">iv.</div>
+                    <h3 class="trust__card-title" data-page-node-id="GQ6drvJhXluL8QVxzj9T1d">完全免费</h3>
+                    <p class="trust__card-desc" data-page-node-id="IO9FMjDc7wgdIeuI8bGpBi">全部功能免费开放，不含任何内购、会员等级、订阅或付费解锁内容。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 传统历法 -->
+    <section class="section" data-page-node-id="YqoRSmpO3S8CqTX2ScUHZr">
+        <div class="section__inner" data-page-node-id="h6IDkEt9B4EOgBZDLautiE">
+            <div class="reveal" style="max-width: 760px;" data-page-node-id="W3SRFN7FG0DP2HBa5tRMYB">
+                <div class="section__label" data-page-node-id="HgrNUCOTbp6IiklLVFFlhf">传 · 统 · 历 · 法</div>
+                <h2 class="section__title" data-page-node-id="bsacPnTbfH17Fd4Z2JWmCT">看得懂农历，<br data-page-node-id="wQizz9EaUBF4v1jlG0YCIw"><em data-page-node-id="i6siCknH8XpV6jNr8VyRtx">也算得了八字</em></h2>
+                <p class="section__lead" data-page-node-id="SWOHupVRHh3qxHG2HZnhvf">
+                    除了公历日程，今日事内置了一套传统历法工具。想在某天查黄历、排八字，
+                    或只是算一卦玩玩，都不用再装第二个 App。
+                </p>
+            </div>
+
+            <div class="lunar__grid" data-page-node-id="cp7Dh7ZTKWW30zjHU8rReP">
+                <div class="lunar__item reveal" data-delay="1" data-page-node-id="HImvaaTkF6hr0GME4z3F4Y">
+                    <b data-page-node-id="poFYR88zFD6RjlxTH2UkIT">八字</b>
+                    <span data-page-node-id="wjWE3eqiWcBw3EgfKShYYO">四柱排盘 · 本地推算</span>
+                </div>
+                <div class="lunar__item reveal" data-delay="2" data-page-node-id="TlE9fL7qRM4wga2MiBa9Se">
+                    <b data-page-node-id="oi1nNFXKTY2rd5fFn4u5WH">六爻</b>
+                    <span data-page-node-id="wjrbrwzUT6apYTIjrAjUQ3">纳甲装卦 · 六亲生克</span>
+                </div>
+                <div class="lunar__item reveal" data-delay="3" data-page-node-id="VY18kVOBmmlbuA2I1UyMqH">
+                    <b data-page-node-id="v7P7YBbLVIdh63UxdaKDAX">梅花易数</b>
+                    <span data-page-node-id="u5FZvdlyvzvScTvSEhcfjW">起卦断象 · 体用生克</span>
+                </div>
+                <div class="lunar__item reveal" data-delay="4" data-page-node-id="TfGkAkQTd8sd5AFpgj9kon">
+                    <b data-page-node-id="TDPxoXR6DmgGOppbtuFGSU">奇门遁甲</b>
+                    <span data-page-node-id="03yPaEdYxmSv7bfmmNCDtX">排盘布局 · 九宫八门</span>
+                </div>
+            </div>
+
+            <div class="lunar__note reveal" data-delay="5" data-page-node-id="jEt7VA5jYVm8JbIRIoex9c">
+                以上功能依据传统历法与术数规则在您的设备本地完成计算，
+                <strong data-page-node-id="h7fPPvWWHc39H0TYhN7syg">仅供文化研究与娱乐参考</strong>，
+                不构成医疗、法律、投资或任何其他专业建议，请勿作为重大决策的唯一依据。
+            </div>
+        </div>
+    </section>
+
+    <!-- 引文 -->
+    <section class="quote" data-page-node-id="bA4ur0ccp4aGe6wmBdZ0uH">
+        <div class="quote__mark" data-page-node-id="H1t5GXXwucr9CMXkz8ujbx">"</div>
+        <p class="quote__text reveal" data-page-node-id="SecUnrXFVzuXwfktVPMTFa">
+            明日复明日，明日何其多。<br data-page-node-id="6LiYrIpXmBN6AOqLxChlLq">今天该做的，就<em data-page-node-id="4ccZ3LTfnduWXFWMnFJgwE">今天做完</em>。
+        </p>
+        <div class="quote__author reveal" data-delay="1" data-page-node-id="uLxrr5jf3ls1YfRcP2R581">— 今日事 · 设计初衷</div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="download" data-page-node-id="q7mYPMPzqDPXr5kAzPwhqD">
+        <div class="cta__glow" data-page-node-id="HZu3rhg8SJj8yIACgne5gS"></div>
+        <div class="cta__inner" data-page-node-id="Uf3YO9MReLwNjDWN8Z530J">
+            <h2 class="cta__title reveal" data-page-node-id="KOLzmOR5O1f2WSUxpuEofQ">从今天起，<br data-page-node-id="ZkckuINw9DjVEmWHT7oTV1"><em data-page-node-id="9wTWyxXriPih1zJ6dBspnW">不再把事推给明天</em></h2>
+            <p class="cta__sub reveal" data-delay="1" data-page-node-id="jmmTsDtYVQDL8gx12BbmSj">
+                在 App Store 搜索「今日事」即可免费下载。无需注册，打开就能记下第一件事。
+            </p>
+            <div class="hero__actions reveal" data-delay="2" style="justify-content: center;" data-page-node-id="R4ZfE7V9qiKGN4OZHiM8QB">
+                <!-- TODO: 上架后替换为真实 App Store 链接 https://apps.apple.com/cn/app/idXXXXXXXXXX -->
+                <a href="https://apps.apple.com/cn/search?term=%E4%BB%8A%E6%97%A5%E4%BA%8B" class="btn btn--solid" target="_blank" rel="noopener" data-page-node-id="16F4bdydvNP9iYh73oeeun">前往 App Store →</a>
+                <a href="mailto:zerozhou10086@gmail.com" class="btn btn--ghost" data-page-node-id="vc1FOMhdgXEfK3G29Py5ay">联系开发者</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" data-page-node-id="P7wyOta8wKeoCxT8TPFoQR">
+        <div class="footer__inner" data-page-node-id="oKnfkhHaY7XsUTGvF0h4h8">
+            <div class="footer__brand" data-page-node-id="RdDol7uU7YDarIyijk4s7S">
+                <div class="nav__logo" data-page-node-id="zoCv21Y38ckuNNreYCQfHq">
+                    <svg viewBox="0 0 24 24" fill="none" data-page-node-id="3fLW8jplsKzk0z9JNUFqU5">
+                        <path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="BvSdYYOaUqFXEc5lU6FXqU"/>
+                    </svg>
+                </div>
+                <div class="footer__name" data-page-node-id="SPlRwVZSYeRq7tUnkTIkZr">今日事<span data-page-node-id="Fps1PusgPXCD2C45skAZBJ">ITD</span></div>
+            </div>
+            <div class="footer__links" data-page-node-id="Vxj5unSRnWB1MMSLXwnrOn">
+                <a href="#features" data-page-node-id="lhMMcUmcHtI5hVWVcUDVaN">功能</a>
+                <a href="#calendar" data-page-node-id="GvHqVGRLismw6kyGjRwFIl">日历</a>
+                <a href="#stats" data-page-node-id="hjHV2dXjQADwBRtlgWoNQD">统计</a>
+                <a href="iTDAgreement.html" data-page-node-id="QxNmCriO51tN9dM67kF46v">用户协议</a>
+                <a href="iTDPolicy.html" data-page-node-id="AYFr9seHwspWtTPttK2eKz">隐私政策</a>
+                <a href="mailto:zerozhou10086@gmail.com" data-page-node-id="BgKpiJFiBRFhh8NEfWygEa">联系我们</a>
+            </div>
+            <div class="footer__copy" data-page-node-id="BaxkIHM0wFiQFzrV9bJRDJ">
+                © 2026 今日事 ITD · 开发者：码小生<br data-page-node-id="EZ8HJQwlEFqVYYHk9UuFwO">
+                鲁ICP备2024083642号-3A
+            </div>
+        </div>
+    </footer>
+
+    <!-- 悬浮客服 -->
+    <a href="mailto:zerozhou10086@gmail.com" class="support" aria-label="联系我们" data-page-node-id="hYGjZQliXvtjGDdsvLzdMg">
+        <svg viewBox="0 0 24 24" data-page-node-id="9OEL3IR7adfzJdE6JxnIYP">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" data-page-node-id="X3NCfb1zi2frmH4BEy1QFD"/>
+        </svg>
+    </a>
+
+    <script>
+        // 导航滚动态
+        var nav = document.getElementById('nav');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 40) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        }, { passive: true });
+
+        // 滚动揭示
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.10, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+    </script>
+
+</body>
+
+</html>
