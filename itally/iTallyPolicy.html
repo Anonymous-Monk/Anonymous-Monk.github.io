@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="gMIyEQVNouxUn6uu0W7EIy">
+
+<head data-page-node-id="f1LdnsX6k06FQnTAL51zhF">
+    <meta charset="UTF-8" data-page-node-id="hex08oDtg0EE475adGpa6Y">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="TLN6YCzsl6iCraqoEiLGcA">
+    <title>隐私政策 — iTally</title>
+    <meta name="description" content="iTally 隐私政策全文：本地存储、无需注册、不收集任何数据、无统计与广告 SDK，以及设备权限说明与您的权利。" data-page-node-id="tmyRSCdsfs6HlYtugXYyyo">
+    <meta name="robots" content="index,follow" data-page-node-id="EKDaxZH6zumkHfmCBlNzDY">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233D5AFE'/%3E%3Cpath d='M15 43c9-5 13-20 32-26' stroke='white' stroke-width='5.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" data-page-node-id="P7SqoKlrjCFL2ExjDg2C2R">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+        body {
+            margin: 0; padding: 0;
+            background: #FBFAF7; color: #1A1B22;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+                "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            font-size: 15px; line-height: 1.9;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+
+        .topbar {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 16px; flex-wrap: wrap;
+            padding-bottom: 20px; margin-bottom: 32px;
+            border-bottom: 1px solid rgba(26,27,34,.10);
+        }
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .brand__mark {
+            width: 30px; height: 30px; border-radius: 9px;
+            background: #3D5AFE; display: grid; place-items: center; flex: none;
+        }
+        .brand__name { font-size: 17px; font-weight: 600; color: #1A1B22; letter-spacing: .03em; }
+        .brand__name em {
+            font-style: normal; font-family: ui-monospace, Menlo, monospace;
+            font-size: 12px; color: #3D5AFE; margin-left: 6px; letter-spacing: .14em;
+        }
+        .topbar nav { display: flex; gap: 18px; flex-wrap: wrap; }
+        .topbar nav a { font-size: 13px; color: #66697A; text-decoration: none; }
+        .topbar nav a:hover { color: #3D5AFE; }
+
+        h1 {
+            font-family: "Songti SC", "STSong", "Noto Serif SC", Georgia, serif;
+            font-size: 30px; font-weight: 600; letter-spacing: .02em;
+            margin: 0 0 10px;
+        }
+        .meta { font-size: 13px; color: #9A9DAC; margin: 0 0 4px; }
+        .intro {
+            margin: 24px 0 32px; padding: 18px 20px;
+            background: rgba(61,90,254,.06);
+            border-left: 3px solid #3D5AFE; border-radius: 0 12px 12px 0;
+            font-size: 14.5px; color: #66697A;
+        }
+        .toc {
+            margin: 0 0 36px; padding: 20px 24px;
+            background: #fff; border: 1px solid rgba(26,27,34,.08); border-radius: 14px;
+        }
+        .toc b {
+            display: block; font-size: 13px; color: #9A9DAC; margin-bottom: 10px;
+            font-family: ui-monospace, Menlo, monospace; letter-spacing: .16em;
+        }
+        .toc ol { margin: 0; padding-left: 20px; }
+        .toc li { margin: 4px 0; font-size: 14px; }
+        .toc a { color: #3D5AFE; text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+
+        h2 {
+            font-size: 18px; font-weight: 600;
+            margin: 44px 0 14px; padding-left: 12px;
+            border-left: 3px solid #3D5AFE;
+            scroll-margin-top: 24px;
+        }
+        h3 { font-size: 15.5px; font-weight: 600; margin: 24px 0 8px; }
+        p { margin: 0 0 14px; }
+        ul, ol { margin: 0 0 16px; padding-left: 22px; }
+        li { margin: 6px 0; }
+        strong { font-weight: 600; }
+
+        .note {
+            margin: 18px 0; padding: 16px 20px;
+            background: rgba(255,175,39,.10);
+            border-left: 3px solid #FFAF27; border-radius: 0 12px 12px 0;
+            font-size: 14px; color: #66697A;
+        }
+        .note strong { color: #1A1B22; }
+
+        .ok {
+            margin: 18px 0; padding: 16px 20px;
+            background: rgba(31,157,99,.09);
+            border-left: 3px solid #1F9D63; border-radius: 0 12px 12px 0;
+            font-size: 14px; color: #66697A;
+        }
+
+        table {
+            width: 100%; border-collapse: collapse; margin: 8px 0 20px; font-size: 14px;
+        }
+        th, td {
+            border: 1px solid rgba(26,27,34,.12); padding: 10px 12px;
+            text-align: left; vertical-align: top;
+        }
+        th { background: rgba(61,90,254,.06); font-weight: 600; width: 30%; }
+
+        .sign {
+            margin-top: 48px; padding-top: 24px;
+            border-top: 1px solid rgba(26,27,34,.10);
+            font-size: 13px; color: #9A9DAC; text-align: right; line-height: 1.9;
+        }
+        .foot {
+            margin-top: 20px; padding-top: 20px;
+            border-top: 1px solid rgba(26,27,34,.10);
+            font-size: 13px; color: #9A9DAC; text-align: center; line-height: 1.9;
+        }
+        .foot a { color: #66697A; text-decoration: none; }
+        .foot a:hover { color: #3D5AFE; }
+
+        @media (max-width: 600px) {
+            .wrap { padding: 28px 18px 60px; }
+            h1 { font-size: 25px; }
+            h2 { font-size: 16.5px; }
+            body { font-size: 14.5px; }
+            table { font-size: 13px; }
+            th, td { padding: 8px 9px; }
+        }
+    </style>
+</head>
+
+<body data-page-node-id="shaPpvo912KSvhR9lzOfsy">
+    <div class="wrap" data-page-node-id="vGi3DQ5wmOAsnEH8nGMXFh">
+        <div class="topbar" data-page-node-id="jga0bafSUMWqBcZaAji5fX">
+            <a class="brand" href="index.html" data-page-node-id="QeFemhb9dTYxGj0k7Deixa">
+                <span class="brand__mark" data-page-node-id="JugKyBKKpWmcV09IoKLSw8">
+                    <svg viewBox="0 0 24 24" fill="none" width="18" height="18" data-page-node-id="zpi3gSM7GGaEb3mTYmoQFs">
+                        <path d="M5 19c3.4-1.9 4.9-7.5 12-9.8" stroke="#fff" stroke-width="2.2"
+                            stroke-linecap="round" data-page-node-id="bqAK3KiEcc9VH74GE81RD1" />
+                    </svg>
+                </span>
+                <span class="brand__name" data-page-node-id="lsmgRpp5LanUamraYYPbnm">iTally<em data-page-node-id="UQ63GW1dlGF3o4zGtzH6U9">ITALLY</em></span>
+            </a>
+            <nav data-page-node-id="m8uQeoLeqnMzdjDheZ694D">
+                <a href="index.html" data-page-node-id="Vp7DlfylcPVaY3EcpWBsSe">产品首页</a>
+                <a href="iTallyAgreement.html" data-page-node-id="zcr1UfRBb24wZjoDq7M4Mn">用户协议</a>
+                <a href="iTallyPolicy.html" data-page-node-id="abKKTwtfJbs4PvcDCyw16c">隐私政策</a>
+                <!-- <a href="iTallyLicenses.html" data-page-node-id="ZOUaa7Zlb3aHs41NT88Fx6">开源许可</a> -->
+            </nav>
+        </div>
+
+        <h1 data-page-node-id="NKw142hFc1Jke6EU32I4O9">iTally 隐私政策</h1>
+        <p class="meta" data-page-node-id="DaYMTWCwOM2m3s0t6ADSFd">更新日期：2026 年 10 月 23 日　|　生效日期：2026 年 10 月 23 日</p>
+
+        <p class="intro" data-page-node-id="OrMQFDSAwzMWTL4bPYaei3">
+            「iTally」（以下简称"本应用"）是一款本地化的手写笔记与日程工具。
+            我们非常重视您的隐私保护。<strong data-page-node-id="dHfcxCFnDssK0HcTEV0mX2">本应用不要求注册账号，不收集您的身份信息，
+            您的笔记内容仅保存在您的设备本地，不会上传到任何服务器</strong>。
+            请您在使用前阅读本政策，了解我们如何处理与保护您的信息。
+        </p>
+
+        <div class="toc" data-page-node-id="SJYnptrb1irgEhXfg3Kvmo">
+            <b data-page-node-id="ALTch2xGVPTHAFydps513q">目录</b>
+            <ol data-page-node-id="Q1aw075BZ0QJmjl87e1TTh">
+                <li data-page-node-id="AjPUASt7WkohOsjYHMLXnX"><a href="#p1" data-page-node-id="kEncvN8HWKopsBCHK9eZjS">一、我们收集哪些信息</a></li>
+                <li data-page-node-id="vwLKYeGNFasG5X2aIwFvcB"><a href="#p2" data-page-node-id="o4LDXrURUmDCWqD7KSdKbr">二、我们不收集哪些信息</a></li>
+                <li data-page-node-id="uBoeDlpMadHgAzdsgaLSb9"><a href="#p3" data-page-node-id="u6YTzzvHx6EipVgW71ieTh">三、第三方 SDK 与数据共享</a></li>
+                <li data-page-node-id="3LGRxIdAC7lvHzTD7bYvEs"><a href="#p4" data-page-node-id="LNDB3r9Pz75eDew6XpUpO0">四、设备权限说明</a></li>
+                <li data-page-node-id="1VervnLCRxyYTDEDBiOFpk"><a href="#p5" data-page-node-id="sslj7mdc5zsG4AqZvOeT8M">五、信息的存储与安全</a></li>
+                <li data-page-node-id="tezUIwhdIZXSwxiIVL9OQa"><a href="#p6" data-page-node-id="SayFd3emnf9dIACCCArj66">六、您的权利</a></li>
+                <li data-page-node-id="SWJuAqx8Ch7MmxbtjcLUJZ"><a href="#p7" data-page-node-id="FvxwhpQUlllWxd6pbJbMZX">七、未成年人保护</a></li>
+                <li data-page-node-id="IAb3gWkRIasKC3WFWp8pCn"><a href="#p8" data-page-node-id="VkvyIKfGLYYkj2ZtKSJalG">八、本政策的更新</a></li>
+                <li data-page-node-id="GRuatOtrwowt3Ve1XVQzPw"><a href="#p9" data-page-node-id="XFmmQdpkPAXZnDE7fb5uIE">九、联系我们</a></li>
+            </ol>
+        </div>
+
+        <h2 id="p1" data-page-node-id="4yiWHQlHIMSKpau4oIF8Bs">一、我们收集哪些信息</h2>
+        <div class="ok" data-page-node-id="KR0FyKSTQunmHocCUPFEDZ">
+            <strong data-page-node-id="ZzyR0eWw4bMQwxNnB3EqrI">答案很直接：我们不收集任何信息。</strong>
+        </div>
+        <p data-page-node-id="FkvKKoky2rlvrBFgTIoT4F">本应用是一款完全本地运行（local-first）的应用。它没有后端服务器、没有账号系统、
+            没有数据统计组件，因此<strong data-page-node-id="yPzr6OOu8AM3CRygBSH1w5">不存在任何形式的信息收集、上传或同步</strong>。
+            您写下的每一笔、每一页笔记，都只保存在您自己的设备上。</p>
+        <p data-page-node-id="joptG2AI97oIfCkebwqA5W">我们无法看到您的笔记内容，也无法得知您使用了哪些功能——因为这些数据从未离开过您的设备。</p>
+
+        <h2 id="p2" data-page-node-id="lLttQUJiUkt8MMG1GxFdng">二、我们不收集哪些信息</h2>
+        <p data-page-node-id="yHrBtKbecFloBB1g7fO8rS">为免歧义，我们明确声明<strong data-page-node-id="v0qjv9vd2oDiBpZXTD3OWW">不会收集</strong>以下任何一类信息：</p>
+        <ul data-page-node-id="R5Aj15djVI3VdbHQhwdbNR">
+            <li data-page-node-id="DQdWns9jlhyEucKn4bq5lE"><strong data-page-node-id="9Nty7WiZjVsWhT6Kycl5aL">身份信息</strong>：姓名、手机号、邮箱、账号、密码——本应用无账号体系，不需要也不索取；</li>
+            <li data-page-node-id="yR2qZ6Roq6hsW6Il2mpwxm"><strong data-page-node-id="a74Ttik1aQJJ1rZGuZB9YQ">笔记内容</strong>：手写字迹、插入的图片、导入的 PDF 及任何文字内容；</li>
+            <li data-page-node-id="wzVxVYg2qiit9tBD5FloO6"><strong data-page-node-id="zD4XBF6VAuD8T4y55MT0rX">设备标识</strong>：IDFA、IDFV、设备序列号、MAC 地址等任何可用于追踪的标识符；</li>
+            <li data-page-node-id="7kbabCIcIf2Bv2bAkRouD4"><strong data-page-node-id="Ku3cy6lmEwdyZ5YX26DOzd">位置信息</strong>：本应用不申请定位权限，不获取您的地理位置；</li>
+            <li data-page-node-id="R3Q1EGM5Wsuo8irOyBKNZH"><strong data-page-node-id="VIKi83Ul14CDe3yPIHoAar">联系人与通讯录</strong>：不申请、不读取；</li>
+            <li data-page-node-id="BCPjam6Jt5rZB341W2DO8u"><strong data-page-node-id="U0eAXFVK68tTjW4hMhVJEk">行为数据</strong>：不使用统计 SDK，不记录点击、页面停留、功能使用频次等任何埋点数据；</li>
+            <li data-page-node-id="Iu0OBbGhzKYVnt7WQ2vCvl"><strong data-page-node-id="rxFLchkpTZZY8kBCQlPdj5">崩溃与诊断数据</strong>：本应用不内置任何崩溃上报组件，崩溃信息不会离开您的设备；</li>
+            <li data-page-node-id="kUgXy7ZMItJFVoMO2yB42z"><strong data-page-node-id="MW7qR7vVPXxuUeCxz6WJU6">剪贴板、相册、麦克风、相机</strong>：除下文所述的相册写入外，均不读取。</li>
+        </ul>
+        <div class="note" data-page-node-id="YRfwx3V91nR12S9wei2coE">
+            <strong data-page-node-id="S5SU3EvFgBNGbVIjxmX5DA">关于追踪：</strong>本应用不追踪您的行为，也不会将您的数据用于任何追踪目的。
+            我们未接入 App Tracking Transparency 相关的任何追踪能力，也不会向第三方共享可用于追踪的数据。
+        </div>
+
+        <h2 id="p3" data-page-node-id="Knsi8W6cLsfhSSXAxdJ3EU">三、第三方 SDK 与数据共享</h2>
+        <p data-page-node-id="x9osDXYwqbHZoSl7BuBgPO">本应用<strong data-page-node-id="O8AiCVaFy6fExNTqceSMUs">未集成任何第三方数据统计、广告或分析 SDK</strong>，包括但不局限于：
+            友盟、TalkingData、Firebase Analytics、AppsFlyer、Adjust、Google Ads、穿山甲、优量汇等。</p>
+        <p data-page-node-id="540q6z2l9up3qfvYKA6dOS">相应地：</p>
+        <ul data-page-node-id="wlteRTwEhFG4chCbMLawxR">
+            <li data-page-node-id="yrgYq00W8uEoHkX1rZHOIh">我们<strong data-page-node-id="FkQTUxmOJZJyUF9qBchagx">不会</strong>向任何第三方出售、出租或共享您的信息；</li>
+            <li data-page-node-id="a3PUGeEzjHxEjlGPL09bHP">我们<strong data-page-node-id="puodoDMaphn0GjiIhtDD32">不会</strong>将您的数据用于广告投放、用户画像或任何商业分析；</li>
+            <li data-page-node-id="UUNghRi5EaHTB6hvBDuDwG">我们<strong data-page-node-id="5Y8beaJswlGhd9QTPaaasC">不会</strong>在未经您明确同意的情况下转让或公开披露您的信息；</li>
+            <li data-page-node-id="wu3dFLztY4oGvD0rmXU6SY">本应用不含广告，也没有内购与订阅。</li>
+        </ul>
+        <p data-page-node-id="jpO9HYiEoxyC84Q6CvWK9k">唯一的例外是法律要求：若遇司法机关或行政机关依法定程序要求提供信息，
+            我们会在法律允许的范围内予以配合。但由于本应用不掌握任何用户数据，实际上我们并无数据可提供。</p>
+
+        <h2 id="p4" data-page-node-id="IJxSqAbsupr2z6vlka3gN0">四、设备权限说明</h2>
+        <p data-page-node-id="Qw5L9xPvbKXWVg0pqohN7l">本应用仅在您主动使用对应功能时申请必要权限，且权限范围被压到最小：</p>
+        <table data-page-node-id="1CNM7d25gGBnLEdmE2LBaw">
+            <tr data-page-node-id="NJwvCRCCKIbajHZvBAEBsj">
+                <th data-page-node-id="uWZIOmTz0Amtu84ScV7i5u">权限</th>
+                <th data-page-node-id="5rLL881iwPhrKf2GJB5hJr">用途</th>
+                <th data-page-node-id="isQlKEsF5e9XWUBAcNbUx5">何时触发</th>
+            </tr>
+            <tr data-page-node-id="2c3fpGt0LA35FviT3o4j5j">
+                <td data-page-node-id="eWBhQVhyPd6lqb8WFGnrd3">相册（写入）</td>
+                <td data-page-node-id="lWz47K91Hiy92CUH3vnlQP">将笔记导出为 PNG 图片时保存到系统相册</td>
+                <td data-page-node-id="VAP3tW9lMBymas01uRjGv9">仅当您点击"导出 / 保存到相册"时</td>
+            </tr>
+            <tr data-page-node-id="CmQkuCKvATJzVgTvRbvhTD">
+                <td data-page-node-id="zQbq3J3Wc9YyyvmVEHriQN">文件与照片（读取）</td>
+                <td data-page-node-id="IGLB1MgyGNCF7kW6QLZlEi">向笔记中插入照片，或导入 PDF 文件</td>
+                <td data-page-node-id="UK2aYH0xCcbxc0uY722o6N">仅当您主动选择图片或文件时</td>
+            </tr>
+        </table>
+        <p data-page-node-id="FJWCr4b0cV8dAUVeerRm3m">本应用<strong data-page-node-id="zDpBXhCOJVCkumEK7r761A">不申请</strong>以下权限：定位、通讯录、麦克风、相机拍照（不调用摄像头进行拍摄）、
+            日历读写、蓝牙、追踪（App Tracking Transparency）、通知推送。</p>
+        <p data-page-node-id="vML8TmxT9mo0p1PSJDkwoG">您可以在设备的「设置 → 隐私与安全性」中随时查看或撤回已授予的权限。
+            撤回后相关功能（如导出到相册）将无法使用，但不会影响笔记的书写与保存。</p>
+
+        <h2 id="p5" data-page-node-id="KGlgaG0pjX5aR9vBJPZkNi">五、信息的存储与安全</h2>
+        <p data-page-node-id="WVl8vKO8sntiwyanX3SFYN">您的所有笔记、分类箱与设置偏好都以文件形式<strong data-page-node-id="c0vkaFnkBd42lFOp4mDM1a">保存在您设备的本地存储空间中</strong>，
+            由操作系统（iOS / iPadOS）的沙盒机制保护，其他应用无法访问。</p>
+        <ul data-page-node-id="WAOfQw4qlCmdVMblyx09tq">
+            <li data-page-node-id="B9AlufWOjuPQ8T0j3Jp98e"><strong data-page-node-id="FYSi5xED3vBoPl3rJAWItZ">保存位置</strong>：应用沙盒目录（若您开启相关选项，导出的图片会保存至系统相册）；</li>
+            <li data-page-node-id="jgszpyNZKaUyvcBTPJ1WDg"><strong data-page-node-id="7btl4lep15Ctre3uEZZbuU">加密</strong>：依赖您设备自身的磁盘加密与锁屏密码保护，请确保设备设置了锁屏密码；</li>
+            <li data-page-node-id="maB4cAqeA8fDfEtjHqG4bF"><strong data-page-node-id="YNr704htv9Yw3UZV2ZCvVR">备份</strong>：若您开启 iCloud 整机备份或 iTunes/Finder 备份，
+                应用数据可能随整机备份一同被包含在备份中，该过程由 Apple 完成，
+                我们无法访问其中内容；</li>
+            <li data-page-node-id="C4uzx4OREoDFQnfG6x6GP0"><strong data-page-node-id="PazOYVEaecHcF4hJ2V3fet">清除</strong>：卸载应用会连同其沙盒内的数据一并删除，且不可恢复。</li>
+        </ul>
+        <div class="note" data-page-node-id="lWhpnBn2kWUJiBvfo3Wv51">
+            <strong data-page-node-id="IJQHiJWz2VqzY8hWbUvug2">请注意：</strong>由于数据仅存于本机且我们不持有任何副本，
+            <strong data-page-node-id="ru0Ivb2Hkb7Ccau7fGfbF9">卸载应用或设备丢失、损坏将可能导致笔记永久丢失，我们无法为您找回</strong>。
+            建议对重要笔记定期使用导出功能（PDF / PNG）自行备份。
+        </div>
+
+        <h2 id="p6" data-page-node-id="ep3krskSzadQCipexyvsXt">六、您的权利</h2>
+        <p data-page-node-id="b6wqtXzZha3JFuNEx0xtLu">由于数据完全由您掌控，您天然拥有以下权利，且无需向我们提出申请：</p>
+        <ul data-page-node-id="ccW9awMRBalWDQ5nDshGJh">
+            <li data-page-node-id="F5WPWfHNa8PDbAQPFrHyNw"><strong data-page-node-id="Y2ZCkMr8ruBY9NUfRcare4">访问与查看</strong>：打开应用即可查看全部笔记；</li>
+            <li data-page-node-id="kAMIv8kq2viF09RzfcACwD"><strong data-page-node-id="ynHRiE5cGKIVAeljRHnNdd">更正与修改</strong>：随时编辑、涂改、擦除任意内容；</li>
+            <li data-page-node-id="5DnFWke6E6vNeVk3NpJjev"><strong data-page-node-id="bhAiqQDbIr33N4qpJe6rfa">删除</strong>：在应用内删除笔记或页面，也可直接卸载应用清除全部数据；</li>
+            <li data-page-node-id="Kk40Prd0rbGoNsZEH3xBoP"><strong data-page-node-id="WguCfuxmN3p34S3mrq8yg3">导出与携带</strong>：可将笔记导出为 PDF 或 PNG 图片，自行保存或转移；</li>
+            <li data-page-node-id="FXiJWFRKPu440cVY7EVm2J"><strong data-page-node-id="AA3SprLIb7jEIHItCAiGWz">拒绝权限</strong>：可拒绝任何权限申请，除对应功能外不影响使用。</li>
+        </ul>
+        <p data-page-node-id="tkdmoKfKnFZuZlVBvhXMFL">因为我们不持有您的数据，因此不存在"向我们申请查询、更正、删除"的流程——
+            这些操作在您的设备上即刻生效。</p>
+
+        <h2 id="p7" data-page-node-id="k1jUFVL8ZwMJ4YXNriX9Ot">七、未成年人保护</h2>
+        <p data-page-node-id="4v7llzgaS3FeL92oLPsiXp">本应用不面向特定年龄群体做定向收集，也<strong data-page-node-id="TrcVEFrE1B6LiJDyCVH851">不会主动收集未成年人的任何信息</strong>。
+            若您是未满 14 周岁未成年人的监护人，请注意：由于本应用不收集数据、不设账号，
+            使用过程中不会产生需要删除的个人信息；如需清除设备上已记录的内容，直接在应用内删除或卸载应用即可。</p>
+        <p data-page-node-id="Og1wt72Oz4jWD15FnaymGI">如您对本政策有任何疑问，可通过文末联系方式与我们沟通。</p>
+
+        <h2 id="p8" data-page-node-id="zjLx1BBr3LXtGli2jC9aPF">八、本政策的更新</h2>
+        <p data-page-node-id="S1dxMfBC93JHegYKdOY6nt">我们可能随功能迭代或法律法规变化对本政策进行修订。
+            修订后的政策将在本页面公布并更新"更新日期"，<strong data-page-node-id="1iRnyTed8cCsbMHiYQFGo3">自公布之日起生效</strong>。</p>
+        <p data-page-node-id="Rux7nEijFZ7DowCdC2N586">若修订涉及信息收集范围、使用目的或共享方式的实质性变更，
+            我们会在应用内或本页面以显著方式提示您。请您定期查阅本页面以了解最新内容。</p>
+
+        <h2 id="p9" data-page-node-id="QRGeCZaolrBDxRyTC99zXj">九、联系我们</h2>
+        <p data-page-node-id="SL8M7zTRIwAuTf0Q7VwD4z">如您对本隐私政策有任何疑问、意见或建议，欢迎通过以下方式与我们联系：
+        </p>
+        <ul data-page-node-id="IRqBKRi0Io4Xt5C09XDf11">
+            <li data-page-node-id="bcG7a4Szg8vkhi77N6xDqM">电子邮箱：<a href="mailto:zerozhou10086@gmail.com"
+                    style="color:#3D5AFE;text-decoration:none" data-page-node-id="dN3qCBn5xwWEnFMYJz1uof">zerozhou10086@gmail.com</a></li>
+            <li data-page-node-id="mQ88N9f8zLCN9XA7t9YyI8">我们通常在收到邮件后的 7 个工作日内予以回复。</li>
+        </ul>
+
+        <div class="sign" data-page-node-id="bduFPks0aVm9djnbsvrinF">
+            iTally 开发者<br data-page-node-id="Y0CvX2BWRRFqcsn93LFVJ3">
+            2026 年 10 月 23 日
+        </div>
+
+        <div class="foot" data-page-node-id="hcp1WnomCUo9f8zzykNSGa">
+            <a href="index.html" data-page-node-id="RXv4uQ6GHo7E4parHVVRdU">产品首页</a>　·
+            <a href="iTallyAgreement.html" data-page-node-id="Xos6GE2k9AG13NjD9MmuDz">用户协议</a>　·
+            <a href="iTallyPolicy.html" data-page-node-id="qQvoRAVXTIik7yctC1gqS1">隐私政策</a>　·
+            <a href="iTallyLicenses.html" data-page-node-id="kqxpxGCOdZO4KN1BMDFGy2">开源许可</a><br data-page-node-id="ecZ6SUSnxG5xHjQNoLKVdA">
+            © 2026 iTally · All rights reserved
+        </div>
+    </div>
+</body>
+
+</html>

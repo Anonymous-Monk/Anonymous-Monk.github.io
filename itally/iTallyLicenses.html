@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="rBn6DtfSS0u9dTxkMAW2hQ">
+
+<head data-page-node-id="kZrRZBcjoazHIoMB9RUp4M">
+    <meta charset="UTF-8" data-page-node-id="MUm3AEdp3epmS3nKIsddY5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="OiH8XVoBQkwHTIwGNFi69q">
+    <title>开源许可声明 — iTally</title>
+    <meta name="description" content="iTally 使用的第三方开源组件许可清单、字体与图标授权说明，以及基于 Saber（GPL-3.0）的衍生声明与源码索取方式。" data-page-node-id="9z1llAWFHeyH9kzNF865DI">
+    <meta name="robots" content="index,follow" data-page-node-id="z1davhrzAEs6ub9sH2axWV">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233D5AFE'/%3E%3Cpath d='M15 43c9-5 13-20 32-26' stroke='white' stroke-width='5.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" data-page-node-id="xzwfWKqqpquuO7Fv7mMmWc">
+<style>
+        *, *::before, *::after { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+        body {
+            margin: 0; padding: 0;
+            background: #FBFAF7; color: #1A1B22;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+                "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            font-size: 15px; line-height: 1.9;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+
+        .topbar {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 16px; flex-wrap: wrap;
+            padding-bottom: 20px; margin-bottom: 32px;
+            border-bottom: 1px solid rgba(26,27,34,.10);
+        }
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .brand__mark {
+            width: 30px; height: 30px; border-radius: 9px;
+            background: #3D5AFE; display: grid; place-items: center; flex: none;
+        }
+        .brand__name { font-size: 17px; font-weight: 600; color: #1A1B22; letter-spacing: .03em; }
+        .brand__name em {
+            font-style: normal; font-family: ui-monospace, Menlo, monospace;
+            font-size: 12px; color: #3D5AFE; margin-left: 6px; letter-spacing: .14em;
+        }
+        .topbar nav { display: flex; gap: 18px; flex-wrap: wrap; }
+        .topbar nav a { font-size: 13px; color: #66697A; text-decoration: none; }
+        .topbar nav a:hover { color: #3D5AFE; }
+
+        h1 {
+            font-family: "Songti SC", "STSong", "Noto Serif SC", Georgia, serif;
+            font-size: 30px; font-weight: 600; letter-spacing: .02em;
+            margin: 0 0 10px;
+        }
+        .meta { font-size: 13px; color: #9A9DAC; margin: 0 0 4px; }
+        .intro {
+            margin: 24px 0 32px; padding: 18px 20px;
+            background: rgba(61,90,254,.06);
+            border-left: 3px solid #3D5AFE; border-radius: 0 12px 12px 0;
+            font-size: 14.5px; color: #66697A;
+        }
+        .toc {
+            margin: 0 0 36px; padding: 20px 24px;
+            background: #fff; border: 1px solid rgba(26,27,34,.08); border-radius: 14px;
+        }
+        .toc b {
+            display: block; font-size: 13px; color: #9A9DAC; margin-bottom: 10px;
+            font-family: ui-monospace, Menlo, monospace; letter-spacing: .16em;
+        }
+        .toc ol { margin: 0; padding-left: 20px; }
+        .toc li { margin: 4px 0; font-size: 14px; }
+        .toc a { color: #3D5AFE; text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+
+        h2 {
+            font-size: 18px; font-weight: 600;
+            margin: 44px 0 14px; padding-left: 12px;
+            border-left: 3px solid #3D5AFE;
+            scroll-margin-top: 24px;
+        }
+        h3 { font-size: 15.5px; font-weight: 600; margin: 24px 0 8px; }
+        p { margin: 0 0 14px; }
+        ul, ol { margin: 0 0 16px; padding-left: 22px; }
+        li { margin: 6px 0; }
+        strong { font-weight: 600; }
+
+        .note {
+            margin: 18px 0; padding: 16px 20px;
+            background: rgba(255,175,39,.10);
+            border-left: 3px solid #FFAF27; border-radius: 0 12px 12px 0;
+            font-size: 14px; color: #66697A;
+        }
+        .note strong { color: #1A1B22; }
+
+        .ok {
+            margin: 18px 0; padding: 16px 20px;
+            background: rgba(31,157,99,.09);
+            border-left: 3px solid #1F9D63; border-radius: 0 12px 12px 0;
+            font-size: 14px; color: #66697A;
+        }
+
+        table {
+            width: 100%; border-collapse: collapse; margin: 8px 0 20px; font-size: 14px;
+        }
+        th, td {
+            border: 1px solid rgba(26,27,34,.12); padding: 10px 12px;
+            text-align: left; vertical-align: top;
+        }
+        th { background: rgba(61,90,254,.06); font-weight: 600; width: 30%; }
+
+        .sign {
+            margin-top: 48px; padding-top: 24px;
+            border-top: 1px solid rgba(26,27,34,.10);
+            font-size: 13px; color: #9A9DAC; text-align: right; line-height: 1.9;
+        }
+        .foot {
+            margin-top: 20px; padding-top: 20px;
+            border-top: 1px solid rgba(26,27,34,.10);
+            font-size: 13px; color: #9A9DAC; text-align: center; line-height: 1.9;
+        }
+        .foot a { color: #66697A; text-decoration: none; }
+        .foot a:hover { color: #3D5AFE; }
+
+        @media (max-width: 600px) {
+            .wrap { padding: 28px 18px 60px; }
+            h1 { font-size: 25px; }
+            h2 { font-size: 16.5px; }
+            body { font-size: 14.5px; }
+            table { font-size: 13px; }
+            th, td { padding: 8px 9px; }
+        }
+    </style>
+</head>
+
+<body data-page-node-id="frpe4EW0GyLKvhVjaYpSTX">
+    <div class="wrap" data-page-node-id="EP3OYX5RQJwANx8S08wtpJ">
+        <div class="topbar" data-page-node-id="Q5haHQ3Ge3YRyfGWsNR8iB">
+            <a class="brand" href="index.html" data-page-node-id="e3KHAc4Cq8jXGVght9VmeX">
+                <span class="brand__mark" data-page-node-id="9XcvlmpfS0hxTvB5Wty9ev">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" data-page-node-id="Ie4Gt2pyKmSCbRJEdh5E64">
+                        <path d="M5 17c3.6-2 5.2-8 12.8-10.4" stroke="#fff" stroke-width="1.75"
+                            stroke-linecap="round" data-page-node-id="WUje5PrB9HTAJVD1XRYK2E" />
+                    </svg>
+                </span>
+                <span class="brand__name" data-page-node-id="XPzXcyKMRThengmRWNUns2">iTally<em data-page-node-id="usAMLUctMeZzzq2VBFjeJi">NOTICES</em></span>
+            </a>
+            <nav data-page-node-id="OE3ns5NoHwm7KMiUoxtKRF">
+                <a href="index.html" data-page-node-id="FuLsVOfYz1moLws00YsFnK">产品首页</a>
+                <a href="iTallyPolicy.html" data-page-node-id="XrPTPhWMgtGvOMFiVKvH8V">隐私政策</a>
+                <a href="iTallyAgreement.html" data-page-node-id="qWf5mtAsO7osaS7ZrmFQoD">用户协议</a>
+            </nav>
+        </div>
+
+        <h1 data-page-node-id="0EB0rpUn1WdPEIqOhAMQ7a">开源许可声明</h1>
+        <p class="meta" data-page-node-id="bcS6WMAyPqbsbyEJIjSdlA">最近更新：2026 年 10 月 23 日 · 版本 1.0.1</p>
+
+        <div class="intro" data-page-node-id="OePeTAjBHE9DIeRCR12OaO">
+            iTally 由开源社区的大量组件构建而成。本页列明运行时使用的第三方组件、字体与图标资源的许可条款，
+            并说明本应用与上游项目 Saber（GPL-3.0）的衍生关系及源码索取方式。
+        </div>
+
+        <div class="toc" data-page-node-id="j72OmTuaWOaqtzPtX7h9S8">
+            <b data-page-node-id="jGlTTmP1mABcxJSO8ayHzd">目录</b>
+            <ol data-page-node-id="2jC2A8eTawexnw5BOi57rw">
+                <li data-page-node-id="6mi2E09d3ANV6LzLgCbTB3"><a href="#l1" data-page-node-id="Jabcx73NS0NoPS835AoTiJ">一、总览</a></li>
+                <li data-page-node-id="ot9JkKFoEvJCX64KaHPxoU"><a href="#l2" data-page-node-id="VtlPmUAGGNuwEKMVaB3BPm">二、运行时依赖清单</a></li>
+                <li data-page-node-id="7HsDKK4jxMWsrEXECnYxPU"><a href="#l3" data-page-node-id="Kio4JwEkZTsGtCmYhoxht1">三、字体与图标资源</a></li>
+                <li data-page-node-id="BUSSMaymk9AEeEp18LF9aS"><a href="#l4" data-page-node-id="9BagGzh9vfRL3iFnar1986">四、衍生来源与 GPL-3.0 声明</a></li>
+                <li data-page-node-id="WfuuaBbGfb1lkoo88iyUWB"><a href="#l5" data-page-node-id="O991VXoISgGstsB7AcV6t1">五、索取源码与许可全文</a></li>
+                <li data-page-node-id="32k0fSMBkgzHFGYwUcBdhO"><a href="#l6" data-page-node-id="OjDtb07zA40awuZKio6aTW">六、变更记录</a></li>
+            </ol>
+        </div>
+
+        <h2 id="l1" data-page-node-id="eIdPE56NqHEWTu4XWnGfHx">一、总览</h2>
+        <table data-page-node-id="yxoV4YDufXqz0qFsFG3b5X">
+            <tr data-page-node-id="5NEdowmJz1bBiT6Z7x3nGE">
+                <th data-page-node-id="Chj7Y2M8s4GWBNCLALOpHQ">类别</th>
+                <td data-page-node-id="yTXdNUFkEzTeGofstOgA43">第三方组件</td>
+            </tr>
+            <tr data-page-node-id="HO0LmlvRFlZnaURP7cDer9">
+                <th data-page-node-id="dIVZGt0U6FIoWpFfaTxI7w">运行时依赖</th>
+                <td data-page-node-id="GIkn1YI3yZMbhQPGGcUlsx">52 个直接依赖，许可证均为 MIT / BSD / Apache-2.0 等宽松许可；
+                    含传递依赖在内共 252 个包，<strong data-page-node-id="vveHI7LHICqC4qGqKNetfG">无 GPL / LGPL / AGPL 组件</strong></td>
+            </tr>
+            <tr data-page-node-id="nYupGvGAh109JHdaMgMVED">
+                <th data-page-node-id="wGOvT2HLsbhGRVSslbJpp5">字体与图标</th>
+                <td data-page-node-id="WHTv1b7eMIzCUimJzZKAJy">SourceSerif Pro（SIL OFL-1.1）、Material Symbols（Apache-2.0）、
+                    Font Awesome（图标 CC BY 4.0 / 代码 MIT）</td>
+            </tr>
+            <tr data-page-node-id="vxyGfPtQeyo8sXaWKTek5S">
+                <th data-page-node-id="tO9AW7ykMIUG8rOmUp3vsN">编辑器内核</th>
+                <td data-page-node-id="KdRgDPCIjflecRZZLLHNIg">在 Saber（GPL-3.0）基础上二次开发，见<a href="#l4" data-page-node-id="NbNvU9SNvFvGHFx2SCID0G">第四节</a></td>
+            </tr>
+        </table>
+
+        <h2 id="l2" data-page-node-id="BnMGRHVCAMpngCiFVU4Bke">二、运行时依赖清单</h2>
+        <p data-page-node-id="Tl7Cb9LALSaJgSrRUY9s66">下表为 iTally 发布包中链接的第三方组件及其许可证。各组件完整的许可文本与版权声明
+            以其项目仓库中的 <code data-page-node-id="8a3zq0TDxCBcx6tu0nadWu">LICENSE</code> 文件为准。</p>
+        <table data-page-node-id="Af001dHgtMQPinXPeq07Ba">
+            <tr data-page-node-id="xEBpDzDYBY5ZdsPf7TQDLy">
+                <th style="width:52%" data-page-node-id="ue4angBSdiW7wE9MYFfEtd">组件</th>
+                <th data-page-node-id="q05gH4lYwQHK62cwte7ttC">许可证</th>
+            </tr>
+                <tr data-page-node-id="DJ43T4JzFhGGtisGonEmdn"><td data-page-node-id="J8DwDri8bf6MCcthF8KmkM">archive</td><td data-page-node-id="0OtY6dAen3NDV9Rdlz5BSv">MIT</td></tr>
+                <tr data-page-node-id="JWrU3ROXuJQhqbSAFA4GuW"><td data-page-node-id="AQE3iM6A1lMH3cFunNYINs">bruno</td><td data-page-node-id="sB6v0APPleu0D266bmWCRP">MIT</td></tr>
+                <tr data-page-node-id="YYrSNRqkQsFHsKbJNbqxPC"><td data-page-node-id="XBve34KkSk4EPb8cVD8l7C">bson</td><td data-page-node-id="uQeAvbKffRV0H6z9Ek3oxn">MIT</td></tr>
+                <tr data-page-node-id="Z72kp15agGWCWxLMGF8hUI"><td data-page-node-id="lmWviMCP1KIsCkrbAL6aQg">collapsible</td><td data-page-node-id="H6YtcPdYgIryrQewsZwbSu">BSD</td></tr>
+                <tr data-page-node-id="o9SRcQ5XtwbmMvbEIHD3r4"><td data-page-node-id="srNRrrBodke6elslfiaDBv">date_format</td><td data-page-node-id="eHWRFCx2bM68P2nInufwtp">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="0cMoYUN1IL9ZLG2FEW7wQx"><td data-page-node-id="TFH9tqM6m38scEhaGboLC6">defer_pointer</td><td data-page-node-id="5mzglgtGA6GBUIQbXoeKTD">MIT</td></tr>
+                <tr data-page-node-id="wBboenCa4ojQQkhExzzCwW"><td data-page-node-id="uVif5oXCqjfu1VSMCxrg5f">device_info_plus</td><td data-page-node-id="kZraZzJpNNj29OAYFSNnc0">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="axmSGEMkCsA0GtQ2drF6Zd"><td data-page-node-id="ZF2wT7Hi8HTwtgRKrTYsgl">dynamic_color</td><td data-page-node-id="IHbEtF6RqGeWdMzbbqXPlh">Apache-2.0</td></tr>
+                <tr data-page-node-id="t8KHy3pO7W3TUFkQ7ChfNE"><td data-page-node-id="4rciTI719txzUYfBQR3G3o">event_bus</td><td data-page-node-id="LXkVk91csV2OP1JvGYKCh2">MIT</td></tr>
+                <tr data-page-node-id="9QrGXeW8uB69CYAZrlKPPa"><td data-page-node-id="jBc5LjKg9IDPurpUHCCF4M">fast_image_resizer</td><td data-page-node-id="VbuuRehgBEQfrHgSOELiHb">MIT</td></tr>
+                <tr data-page-node-id="UNTL98BsSk5RdogOwYF7ng"><td data-page-node-id="ejCT1G8iCsJM5NjxktIB8r">file_picker</td><td data-page-node-id="hjvwlBmSrA8Gh0JNlQO0aW">MIT</td></tr>
+                <tr data-page-node-id="Wfxqk4XHRMvoM7oAsbjq29"><td data-page-node-id="1SKgSMtxuhG1wINL5Mc9oJ">flex_color_picker</td><td data-page-node-id="YeCIGThMcYjoEbUKhSA5QM">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="qF69gWKZ7ZD1Ak2HFvX6rU"><td data-page-node-id="CGkC0mnfTlZ7ju8dMiuZSj">fluro</td><td data-page-node-id="CAP1xmGxPaOdVcQO19EbqK">MIT</td></tr>
+                <tr data-page-node-id="Njr5OWI7ePQ16rv7Lq94E8"><td data-page-node-id="S2G3alG8SEAY1DmoKVI9fj">flustars_flutter3</td><td data-page-node-id="PEzf1vQp5MaGLA9ry9kefS">BSD</td></tr>
+                <tr data-page-node-id="8YJoJjFvADLklAGwBTSaWe"><td data-page-node-id="Y0wCsmpUo9GJVddhI17JrJ">flutter_quill</td><td data-page-node-id="kbGVSmPsyVYg5t0KvKhoqV">MIT</td></tr>
+                <tr data-page-node-id="mizsLojlMChR5LjTX6TiD8"><td data-page-node-id="nHyEFfaYHSkfBCVXiACJjI">flutter_secure_storage</td><td data-page-node-id="H7DTqtHAzSpxQeuHFs9lDJ">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="CsiG2FqY8BlVqAcNu7v16h"><td data-page-node-id="ZWA12vHaqIWedQZPO5p5Q5">flutter_slidable</td><td data-page-node-id="4RF6X96Bi3lMEY7IS7QiYV">MIT</td></tr>
+                <tr data-page-node-id="33nNQ94dLGfQBqNDy1h5x6"><td data-page-node-id="CEzFyH0G8ZCVdYhySeMoH5">flutter_staggered_grid_view</td><td data-page-node-id="jp1uz5SqmFHTh5gDtBPkUN">MIT</td></tr>
+                <tr data-page-node-id="yxW6wTv6BnaeIbEgbF6K7G"><td data-page-node-id="FmqxBGv9v9qDL1RhUCNSZ9">flutter_svg</td><td data-page-node-id="nk645ousFMk0ENKyBf2rUl">MIT</td></tr>
+                <tr data-page-node-id="yRRSuBs0xtTISUvYZKhYuu"><td data-page-node-id="US7JGXBwfkB0yPkNf21ihb">font_awesome_flutter</td><td data-page-node-id="eAKg5SRsE2MdNwHESsLkL4">MIT</td></tr>
+                <tr data-page-node-id="fukc5G4HRLRWRoOpZu8ZMg"><td data-page-node-id="aEY4FEAaa2ekAnRQzeM7BO">go_router</td><td data-page-node-id="6YtGkqy6A4K1GFfQrWJMji">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="iehHbGFTsqINorUKc2aDGX"><td data-page-node-id="gcy1o215RScG7xK0gSf6sF">grouped_list</td><td data-page-node-id="EXrgHWeYJ2HqySgo5IID0Q">MIT</td></tr>
+                <tr data-page-node-id="raSOdAJrRkxP0YglHZItTK"><td data-page-node-id="fCtGzjZQi0g1yqEgLlBZsT">intl</td><td data-page-node-id="UFP1oL3e87Cn75xdBjZq04">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="MuPGH5zXpt9zyCcQBXB3JR"><td data-page-node-id="7EfMZpc6GMlcTmCM95hyHe">json_annotation</td><td data-page-node-id="Fx2JiAEaH0LqiDfGWA5TMc">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="CUmJINdnczs9quEuIzhEZN"><td data-page-node-id="NXvEF0zeE0Ao1flhfHW36b">keybinder</td><td data-page-node-id="9YG6kWRtF2GLOXMEinSzyH">BSD</td></tr>
+                <tr data-page-node-id="jwbN9eE4up1oTThCxKmIt9"><td data-page-node-id="CYR5aRicJMUNE9fQwGKKp9">logging</td><td data-page-node-id="BqNcHfaTweQBnCfuuB9HLI">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="HcsyugGx25gJUxWSayWwng"><td data-page-node-id="7jL452RchKks8bgTRlHIER">lunar</td><td data-page-node-id="sUjJgkpPSfRPeHGOVDqD7o">MIT</td></tr>
+                <tr data-page-node-id="ctM67cOGGZxvNqNMte5BO9"><td data-page-node-id="2iHPV27xGHmVLzejEWGhU3">material_symbols_icons</td><td data-page-node-id="no0VP6yHcElPcq8mdphvWZ">Apache-2.0</td></tr>
+                <tr data-page-node-id="tk0q7BWAPAhGUOkkGDkKxx"><td data-page-node-id="4KVRxrBmMGudnMfxZGFj8n">modal_bottom_sheet</td><td data-page-node-id="eHT93LEDqUHNH6k5RXgTIO">MIT</td></tr>
+                <tr data-page-node-id="jZlIyQdG8cWWLfbAv88o89"><td data-page-node-id="jEiQmwdT90w4Epah7oNEMY">oktoast</td><td data-page-node-id="PAjpvC6GwyEZxxZEhbpZY7">Apache-2.0</td></tr>
+                <tr data-page-node-id="2HPv1Wg7ZG2FQUlnUKBmd5"><td data-page-node-id="IphuqXxuMMOsIjim3RnQbp">one_dollar_unistroke_recognizer</td><td data-page-node-id="4oTK3yZfEYbuuBf8OWAuAy">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="iip25DhN1SGtdpXeo1oGlK"><td data-page-node-id="zoAvlEPXy5WDaRHrbwYFZQ">package_info</td><td data-page-node-id="JcUpV2co33OAeoDog2Pd2F">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="SBFDMZRfISpy6S6iDLx5Xn"><td data-page-node-id="iyjkRX3hE01nBvSprHStsy">path_drawing</td><td data-page-node-id="i57YhxJTpqVydOOlFDzVnE">MIT</td></tr>
+                <tr data-page-node-id="N8qr72XDBIGgTcLYrulKjo"><td data-page-node-id="lizM5lXtkeuEHoluoksyvj">path_provider</td><td data-page-node-id="Llo0UOBKponnAFnBgl1rdA">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="2yywCr2BV2Kwl5aiCLCrra"><td data-page-node-id="FrIensiclPyhgiKPGQpz3i">pdf</td><td data-page-node-id="GvKQ3kQT7FeA95e3FmZuwB">Apache-2.0</td></tr>
+                <tr data-page-node-id="FMlRZ7l3ioCe8EBxGAVe12"><td data-page-node-id="plBHurr31ndHAy6uGPLGJi">pdfrx</td><td data-page-node-id="6hF1o6RFpKUn4xc8A2YMz6">MIT</td></tr>
+                <tr data-page-node-id="Hov2ZkwRn6V8g6gEM3JkuC"><td data-page-node-id="JN44xIupWBBe03ciZ1zltw">perfect_freehand</td><td data-page-node-id="jWlVo8MoAqPOTsCNXBPsiL">MIT</td></tr>
+                <tr data-page-node-id="bRV0khiYHEkgQ7EV4vuAvD"><td data-page-node-id="WvNuB10GLoYyWpNqAhuCiw">permission_handler</td><td data-page-node-id="kMyWEDujkrxDrvq8oEHf72">MIT</td></tr>
+                <tr data-page-node-id="mCCENjEwAirP1gtxwEJsAX"><td data-page-node-id="AAyexicYA97vJn7CzZ7c31">printing</td><td data-page-node-id="lNwNIUVvj2jFJtNUTNdi2L">Apache-2.0</td></tr>
+                <tr data-page-node-id="SUGBUcE5kduhd4u8qKrbyw"><td data-page-node-id="KnnJK7zE5DmcTh9twa7CKZ">saver_gallery</td><td data-page-node-id="bdXzpEmO6MvDx1gM1xBozA">MIT</td></tr>
+                <tr data-page-node-id="7hBDFfDINLWCzHDMDT6YlY"><td data-page-node-id="OnecVjfnTCDpJWPBisMXBp">screenshot</td><td data-page-node-id="Rp1FEKQWZRpJgkbPcykInE">MIT</td></tr>
+                <tr data-page-node-id="LQftIJpPH4CWRiAxxR5AB4"><td data-page-node-id="BmL0IvAmUH4rGwQklRsIbu">share_plus</td><td data-page-node-id="OMz1ODLijrYmMXXLCocGsu">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="MpVsa1z61mekHXumEzAr6H"><td data-page-node-id="gDC1nwOCXynJGY1P2orBoG">shared_preferences</td><td data-page-node-id="VnYIb2BX4ZlWGl8V9P0qMg">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="eyIPWF6RIJKSsjzeuHAAAg"><td data-page-node-id="hMfeDAUs0cQvUnwXwqIt0D">sqflite</td><td data-page-node-id="xTHBQNPVgSZn8tejJ5LRRB">BSD</td></tr>
+                <tr data-page-node-id="ECnsuDyGUeraGrg5YEuahS"><td data-page-node-id="nYVOoUnLc1kkqSEyL2y7JS">super_clipboard</td><td data-page-node-id="BbdQ4LV0A439fCMKw6Mq2W">MIT</td></tr>
+                <tr data-page-node-id="mN2IxQhXcg928NJAQsqBwC"><td data-page-node-id="jXzRGjJV567oyLFSQy3M7C">url_launcher</td><td data-page-node-id="QDqOA3OlpC70X008ZGBENf">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="lHlKRLzuQNQXLdHvK6Co7G"><td data-page-node-id="6iSDmLDtMxNIWAoEpCk7z8">webview_flutter</td><td data-page-node-id="Ar9Wq42FECT2XxHXBmqvPi">BSD-3-Clause</td></tr>
+                <tr data-page-node-id="FcHSukQGOBHBlZL2DLlhF5"><td data-page-node-id="Mx7rgqgbgTRieRGl8Zstye">window_manager</td><td data-page-node-id="fifPhDFtD0G50rvPAPfE2B">MIT</td></tr>
+                <tr data-page-node-id="JfO2KVfYLobrergbw9L0WL"><td data-page-node-id="ZvXynifjULjLsuVzHtOCzs">worker_manager</td><td data-page-node-id="AiGCAZqeIcTTuhqlLuJ6Dl">MIT</td></tr>
+                <tr data-page-node-id="JXFFMehBDxPCXFSiuWAFaG"><td data-page-node-id="eZWzCxLz2yOA8SJKqEuP3m">table_calendar（本地插件）</td><td data-page-node-id="mYspsCi0ZBhwZAW6i444qq">Apache-2.0</td></tr>
+                <tr data-page-node-id="F97JVJACDwBiwj2vmCZpHw"><td data-page-node-id="DY3X1Z2AY1m2cAKoaUyHT4">onyxsdk_pen（本地插件）</td><td data-page-node-id="d1toPwAO34NFCSEhD40fjb">BSD-3-Clause</td></tr>
+        </table>
+
+        <h2 id="l3" data-page-node-id="zCw7xDBggWy1tUoIP9RfJP">三、字体与图标资源</h2>
+        <table data-page-node-id="EEEw8VTAPFksbcgTzAE5z5">
+            <tr data-page-node-id="kIwjO7iPbpBPoBgEjeuPKb">
+                <th data-page-node-id="mMSPyX48XRCyt15A2aiBWT">资源</th>
+                <td data-page-node-id="UZAnu4rDa7WtU0ZO4aJOn8">说明</td>
+            </tr>
+            <tr data-page-node-id="JERtRsta6MvgiGHkqBtFAd">
+                <th data-page-node-id="gZkpHEmFJpRtsq3XYK1o7X">SourceSerif Pro</th>
+                <td data-page-node-id="xq2t9bg7qNwB0yo2evQmoA">SIL Open Font License 1.1，随应用打包的衬线字体</td>
+            </tr>
+            <tr data-page-node-id="eTvRZmrxaKiBOFTkQ9RooR">
+                <th data-page-node-id="SQB6R3DC7XzhMDbfFHR0I2">Material Symbols</th>
+                <td data-page-node-id="ohrLEcroTf2g0dAJirhBHo">Google，Apache License 2.0</td>
+            </tr>
+            <tr data-page-node-id="2VU6OiFSR7X1Tnk5c5H9sg">
+                <th data-page-node-id="6scRZBjzIhrYepvHE2TzEH">Font Awesome</th>
+                <td data-page-node-id="CtRBYDhRsCwvSGMKwhRZ3n">图标作品 CC BY 4.0，字体文件 SIL OFL 1.1，封装代码 MIT；
+                    作者署名依其许可条款保留</td>
+            </tr>
+            <tr data-page-node-id="GXGDpXIw0YEbHYdTrzj7nu">
+                <th data-page-node-id="RoZS8h2OVACubSI1c3lKKu">应用内图标</th>
+                <td data-page-node-id="qZPSEe40cKtU4FaCsAmRBQ">iTally 自绘的 58 枚线性图标，统一 24 网格与 1.75px 描边</td>
+            </tr>
+        </table>
+
+        <h2 id="l4" data-page-node-id="VL08j44cO20imdwkp8zQ2d">四、衍生来源与 GPL-3.0 声明</h2>
+        <p data-page-node-id="f67XxKJ6FqpVBnM6JWl0Ur">iTally 的手写编辑器内核——包括笔触渲染、画布交互与笔记文档模型——是在开源项目
+            <a href="https://github.com/saber-notes/saber" style="color:#3D5AFE;text-decoration:none" data-page-node-id="vNTiNQXmCHOUHjEnlKrHo2">Saber</a>
+            的 GPL-3.0 授权代码基础上二次开发而来。</p>
+        <div class="note" data-page-node-id="7EHJAu6qYKjrkFDtoGmADz">
+            <strong data-page-node-id="uRYbZ7EIekGAbQiy7fuWl6">关于源码：</strong>依据 GPL-3.0，我们为本应用中所使用的 GPL 覆盖代码提供源代码获取途径。
+            您可按<a href="#l5" data-page-node-id="rGik6cLqpwkR5YjnMkLIUJ">第五节</a>的方式索取对应源码，本要约自本页发布之日起三年内有效。
+        </div>
+        <p data-page-node-id="hoDzKMTxAIHlsa8vAGSbFk">除该部分外，iTally 的分类箱、待办、农历日历、统计、外观自定义等功能模块为独立开发，
+            不依赖 GPL 代码。</p>
+
+        <h2 id="l5" data-page-node-id="nyXYR0nCAxtqbGGD4AY6A6">五、索取源码与许可全文</h2>
+        <ul data-page-node-id="STetZYqem8Hj2zJuQ739HN">
+            <li data-page-node-id="GmtWh3NFw63HrUxWDF8y0E"><strong data-page-node-id="Ywhrqeia32NgTX8Jmn9mFT">源码索取</strong>：请发送邮件至
+                <a href="mailto:zerozhou10086@gmail.com" style="color:#3D5AFE;text-decoration:none" data-page-node-id="HlCuqx83UMEXvJLtGguxNK">zerozhou10086@gmail.com</a>，
+                邮件标题注明「iTally 源码索取」。我们可提供承载 GPL 覆盖代码的源码副本（仅收取介质与寄送成本）。</li>
+            <li data-page-node-id="FA7rTz0tpJbTNFIVx3XshS"><strong data-page-node-id="A7tbtEqT9iEZRXHAcwHvDO">许可全文</strong>：MIT、BSD、Apache-2.0、SIL OFL-1.1、CC BY 4.0 等许可的正式文本
+                可在 <a href="https://opensource.org/licenses" style="color:#3D5AFE;text-decoration:none" data-page-node-id="8Vd3oLAMasbmjrDmf3jQKn">opensource.org/licenses</a>
+                查阅；各组件自身的许可文本见其项目仓库。</li>
+            <li data-page-node-id="Et6HkEW6QgKMv3ECKQUebV"><strong data-page-node-id="ejLMbqD8hScFGFndT5Gclj">完整清单</strong>：随版本同步更新的组件清单见项目内
+                <code data-page-node-id="es8sqBhk5yGeF0PvMJVJ7o">THIRD_PARTY_NOTICES.md</code>。</li>
+        </ul>
+
+        <h2 id="l6" data-page-node-id="Vd7ldpQqFqSQ7kKJTQHUxu">六、变更记录</h2>
+        <table data-page-node-id="yZVCP5MB867lXI3iNHOnNQ">
+            <tr data-page-node-id="RRTrhR69Fpfnq2gcOMuRpV">
+                <th data-page-node-id="F2ISgx4YtT8pQyAYTEZNpx">日期</th>
+                <td data-page-node-id="qVmMdLWslY7A2uFxrm4RNC">变更</td>
+            </tr>
+            <tr data-page-node-id="8rcDPaIlkmwLANWVEv6Ypu">
+                <th data-page-node-id="RphD5x8e8Q5rkhfhCub04v">2026-10-23</th>
+                <td data-page-node-id="khUpLXJ2Uy9JO4lRs0TLEa">移除 GPL-3.0 依赖 keframe，分帧渲染改为自研实现</td>
+            </tr>
+            <tr data-page-node-id="qYCbCsHtzWLQpqe0EHXufS">
+                <th data-page-node-id="Pny755DEFpHDz7gHodgubK">2026-10-23</th>
+                <td data-page-node-id="c5SqTtLIudPD7r8itStObc">移除 MPL-2.0 依赖 yaru（Linux 主题，iOS 打包无用）</td>
+            </tr>
+            <tr data-page-node-id="9pl8MEdCFqQDEsxBQv39Oq">
+                <th data-page-node-id="RMCEdKuODGTZKXdKRjZz9i">2026-10-23</th>
+                <td data-page-node-id="7jiYWMQY75ePW3cpcbgxDT">建立本声明页，应用内「关于 → 开源许可」同步接入</td>
+            </tr>
+        </table>
+
+        <div class="sign" data-page-node-id="NxxPYK52hAFWFDsLv1SU1R">
+            iTally<br data-page-node-id="TIbL84JGh6Jo2Dpz1veBWM">
+            2026 年 10 月 23 日
+        </div>
+
+        <div class="foot" data-page-node-id="EgjMzuRcUBB9fEmOtS7TXw">
+            <a href="index.html" data-page-node-id="nCq9t97LuZESUprTLQQk6n">产品首页</a> ·
+            <a href="iTallyPolicy.html" data-page-node-id="1HrAx5bH56u7OsSNwBs5AA">隐私政策</a> ·
+            <a href="iTallyAgreement.html" data-page-node-id="M7Mpa0X3qOriYVC4AkB9K0">用户协议</a>
+        </div>
+    </div>
+</body>
+
+</html>

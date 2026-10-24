@@ -47,6 +47,18 @@ Anonymous-Monk/
 │   ├── app-ads.txt
 │   └── index.html
 │
+├── itd/                        # 今日事 ITD 产品页 + 协议/政策
+│   ├── app-ads.txt
+│   ├── index.html
+│   ├── iTDAgreement.html
+│   └── iTDPolicy.html
+│
+├── itally/                     # iTally 产品页 + 隐私政策/用户协议/开源许可
+│   ├── index.html              # 产品页
+│   ├── iTallyPolicy.html       # 隐私政策
+│   ├── iTallyAgreement.html    # 用户协议
+│   └── iTallyLicenses.html     # 开源许可声明（第三方组件 + GPL 衍生声明）
+│
 ├── iTDAgreement.html           # iTD 协议/政策页
 ├── iTDPolicy.html
 ├── iscanAgreement.html         # iscan 协议/政策页（中/英）
@@ -98,9 +110,12 @@ Anonymous-Monk/
 | `/ibox/` | ibox App 落地页 + lane 协议/政策 |
 | `/iscan/` | iscan App 落地页 + iscan 协议/政策 |
 | `/Line/` | Line App 落地页 |
+| `/itd/` | 今日事 ITD 落地页 + 协议/政策 |
+| `/itally/` | iTally（手写笔记 · 任务 · 农历日历）落地页 + 隐私政策/用户协议/开源许可 |
 
 ### 协议与政策
 - iTD / iscan / lane 三套协议页，均提供中英双语版本
+- iTally 协议页位于 `/itally/`，中文单语（与 App Store「不收集数据」声明一致）
 
 ## 技术栈
 

@@ -1,0 +1,1094 @@
+<!doctype html>
+<html lang="zh-CN" data-page-node-id="zF4WoACb7VhzBfpZwsgPuT">
+
+<head data-page-node-id="WDg8xqVrAAD2D9dz625wV2">
+    <meta charset="utf-8" data-page-node-id="99CYUcFXQ47AVd3RQAW3gI">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" data-page-node-id="8FGot2pskF3Ddk8syigocz">
+    <title>iTally — 手写笔记 · 任务 · 农历日历</title>
+    <meta name="description" content="iTally 把手写记录和日常安排放进同一个应用：六种笔触的手写白板、按分类箱整理的笔记、带农历节气的日历。所有内容只存在本机，无需注册，不上传任何数据。" data-page-node-id="qUnv26Yn3WWO6CW2BsvRlN">
+    <meta name="keywords" content="iTally,手写笔记,白板,待办,农历日历,记事本,备忘录,手帐,涂鸦,PDF标注,会议记录,效率" data-page-node-id="cFhHpNPan500hRdB1FAZ5K">
+    <meta name="viewport" content="width=device-width, initial-scale=1" data-page-node-id="FqqwaqsEqvwEw78stjLQeI">
+    <meta property="og:title" content="iTally — 手写笔记 · 任务 · 农历日历" data-page-node-id="vdBYcfa63HkBnqM44MSSib">
+    <meta property="og:description" content="想到就写下来，写完就能安排。本地存储、无需注册、不收集任何数据。" data-page-node-id="ukORnxsdrhkk9B19pUV2FB">
+    <meta property="og:type" content="website" data-page-node-id="Y7RNvze8uWoRBs393evbJy">
+    <meta property="og:url" content="https://anonymous-monk.github.io/itally/" data-page-node-id="zK03no0RT93ZCWZqsSNdxV">
+    <!-- 上架后替换为：<meta name="apple-itunes-app" content="app-id=你的AppID"> -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233D5AFE'/%3E%3Cpath d='M15 43c9-5 13-20 32-26' stroke='white' stroke-width='5.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" data-page-node-id="Qz9wDKk7LM0SxC24YOu7SY">
+    <link rel="apple-touch-icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233D5AFE'/%3E%3Cpath d='M15 43c9-5 13-20 32-26' stroke='white' stroke-width='5.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" data-page-node-id="dj2NGlEf2EOEmMA6PrCeAW">
+
+    <style>
+        /* ============================================
+           iTally · Design System
+           纸感暖白 + 墨色 + 品牌靛蓝 #3D5AFE
+           字体全部走系统栈，零外部请求
+           ============================================ */
+        :root {
+            --paper: #FBFAF7;
+            --paper-2: #F4F2EC;
+            --surface: #FFFFFF;
+            --ink: #1A1B22;
+            --ink-2: #66697A;
+            --ink-3: #9A9DAC;
+            --line: rgba(26, 27, 34, .10);
+            --line-2: rgba(26, 27, 34, .06);
+
+            --brand: #3D5AFE;
+            --brand-deep: #2C3FE0;
+            --brand-soft: rgba(61, 90, 254, .10);
+            --amber: #FFAF27;
+            --mint: #1F9D63;
+            --rose: #EB7F97;
+            --violet: #7C6BF5;
+
+            --serif: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+            --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+                "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+            --r-card: 14px;
+            --r-sheet: 18px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+            overflow-x: hidden;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 纸张细微纹理 */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+            opacity: .035;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        ::selection { background: var(--brand); color: #fff; }
+
+        /* 图标基元（内嵌 App 内同一套 24 网格图标） */
+        .ic { width: 24px; height: 24px; display: block; flex: none; }
+
+        /* ============================ 导航 ============================ */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 16px;
+            padding: 14px 28px;
+            background: rgba(251, 250, 247, .82);
+            backdrop-filter: saturate(180%) blur(14px);
+            -webkit-backdrop-filter: saturate(180%) blur(14px);
+            border-bottom: 1px solid transparent;
+            transition: border-color .25s, background .25s;
+        }
+        .nav.is-stuck { border-bottom-color: var(--line); }
+
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .brand__mark {
+            width: 32px; height: 32px; border-radius: 10px;
+            background: var(--brand); display: grid; place-items: center; flex: none;
+        }
+        .brand__name { font-size: 17px; font-weight: 600; color: var(--ink); letter-spacing: .03em; }
+        .brand__name em {
+            font-style: normal; font-family: var(--mono);
+            font-size: 12px; color: var(--brand); margin-left: 6px; letter-spacing: .14em;
+        }
+        .nav__links { display: flex; align-items: center; gap: 26px; }
+        .nav__links a {
+            font-size: 14px; color: var(--ink-2); text-decoration: none;
+            transition: color .18s;
+        }
+        .nav__links a:hover { color: var(--brand); }
+
+        /* ============================ Hero ============================ */
+        .hero {
+            position: relative;
+            padding: 132px 28px 84px;
+            overflow: hidden;
+        }
+        .hero__grid {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(var(--line-2) 1px, transparent 1px),
+                linear-gradient(90deg, var(--line-2) 1px, transparent 1px);
+            background-size: 34px 34px;
+            mask-image: radial-gradient(ellipse 78% 62% at 50% 32%, #000 25%, transparent 78%);
+            -webkit-mask-image: radial-gradient(ellipse 78% 62% at 50% 32%, #000 25%, transparent 78%);
+        }
+        .hero__glow { position: absolute; border-radius: 50%; filter: blur(88px); pointer-events: none; }
+        .hero__glow--1 {
+            width: 460px; height: 460px; top: -130px; left: -110px;
+            background: rgba(61, 90, 254, .17);
+        }
+        .hero__glow--2 {
+            width: 380px; height: 380px; top: 130px; right: -110px;
+            background: rgba(255, 175, 39, .15);
+        }
+
+        .hero__inner {
+            position: relative; max-width: 1140px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.04fr .96fr;
+            gap: 56px; align-items: center;
+        }
+
+        .hero__meta {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 13px; border-radius: 999px;
+            background: var(--surface); border: 1px solid var(--line);
+            font-size: 12.5px; color: var(--ink-2); letter-spacing: .02em;
+            margin-bottom: 22px;
+        }
+        .hero__meta i {
+            width: 6px; height: 6px; border-radius: 50%; background: var(--brand); font-style: normal;
+            box-shadow: 0 0 0 3px var(--brand-soft);
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-size: 60px; line-height: 1.08; font-weight: 600;
+            letter-spacing: -.01em; margin-bottom: 6px;
+        }
+        .hero__sub {
+            font-size: 19px; color: var(--ink-2); line-height: 1.75;
+            max-width: 30em; margin: 20px 0 30px;
+        }
+        .hero__sub b { color: var(--ink); font-weight: 600; }
+
+        .hero__actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 13px 24px; border-radius: 13px;
+            font-size: 15px; font-weight: 600; text-decoration: none;
+            transition: transform .18s, box-shadow .18s, background .18s;
+        }
+        .btn--primary {
+            background: var(--brand); color: #fff;
+            box-shadow: 0 8px 22px -8px rgba(61, 90, 254, .58);
+        }
+        .btn--primary:hover { background: var(--brand-deep); transform: translateY(-2px); }
+        .btn--ghost {
+            background: var(--surface); color: var(--ink);
+            border: 1px solid var(--line);
+        }
+        .btn--ghost:hover { border-color: var(--brand); color: var(--brand); transform: translateY(-2px); }
+        .btn svg { width: 19px; height: 19px; }
+
+        .hero__badges {
+            display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px;
+        }
+        .badge {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-size: 12.5px; color: var(--ink-2);
+            padding: 5px 12px; border-radius: 999px;
+            background: var(--surface); border: 1px solid var(--line-2);
+        }
+        .badge .ic { width: 15px; height: 15px; color: var(--brand); }
+
+        /* ---------- 手机示意 ---------- */
+        .hero__phone { display: flex; justify-content: center; }
+        .phone {
+            position: relative; width: 306px; height: 616px;
+            border-radius: 46px; padding: 11px;
+            background: linear-gradient(160deg, #2A2C36, #14151A);
+            box-shadow:
+                0 40px 80px -28px rgba(26, 27, 34, .48),
+                0 0 0 1px rgba(255, 255, 255, .07) inset;
+        }
+        .phone__screen {
+            width: 100%; height: 100%; border-radius: 36px;
+            background: var(--surface); overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .p-bar {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 11px 20px 7px; font-size: 12px; font-weight: 600; color: var(--ink);
+            flex: none;
+        }
+        .p-bar__sys { display: flex; align-items: center; gap: 5px; color: var(--ink); }
+        .p-appbar {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 4px 14px 10px; flex: none;
+            border-bottom: 1px solid var(--line-2);
+        }
+        .p-appbar b { font-size: 14px; font-weight: 600; }
+        .p-appbar em {
+            display: block; font-style: normal; font-size: 10.5px;
+            color: var(--ink-3); font-weight: 400; margin-top: 1px;
+        }
+        .p-appbar__tools { display: flex; gap: 2px; color: var(--ink-2); }
+        .p-appbar__tools .ic { width: 19px; height: 19px; }
+
+        .p-canvas {
+            position: relative; flex: 1; overflow: hidden;
+            background-color: #fff;
+            background-image: radial-gradient(rgba(26, 27, 34, .13) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        /* 只作用于画布底图 SVG，不能波及工具岛内的图标 */
+        .p-canvas > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+        .p-dock {
+            position: absolute; left: 10px; right: 10px; bottom: 12px;
+            display: flex; align-items: center; justify-content: space-between; gap: 0;
+            padding: 6px 7px; border-radius: 20px;
+            background: rgba(255, 255, 255, .96);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 24px -8px rgba(26, 27, 34, .3), 0 0 0 .5px var(--line);
+        }
+        .p-dock__btn {
+            width: 29px; height: 29px; border-radius: 10px;
+            display: grid; place-items: center; color: var(--ink-2); flex: none;
+        }
+        .p-dock__btn .ic { width: 19px; height: 19px; }
+        .p-dock__btn.is-on { background: var(--brand-soft); color: var(--brand); }
+        .p-dock__sep { width: 1px; height: 18px; background: var(--line); margin: 0 3px; flex: none; }
+
+        .p-chip {
+            position: absolute; top: 14px; right: 14px;
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 4px 11px; border-radius: 999px;
+            background: rgba(61, 90, 254, .10); color: var(--brand-deep);
+            font-size: 11px; font-weight: 600;
+        }
+        .p-chip i { width: 7px; height: 7px; border-radius: 2px; background: var(--brand); font-style: normal; }
+
+        .hero__scroll {
+            position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 7px;
+            font-size: 11px; color: var(--ink-3); letter-spacing: .18em;
+        }
+        .hero__scroll-line {
+            width: 1px; height: 34px;
+            background: linear-gradient(var(--ink-3), transparent);
+        }
+
+        /* ============================ 区块 ============================ */
+        .section { padding: 92px 28px; position: relative; }
+        .section--tint { background: var(--paper-2); }
+        .section__inner { max-width: 1140px; margin: 0 auto; }
+        .section__head { max-width: 660px; margin-bottom: 52px; }
+        .section__label {
+            font-family: var(--mono); font-size: 11.5px; letter-spacing: .3em;
+            color: var(--brand); margin-bottom: 14px;
+        }
+        h2 {
+            font-family: var(--serif); font-size: 36px; line-height: 1.28;
+            font-weight: 600; letter-spacing: -.005em; margin-bottom: 14px;
+            text-wrap: balance;
+        }
+        .section__desc { font-size: 16px; color: var(--ink-2); line-height: 1.8; }
+
+        /* 功能卡 */
+        .grid { display: grid; gap: 16px; }
+        .grid--3 { grid-template-columns: repeat(3, 1fr); }
+        .grid--4 { grid-template-columns: repeat(4, 1fr); }
+        .card {
+            background: var(--surface); border: 1px solid var(--line-2);
+            border-radius: var(--r-card); padding: 26px 24px;
+            transition: transform .22s, box-shadow .22s, border-color .22s;
+        }
+        .card:hover {
+            transform: translateY(-4px); border-color: rgba(61, 90, 254, .3);
+            box-shadow: 0 18px 40px -22px rgba(26, 27, 34, .34);
+        }
+        .card__ic {
+            width: 44px; height: 44px; border-radius: 13px;
+            display: grid; place-items: center; margin-bottom: 16px;
+            background: var(--brand-soft); color: var(--brand);
+        }
+        .card__ic .ic { width: 23px; height: 23px; }
+        .card h3 { font-size: 16.5px; font-weight: 600; margin-bottom: 7px; }
+        .card p { font-size: 14px; color: var(--ink-2); line-height: 1.75; }
+
+        /* 六笔展示 */
+        .pens { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+        .pen {
+            background: var(--surface); border: 1px solid var(--line-2);
+            border-radius: var(--r-card); padding: 22px 12px;
+            text-align: center; transition: transform .22s, border-color .22s;
+        }
+        .pen:hover { transform: translateY(-4px); border-color: rgba(61, 90, 254, .3); }
+        .pen__ic { height: 46px; display: grid; place-items: center; margin-bottom: 12px; color: var(--ink); }
+        .pen__ic .ic { width: 34px; height: 34px; }
+        .pen b { display: block; font-size: 14px; font-weight: 600; }
+        .pen span { display: block; font-size: 12px; color: var(--ink-3); margin-top: 3px; }
+
+        /* 图文栏 */
+        .showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+        .showcase--flip .showcase__art { order: 2; }
+        .showcase__art {
+            border-radius: var(--r-sheet); overflow: hidden;
+            background: var(--surface); border: 1px solid var(--line-2);
+            box-shadow: 0 30px 60px -34px rgba(26, 27, 34, .4);
+        }
+        .showcase__art svg { display: block; width: 100%; height: auto; }
+        .list { list-style: none; margin-top: 26px; }
+        .list li {
+            display: flex; gap: 12px; align-items: flex-start;
+            padding: 11px 0; font-size: 15px; color: var(--ink-2); line-height: 1.7;
+            border-top: 1px solid var(--line-2);
+        }
+        .list li:first-child { border-top: 0; }
+        .list .ic { width: 19px; height: 19px; color: var(--brand); margin-top: 3px; }
+        .list b { color: var(--ink); font-weight: 600; }
+
+        /* 隐私承诺 */
+        .promise {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 8px;
+        }
+        .promise__item {
+            display: flex; gap: 14px; align-items: flex-start;
+            background: var(--surface); border: 1px solid var(--line-2);
+            border-radius: var(--r-card); padding: 20px 22px;
+        }
+        .promise__item .ic { width: 22px; height: 22px; color: var(--mint); margin-top: 2px; }
+        .promise__item b { display: block; font-size: 15px; font-weight: 600; margin-bottom: 3px; }
+        .promise__item span { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; }
+
+        /* 外观 */
+        .swatches { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+        .swatch {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 15px; border-radius: 999px;
+            background: var(--surface); border: 1px solid var(--line-2);
+            font-size: 13px; color: var(--ink-2);
+        }
+        .swatch i { width: 13px; height: 13px; border-radius: 50%; font-style: normal; }
+
+        /* 引言 */
+        .quote { padding: 96px 28px; text-align: center; background: var(--surface); }
+        .quote p {
+            font-family: var(--serif); font-size: 30px; line-height: 1.62;
+            max-width: 20em; margin: 0 auto; letter-spacing: .01em;
+        }
+        .quote small {
+            display: block; margin-top: 22px;
+            font-family: var(--mono); font-size: 11.5px;
+            letter-spacing: .28em; color: var(--ink-3);
+        }
+
+        /* CTA */
+        .cta { padding: 104px 28px 112px; text-align: center; position: relative; overflow: hidden; }
+        .cta::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 60% 70% at 50% 42%, rgba(61, 90, 254, .12), transparent 72%);
+        }
+        .cta__inner { position: relative; }
+        .cta h2 { font-size: 40px; margin-bottom: 16px; }
+        .cta p { font-size: 16.5px; color: var(--ink-2); max-width: 32em; margin: 0 auto 34px; }
+        .cta .hero__actions { justify-content: center; }
+
+        /* 页脚 */
+        .footer {
+            padding: 44px 28px 52px; border-top: 1px solid var(--line);
+            background: var(--surface);
+        }
+        .footer__inner {
+            max-width: 1140px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 22px; flex-wrap: wrap;
+        }
+        .footer__links { display: flex; gap: 22px; flex-wrap: wrap; }
+        .footer__links a { font-size: 13.5px; color: var(--ink-2); text-decoration: none; }
+        .footer__links a:hover { color: var(--brand); }
+        .footer__copy { font-size: 12.5px; color: var(--ink-3); }
+
+        /* 入场动画 */
+        .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s, transform .7s; }
+        .reveal.is-in { opacity: 1; transform: none; }
+
+        /* ============================ 响应式 ============================ */
+        @media (max-width: 980px) {
+            .hero__inner { grid-template-columns: 1fr; gap: 48px; }
+            .hero { padding: 120px 22px 72px; }
+            h1 { font-size: 46px; }
+            .showcase { grid-template-columns: 1fr; gap: 36px; }
+            .showcase--flip .showcase__art { order: 0; }
+            .grid--3, .grid--4 { grid-template-columns: repeat(2, 1fr); }
+            .pens { grid-template-columns: repeat(3, 1fr); }
+            .section { padding: 72px 22px; }
+            h2 { font-size: 29px; }
+            .hero__scroll { display: none; }
+        }
+        @media (max-width: 600px) {
+            .nav { padding: 12px 18px; }
+            .nav__links { gap: 14px; }
+            .nav__links a { font-size: 13px; }
+            /* 小屏收起页内锚点，把位置留给协议与首页 */
+            .nav__links a[href^="#"] { display: none; }
+            h1 { font-size: 38px; }
+            .hero__sub { font-size: 16.5px; }
+            .grid--3, .grid--4 { grid-template-columns: 1fr; }
+            .promise { grid-template-columns: 1fr; }
+            .phone { width: 280px; height: 562px; }
+            .quote p { font-size: 23px; }
+            .cta h2 { font-size: 30px; }
+            .hero__actions .btn { flex: 1; justify-content: center; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+
+<body data-page-node-id="VfaS07sPGWrNId3I7LUZOP">
+    <nav class="nav" id="nav" data-page-node-id="Q3AwhH3AzcwecVQURh7vPO">
+        <a class="brand" href="index.html" data-page-node-id="KwsauW5aomDNnHH30viQmi">
+            <span class="brand__mark" data-page-node-id="IfixF3f9oZEijwCH3Un2mV">
+                <svg viewBox="0 0 24 24" fill="none" width="18" height="18" data-page-node-id="AMd9UOVuAdHWsMGBvuhz9p">
+                    <path d="M5 19c3.4-1.9 4.9-7.5 12-9.8" stroke="#fff" stroke-width="2.2"
+                        stroke-linecap="round" data-page-node-id="CiWZAp8OkY0qd1UpgEBQwb" />
+                </svg>
+            </span>
+            <span class="brand__name" data-page-node-id="yTBXyKyHNLcEGzNjpRM5Yx">iTally<em data-page-node-id="xWPV21nGYOQXCduJqlahmZ">ITALLY</em></span>
+        </a>
+        <div class="nav__links" data-page-node-id="CER7j4OG3Id2CfdD6T5PxJ">
+            <a href="#features" data-page-node-id="jY2cgHTikIrTYRvKjBJdFr">功能</a>
+            <a href="#privacy" data-page-node-id="RuRmJ3UUG698N97AirfR4E">隐私</a>
+            <a href="#download" data-page-node-id="BCQWaq6mulklDV0mnFiIID">下载</a>
+            <a href="iTallyPolicy.html" data-page-node-id="EPA1CoTgOXMS92wlSdurLK">隐私政策</a>
+            <a href="iTallyAgreement.html" data-page-node-id="zweOYIub26EFsyF4KYEOTv">用户协议</a>
+        </div>
+    </nav>
+
+    <header class="hero" data-page-node-id="dBBVQK39TSqk45JfECo4L0">
+        <div class="hero__grid" data-page-node-id="arkmWyjmTl0euQiE8aCnHL"></div>
+        <div class="hero__glow hero__glow--1" data-page-node-id="dtOD0lfrfucIIaLrJ03i4g"></div>
+        <div class="hero__glow hero__glow--2" data-page-node-id="XGZMo2VWYwYNQ1WLKyzqcD"></div>
+
+        <div class="hero__inner" data-page-node-id="ddoYPgrZ6KMlABZksRD4sf">
+            <div class="hero__content" data-page-node-id="gWPZr9Lh5LmAGaYFFfHjl3">
+                <div class="hero__meta" data-page-node-id="gwubJq8HBlvTbjm2RaCjXa"><i data-page-node-id="O6tggpq0fRESefZW1pWZjk"></i>iOS · iPhone 与 iPad</div>
+                <h1 data-page-node-id="JvbrD139EhHCpFA9XFdYfa">想到就写下来<br data-page-node-id="YRdBbjsJ7uECJGQfzuEUbM">写完就能安排</h1>
+                <p class="hero__sub" data-page-node-id="B7T3tOrrFlPAMRTE44K4li">
+                    iTally 把<b data-page-node-id="jaa5SHFWtnF4xuVxe3k2sO">手写记录</b>和<b data-page-node-id="IBNNd34BuOVP4Ou4w6PTfp">日常安排</b>放进同一个应用：
+                    六种笔触的手写白板、可按分类箱整理的笔记、带农历与节气的日历。
+                    <b data-page-node-id="CsmXb1WSSeTRhe0TJweQSQ">所有内容只存在你的设备上</b>，不设账号，不联网上传。
+                </p>
+                <div class="hero__actions" data-page-node-id="9cHUezKcozyXFyBDC237i0">
+                    <!-- TODO：上架后替换为 https://apps.apple.com/cn/app/idXXXXXXXXX -->
+                    <a class="btn btn--primary" href="https://apps.apple.com/cn/search?term=iTally" data-page-node-id="j5WUJGcHBfZRk17AhpSYX9">
+                        <svg viewBox="0 0 24 24" fill="currentColor" data-page-node-id="rIDndpVa537EvYOv2HDey5">
+                            <path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.3-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.4 0-2.7.8-3.5 2.1-1.5 2.6-.4 6.4 1.1 8.5.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.1 0 1.9-1.1 2.6-2.1.8-1.2 1.2-2.3 1.2-2.4-.1 0-2.3-.9-2.3-3.1zM14.3 5.9c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z" data-page-node-id="fqp9DO1KuAWLIq1kVTBy2V" />
+                        </svg>
+                        App Store 下载
+                    </a>
+                    <a class="btn btn--ghost" href="#features" data-page-node-id="GBjUgHLLMGsXWKPrjpyteG">看看它能做什么</a>
+                </div>
+                <div class="hero__badges" data-page-node-id="OlkgU00k3y72MDQr1GkNmx">
+                    <span class="badge" data-page-node-id="zsYesSNMuu02EZDaZli2Bi"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="V4PPCJzn36wFAizUjNU0jr">
+                            <path d="M4.8 12.4 9.6 17.2 19.2 6.8" data-page-node-id="xD5Crsn0kSHMpiYXpsPyj1" /></svg>无需注册</span>
+                    <span class="badge" data-page-node-id="6R1jN8fnxlD4tHZYnlOnFd"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="fVLEJxrMYANiep0AbXAVvy">
+                            <rect x="4.8" y="10.4" width="14.4" height="9.7" rx="2.7" data-page-node-id="7YmNTxJxBjsTYiKF3EQefC" />
+                            <path d="M8.4 10.4V7.4a3.6 3.6 0 0 1 7.2 0v3" data-page-node-id="NrzDIJiiIkkqroi8CJaqK7" /></svg>本地存储</span>
+                    <span class="badge" data-page-node-id="HJ5coiBujECVsQx0TpgVM9"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="B4xLpeU7sY3wSfmvzl68h5">
+                            <path d="M20.4 14.8A8.6 8.6 0 0 1 9.2 3.6a8.6 8.6 0 1 0 11.2 11.2z" data-page-node-id="ICLdvf0FWq6dqCAC3JK6nl" /></svg>深色模式</span>
+                    <!-- <span class="badge" data-page-node-id="C9OLj4sqKxmqkSljKVkgRq"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="b7mUclzwwdAEcgesPUk2PS">
+                            <path d="M12 3.6c3.4 3.9 5.5 6.5 5.5 9.4a5.5 5.5 0 0 1-11 0c0-2.9 2.1-5.5 5.5-9.4z" data-page-node-id="JHSt9sl72LnfzARhF762pG" /></svg>无内购无广告</span> -->
+                </div>
+            </div>
+
+            <div class="hero__phone" data-page-node-id="qKTtdk8f9oYtwT3c9F7IU5">
+                <div class="phone" data-page-node-id="PbEtrk6aYhlj4Sk3FeTZp0">
+                    <div class="phone__screen" data-page-node-id="MS6ultq13m67N0B2N2molp">
+                        <div class="p-bar" data-page-node-id="BeikuY52MLAYDvD8zmDDJp">
+                            <span data-page-node-id="AIBGU1v3qMCGYtWMU8ZsfM">9:41</span>
+                            <span class="p-bar__sys" data-page-node-id="0F28DkGoSbo7WE3Q2wU4u4">
+                                <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor" data-page-node-id="gS2V7NEWYQ7vMnUuYlF8so">
+                                    <rect x="0" y="7" width="3" height="4" rx="1" data-page-node-id="mZ0YWNxU1Qq5vCK7d4obrj" />
+                                    <rect x="4.5" y="5" width="3" height="6" rx="1" data-page-node-id="ODgLnL5DprtYkWcaUjqHOv" />
+                                    <rect x="9" y="2.5" width="3" height="8.5" rx="1" data-page-node-id="BZPPO0m7sYlVBOyIikqwXV" />
+                                    <rect x="13.5" y="0" width="3" height="11" rx="1" data-page-node-id="LUC5zF53sJ3q61bJdhaJRh" />
+                                </svg>
+                                <svg width="16" height="11" viewBox="0 0 16 11" fill="none" data-page-node-id="ZXkc9plQbBvZjjyUvb0XnV">
+                                    <rect x="0.5" y="0.5" width="13" height="10" rx="3" stroke="currentColor"
+                                        opacity=".4" data-page-node-id="TmBw1awfA98yBwYGWjyXqP" />
+                                    <rect x="2" y="2" width="9.5" height="7" rx="2" fill="currentColor" data-page-node-id="8346Mw80UbcsKZzGKglobo" />
+                                    <path d="M15 4v3" stroke="currentColor" opacity=".4" stroke-width="1.5"
+                                        stroke-linecap="round" data-page-node-id="schbGQzvcJ2fLbRYZt8qyF" />
+                                </svg>
+                            </span>
+                        </div>
+
+                        <div class="p-appbar" data-page-node-id="ZHAjLdnWqtJEtKaCm1VZFe">
+                            <div data-page-node-id="PHkMamD1BIDIhQdWeA6rXt">
+                                <b data-page-node-id="H6GNMndiDZinl31QsaQJXm">随手记</b>
+                                <em data-page-node-id="WDEn4p5F9VripvHhfFnjaR">今天 09:41 · 已保存</em>
+                            </div>
+                            <div class="p-appbar__tools" data-page-node-id="qXWxQoDJJFyXl2mHtRDuLS">
+                                <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="E2zirSieqC6oS0w2hHGCTM">
+                                    <path d="M8.2 4.6 3.6 9.2l4.6 4.6" data-page-node-id="fbeftjvWrPumyeGrcQo326" />
+                                    <path d="M3.6 9.2h10.6a5.6 5.6 0 0 1 0 11.2H9.2" data-page-node-id="8eINaWz1lv3wmYCEUeJxYS" /></svg>
+                                <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="FyRyDdXTGSeIaCrjIL2rf1">
+                                    <path d="M15.8 4.6 20.4 9.2l-4.6 4.6" data-page-node-id="6Ta9iYastptJiJ4kKerLsL" />
+                                    <path d="M20.4 9.2H9.8a5.6 5.6 0 0 0 0 11.2h5" data-page-node-id="8ex7jSFFhFz2sLsnnycfek" /></svg>
+                                <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="hETAfmQ0dTyvEiLBAfyez3">
+                                    <circle cx="12" cy="5.2" r="1.5" fill="currentColor" stroke="none" data-page-node-id="T5f6sVK0hgFiS37FXwNdqs" />
+                                    <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" data-page-node-id="ofOEzaQwZ76GGxRxmKyC32" />
+                                    <circle cx="12" cy="18.8" r="1.5" fill="currentColor" stroke="none" data-page-node-id="HACB50NRdbrCiEWmL94EhU" /></svg>
+                            </div>
+                        </div>
+
+                        <div class="p-canvas" data-page-node-id="Zqsl6DaqghvzMWnjGJYwvP">
+                            <svg viewBox="0 0 284 452" fill="none" preserveAspectRatio="xMidYMin meet" data-page-node-id="ML42TngqEdZXAIKHLxb2gU">
+                                <!-- 荧光笔高亮 -->
+                                <rect x="32" y="112" width="200" height="28" rx="6" fill="#FFE9B8" data-page-node-id="yrpzgcAySZd5t4TMNXahWi" />
+                                <!-- 手写笔迹（连笔草书） -->
+                                <g stroke="#1A1B22" stroke-width="2.2" stroke-linecap="round"
+                                    stroke-linejoin="round" fill="none" data-page-node-id="lRESYjKUiYJChPyh6Z21jU">
+                                    <path d="M36 128c9-14 15-3 22-12 7-9 11 7 18-4 7-11 12 5 19-5 7-10 13 4 20-7" data-page-node-id="GRJRQEoQQ63ysC8GsgDT3K"/><path d="M36 172c10-13 16-2 23-10 7-8 12 6 19-3 7-9 12 5 20-6" data-page-node-id="DLs6bJJtHAf5cDlLbAeb1h"/><path d="M36 214c9-12 15-2 22-9 7-7 11 6 17-3" data-page-node-id="IxyMrsMZkufSoeqOk4vIK5"/><path d="M36 268c10-14 16-2 24-11 8-9 12 7 20-4 8-11 13 5 21-6 8-11 14 4 20-7" data-page-node-id="qsOdVg5YjDiEREH3lxBCXB"/><path d="M36 310c9-13 15-2 22-10 7-8 12 6 18-3 6-9 11 4 17-6" data-page-node-id="1BLaRBH3NobseiKFsjLflV"/><path d="M36 350c10-12 16-2 23-9" data-page-node-id="0pv5lWwziLcI0N96fhKjVC"/>
+                                </g>
+                                <!-- 圈选虚线框 -->
+                                <path d="M26 250c34-7 192-9 228-1 6 26 4 44-2 66-42 8-182 7-226 0-5-22-5-42 0-65z"
+                                    stroke="#3D5AFE" stroke-width="1.8" stroke-dasharray="7 6" fill="none"
+                                    stroke-linejoin="round" data-page-node-id="liOy2JN7bBdq0sAkV3000r" />
+                                <g fill="#3D5AFE" data-page-node-id="pzxmzTsiy0JjSjyttaZZWj">
+                                    <rect x="20" y="244" width="10" height="10" rx="3" data-page-node-id="1XV78jk9m1pi29nGvxNk6S" />
+                                    <rect x="248" y="244" width="10" height="10" rx="3" data-page-node-id="ixLqlZkdGAn9tfS9rInCNI" />
+                                </g>
+                            </svg>
+
+                            <span class="p-chip" data-page-node-id="Gunkp6tmG9gxaBRoD4HB7Z"><i data-page-node-id="MNMBMHg6mHMe8HJlySOiA4"></i>工作</span>
+
+                            <div class="p-dock" data-page-node-id="7cu2aRqSezX7piFHEObf6S"><span class="p-dock__btn is-on" data-page-node-id="AdaoTNF06Dh9FhhFrCNBPy"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="b2X7b8rYAY2phqxzRnL9gj"><g transform="rotate(45 12 12)" data-page-node-id="sp3FwHv7xIYjdOVnKwxVS3"><rect x="9.4" y="3.4" width="5.2" height="9.6" rx="1.3" data-page-node-id="TY6DG6H5AI3YUkz3UsMeyD"/><path d="M9.4 13 12 19.8l2.6-6.8z" data-page-node-id="Ldx07reJsGNGeJQbtnKxmj"/><g stroke-width="1.25" data-page-node-id="mlBpLZ9henwMpsuE55F26e"><path d="M9.9 8.3h4.2" data-page-node-id="vmCi2oETh4EBSeG61r6mMx"/><path d="M9.9 11.1h4.2" data-page-node-id="wjPQwwN3EPCD5RNtBNIlXO"/><path d="M15.9 4.3v5.6" data-page-node-id="B7hB30VV5imXhUDAe673nq"/></g></g></svg></span><span class="p-dock__btn" data-page-node-id="YDLWVSxHxIGff9edZme28H"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="JQFkEJlcPLrQOTcifawUfQ"><g transform="rotate(45 12 12)" data-page-node-id="FCTryRGj5oj8U5T8pecH1F"><rect x="9.4" y="3.4" width="5.2" height="11" rx="2.4" data-page-node-id="wlbVBffMRJ7JiDE2UKD25D"/><path d="M9.4 14.4 12 19l2.6-4.6z" data-page-node-id="A6LVU0OyVq8D9As7kfLWT4"/><circle cx="12" cy="20.4" r="1.15" fill="currentColor" stroke="none" data-page-node-id="6PdDqjg9sjWqP1Ezg8uOI9"/><g stroke-width="1.25" data-page-node-id="QUkHr3DPl06QM5VquhUCjZ"><path d="M9.9 7.6h4.2" data-page-node-id="sB9nxKG82uNVu8QNG1nOI5"/><path d="M9.9 10.8h4.2" data-page-node-id="r7TWlRSCC6bM6BSKYrpBWN"/></g></g></svg></span><span class="p-dock__btn" data-page-node-id="4r0GSmJcSDn2TUAJRH2gnM"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="QO47p2Q3rSuDUViVKcB1mu"><g transform="rotate(45 12 12)" data-page-node-id="zUAaQjgoJIqhkXBofx4EQD"><rect x="9.2" y="3.4" width="5.6" height="8.2" rx="1.5" data-page-node-id="MwNbmisuAYCbMsxFOarpPI"/><path d="M9.2 11.6h5.6l.5 6.4H8.7z" data-page-node-id="SRyjTN25EVpEAeCphaIsrA"/><g stroke-width="1.25" data-page-node-id="hWkQwpZhuicHjsBBbMYJwG"><path d="M9.7 7.9h4.6" data-page-node-id="HVNWj4QREmXjNI6VpEZ7AG"/></g></g></svg></span><span class="p-dock__btn" data-page-node-id="Lt8vEdlXbYrlUSVptQNlzs"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="iNXXwJYpBfowerrx2gP1gH"><g transform="rotate(45 12 12)" data-page-node-id="fxD3sm4YtGggIEod9XZiK4"><rect x="9.3" y="3.2" width="5.4" height="2.4" rx="0.9" data-page-node-id="frURnG8IKZvlBEj22zHPSJ"/><path d="M9.3 5.6h5.4v8.8L12 20.7l-2.7-6.3z" data-page-node-id="eFoKJTvzmxrEnXdkm9LXYn"/><g stroke-width="1.1" data-page-node-id="ytzT2TQO4NQ8Yn5ttbbbgk"><path d="M12 5.6v8.6" data-page-node-id="z12kPGocDEbAuv6BjTFev4"/></g></g></svg></span><span class="p-dock__btn" data-page-node-id="Ws2RxMLEaUqDcigAPoq9CS"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="3Eddlg1CMWynvltiNFQtz3"><circle cx="7.4" cy="7.4" r="3.65" data-page-node-id="26itGpk8eFXjGwASOqoJNa"/><rect x="13.2" y="3.75" width="6.9" height="6.9" rx="1.7" data-page-node-id="giq6ocGxFyTjRbhYGb2ruE"/><path d="M12 13.5 15.9 20.2H8.1z" data-page-node-id="mThFQoTX5kARWjuz7yJt7G"/></svg></span><span class="p-dock__btn" data-page-node-id="rfuxjHdPyI3HId2h9u416S"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="JbV1FXzY38IUgY7B37Ad00"><g transform="rotate(45 12 12)" data-page-node-id="GvBIAroaKvawN97G7r6WIr"><rect x="10.2" y="2.6" width="3.6" height="7" rx="1.7" data-page-node-id="0Ai4xIVcDPKkAVHreV2cKj"/><path d="M11.4 9.9 9.6 15.4" data-page-node-id="q55lJjdNaXKQIuTYBWFuth"/><path d="M12 9.9v6.2" data-page-node-id="lDFZdQrnYFl2TKMWCGZSFD"/><path d="M12.6 9.9 14.4 15.4" data-page-node-id="0GsZU0DO3cdKvoHv2P8Sg7"/></g></svg></span><span class="p-dock__sep" data-page-node-id="oHzZy4pYZPLHUvZ5OFDxmw"></span><span class="p-dock__btn" data-page-node-id="3LAWnCiM3RBAIXiNZCC0E0"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="cgkUHlkGCPj6jDf6CZ6Ga3"><path d="M12 3.6c3.4 3.9 5.5 6.5 5.5 9.4a5.5 5.5 0 0 1-11 0c0-2.9 2.1-5.5 5.5-9.4z" data-page-node-id="kqvrtqbEweWH6QYQZGDZJz"/></svg></span><span class="p-dock__btn" data-page-node-id="GPIGiOlfu6EtDRDCOfu6rQ"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" data-page-node-id="VrTregSPpt11upA8hbYYrS"><path d="M4.2 7.2h15.6" stroke-width="1.3" data-page-node-id="MfKa8IyZ2lMI8frFD7iEUB"/><path d="M4.2 12h15.6" stroke-width="2" data-page-node-id="mRfmkojQEF38EH3G0OeRiA"/><path d="M4.2 16.8h15.6" stroke-width="2.8" data-page-node-id="dlZFBj3xnwDCWZQ3Tx9YUz"/></svg></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 六笔 -->
+    <section class="section" id="features" data-page-node-id="LrN8jBJukSxCk2rO70zXCG">
+        <div class="section__inner" data-page-node-id="hwOaN0LSxzdpDnkAb4wX8c">
+            <div class="section__head reveal" data-page-node-id="dbX2pLXKsuaOAEeh5DhZP1">
+                <div class="section__label" data-page-node-id="yctUyzpJ59cAdkLGIs9knP">六 · 种 · 笔 · 触</div>
+                <h2 data-page-node-id="9f5qaJEu3YBmdWMjDZKO1D">笔笔手感不同，随手就能换</h2>
+                <p class="section__desc" data-page-node-id="TmrtbuMqOnJBTrsxz5msvO">
+                    钢笔有笔锋，圆珠笔有珠感，荧光笔是凿形笔头，铅笔带橡皮箍。
+                    粗细与颜色随手可调，常用的颜色会自动记住——下一次打开还是你习惯的那支笔。
+                </p>
+            </div>
+
+            <div class="pens reveal" data-page-node-id="rbnJ1jUy2kqPpEV91PpUo2">
+                <div class="pen" data-page-node-id="u0jHDhRDbPwq5nS1jETjpv">
+                    <div class="pen__ic" data-page-node-id="wlnfA7R1pR4g2L0ai48vSV"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="UgKxk71Aoi63tZm0gnsfqZ">
+                            <g transform="rotate(45 12 12)" data-page-node-id="nBW97FHgsF1Jqp2Sp1kCO6">
+                                <rect x="9.4" y="3.4" width="5.2" height="9.6" rx="1.3" data-page-node-id="avvB8qrOCHSzbmWE45JEVH" />
+                                <path d="M9.4 13 12 19.8l2.6-6.8z" data-page-node-id="ipIPcNDJnFWyVyNQbpIH8v" />
+                                <g stroke-width="1.25" data-page-node-id="pPGrs8QjYJuIaV8yEpbHxs">
+                                    <path d="M9.9 8.3h4.2" data-page-node-id="OV6jCkjfPvLDevT0XVmznT" />
+                                    <path d="M9.9 11.1h4.2" data-page-node-id="91yIAL8BsadOHoAcogCuxk" />
+                                    <path d="M15.9 4.3v5.6" data-page-node-id="H9o9alqteETo5rQZGveamL" />
+                                </g>
+                            </g>
+                        </svg></div><b data-page-node-id="Qa6SHQHd1bNDhsCsfAh2NY">钢笔</b><span data-page-node-id="toAJhz9BC2hnQnT3nZpwXJ">带笔锋</span>
+                </div>
+                <div class="pen" data-page-node-id="sFy2xD2pBxXOWipkxEFdR1">
+                    <div class="pen__ic" data-page-node-id="hKHOfpbrJlMBLCXk3NOEmk"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="jVAFqXgYe30cacvciOPS21">
+                            <g transform="rotate(45 12 12)" data-page-node-id="wN89znBEKZky7ewRwAjWGh">
+                                <rect x="9.4" y="3.4" width="5.2" height="11" rx="2.4" data-page-node-id="2GkrKN30262nAYVRcMTZKA" />
+                                <path d="M9.4 14.4 12 19l2.6-4.6z" data-page-node-id="OloAIKH182l7qFkeG5loG0" />
+                                <circle cx="12" cy="20.4" r="1.15" fill="currentColor" stroke="none" data-page-node-id="BfwKeQKkLmNRcjFroJwHF2" />
+                                <g stroke-width="1.25" data-page-node-id="rDrQyrC4EDRK43Nh095VUN">
+                                    <path d="M9.9 7.6h4.2" data-page-node-id="LZm4eAADje6qfCE1dzwG5P" />
+                                    <path d="M9.9 10.8h4.2" data-page-node-id="m4pUYkJoKEhh0K2rUkNwbp" />
+                                </g>
+                            </g>
+                        </svg></div><b data-page-node-id="kM2gCVdXgPcGj9v6irEP7t">圆珠笔</b><span data-page-node-id="9NiTGMw1FaMN5UrlzEFeJF">顺滑细密</span>
+                </div>
+                <div class="pen" data-page-node-id="vRtZ7uAzIkpKDGDVJUZieU">
+                    <div class="pen__ic" data-page-node-id="HGas1TYqC1i61FlZAwXKCO"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="HhIMsn6POCVRDZV3QaTyME">
+                            <g transform="rotate(45 12 12)" data-page-node-id="TkDQshbW2jNoyGZMd9f4SA">
+                                <rect x="9.2" y="3.4" width="5.6" height="8.2" rx="1.5" data-page-node-id="aBHXQCUvCaGHPdXGdSp5PH" />
+                                <path d="M9.2 11.6h5.6l.5 6.4H8.7z" data-page-node-id="lKEDvjW2yvyOxeeI9FayFD" />
+                                <g stroke-width="1.25" data-page-node-id="IgweYfaYsKGQHB8UBCRbvi">
+                                    <path d="M9.7 7.9h4.6" data-page-node-id="rTA2DXYJby3eqQFnV5Pi6O" />
+                                </g>
+                            </g>
+                        </svg></div><b data-page-node-id="vwLaMagq3MV12iuxpacVOn">荧光笔</b><span data-page-node-id="Z2NuBH9MYHjjQ2xC42sGpP">宽幅标注</span>
+                </div>
+                <div class="pen" data-page-node-id="znia4GROzIWfJQwy6sdoQD">
+                    <div class="pen__ic" data-page-node-id="EaaP4yqKjKYeTDwDuGXn08"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="dWu50eH0NID0jF1k9mvl1C">
+                            <g transform="rotate(45 12 12)" data-page-node-id="cF2hLpdg0gnb2Cqgx4cbix">
+                                <rect x="9.3" y="3.2" width="5.4" height="2.4" rx="0.9" data-page-node-id="lcrLubQIV0oLlkxQYgZ0UE" />
+                                <path d="M9.3 5.6h5.4v8.8L12 20.7l-2.7-6.3z" data-page-node-id="jK6thICQ4gZzSZqaxQ92JN" />
+                                <g stroke-width="1.1" data-page-node-id="jSEYpJuGZBq0D4k9iZouiv">
+                                    <path d="M12 5.6v8.6" data-page-node-id="5wspZvC02V5Bun5bUmnUfo" />
+                                </g>
+                            </g>
+                        </svg></div><b data-page-node-id="v5sthM33kwjdJqkoMD8zjw">铅笔</b><span data-page-node-id="SUJmcNikE8Uy1zYzUSbLFN">可擦写</span>
+                </div>
+                <div class="pen" data-page-node-id="aW3RkiVUuFMtsmjb1FBmxV">
+                    <div class="pen__ic" data-page-node-id="kgLuxYtrEF6foeRbNaGbDc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="3cJbVByRJc3XpHmuYFGTY5">
+                            <circle cx="7.4" cy="7.4" r="3.65" data-page-node-id="oiXwc0kJfOGUZ9D7pgkY7i" />
+                            <rect x="13.2" y="3.75" width="6.9" height="6.9" rx="1.7" data-page-node-id="OvouV3FwWqjWyS9uTA8H8P" />
+                            <path d="M12 13.5 15.9 20.2H8.1z" data-page-node-id="tGRoi1aLpXjHjskduFkpQX" />
+                        </svg></div><b data-page-node-id="HiTTGGiSWU5CCcWBTN61MY">形状笔</b><span data-page-node-id="YpSJrHeZ7cXuBqg1CHeeOT">自动规整</span>
+                </div>
+                <div class="pen" data-page-node-id="wyf3DEbinjlbW6L5e6uG9T">
+                    <div class="pen__ic" data-page-node-id="VWnTBtSiLkO9ytIfcIAY3O"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="Eq0nsuI87dVXLlwNhhIa72">
+                            <g transform="rotate(45 12 12)" data-page-node-id="xedEUzW76SGHIymlyskWyT">
+                                <rect x="10.2" y="2.6" width="3.6" height="7" rx="1.7" data-page-node-id="4WDaRy0IHOT1wvOfSREPl2" />
+                                <path d="M11.4 9.9 9.6 15.4" data-page-node-id="aMqtATFnPJDNXn1IKk14gS" />
+                                <path d="M12 9.9v6.2" data-page-node-id="Ph4xZcGq0lVvajGwtJ0Fz2" />
+                                <path d="M12.6 9.9 14.4 15.4" data-page-node-id="3ehSqFPQpvvFkozWEzdZFV" />
+                            </g>
+                        </svg></div><b data-page-node-id="ucp0I1rTaD1SqB9iU09P6a">激光笔</b><span data-page-node-id="55vHNN2Fvf8kFNCdbCvOAs">讲演不留痕</span>
+                </div>
+            </div>
+
+            <div class="grid grid--4 reveal" style="margin-top:16px" data-page-node-id="gtPG3s3d3BEWRogszBjm61">
+                <div class="card" data-page-node-id="IrV7qjSj8CvHldM3uJ9Ftv">
+                    <div class="card__ic" data-page-node-id="CsIGR9ldM2j7jUJJGMvA2a"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="6yzrZD5BuhvBa3bpYNOzRA">
+                            <g transform="rotate(5 12 12)" data-page-node-id="uyOcS8xMsLGrjoSOaFBjHe">
+                                <path d="M12.6 4.5c4.1-.2 7.2 3.2 7.1 7.4-.1 4.2-3.2 7.4-7.5 7.4-4.3 0-7.4-3.2-7.3-7.5.1-4.3 3.5-7.1 7.7-7.3z"
+                                    stroke-dasharray="3 3" data-page-node-id="JKZbCM3rigRyzLWab2caJo" />
+                            </g>
+                        </svg></div>
+                    <h3 data-page-node-id="nslxtcbK0wBn4InMdT00an">圈选后整体搬移</h3>
+                    <p data-page-node-id="m5UDygO519KEV2F8R5Mwuw">画个圈就能把一段笔迹整体选中，搬移、复制、删除都随手势走，写错了随手擦掉。</p>
+                </div>
+                <div class="card" data-page-node-id="kd1zeXcqFhRekNc289c4qC">
+                    <div class="card__ic" data-page-node-id="Ah2UGfEERgWJkCjYGxolFn"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="OYLHxkoGGc5hwFxNcRSxfo">
+                            <rect x="3.4" y="4.6" width="17.2" height="14.8" rx="3" data-page-node-id="8hwD9ZiT97QvZP5XWofqke" />
+                            <circle cx="8.6" cy="9.6" r="1.5" fill="currentColor" stroke="none" data-page-node-id="j1eO6pSkScyM96LMwzk6LK" />
+                            <g stroke-width="1.25" data-page-node-id="T20If4SunyWWNeOsh6crfy">
+                                <path d="M4.6 17.4 9.8 12l3.4 3.4 2.6-2.6 3 3" data-page-node-id="mISYpe2yU7nemyZuQ9CJe6" />
+                            </g>
+                        </svg></div>
+                    <h3 data-page-node-id="6DCvOFQiwvPPZdZgbeL921">图文混排</h3>
+                    <p data-page-node-id="7qXqpLbQB9IXhkPt1Lhij7">可插入照片、导入 PDF，一份笔记里图和字排在一起，标注直接落在文档上。</p>
+                </div>
+                <div class="card" data-page-node-id="nqqpFGpTCmWOoWKqlpSq1y">
+                    <div class="card__ic" data-page-node-id="OqIZ1pI1ZrfcYAdcsDLqGa"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="BFcwAp4g4PhtEyKqSe427F">
+                            <path d="M12 15.4V4.2" data-page-node-id="WvI6NoZoq41RghkcW5We4B" />
+                            <path d="M8.6 7.6 12 4.2l3.4 3.4" data-page-node-id="IjfP6g5J2Iu6FsW39T3j1v" />
+                            <path d="M4.9 13.4v5.1a1.8 1.8 0 0 0 1.8 1.8h10.6a1.8 1.8 0 0 0 1.8-1.8v-5.1" data-page-node-id="6PFNWoIznEWV4GLhwFeG5L" />
+                        </svg></div>
+                    <h3 data-page-node-id="FBnhOkjdKOEyuik8Pxmj9O">导出 PDF / PNG</h3>
+                    <p data-page-node-id="p0EN1TFmaBusrn2XstiajL">写完了要发出去？导成 PDF 或图片，也可以直接存进系统相册。</p>
+                </div>
+                <div class="card" data-page-node-id="O3C997AThpkY47OrrC55xQ">
+                    <div class="card__ic" data-page-node-id="sj9ru1TDia0WM1W8XYBdhF"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="0AwB7lkPE6E7dmoGipNmDA">
+                            <path d="M8.2 4.6 3.6 9.2l4.6 4.6" data-page-node-id="xNrOT6jOuaJYg27Ys4WLMk" />
+                            <path d="M3.6 9.2h10.6a5.6 5.6 0 0 1 0 11.2H9.2" data-page-node-id="OjDyAAmba6KeATcB8SGTih" /></svg></div>
+                    <h3 data-page-node-id="2vu9Ec6aimBTmQwcvYKAa7">无限撤销重做</h3>
+                    <p data-page-node-id="BNs2ILkoyjQJ7xP0cJcRra">写坏了不用怕，撤销一路退回去，重做又能回来，笔迹一步不丢。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 整理 -->
+    <section class="section section--tint" id="organize" data-page-node-id="Vv4eZcs0FVVqCTtKxkSZZl">
+        <div class="section__inner" data-page-node-id="ACKdPpWXzroenqzNLhkAUS">
+            <div class="showcase" data-page-node-id="Ay8IaB6sYQXfXVHOXRDmEg">
+                <div class="reveal" data-page-node-id="9eke3EcGBj2dsUN7SMSmXk">
+                    <div class="section__label" data-page-node-id="wVXKAm5JAZVA8MB33AOpOR">写 · 完 · 就 · 整 · 理</div>
+                    <h2 data-page-node-id="wDetMGYNnT6ZnRdgzCA1ba">写完，还得找得到</h2>
+                    <p class="section__desc" data-page-node-id="xVXdv4E9gxOjw9GD6XeN4c">
+                        笔记按分类箱归置，每个箱子能选自己的颜色；时间筛选支持「全部 / 今日 / 本周 / 本月」，
+                        列表按创建时间倒序——刚写的永远在最上面。
+                    </p>
+                    <ul class="list" data-page-node-id="rEhLuegzuH2tBaea9fl6oG">
+                        <li data-page-node-id="j6SY3LNo0DxITBy6BKUiAe"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" data-page-node-id="KDvWZDpRWiB5VKUQgSgn4l">
+                                <path d="M3.4 7.6 12 3.4l8.6 4.2v8.8L12 20.6l-8.6-4.2z" data-page-node-id="5idTNawSyu1tz7YR6IsQDR" />
+                                <path d="M3.4 7.6 12 11.8l8.6-4.2" data-page-node-id="ZdqXba1IO7mwRiFi18GhJw" />
+                                <path d="M12 11.8v8.8" data-page-node-id="AUA5IAxSXojjaBzZNc8wVa" /></svg>
+                            <span data-page-node-id="wNCq41CuDUzYa6LpVLON7B"><b data-page-node-id="Gi5pzC4Q5TBhTrZD3opigt">彩色分类箱</b>——工作、生活、灵感各归各箱，一眼分清。</span></li>
+                        <li data-page-node-id="vH5RCBJxKqBaY11k6JxCHS"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" data-page-node-id="4VA5RyMuz0bAiTyTBZ9yOt">
+                                <circle cx="10.8" cy="10.8" r="6.6" data-page-node-id="X9rt8eNSG5YrRNbI7cVcDt" />
+                                <path d="M15.6 15.6 20.4 20.4" data-page-node-id="UdJunmO2KykZSdROCiv2NH" /></svg>
+                            <span data-page-node-id="wZeyHudMpZYqRXNyQ7jADA"><b data-page-node-id="MwrxexJIBsaxbGweyBXIBP">时间筛选</b>——今日写的、本周写的，一键筛出来，翻找不费劲。</span></li>
+                        <li data-page-node-id="ZuQ54LAy6cUZNExAhkqCJl"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" data-page-node-id="XXCiW4RWDaBPc1l0hyRCmH">
+                                <rect x="4.6" y="3.4" width="14.8" height="17.2" rx="3" data-page-node-id="rCYZ7lIxeOpEy0GRAG9BM4" />
+                                <path d="M8.6 8h6.8" data-page-node-id="FAJeSsUGa6BJM6tAuQiqop" />
+                                <path d="M8.6 12h6.8" data-page-node-id="HpxnKg7ORf5f8jP6ltuo8S" />
+                                <path d="M8.6 16h4.4" data-page-node-id="ihvsZUi5tEYnEurEYIdH7z" /></svg>
+                            <span data-page-node-id="qeneKd7ebpShfo1zdMHteP"><b data-page-node-id="2hVaGFeiTkKVicvgBLFX8A">多页笔记</b>——一份笔记可以有很多页，翻页、插入、复制都行。</span></li>
+                    </ul>
+                </div>
+                <div class="showcase__art reveal" data-page-node-id="0MAU3OKH8Vj9DS82QcAOXc">
+                    <svg viewBox="0 0 480 340" fill="none" data-page-node-id="vJHEa7c9wxqkmnMTosQH6F">
+                        <rect width="480" height="340" fill="#FBFAF7" data-page-node-id="h4zgqfNh4z19xDr8Dlh4sm" />
+                        <!-- 顶部筛选条 -->
+                        <g font-family="-apple-system, PingFang SC, sans-serif" data-page-node-id="MpndndjSWhgNWEIkbEuVFp">
+                            <rect x="30" y="26" width="88" height="30" rx="15" fill="#3D5AFE" data-page-node-id="mbzyRlm0KGX1ejG7SWz2Py" />
+                            <text x="74" y="46" font-size="13" fill="#fff" text-anchor="middle" data-page-node-id="HHy5IXslgO3iDAQrE8MuAs">全部</text>
+                            <rect x="126" y="26" width="88" height="30" rx="15" fill="#fff" stroke="#E7E8EE" data-page-node-id="aQ8oR6UewLVHRXKSxfFe4b" />
+                            <text x="170" y="46" font-size="13" fill="#66697A" text-anchor="middle" data-page-node-id="RhgQw6yEUdnflHrqmcqaso">今日</text>
+                            <rect x="222" y="26" width="88" height="30" rx="15" fill="#fff" stroke="#E7E8EE" data-page-node-id="upDbX7f7W17dPXRUFjhM3p" />
+                            <text x="266" y="46" font-size="13" fill="#66697A" text-anchor="middle" data-page-node-id="RtDwS8FwcLIb59A0HCIG3L">本周</text>
+                            <rect x="318" y="26" width="88" height="30" rx="15" fill="#fff" stroke="#E7E8EE" data-page-node-id="eLglSTA7LsuI2wNh2utMFw" />
+                            <text x="362" y="46" font-size="13" fill="#66697A" text-anchor="middle" data-page-node-id="MBIgKv5NH4EOcL3DxNt4Po">本月</text>
+                        </g>
+
+                        <!-- 分类箱 -->
+                        <g data-page-node-id="r9ZMA5T8xcVTiyuLiytdQZ">
+                            <rect x="30" y="76" width="128" height="112" rx="16" fill="#EDEFFF" data-page-node-id="2aCSbGf2kZC7PFD4rQCVvg" />
+                            <rect x="46" y="94" width="34" height="34" rx="11" fill="#3D5AFE" data-page-node-id="qgKm6iJRqsH1LgCDGJ0tPB" />
+                            <rect x="46" y="140" width="86" height="8" rx="4" fill="#3D5AFE" opacity=".55" data-page-node-id="r0QOuXCVCQjsc7D0DER9nD" />
+                            <rect x="46" y="156" width="58" height="8" rx="4" fill="#3D5AFE" opacity=".3" data-page-node-id="yzwvobR7jRvAGlUzQWzWYc" />
+                            <text x="46" y="182" font-size="12" fill="#66697A"
+                                font-family="-apple-system, PingFang SC, sans-serif" data-page-node-id="A2PWyQ9BYTBMqGh9AO6yvQ">12 篇</text>
+
+                            <rect x="176" y="76" width="128" height="112" rx="16" fill="#FFF3DC" data-page-node-id="X6NzMceR9BRIdd1yE4CMCD" />
+                            <rect x="192" y="94" width="34" height="34" rx="11" fill="#FFAF27" data-page-node-id="a527u0K5jA01ANncSz2VuD" />
+                            <rect x="192" y="140" width="86" height="8" rx="4" fill="#C77C0B" opacity=".5" data-page-node-id="DAWUCLgzLgbJvaDuEkK2Qq" />
+                            <rect x="192" y="156" width="58" height="8" rx="4" fill="#C77C0B" opacity=".28" data-page-node-id="6zoaCGbtPvLUxGDxzTQjhR" />
+                            <text x="192" y="182" font-size="12" fill="#66697A"
+                                font-family="-apple-system, PingFang SC, sans-serif" data-page-node-id="EGTG4No8CiAwBuYVbXOvPR">8 篇</text>
+
+                            <rect x="322" y="76" width="128" height="112" rx="16" fill="#E6F6EE" data-page-node-id="T0O8rWkrQQb1FkOVBXRjGA" />
+                            <rect x="338" y="94" width="34" height="34" rx="11" fill="#1F9D63" data-page-node-id="bcx2CabJLlhCfuYSN2pNCx" />
+                            <rect x="338" y="140" width="86" height="8" rx="4" fill="#1F9D63" opacity=".5" data-page-node-id="2nzbclRqeGzS2qic8IOBCN" />
+                            <rect x="338" y="156" width="58" height="8" rx="4" fill="#1F9D63" opacity=".28" data-page-node-id="E9wJPmSD2Gaad5SjoaCppC" />
+                            <text x="338" y="182" font-size="12" fill="#66697A"
+                                font-family="-apple-system, PingFang SC, sans-serif" data-page-node-id="krdGeHVUeKoH8i8hGJouA9">5 篇</text>
+                        </g>
+
+                        <!-- 笔记列表 -->
+                        <g data-page-node-id="mE946rf2F6SkKbjhmoPvb1">
+                            <rect x="30" y="208" width="420" height="46" rx="13" fill="#fff" stroke="#F0F1F5" data-page-node-id="TnUQmNbaDa04FqYCbb51Iy" />
+                            <rect x="46" y="222" width="26" height="18" rx="5" fill="#EDEFFF" data-page-node-id="AqqjUcIbDIxkj4BG0NfO8I" />
+                            <rect x="84" y="224" width="150" height="8" rx="4" fill="#1A1B22" opacity=".72" data-page-node-id="wASvB5sx8j5aF4CjH63iAX" />
+                            <rect x="84" y="238" width="96" height="7" rx="3.5" fill="#9A9DAC" opacity=".55" data-page-node-id="0vqlAZo4GJYBPFFLgqknCh" />
+                            <text x="432" y="236" font-size="11" fill="#9A9DAC" text-anchor="end"
+                                font-family="-apple-system, PingFang SC, sans-serif" data-page-node-id="YQw2j70xnwIwbLQHrxgHGC">09:41</text>
+
+                            <rect x="30" y="264" width="420" height="46" rx="13" fill="#fff" stroke="#F0F1F5" data-page-node-id="vx4v9P6F3M14FzmeCGMaqg" />
+                            <rect x="46" y="278" width="26" height="18" rx="5" fill="#FFF3DC" data-page-node-id="uauA6uRjxfFEAoAxDxsecY" />
+                            <rect x="84" y="280" width="120" height="8" rx="4" fill="#1A1B22" opacity=".72" data-page-node-id="luinrGJePYSZrFgUmbfOpv" />
+                            <rect x="84" y="294" width="140" height="7" rx="3.5" fill="#9A9DAC" opacity=".55" data-page-node-id="TAG2jpHC1JpCZejAWymMDk" />
+                            <text x="432" y="292" font-size="11" fill="#9A9DAC" text-anchor="end"
+                                font-family="-apple-system, PingFang SC, sans-serif" data-page-node-id="8Gn4H0TCqyokwBLx47H1aP">昨天</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 日历 -->
+    <section class="section" id="calendar" data-page-node-id="jYPjusoXflJVhTqAGJDMC4">
+        <div class="section__inner" data-page-node-id="Vv0FFJi3uAAEbFolxxVh4r">
+            <div class="showcase" data-page-node-id="TIWEsSTqeg37fAMl6fB2QI">
+                <div class="reveal" data-page-node-id="HVmfVP4OkqrGyEL0iSQwZF">
+                    <div class="section__label" data-page-node-id="Z7U35HQBZum7yA3vhkb2aH">农 · 历 · 与 · 节 · 气</div>
+                    <h2 data-page-node-id="2GiQ6X57h6pAYXS1xFZ1I8">看得懂农历的日历</h2>
+                    <p class="section__desc" data-page-node-id="q8T5zorAwvgxoqxG4fAHP2">
+                        日历内置农历与二十四节气，节假日安排一目了然；
+                        点开某一天，当天记的笔记就在下面列出来——写过什么，日子替你记着。
+                    </p>
+                    <ul class="list" data-page-node-id="08TXopNo0XJIX4XjLT02jm">
+                        <li data-page-node-id="dM4ojRCqL1xEEnHRcnHXxk"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" data-page-node-id="eqMc6ihIFTp1hiP6W63tg4">
+                                <rect x="3.4" y="5" width="17.2" height="15.6" rx="3" data-page-node-id="a40dOUN7zVRZJSQuz1DmED" />
+                                <path d="M3.4 10.2h17.2" data-page-node-id="HrwoLW4TH7yIafnT1k7s1j" />
+                                <path d="M8.2 3v4" data-page-node-id="Yv1rADMNFje2hcxtLB4EyA" />
+                                <path d="M15.8 3v4" data-page-node-id="f37p06MIB9JQ2q56Ifw7fb" />
+                                <circle cx="8" cy="15.3" r="1.1" fill="currentColor" stroke="none" data-page-node-id="PX4LREhciBvd2LXjlSoLlq" />
+                                <circle cx="12" cy="15.3" r="1.1" fill="currentColor" stroke="none" data-page-node-id="1foiyGMCDv4HpacWbHpmIX" />
+                                <circle cx="16" cy="15.3" r="1.1" fill="currentColor" stroke="none" data-page-node-id="Q8Le8K6HPjcKwsvZyERIVL" /></svg>
+                            <span data-page-node-id="uRXxIK6Kr9LZkcMoGjHG6w"><b data-page-node-id="Bp6muW8URLFMScJbUGkN9U">农历日期</b>——初一、十五、腊月廿三，都标在格子里。</span></li>
+                        <li data-page-node-id="gUQrHEFadSyWWhgFpTPzGd"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" data-page-node-id="DvAOXzNgTEjNfcO10nfxS6">
+                                <path d="M3.8 20.2h16.4" data-page-node-id="8hJAoU8bft0q0fvXNYNFQF" />
+                                <path d="M7.4 20.2v-6.3" data-page-node-id="21j108Up0HlI265ZbTNyXp" />
+                                <path d="M12 20.2V7.6" data-page-node-id="UMARneZaqF3hrMaMfbZ8ta" />
+                                <path d="M16.6 20.2V5" data-page-node-id="wfJ2eGnQNZaHqz3PV1jAok" /></svg>
+                            <span data-page-node-id="fzYeLgaiKMd6R3oMvyI5VC"><b data-page-node-id="lghyXOoBNPz8psZqWFd5kv">二十四节气</b>——立冬、小雪、大雪，跟着节气走。</span></li>
+                        <li data-page-node-id="DJeN2vfIrUfHEO9kVlEOaX"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" data-page-node-id="hv2xrJCjgAa2OcCAMptFCF">
+                                <rect x="4.6" y="3.4" width="14.8" height="17.2" rx="3" data-page-node-id="wCZenSA1GAoPTZiU8kumTN" />
+                                <path d="M8.6 8h6.8" data-page-node-id="83AIpLnKUGAtEAyhhoqWY3" />
+                                <path d="M8.6 12h6.8" data-page-node-id="tFoZrHuaQBWy6P2RXewZMj" />
+                                <path d="M8.6 16h4.4" data-page-node-id="dNjLjuumM4zcVZ1vRCsCV6" /></svg>
+                            <span data-page-node-id="Ru9MxY7euy5DInwRs4aONZ"><b data-page-node-id="JyJySTgd5EHAqqee9JtIrZ">当日笔记</b>——选中某天，那天写的笔记直接列出来。</span></li>
+                    </ul>
+                </div>
+                <div class="showcase__art reveal" data-page-node-id="PvWSNyQjXzgnHiJyGUvF9R">
+                    <svg viewBox="0 0 480 340" fill="none" data-page-node-id="T9WDsfJsxLDqD2bzoK5LxN">
+                        <rect width="480" height="340" fill="#FBFAF7" data-page-node-id="cIMNlRJknPDInsk7pbolMF" />
+                        <rect x="24" y="24" width="432" height="292" rx="18" fill="#fff" stroke="#E7E8EE" data-page-node-id="fpIqb2GGSC6SdPINjMJzpm" />
+                        <g font-family="-apple-system, PingFang SC, sans-serif" data-page-node-id="AZhWKSLi9Rm64b8jKO8qVQ">
+                            <text x="48" y="60" font-size="15" font-weight="600" fill="#1A1B22" data-page-node-id="ZyiIjeYkc4G9TCoDzZ365a">十月</text>
+                            <text x="92" y="60" font-size="12" fill="#9A9DAC" data-page-node-id="DJeosB9gZXO6MIxSmfV7qh">2026 · 农历九月</text>
+                            <circle cx="424" y="54" r="14" fill="#EDEFFF" data-page-node-id="qGn4HwbDV1ih610ob7UB9t" />
+                            <path d="M418 54h12M424 48v12" stroke="#3D5AFE" stroke-width="1.8"
+                                stroke-linecap="round" data-page-node-id="jfPQuwH4HNBFewlry8VzsS" />
+
+                            <g font-size="10.5" fill="#9A9DAC" data-page-node-id="Am1LdP8SqNKjrrXtVxHt4j">
+                                <text x="52" y="92" data-page-node-id="uuAdEGCTGXUM4vjVQKFP0v">一</text>
+                                <text x="112" y="92" data-page-node-id="bUgooyupHqH1NnCSfU8DtK">二</text>
+                                <text x="172" y="92" data-page-node-id="XJI8EzV6NT9F4snkCrocXQ">三</text>
+                                <text x="232" y="92" data-page-node-id="rr4prkSpY1eIDqLHfqKOyD">四</text>
+                                <text x="292" y="92" data-page-node-id="wR0lBI9jmPjUDp8sdCz6tH">五</text>
+                                <text x="352" y="92" data-page-node-id="sGJifEIs9vsMQy60KcLwbj">六</text>
+                                <text x="412" y="92" data-page-node-id="1QDeGQoA8fQVwT5NfRWAJg">日</text>
+                            </g>
+                            <path d="M44 102h392" stroke="#F0F1F5" stroke-width="1" data-page-node-id="JPOQ7LlHGQ2IhavxHsNtIo" />
+                        </g>
+
+                        <!-- 日历格子 -->
+                        <g font-family="-apple-system, PingFang SC, sans-serif" data-page-node-id="08QyqUYDPs3LDaRjJY8EIx">
+                            <g font-size="13" fill="#1A1B22" font-weight="600" data-page-node-id="4bCh8aeLC8DdqeyehUL9e0">
+                                <text x="52" y="130" data-page-node-id="M9P1drwxyURoAdoHs68tbp">1</text><text x="112" y="130" data-page-node-id="86aJuA7gBpja9FqqUlW1gw">2</text>
+                                <text x="172" y="130" data-page-node-id="TjFs53QguI54rkUfzDYMse">3</text><text x="232" y="130" data-page-node-id="b12yywuicv5B7hjI3HlIoL">4</text>
+                                <text x="292" y="130" data-page-node-id="ApooSfh6f0YmrLKaYEvpaQ">5</text><text x="352" y="130" data-page-node-id="CXlOvpWcS1b9SGZUs3Zi6I">6</text>
+                                <text x="412" y="130" data-page-node-id="a53Bm3DZ5zmOTj8dPYhdHd">7</text>
+                                <text x="52" y="186" data-page-node-id="aDfnPcBBGIZjvkIO6D6PPE">8</text><text x="112" y="186" data-page-node-id="TCjhbkqEo9hhJLceES89fM">9</text>
+                                <text x="172" y="186" data-page-node-id="gFNwDsLeBSUfMeRfTZ9Igw">10</text><text x="232" y="186" data-page-node-id="wWAnEdB3aUCSMlBZkMON6k">11</text>
+                                <text x="292" y="186" data-page-node-id="nSnd26F88R296GbEGESe60">12</text><text x="352" y="186" data-page-node-id="PMWERjKPyBVuYo49QW8yG5">13</text>
+                                <text x="412" y="186" data-page-node-id="fWtlFchSOv8QBtQIjcdnaG">14</text>
+                                <text x="52" y="242" data-page-node-id="cRjIBbGAPueozF5oOWjLhe">15</text><text x="112" y="242" data-page-node-id="cj1uWfMD675kOL5RNVRUfn">16</text>
+                                <text x="172" y="242" data-page-node-id="ULPwLhuuvfdsKseitjtcnb">17</text><text x="232" y="242" data-page-node-id="v8Xk0mjlINIoMqV92VF7YD">18</text>
+                                <text x="292" y="242" data-page-node-id="nbC7C3M8uT1ZVxJMOBKW9l">19</text><text x="352" y="242" data-page-node-id="AjZ1OnbXyTOALLeSzMjKcc">20</text>
+                                <text x="412" y="242" data-page-node-id="NzA7Rc9sGnHXojTKxRBKCz">21</text>
+                            </g>
+                            <g font-size="9.5" fill="#9A9DAC" data-page-node-id="aiYzxtFdXID36iUGdBbo2p">
+                                <text x="52" y="143" data-page-node-id="HGAnC5E7NABtXG6i5AKQaC">初一</text><text x="112" y="143" data-page-node-id="PDUJwCGvAgkmDDpDIz8xtk">初二</text>
+                                <text x="172" y="143" data-page-node-id="UtOJKLneLdsyFLOQ5uUEpO">初三</text><text x="232" y="143" data-page-node-id="uwXHZdlGnoZCUqBavBEtAo">初四</text>
+                                <text x="292" y="143" data-page-node-id="DHtIBtsY8Tx98WYbcTIIHZ">初五</text><text x="352" y="143" data-page-node-id="VkKCjSabR9655dcKZpghOa">初六</text>
+                                <text x="412" y="143" data-page-node-id="4dmeEwUMqLYFujSpSE3ijy">初七</text>
+                                <text x="52" y="199" data-page-node-id="JtkmGdW1yoWHt7m97bWSK1">初八</text><text x="112" y="199" data-page-node-id="R1PnOvLB2JgjDQRVbu9BpQ">初九</text>
+                                <text x="172" y="199" data-page-node-id="dorrJxRjeNriHV0Pdr2D5H">初十</text><text x="232" y="199" data-page-node-id="VhGW9wYeZ4hcF0QdOhnred">十一</text>
+                                <text x="292" y="199" data-page-node-id="S0U3hstlHN4InoyuihSmOW">十二</text><text x="352" y="199" data-page-node-id="eORLRscDxsdYOQT84LZsQQ">十三</text>
+                                <text x="412" y="199" data-page-node-id="mGXUzblWvkG88TPB86rSDC">十四</text>
+                                <text x="52" y="255" data-page-node-id="4Y0gXeZXaNqcFwrisMBvnc">十五</text><text x="112" y="255" data-page-node-id="W4W2wiaC0vAA7bDaVHpeBX">十六</text>
+                                <text x="172" y="255" data-page-node-id="JCufxgbb5OVqY2iMVEhFEg">十七</text><text x="232" y="255" data-page-node-id="a0KAwduwf02V6uTZWWtcqw">十八</text>
+                                <text x="292" y="255" data-page-node-id="FrmzhXBiNaXAO0Zfhdqg8o">十九</text><text x="352" y="255" data-page-node-id="H7UMnNkMICDSqzYENiojda">二十</text>
+                                <text x="412" y="255" data-page-node-id="05TJLEJlCLFJfHgrgQyRcp">廿一</text>
+                            </g>
+                            <!-- 节气标记 -->
+                            <g font-size="9" fill="#C77C0B" data-page-node-id="6B2ke2VAH6nlYa293mXgSN">
+                                <text x="232" y="157" data-page-node-id="XPFKEWWyVBueKbNPACaKfJ">寒露</text>
+                                <text x="412" y="213" data-page-node-id="AnwRXQRMFukcQaVio9HJaR">霜降</text>
+                            </g>
+                            <!-- 今天选中 -->
+                            <circle cx="118" cy="238" r="19" fill="#3D5AFE" data-page-node-id="AqljHuLg3rDAi1QrKdi9Om" />
+                            <text x="112" y="242" font-size="13" font-weight="600" fill="#fff"
+                                text-anchor="middle" data-page-node-id="3dRtFxINV50NbVkVtKUFSS">16</text>
+                            <text x="112" y="255" font-size="9.5" fill="rgba(255,255,255,.8)"
+                                text-anchor="middle" data-page-node-id="gj8vMTqQc4ycW1iUMIKDFt">十六</text>
+                            <!-- 有笔记的点 -->
+                            <g fill="#FFAF27" data-page-node-id="tPT2nbWqGSI6HhY53wDO7M">
+                                <circle cx="57" cy="136" r="2.5" data-page-node-id="96jCUGlgnFBUY1RSRps38n" />
+                                <circle cx="177" cy="192" r="2.5" data-page-node-id="B402IoCIVa9AFt0vW05F1e" />
+                                <circle cx="297" cy="248" r="2.5" data-page-node-id="8bUClhZtD5adMKrKqy59fa" />
+                            </g>
+                        </g>
+
+                        <!-- 当日笔记 -->
+                        <rect x="44" y="268" width="392" height="34" rx="12" fill="#FBFAF7" stroke="#F0F1F5" data-page-node-id="gbeGCGTcTm1sn9KD6M0tRU" />
+                        <rect x="58" y="279" width="20" height="12" rx="4" fill="#EDEFFF" data-page-node-id="0yGahYyNp5pU0Bus8XjApm" />
+                        <rect x="88" y="281" width="120" height="7" rx="3.5" fill="#1A1B22" opacity=".65" data-page-node-id="9EZLInZ1BtJTLKOw0uugOi" />
+                        <text x="424" y="289" font-size="11" fill="#9A9DAC" text-anchor="end"
+                            font-family="-apple-system, PingFang SC, sans-serif" data-page-node-id="KzXtIHEXr0kX6ObSzp4ltH">2 篇笔记</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 隐私 -->
+    <section class="section section--tint" id="privacy" data-page-node-id="dXwuUt5gD7w0tKUFwvxFP9">
+        <div class="section__inner" data-page-node-id="YMuxjnMoEAEFGXtpyCWfBZ">
+            <div class="section__head reveal" data-page-node-id="PafMqWH2P9b8WFnpeDC8wn">
+                <div class="section__label" data-page-node-id="Bp8Xh1uyV3V8Amu0Q08Nvu">你 · 的 · 数 · 据</div>
+                <h2 data-page-node-id="A4fJe8V5hSbK3bBRHOcdcr">记在你手机里，就只属于你</h2>
+                <p class="section__desc" data-page-node-id="U66AtftSQL1FUn8sqXByga">
+                    iTally 不设账号、不要求登录、不上传任何内容，也没有统计与广告 SDK。
+                    我们把话说清楚，也写进了隐私政策里。
+                </p>
+            </div>
+            <div class="promise reveal" data-page-node-id="pJ32VBUn1TLhpfQgraRZsq">
+                <div class="promise__item" data-page-node-id="77nVh8HURBCGftuI7Xs3gc">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                        stroke-linecap="round" stroke-linejoin="round" data-page-node-id="JByHUItF9YAMzklq54RFSd">
+                        <path d="M4.8 12.4 9.6 17.2 19.2 6.8" data-page-node-id="ndCh4c7VWsAwWy3txadpI5" /></svg>
+                    <div data-page-node-id="VxRuFC36iV2taOoFwg6LND"><b data-page-node-id="Ho1VLEQwWzAsaHmdgly8lz">全部保存在本机</b><span data-page-node-id="XxhAcl6bd8S3TNIbPHTCGj">笔记只写进你的设备存储，没有服务器，也就不存在"上传"这一步。</span></div>
+                </div>
+                <div class="promise__item" data-page-node-id="ccbU5H4Ko1AwEJv84TOlmB">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                        stroke-linecap="round" stroke-linejoin="round" data-page-node-id="U8kzbHEmxvc33TCaYCk8iF">
+                        <circle cx="12" cy="8.1" r="3.75" data-page-node-id="teHJMtB9OBjEuVsvRzakB4" />
+                        <path d="M4.9 20.2a7.1 7.1 0 0 1 14.2 0" data-page-node-id="HuRMCkvqgDgCkKVpmIqgh0" /></svg>
+                    <div data-page-node-id="uURigY9f805IgWi9qxITtL"><b data-page-node-id="wypeXiEUV12mJjvMGxNVBw">无需注册账号</b><span data-page-node-id="JPqCdcammCeaTgdB4C54jP">打开就能写。没有手机号、没有邮箱、没有密码，也就没有账号泄露。</span></div>
+                </div>
+                <div class="promise__item" data-page-node-id="sNTtOkuQ7LdujpPnDNoP8F">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                        stroke-linecap="round" stroke-linejoin="round" data-page-node-id="wBtwjpvrA4jfLH62QFf5l9">
+                        <path d="M3.6 6.3h16.8" data-page-node-id="QVGroBbuppTEVOselTXmYi" />
+                        <path d="M9.5 6.3V4.7a1.1 1.1 0 0 1 1.1-1.1h2.8a1.1 1.1 0 0 1 1.1 1.1v1.6" data-page-node-id="GoLgCxlJYNxRWZjnfPoLN5" />
+                        <path d="M6.1 6.3l.9 12.9a1.5 1.5 0 0 0 1.5 1.4h7a1.5 1.5 0 0 0 1.5-1.4l.9-12.9" data-page-node-id="jfapuQ3Ja81CbkKR2Z3fmH" />
+                        <g stroke-width="1.25" data-page-node-id="BFjOwvrhQGzfuIkaItRh8u">
+                            <path d="M10.2 10.4v5.8" data-page-node-id="qewrrSeyAUqA4NdAU1oWER" />
+                            <path d="M13.8 10.4v5.8" data-page-node-id="UvqNlwng6AvctBtbvLttaA" />
+                        </g>
+                    </svg>
+                    <div data-page-node-id="zl138jeWjJaCAUAS5zpHDD"><b data-page-node-id="YDfHUkHCF221WMFyxSHaWf">不追踪、不收集</b><span data-page-node-id="BJn7y6ejJDbgNKubmKEBD3">没有统计 SDK，没有广告 SDK，不申请跟踪权限，不采集任何行为数据。</span></div>
+                </div>
+                <div class="promise__item" data-page-node-id="rJOGisLrEQYM5O60UHsSSM">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                        stroke-linecap="round" stroke-linejoin="round" data-page-node-id="k9fHHMyDu3s3C4gPusLQiL">
+                        <rect x="4.8" y="10.4" width="14.4" height="9.7" rx="2.7" data-page-node-id="NV4hMFHM5wO8g2qeTtVHgk" />
+                        <path d="M8.4 10.4V7.4a3.6 3.6 0 0 1 7.2 0v3" data-page-node-id="Whk5zYGCnt0HZaNxkouhJw" /></svg>
+                    <div data-page-node-id="wYEt3whQ4wJ8CohfAVpUzV"><b data-page-node-id="DEzZ4BRGIZjcEJM73RQsqD">权限用得极少</b><span data-page-node-id="S9cCtJWn5Ubb1e8xRPqQHU">仅在你主动导出图片时申请相册写入权限，此外不索要通讯录、定位或麦克风。</span></div>
+                </div>
+            </div>
+            <p style="margin-top:26px;font-size:14px;color:var(--ink-3)" data-page-node-id="OxxgsQqidTxzv3fZV7gEpA">
+                完整说明见 <a href="iTallyPolicy.html" style="color:var(--brand);text-decoration:none" data-page-node-id="jCzcIICg50uEvPHEFu0Ufm">《隐私政策》</a>。
+            </p>
+        </div>
+    </section>
+
+    <!-- 外观 -->
+    <section class="section" data-page-node-id="Vu4G2ThgNGg776itM7Cs2F">
+        <div class="section__inner" data-page-node-id="VJLDcLP1UPbFjE2nYfNIxS">
+            <div class="section__head reveal" data-page-node-id="jcTxUNEQG4dSRxnRTrEnKc">
+                <div class="section__label" data-page-node-id="esRBAHC05VUR6pspLuK3w9">外 · 观 · 由 · 你</div>
+                <h2 data-page-node-id="czO1m0kFWuOMzdzSPZKf3Y">深色不刺眼，颜色随你定</h2>
+                <p class="section__desc" data-page-node-id="2xqWvy5BNFFwT2KEFHQCEj">
+                    外观可选跟随系统、始终浅色或始终深色；强调色支持自定义，
+                    选一个颜色，整个应用的按钮、图标和高亮都跟着变。
+                </p>
+            </div>
+            <div class="grid grid--3 reveal" data-page-node-id="NTBkKGUoLwPZIDF1E6ZFLF">
+                <div class="card" data-page-node-id="8Fxs0fzhsRGzoBzhqQb08T">
+                    <div class="card__ic" data-page-node-id="CV0w9owqE0Jydb96uzHWV6"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="MPHvfbv6kFgC0gADXs9BGF">
+                            <circle cx="12" cy="12" r="8.6" data-page-node-id="4iDxUKkxuhx3ex7C9PD6tC" />
+                            <path d="M12 3.4a8.6 8.6 0 0 1 0 17.2z" fill="currentColor" stroke="none" data-page-node-id="PPe0AOEEke30na11J765s9" /></svg></div>
+                    <h3 data-page-node-id="2hiEv7vpUdgiag9pHCUUhv">跟随系统</h3>
+                    <p data-page-node-id="DAoFFUNs3ZiSBQYXjAAPqs">系统切成深色，应用跟着切，不用手动来回改。</p>
+                </div>
+                <div class="card" data-page-node-id="B8VqfvvcKsD17d2CAnBguS">
+                    <div class="card__ic" data-page-node-id="ig6RoBrx4XQEbwAybBXRmd"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="TeHMNJHhF1PW0o53gl4KXA">
+                            <path d="M20.4 14.8A8.6 8.6 0 0 1 9.2 3.6a8.6 8.6 0 1 0 11.2 11.2z" data-page-node-id="3IYSjIEAltEJnBsR4ZF9DB" /></svg></div>
+                    <h3 data-page-node-id="PGLchkKMr2V3O1xVuE9uKt">始终深色</h3>
+                    <p data-page-node-id="Bs7DUZMbsRSERa5nBLoZ0U">夜间书写不刺眼，纸面还能自动反色，笔迹保持可读。</p>
+                </div>
+                <div class="card" data-page-node-id="uvB4OqAgGSVCSypWdbbpEW">
+                    <div class="card__ic" data-page-node-id="oh6i73IB0ZiFIcexj6sF7V"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="IGyq4vm04a5QXqRyLm7jXt">
+                            <rect x="3.5" y="3.5" width="7.6" height="7.6" rx="2.2" data-page-node-id="VU9S2kDvBsAQvDGDaVhaI0" />
+                            <rect x="12.9" y="3.5" width="7.6" height="7.6" rx="2.2" data-page-node-id="lONzWDhCqbYa1OgyJwNmmR" />
+                            <rect x="3.5" y="12.9" width="7.6" height="7.6" rx="2.2" data-page-node-id="rguXTuGGkBmSyhmJ9RpYUN" />
+                            <circle cx="16.7" cy="16.7" r="2.9" data-page-node-id="zLlMbnazK9H2XNFzF6ZGxy" /></svg></div>
+                    <h3 data-page-node-id="fnpq74ED5Kkn2ATuk43X5D">自定义强调色</h3>
+                    <p data-page-node-id="RqwS3hJQoorMq5ukW3DmSZ">靛蓝、琥珀、青绿、玫红……选一个，全套界面一起换。</p>
+                </div>
+            </div>
+            <div class="swatches reveal" data-page-node-id="gBbXuqdcWswCFy5fEHx4rK">
+                <span class="swatch" data-page-node-id="RbuOHOF9rzCKbMbvBoXLTy"><i style="background:#3D5AFE" data-page-node-id="HJduGkkxT0s1IqDH6BE30q"></i>靛蓝（默认）</span>
+                <span class="swatch" data-page-node-id="Y7AwcwyBMuQ4ORFVmWo2Io"><i style="background:#FFAF27" data-page-node-id="dPCeCd5gUH8XhtZSFi72Lm"></i>琥珀</span>
+                <span class="swatch" data-page-node-id="EnCKag8sdHB4W8J22uzOYW"><i style="background:#1F9D63" data-page-node-id="DoJmrD9jbkNuZR9Bo7ZFfM"></i>青绿</span>
+                <span class="swatch" data-page-node-id="EZf5QUKacLbTPpAyTGaaIs"><i style="background:#EB7F97" data-page-node-id="XU04n5VeA1yKgEulLwGEwH"></i>玫红</span>
+                <span class="swatch" data-page-node-id="gw6Yie9f3816a2vLnSBor0"><i style="background:#7C6BF5" data-page-node-id="kjYjGiRRNVbnskwSDCjEQL"></i>紫罗兰</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote" data-page-node-id="8hooB2JiSDPPoRGf3Nc8Vg">
+        <p data-page-node-id="kUqLKXSmpaIaXq87xXMHBr">无论是课堂速记、会议记录、手帐涂鸦，<br data-page-node-id="FKI2vJkwBLXigBD8bcqLWU">还是每天要跟进的大小事情，<br data-page-node-id="EqwJTDQIfS8ZNBTOi5Gnur">iTally 都只是一支笔和一张纸的距离。</p>
+        <small data-page-node-id="0hCx1BjrftyLbFhoNwyjSn">iTALLY · HANDWRITE IT, THEN LIVE IT</small>
+    </section>
+
+    <section class="cta" id="download" data-page-node-id="m24YiT2KGRIc6ZmWNq5yWA">
+        <div class="cta__inner" data-page-node-id="1WLu1ibyFgQJfqcGgBooLN">
+            <h2 data-page-node-id="m0Sbe99wClyAlBdxpYckTX">把该记的，记下来</h2>
+            <p data-page-node-id="CFkcaCeg1Dtr6cN5AJPRzP">免费下载，无内购、无广告、无需注册。打开就能写。</p>
+            <div class="hero__actions" data-page-node-id="GIQpXrRZZkSyCliSmRHTHz">
+                <!-- TODO：上架后替换为 https://apps.apple.com/cn/app/idXXXXXXXXX -->
+                <a class="btn btn--primary" href="https://apps.apple.com/cn/search?term=iTally" data-page-node-id="nlWTf79YidBA6jMCDbuwqB">
+                    <svg viewBox="0 0 24 24" fill="currentColor" data-page-node-id="LzMtFbgQFa9GYC3jdubD3h">
+                        <path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.3-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.4 0-2.7.8-3.5 2.1-1.5 2.6-.4 6.4 1.1 8.5.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.1 0 1.9-1.1 2.6-2.1.8-1.2 1.2-2.3 1.2-2.4-.1 0-2.3-.9-2.3-3.1zM14.3 5.9c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z" data-page-node-id="D0vOXPiyDDWfbKsSJFRuKz" />
+                    </svg>
+                    App Store 下载
+                </a>
+                <a class="btn btn--ghost" href="iTallyPolicy.html" data-page-node-id="LF3iKOYV0zm9FzEj7Rgwbb">隐私政策</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" data-page-node-id="qlirYfQF9zeCiiuejkKXAk">
+        <div class="footer__inner" data-page-node-id="M3ffsgXgSGDaS77slInMts">
+            <a class="brand" href="index.html" data-page-node-id="wpXoSBNCDH3CnOjHgooHJw">
+                <span class="brand__mark" data-page-node-id="utSsoDF2giEmy7eAa3Ee4n">
+                    <svg viewBox="0 0 24 24" fill="none" width="18" height="18" data-page-node-id="FBzZzVuVZr4cJk7iWuEtB3">
+                        <path d="M5 19c3.4-1.9 4.9-7.5 12-9.8" stroke="#fff" stroke-width="2.2"
+                            stroke-linecap="round" data-page-node-id="prprjGW5EfBHFB7vKQW4zA" />
+                    </svg>
+                </span>
+                <span class="brand__name" data-page-node-id="c3bVIQHS4lMpttET3KnApG">iTally<em data-page-node-id="czzCfuY6gCUbEd8IE2OQ8R">ITALLY</em></span>
+            </a>
+            <div class="footer__links" data-page-node-id="CiFvk8qGoqPFaDlNO7RMFa">
+                <a href="index.html" data-page-node-id="CqLkzfzGktZ7eOZwy2QMAk">产品首页</a>
+                <a href="iTallyPolicy.html" data-page-node-id="5zaT5aCZizRELXoGq4P09J">隐私政策</a>
+                <a href="iTallyAgreement.html" data-page-node-id="VBtW2GyFtC1HJIDBMcJ9B7">用户协议</a>
+                <a href="iTallyLicenses.html" data-page-node-id="xQvjYpcxq6KGHT6GYFem7K">开源许可</a>
+                <a href="mailto:zerozhou10086@gmail.com" data-page-node-id="zclC7O4XYy2VolnTTjlRuN">联系我们</a>
+            </div>
+            <div class="footer__copy" data-page-node-id="nH76CAn0HCspmDQYxdZkk4">© 2026 iTally · All rights reserved</div>
+        </div>
+    </footer>
+
+    <script>
+        // 导航吸顶状态
+        var nav = document.getElementById('nav');
+        function onScroll() {
+            nav.classList.toggle('is-stuck', window.scrollY > 16);
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        // 入场动画
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    var d = parseInt(e.target.getAttribute('data-delay') || '0', 10);
+                    setTimeout(function () { e.target.classList.add('is-in'); }, d * 90);
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    </script>
+</body>
+
+</html>
